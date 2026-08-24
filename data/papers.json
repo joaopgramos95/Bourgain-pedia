@@ -13137,7 +13137,7 @@
      "author": "Renato Cândido Dutra de Andrade",
      "where": "Master's thesis, IMPA (supervisor: João Ramos)",
      "year": "2026",
-     "path": "1990/a-remark-on-gradients-of-harmonic-functions-in-dimension-3/Master_s_Thesis.pdf",
+     "path": "1990/a-remark-on-gradients-of-harmonic-functions-in-dimension-3/andrade-master-thesis-reading.pdf",
      "local": true,
      "note": "87 pages. A full exposition of this paper, with the Calderón problem and electrical impedance tomography as motivation (ch. 1), the two-dimensional case by a complex-analytic argument (ch. 2), and the d ≥ 3 construction in detail (ch. 3). Independently confirms the exponent (d−1)/2 in condition (2); like the paper, it quotes the Alexandrov–Kargaev inequality without proof."
     }
@@ -30662,10 +30662,22 @@
     "zbMATH",
     "OpenAlex"
    ],
-   "summary": "",
-   "digestion": null,
+   "summary": "Take a function and its Fourier transform, both real and even, both non-positive at the origin, and each non-negative outside some threshold. How small can the product of the two thresholds be? Dilating makes either threshold as small as one likes, so only the product means anything, and that it cannot be driven to zero is not obvious. This paper shows it cannot: after reducing to functions equal to their own transform, half the mass is trapped inside a ball of radius A while the sup norm is at most 1, so the ball's volume — hence A — is bounded below. In dimension d that two-line argument gives growth of order d, between d/2πe and (d+2)/2π. The last section is the surprise. Through Tate's thesis the same configuration on the adeles of a number field would force its zeta function to have no zero in ]0,1[; run backwards, Armitage's degree-48 field with ζ(1/2) = 0 and class field towers of bounded root discriminant show that the linear growth was already implied by what was known about ramification. The constants themselves are left open, and the problem has since become the sign uncertainty principle, sharp so far in dimension 12 alone.",
+   "digestion": "2010/the-heisenberg-principle-and-positive-functions/the-heisenberg-principle-and-positive-functions-expanded.pdf",
    "readings": [],
-   "toolkit": [],
+   "toolkit": [
+    "scaling-normalisation",
+    "symmetrisation-to-fixed-space",
+    "mass-volume-bound",
+    "leading-coefficient-sign",
+    "positive-type-convolution",
+    "regularisation-at-epsilon-cost",
+    "iterative-correction",
+    "dimension-threshold",
+    "extremal-datum",
+    "functional-equation-positivity",
+    "tower-propagation"
+   ],
    "notes": "",
    "authors_raw": [
     "Bourgain, Jean",

@@ -23,3 +23,9 @@ __pycache__/
 ![0-9][0-9][0-9][0-9]/*/*-original.pdf
 ![0-9][0-9][0-9][0-9]/*/*-expanded.pdf
 [0-9][0-9][0-9][0-9]/*/*-source.tar.gz
+
+# Readings: theses and expository work that a paper's digestion draws on. These are
+# tracked, because the site links to them as local files (`readings` in papers.json,
+# `local: true`) and a clone with the file missing is a dead link. Unlike the scans
+# above, these are included with their author's knowledge.
+![0-9][0-9][0-9][0-9]/*/*-reading.pdf
