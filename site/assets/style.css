@@ -587,3 +587,75 @@ footer.colophon {
 
 .stat .n.small { font-size: 21px; white-space: nowrap; }
 .person-papers a.more { color: var(--accent); }
+
+.slot-body .dpath {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-faint);
+  word-break: break-all;
+}
+
+/* ------------------------------------------------------- open problems */
+
+.prob-field {
+  margin: 4px 0 0;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--ink-faint);
+  font-weight: 600;
+}
+.prob-quote {
+  margin: 12px 0 0;
+  padding: 2px 0 2px 14px;
+  border-left: 2px solid var(--rule);
+  font-family: var(--serif);
+  font-size: 15.5px;
+  font-style: italic;
+  color: var(--ink-soft);
+  max-width: var(--measure);
+}
+.prob-partial { margin: 4px 0 0; padding-left: 20px; font-size: 14.5px; max-width: var(--measure); }
+.prob-partial li { margin: 4px 0; }
+.prob-status {
+  margin: 12px 0 0;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  max-width: var(--measure);
+  background: var(--paper-sunk);
+  border-radius: 3px;
+  padding: 9px 12px;
+}
+
+.prog-list { list-style: none; margin: 4px 0 0; padding: 0; }
+.prog {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px dotted var(--rule-soft);
+}
+.prog:first-child { border-top: 0; }
+.prog .kind {
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  padding: 3px 0 0;
+}
+.kind-resolves { color: var(--accent); }
+.kind-positive { color: #2e6b4f; }
+.kind-partial  { color: var(--ink-faint); }
+.prog-ref  { margin: 0; font-size: 14.5px; }
+.prog-what { margin: 4px 0 0; font-size: 14px; color: var(--ink-soft); max-width: var(--measure); }
+.prog-prov { margin: 4px 0 0; font-size: 11.5px; color: var(--ink-faint); }
+.prog-prov strong { color: var(--accent-warm); font-weight: 600; }
+
+.score.status-solved { color: #2e6b4f; background: #e8f0eb; border-color: #cfe0d5; }
+.score.status-unchecked { color: var(--ink-faint); background: var(--paper-sunk); border-color: var(--rule-soft); }
+.rail-list button.muted { opacity: 0.5; }
+
+@media (max-width: 700px) {
+  .prog { grid-template-columns: 1fr; gap: 2px; }
+}
+.score.status-resolved-preprint { color: #7a5a1f; background: #f5eddb; border-color: #e4d5b4; }

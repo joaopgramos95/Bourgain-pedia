@@ -160,11 +160,16 @@ Then wire it up:
 
 1. Add new ideas to `data/toolkit.json`, or extend the gloss of existing ones.
 2. Add the idea ids to this paper's `toolkit` array in `data/papers.json`.
-3. Set the paper's `digestion` field to the path of the expanded PDF.
-4. Write the paper's `summary` — three or four sentences, our précis, **not** the
+3. Add every question the paper leaves open to `data/problems.json`, each with the
+   paper it came from, the year, what the paper itself settles, and a `status` list
+   of the two or three most noteworthy articles making progress on it — full
+   references, links, and a `verified_from` naming the bibliographic source you
+   queried. `read: false` unless someone here has actually read the article.
+4. Set the paper's `digestion` field to the path of the expanded PDF.
+5. Write the paper's `summary` — three or four sentences, our précis, **not** the
    abstract: what it proves, what the difficulty was, and what the paper introduced that
    outlived it.
-5. Run `python3 tools/build_data.py`. Scores recompute from the papers that cite each
+6. Run `python3 tools/build_data.py`. Scores recompute from the papers that cite each
    idea; the summary, digestion link and toolkit tags appear on the site.
 
 Never edit an idea's `score` by hand. It is derived.
@@ -176,6 +181,7 @@ Report:
 - the paper, with its reference;
 - expanded page count against the original;
 - ideas harvested, split into new and existing, with the new ones' names;
+- open problems added, and for each the status you were able to verify;
 - any `OPEN-GAP` rows still standing;
 - what the next reader should look at — usually the paper this one leans on hardest.
 

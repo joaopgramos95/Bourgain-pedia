@@ -113,7 +113,18 @@ at 320\,dpi and each repaired below with the repair marked:
   algebra gives $e^{+\beta pn}$, and the next display on p.~11 uses $+$.
   \Ledger{D31}
 \end{enumerate}
-None of the five affects the theorem. Two further points needed real repair rather
+\smallskip
+\noindent And one that is not typographical:
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em,start=6]
+\item p.~4: Lemma 2 is stated with no factor $I(a_Q)$ multiplying
+  $dF_\varepsilon/dn$. As printed the statement is not homogeneous in $I$ and is
+  \emph{false} for large $|I(a_Q)|$; its proof establishes only the normalised case
+  $I(a_Q)=1$; and Lemma 4 applies it to a term that does carry the factor. Restoring
+  the factor makes statement, proof and application agree. \Ledger{C9}, \S3.
+\end{enumerate}
+
+\smallskip
+None of the six affects the theorem. Two further points needed real repair rather
 than a sign change, and are treated where they arise: the lower bound for
 $|1+d\he G_\varepsilon/dn|$ fails exactly at $|x|=1$ (\S2.6, \S3.3), and the final
 passage from ``$f=0$ and $\partial_nf=0$'' to ``$\nabla f=0$'' is not in the paper
@@ -209,9 +220,12 @@ $\|R_kh\|_{C^\alpha}\le C_{d,\alpha}\|h\|_{C^\alpha}$.
 
 \begin{bg}[Representation away from the support]\label{bg:rep}
 If $h\in C_c^\infty(\Rdm)$ and $x\notin\supp h$ then
-$\nd h(x)=c_d'\int_{\Rdm}|x-y|^{-d}h(y)\,dy$ with $c_d'=-c_d\,(d-1)\!\int\!\cdots$;
-only $|c_d'|\lesssim1$ is used. This is $\eqref{eq:dtn}$ written as a singular
-integral, legitimate off the support because the kernel is then smooth.
+\[\nd h(x)=c_d'\int_{\Rdm}|x-y|^{-d}h(y)\,dy\]
+for a constant $c_d'$ depending only on $d$. This is \eqref{eq:dtn} written as a
+singular integral: $|\nabla'|$ has convolution kernel a constant times $|z|^{-d}$
+on $\Rdm$, understood in the principal-value sense, and off $\supp h$ no principal
+value is needed because the kernel is smooth there. Only $|c_d'|\lesssim1$ is used
+below; we do not need its value.
 \end{bg}
 
 \begin{bg}[$p$-subadditivity, $0<p\le1$]\label{bg:sub}
@@ -405,9 +419,11 @@ convention $\nd=\partial_{x_d}|_{x_d=0}$ used above, $\nd G_\varepsilon\sim-|x'|
 in the far field, so $1+\nd G_\varepsilon\sim1-|x'|^{-d}$ passes through $0$ near
 $|x'|=1$ and is $<1$ beyond it --- and it is precisely the region
 $|x'|\gtrsim1$, where $|1+\nd G_\varepsilon|^p-1\approx-p|x'|^{-d}<0$, that can
-make the integral \eqref{eq:AK} negative. With the outward convention every regime
-contributes a positive amount and \eqref{eq:AK} is false. So the inward normal is
-the paper's convention, and we adopt it.
+make the integral \eqref{eq:AK} of \S2.2 below negative. With the outward convention every
+regime contributes a positive amount --- up to a negative term carried by a set of
+measure $O(\varepsilon^{d-1})$ around the single zero of $1+\nd G_\varepsilon$, which
+vanishes with $\varepsilon$ --- so \eqref{eq:AK} is false. \S9(5) confirms this at
+leading order in $p$. So the inward normal is the paper's convention, and we adopt it.
 \end{filled}
 
 \subsection*{2.2 The imported inequality}
@@ -441,7 +457,10 @@ into three regimes:
 \end{itemize}
 So \eqref{eq:AK} asserts that at small $p$ the third regime beats the second. Both
 are $O(p)$, so the inequality is a genuine computation about the constants and not
-something the shape of the estimate settles. We do not reproduce it.
+something the shape of the estimate settles. We do not reproduce it. \S9(5) records
+a formal leading-order computation which is consistent with \eqref{eq:AK} for
+$d\ge3$ and which degenerates exactly at $d=2$; it is not a proof, and this row
+stays \textbf{OPEN-GAP}.
 \end{caution}
 
 \begin{ournotation}
@@ -774,10 +793,52 @@ that
 \end{equation}
 is sufficiently small (independently of $N$ and $\varepsilon$), then
 \begin{equation}\label{eq:L2}
- \Bigl(\int_Q\Bigl|I(x)+\nd F_\varepsilon\bigl(N\ell(Q)^{-1}(x-a_Q)\bigr)\Bigr|^p dx
+ \Bigl(\int_Q\Bigl|I(x)+I(a_Q)\,\nd F_\varepsilon
+   \bigl(N\ell(Q)^{-1}(x-a_Q)\bigr)\Bigr|^p dx
  \Bigr)^{1/p}<e^{-2\beta}\,|I(a_Q)|\,|Q|^{1/p}.
 \end{equation}
 \end{lemB}
+
+\begin{filled}
+\textbf{The factor $I(a_Q)$ is ours, and the lemma is false without it.}
+\Ledger{C9} This is the one substantive correction in the digestion; everything
+else on the list in \S0 is a typographical or sign slip.
+
+The original prints \eqref{eq:L2} with $\nd F_\varepsilon(\cdots)$ \emph{not}
+multiplied by $I(a_Q)$. Three observations force the factor.
+
+\emph{(i) The printed statement is not homogeneous.} Replace $I$ by $cI$ for a
+constant $c>0$. The hypothesis \eqref{eq:L2hyp} is unchanged, since $c$ cancels
+between $|I(a_Q)|^{-1}$ and $\sup|I-I(a_Q)|$. The right-hand side of the printed
+\eqref{eq:L2} scales by $c$. The left-hand side does not: it becomes
+$(\int_Q|cI+\nd F_\varepsilon|^p)^{1/p}$, which is not $c$ times anything, because
+$\nd F_\varepsilon$ stays put. So the printed statement asserts strictly more for
+large $c$ than for $c=1$, from a hypothesis that does not distinguish them. Taking
+$c\to\infty$ with $I$ constant makes the left side $\sim c|Q|^{1/p}$ and the right
+side $c\,e^{-2\beta}|Q|^{1/p}$: false, since $e^{-2\beta}<1$. \emph{The printed
+statement is therefore not merely unproved but untrue as it stands.}
+
+\emph{(ii) The proof proves the normalised case.} The proof reduces to $Q=Q(N)$ and
+then to ``if $N^{d-1}\|I-1\|_\infty$ is sufficiently small then
+$\int_{Q(N)}(|I+\nd F_\varepsilon|^p-1)\le-\eta$''. Writing $\|I-1\|_\infty$ and
+comparing against $1$ presumes $I(a_Q)=1$: it is exactly the normalised case, and
+nothing else is established.
+
+\emph{(iii) The application needs the factor.} This is a forward reference --- the
+construction is \S4, the application \S6.3 --- but it is the reason the factor is not
+optional, so it belongs with the statement. In \S6.3 Lemma 2 is applied to
+$\nd u_{n+1}$ on a cube, which by \eqref{eq:decomp} is
+$I(x)+\nd u_n(a_Q)\,\nd F_{\varepsilon_{n+1}}(N\delta_{n+1}^{-1}(x-a_Q))$ with
+$I=\nd u_n(a_Q)+\mathrm{Br}$, so $I(a_Q)\approx\nd u_n(a_Q)$. The correction term
+carries the coefficient $\nd u_n(a_Q)$ because that is how $u_{n+1}$ is defined in
+\eqref{eq:un1} of \S4.2. So the quantity actually estimated is the one in the \emph{corrected}
+\eqref{eq:L2}, not the printed one.
+
+With the factor restored, both sides of \eqref{eq:L2} are homogeneous of degree $1$
+in $I$, the hypothesis is scale-invariant, and \S3.1 reduces the general case to the
+normalised one that the proof establishes. Statement, proof and application then
+agree.
+\end{filled}
 
 \begin{ournotation}
 The original prints $\beta\subset\beta(N)$ for $\beta=\beta(N)$. \Ledger{C1}
@@ -807,25 +868,31 @@ for suitable $\eta>0$.
 $a_Q$ to $0$; it has constant Jacobian $(N/\ell(Q))^{d-1}$, and
 $|Q|=\ell(Q)^{d-1}$, $|Q(N)|=N^{d-1}$, so $|Q(N)|/|Q|=(N/\ell(Q))^{d-1}$. Writing
 $\tilde I=I\circ\Phi^{-1}$ and substituting $y=\Phi(x)$,
-\[\int_Q\bigl|I(x)+\nd F_\varepsilon(\Phi(x))\bigr|^pdx
- =\frac{|Q|}{|Q(N)|}\int_{Q(N)}\bigl|\tilde I(y)+\nd F_\varepsilon(y)\bigr|^pdy .\]
+\[\int_Q\bigl|I(x)+I(a_Q)\,\nd F_\varepsilon(\Phi(x))\bigr|^pdx
+ =\frac{|Q|}{|Q(N)|}\int_{Q(N)}
+   \bigl|\tilde I(y)+\tilde I(0)\,\nd F_\varepsilon(y)\bigr|^pdy ,\]
+because $dx=(\ell(Q)/N)^{d-1}dy=\frac{|Q|}{|Q(N)|}dy$ and $\tilde I(0)=I(a_Q)$.
 Since $|Q|^{1/p}$ appears on the right of \eqref{eq:L2}, the inequality is
 equivalent to
-$\frac1{|Q(N)|}\int_{Q(N)}|\tilde I+\nd F_\varepsilon|^p<e^{-2\beta p}|\tilde I(0)|^p$,
+$\frac1{|Q(N)|}\int_{Q(N)}|\tilde I+\tilde I(0)\nd F_\varepsilon|^p
+ <e^{-2\beta p}|\tilde I(0)|^p$,
 which involves $Q$ only through $\tilde I$; and \eqref{eq:L2hyp} is invariant under
 $\Phi$ because it is built from the values of $I$ alone.
 
-\emph{Normalisation.} Both sides of the resulting inequality are homogeneous of
-degree $p$ in $(\tilde I,\nd F_\varepsilon)$ jointly --- but $\nd F_\varepsilon$ is
-fixed, so we cannot rescale it. What we can do is divide by $|\tilde I(0)|$: it is
-enough to prove the statement when $\tilde I(0)=1$, replacing $F_\varepsilon$ by
-$F_\varepsilon/|\tilde I(0)|$ --- and here the argument uses that Lemma 1 is applied
-to a \emph{fixed} $F_\varepsilon$ while $I$ varies. In the application (\S6) $I$ is
-$\partial_nu_n(a_Q)$ plus a small perturbation, and the factor $\partial_nu_n(a_Q)$
-is exactly the coefficient multiplying $F_{\varepsilon_{n+1}}$ in the definition of
-$u_{n+1}$, so the two scalings match. With $\tilde I(0)=1$, \eqref{eq:L2hyp} becomes
-$N^{d-1}\|\tilde I-1\|_{\infty}$, and \eqref{eq:L2} becomes \eqref{eq:L2red} with
-$e^{-2\beta p}=1-\eta/N^{d-1}$; see \S3.4.
+\emph{Normalisation.} Here the corrected factor $I(a_Q)$ earns its keep. Set
+$c=\tilde I(0)$, which we may assume $\ne0$ (otherwise \eqref{eq:L2hyp} is
+undefined), and put $J=\tilde I/c$, so $J(0)=1$. Then
+\[\tilde I(y)+\tilde I(0)\,\nd F_\varepsilon(y)
+   =c\bigl(J(y)+\nd F_\varepsilon(y)\bigr),\]
+so the left-hand side of \eqref{eq:L2} is exactly $|c|$ times the left-hand side for
+$J$, and the right-hand side is exactly $|c|$ times the right-hand side for $J$.
+Both sides are homogeneous of degree $1$ in $I$ --- \emph{which is true only with
+the factor} --- and the hypothesis \eqref{eq:L2hyp} is unchanged, being
+$N^{d-1}|J(0)|^{-1}\sup|J-J(0)|=N^{d-1}\|J-1\|_\infty$. So it suffices to treat
+$J$, i.e. to assume $I(a_Q)=1$; and then \eqref{eq:L2hyp} reads
+$N^{d-1}\|I-1\|_\infty$ and \eqref{eq:L2} reads \eqref{eq:L2red} with
+$e^{-2\beta p}=1-\eta/N^{d-1}$; see \S3.4. Note that $F_\varepsilon$ is never
+rescaled: it is the fixed function Lemma 1 produced, exactly as it must be.
 \end{expansion}
 
 \subsection*{3.2 The estimate}
@@ -1264,11 +1331,19 @@ $N$) and we get
 \end{equation}
 
 \begin{expansion}
-\textbf{Checking Lemma 2's hypothesis.} \Ledger{D17} Put
-$I(x)=\nd u_n(a_Q)+\text{bracket}(x)$, so $I(a_Q)=\nd u_n(a_Q)$ (the bracket
-vanishes at $x=a_Q$: its first two terms cancel and the sum is evaluated at
-$x=a_Q$ --- strictly, the sum does not vanish at $a_Q$, so $I(a_Q)$ differs from
-$\nd u_n(a_Q)$ by at most the same bound, which is absorbed). Then
+\textbf{This is the corrected Lemma 2, applied.} \Ledger{D17, C9} Put
+\[I(x):=\nd u_n(a_Q)+\mathrm{Br}(x),\]
+so that \eqref{eq:decomp} reads
+\[\nd u_{n+1}(x)=I(x)+\nd u_n(a_Q)\,
+   \nd F_{\varepsilon_{n+1}}\bigl(N\delta_{n+1}^{-1}(x-a_Q)\bigr).\]
+The coefficient of $\nd F_{\varepsilon_{n+1}}$ is $\nd u_n(a_Q)$, and
+$I(a_Q)=\nd u_n(a_Q)+\mathrm{Br}(a_Q)$ where
+$|\mathrm{Br}(a_Q)|<CN^{-d}|\nd u_n(a_Q)|$, so
+$I(a_Q)=(1+O(N^{-d}))\,\nd u_n(a_Q)$. Thus $\nd u_{n+1}$ is, up to that
+$1+O(N^{-d})$ factor, exactly the integrand of the corrected \eqref{eq:L2} ---
+$I(x)+I(a_Q)\nd F_\varepsilon(\cdots)$ --- and \emph{not} of the printed one. The
+$O(N^{-d})$ discrepancy is absorbed into the constant $C$ below, $N$ being fixed.
+This is the step that would fail with the statement as printed. Now
 \[N^{d-1}|I(a_Q)|^{-1}\sup_Q|I-I(a_Q)|
  \le N^{d-1}\cdot\frac{2CN^{-d}|\nd u_n(a_Q)|}{|\nd u_n(a_Q)|}=2CN^{-1},\]
 which is $<\tau$ for $N$ large. \emph{This is precisely the parenthetical remark}
@@ -1505,9 +1580,16 @@ So
 and $\bigl|\{x\in Q(1):\nd f(x)\ne0\}\bigr|\le A^p\sum_nK_{n+1}^{-p}$.
 
 \begin{expansion}
-\Ledger{D32} Summing the previous display over the cubes $Q$ making up
-$V_n\setminus V_{n+1}$ --- they are disjoint and contained in $V_n$ --- gives the first
-inequality; the second is \eqref{eq:IH}, $\int_{V_n}|\nd u_n|^p\le A^pe^{-p\beta n}$,
+\Ledger{D32} First, why $V_n\setminus V_{n+1}$ is a union of stage-$(n{+}1)$
+cubes at all: $\delta_n/\delta_{n+1}\in\mathbb Z$, so the grid $\mathcal H_{n+1}$
+refines $\mathcal H_n$ exactly and every $Q'\in\mathcal Q_n$ is partitioned by cubes
+of $\mathcal H_{n+1}$. Such a $Q\subset Q'$ satisfies (a) automatically, so it lies
+in $\mathcal Q_{n+1}$ if and only if it satisfies (b); hence
+$V_n\setminus V_{n+1}$ is precisely the union of those $Q$ failing (b), which is the
+set the previous display applies to. (This is the only place the divisibility
+$\delta_n/\delta_{n+1}\in\mathbb Z$ is used, and without it the two grids would not
+nest and $V_{n+1}\subset V_n$ could fail.) Summing over those $Q$ --- disjoint and
+contained in $V_n$ --- gives the first inequality; the second is \eqref{eq:IH}, $\int_{V_n}|\nd u_n|^p\le A^pe^{-p\beta n}$,
 whose exponential exactly cancels the $e^{+\beta pn}$.
 \end{expansion}
 
@@ -1579,21 +1661,85 @@ reference; we reproduce it as an assertion of the authors and do not verify it.
 Quarantined here, per the blueprint: nothing in this section was used above.
 
 \begin{enumerate}[leftmargin=1.6em,itemsep=4pt]
-\item \textbf{The references.} [1] is cited as ``private communication (to
-  appear)'' and [2] as ``to appear''. We have not identified the published form of
-  either from a source we have read, and do not guess. \Ledger{E4, E5} Identifying
-  [1] is the single highest-value follow-up for this digestion: it is the only
-  input we could not verify.
+\item \textbf{The references, now traced.} \Ledger{E4, E5}
+
+  \emph{[2] is identified.} T. Wolff, \emph{Counterexamples with harmonic gradients
+  in $\mathbb{R}^3$}, in: C. Fefferman et al. (eds.), \emph{Essays on Fourier
+  Analysis in Honor of Elias M.\ Stein}, Princeton Math.\ Ser.\ \textbf{42},
+  Princeton Univ.\ Press, 321--384 (1995); Zbl 0836.31004. Verified from the zbMATH
+  record; not read here.
+
+  \emph{[1] is not.} The best candidate is A.B.~Aleksandrov and P.~Kargaev,
+  \emph{Hardy classes of functions harmonic in the half-space}, St.\ Petersb.\ Math.\
+  J.\ \textbf{5}, No.~2, 229--286 (1994), translated from Algebra Anal.\ \textbf{5},
+  No.~2, 1--73 (1993); Zbl 0842.42012. The authors, the subject and the period all
+  fit, but we have not read it and therefore cannot confirm that it contains
+  \eqref{eq:AK}. Reading it is the single highest-value follow-up for this
+  digestion: it is the only input we could not verify.
+
+\item \textbf{The problem the paper leaves open has since been resolved --- in a
+  preprint.} Remark 2 asks whether a harmonic function $C^2$ or $C^\infty$ up to the
+  boundary can have $\nabla f$ vanishing on a boundary set of positive measure. On
+  3~August 2026, three weeks before this digestion was written, G.~Qin and W.~Zhan
+  posted \emph{Smooth Failure of Boundary Unique Continuation for Harmonic
+  Functions} (arXiv:2608.01683 [math.AP]), whose abstract states that for every
+  $n\ge3$ there is a nonconstant harmonic function on the half space, smooth up to
+  the boundary, whose entire boundary jet vanishes on a compact nowhere dense
+  boundary set of positive measure --- settling the smooth case in the negative. We
+  have read the abstract and the metadata, not the proof, and it has not been
+  refereed. The Open problems page of the site records this, with that provenance
+  attached.
 \item \textbf{Preprint versus journal version.} This digestion follows
   IHES/M/89/31 (September 1989). The published version is Colloq.\ Math.\ 60/61
   (1990), 253--260, which we could not obtain (the publisher's server was
   unreachable). Numbering and text may differ. \Ledger{F4}
-\item \textbf{The five slips.} Listed in \S0. All are typographical or
-  sign errors; none affects the theorem. Two further points required a real
-  repair rather than a correction: the lower bound for $|1+\nd G_\varepsilon|$
-  near $|x|=1$ (\S2.6, \S3.3), and the missing final step \S7.5.
+\item \textbf{The six slips.} Listed in \S0. Five are typographical or sign
+  errors. The sixth --- the missing factor $I(a_Q)$ in Lemma 2 (\S3) --- is
+  substantive: as printed the lemma is false, though the proof and the application
+  both correspond to the corrected statement, so nothing downstream breaks. Two
+  further points required a real repair rather than a correction: the lower bound
+  for $|1+\nd G_\varepsilon|$ near $|x|=1$ (\S2.6, \S3.3), and the missing final
+  step \S7.5.
 \item \textbf{What remains conditional.} The Alexandrov--Kargaev inequality
   \eqref{eq:AK}. With it, the theorem as stated is proved here in full.
+
+\item \textbf{Where $d\ge3$ seems to enter \eqref{eq:AK}: a formal computation.}
+  \S7 exhibits one place the hypothesis $d\ge3$ is used (convergence of
+  $\sum\varepsilon_n^{(d-1)/2}$). The following suggests that it is also built into
+  the imported inequality, and it is the observation we would most like to see
+  settled.
+
+  Send $\varepsilon\to0$ first. By \eqref{eq:dnG}, $\nd G_\varepsilon\to-|x|^{-d}$
+  pointwise on $\Rdm\setminus\{0\}$, so the integrand of \eqref{eq:AK} tends
+  formally to $\bigl|1-|x|^{-d}\bigr|^p-1$. Expanding in $p$ about $p=0$ pointwise,
+  $|1-|x|^{-d}|^p-1=p\log\bigl|1-|x|^{-d}\bigr|+O(p^2)$, so the leading behaviour of
+  \eqref{eq:AK} is $p\,\omega_{d-2}\,L(d)$ with
+  \[L(d)=\int_0^\infty\log\bigl|1-u^{-d}\bigr|\,u^{d-2}\,du .\]
+  This converges for $d\ge2$: the logarithmic singularity at $u=1$ is integrable,
+  the integrand is $\sim-u^{-2}$ at infinity, and $\sim-d\,u^{d-2}\log u$ at $0$.
+  Numerically,
+  \[L(d)=-\frac{\pi}{d-1}\cot\frac{\pi}{d}\]
+  to $19$ significant digits at $d=3$, $14$ at $d=4$, and $9$ at $d=6$ (the loss is
+  quadrature error at the singularity). We have \emph{not} proved this closed form.
+  What matters is its sign:
+  \[L(2)=0,\qquad L(d)<0\ \text{ for }d\ge3,\]
+  since $\cot(\pi/d)>0$ exactly when $d>2$, and $\cot(\pi/2)=0$. At $d=3$,
+  $L(3)=-\pi/(2\sqrt3)$; at $d=4$, $L(4)=-\pi/3$.
+
+  So at leading order in $p$ the Alexandrov--Kargaev integral is negative precisely
+  when $d\ge3$, and its leading term \emph{vanishes identically} at $d=2$ --- the
+  borderline, which is where the theorem itself must fail, since in two dimensions
+  $f+i\tilde f$ is analytic and $f,\nabla f$ vanishing on a set of positive boundary
+  measure forces $f\equiv0$.
+
+  \emph{This is not a proof of anything.} Two interchanges are unjustified (the
+  $\varepsilon\to0$ limit through the integral, and the expansion in $p$ under it),
+  the closed form is numerical, and \eqref{eq:AK} requires a quantitative
+  $-2M<0$ at a fixed small $p$ uniformly in small $\varepsilon$, which a leading-order
+  sign does not supply. It is offered as the reason one should expect \eqref{eq:AK}
+  to hold for $d\ge3$ and to fail at $d=2$, and as a check that our sign convention
+  (\S2.1) is the right one --- with the outward normal the same computation gives a
+  positive leading term in every dimension.
 \end{enumerate}
 
 \end{document}

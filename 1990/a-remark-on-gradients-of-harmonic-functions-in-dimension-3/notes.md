@@ -86,9 +86,55 @@ their server is up.
 
 ## Status
 
-Stage 2 (download) **complete**. Stage 3 (expansion, Blueprint A) **not started**.
+**Blueprint A complete.** Ledger: 79 rows closed, 1 `OPEN-GAP`, 2 open (bibliographic).
+Passes run: skeleton, expansion, computation, adversarial (three sweeps), reader,
+ledger, size.
 
-A useful lead for the rest of the project: the IHES fonds
-`repo-archives.ihes.fr/FONDS_IHES/I_Prepublications/BOURGAIN/` holds Bourgain's IHES
-preprints by period, which is exactly the pre-arXiv range where the catalogue's
-download coverage is thinnest.
+| | |
+|---|---|
+| original scan | 11 pages (+1 IHES cover) |
+| transcription, same typesetting | 7 pages |
+| **digestion** | **24 pages** |
+
+### The one thing not closed
+
+`B4` — the Alexandrov–Kargaev inequality
+$\int(|1+dG_\varepsilon/dn|^p-1)\,dx<-2M<0$, imported from reference [1], "private
+communication (to appear)", which we could not obtain. It is the load-bearing input:
+Lemma 1 rests on it and everything else rests on Lemma 1. It is a `caution` block in
+§2.2 of the digestion, and the theorem is proved here *conditional on it*.
+
+§9(5) of the digestion records a formal leading-order computation: sending
+$\varepsilon\to0$ and expanding in $p$, the integral behaves like
+$p\,\omega_{d-2}L(d)$ with $L(d)=\int_0^\infty\log|1-u^{-d}|u^{d-2}du$, and
+numerically $L(d)=-\frac{\pi}{d-1}\cot\frac{\pi}{d}$ (19 digits at $d=3$). So
+$L(2)=0$ and $L(d)<0$ for $d\ge3$: the leading term is negative exactly in the
+dimensions where the theorem is true, and degenerates precisely at the borderline
+$d=2$. That is a reason to expect [1], not a proof of it, and the row stays open.
+
+### Six discrepancies in the original
+
+Five typographical or sign errors, each verified against the scan at 320 dpi:
+the exponent in $C\varepsilon\delta^{-p}$ (p.4); two identical terms in the first
+display of Lemma 2's proof (p.5); $e^{+\frac12p\beta}$ where the recomputation forces
+$e^{-\frac12p\beta}$ (p.9); $\varepsilon^{d-1}$ for $\varepsilon^{(d-1)/2}$ in
+condition (2) (p.10); $e^{-\beta pn}$ for $e^{+\beta pn}$ (p.10).
+
+The sixth is substantive: **Lemma 2 is stated with no factor $I(a_Q)$ multiplying
+$dF_\varepsilon/dn$.** As printed it is not homogeneous in $I$ and is false for large
+$|I(a_Q)|$; its proof establishes only the normalised case $I(a_Q)=1$; and Lemma 4
+applies it to a term that does carry the factor. Restoring the factor makes
+statement, proof and application agree. See ledger row `C9` and §3 of the digestion.
+
+Two further points needed a repair rather than a correction: the lower bound for
+$|1+dG_\varepsilon/dn|$ fails exactly at $|x|=1$, where the mean value theorem is
+applied across a zero (repaired by splitting at $|x|=2$, §2.6 and §3.3); and the
+final passage from "$f=0$ and $\partial_nf=0$" to "$\nabla f=0$" is absent from the
+paper altogether (supplied via density points, §7.5).
+
+### Next
+
+- Blueprint B (idea harvest) has **not** been run.
+- Highest-value follow-up: identify reference [1] and close `B4`.
+- Second: obtain the published Colloq. Math. version and diff it against the
+  preprint this digestion follows.

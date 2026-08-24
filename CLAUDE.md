@@ -26,10 +26,21 @@ files is derived and will be overwritten.
 | `data/collaborator_bios.json` | Wikidata pass (dates, institution) + `merge_bios.py` (prose) |
 | `data/collaborator_bios_manual.json` | by hand — prose only |
 | `data/toolkit.json` | by hand, except `score` and `papers`, which are derived |
+| `data/problems.json` | by hand; the builder only validates its cross-references |
 | `site/data/*.js` | the builder. Never edit. |
 | `Papers/<year>.md`, `Papers/INDEX.md` | the builder. Never edit. |
 
 After touching anything in `data/`, run `python3 tools/build_data.py`.
+
+## Open problems
+
+`data/problems.json` follows the toolkit's rule: a problem is listed only because it
+was found stated in a paper we digested. Each carries a `status` list of the two or
+three most noteworthy articles making progress. Every such reference must be checked
+against a bibliographic source and record `verified_from`; `read` is `false` unless
+someone here has read the article, and when it is `false` the description must not
+claim more than the title, abstract and venue support. `status_now` starts at
+`unchecked` and only moves on evidence.
 
 ## Scores are derived, never typed
 
@@ -78,7 +89,9 @@ over. See also `../AGENTS.math.md`.
 
 ## The site
 
-Static, no build step, no dependencies. `sh tools/serve.sh` or open `site/index.html`
+Static, no build step, no dependencies. `sh tools/serve.sh` (repo root is the
+document root, so the site is at `/site/` and a paper's digestion under
+`<year>/<slug>/` resolves) or open `site/index.html`
 directly — data ships as JS globals precisely so `file://` works. Titles carry raw TeX
 from zbMATH; `BP.tex()` in `site/assets/app.js` transliterates it to Unicode rather than
 loading a math renderer, so the site stays offline-capable. If a TeX command shows up raw

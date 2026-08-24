@@ -142,6 +142,7 @@
     { href: "articles.html",      label: "All articles",   key: "articles" },
     { href: "toolkit.html",       label: "Bourgain's toolkit", key: "toolkit" },
     { href: "collaborators.html", label: "Collaborators",  key: "collaborators" },
+    { href: "problems.html",      label: "Open problems", key: "problems" },
     { href: "about.html",         label: "Method",         key: "about" }
   ];
 
@@ -215,9 +216,14 @@
       : '<p class="slot-body empty">Not yet written — this is the project’s own ' +
         "précis of the paper, not its abstract.</p>";
 
+    /* digestion paths are stored repo-relative; the site is served from site/ */
+    var dhref = p.digestion && !/^(https?:)?\/\//.test(p.digestion)
+      ? "../" + p.digestion.replace(/^\.\//, "")
+      : p.digestion;
     var digestion = p.digestion
-      ? '<p class="slot-body"><a href="' + esc(p.digestion) + '">' +
-        esc(p.digestion) + "</a></p>"
+      ? '<p class="slot-body"><a href="' + esc(dhref) + '" target="_blank" ' +
+        'rel="noopener">Read the digestion</a> <span class="dpath">' +
+        esc(p.digestion.split("/").pop()) + "</span></p>"
       : '<p class="slot-body empty">Not yet produced — run <code>/bourgainize</code> ' +
         "to expand this paper.</p>";
 

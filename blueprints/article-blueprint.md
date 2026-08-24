@@ -146,6 +146,33 @@ Run these in order. Each is a full sweep of the document.
 Passes 4 and 5 are not optional and are not one-shot. Expect to run pass 4 three or
 four times on a dense paper.
 
+## Harvest the open problems
+
+Papers end by saying what they could not do. Before the handoff, read the closing
+remarks and the introduction again with one question: **what does this paper leave
+open?**
+
+For each open question the paper actually states — not ones you believe are open —
+add an entry to `data/problems.json`:
+
+- the problem in your own words, precise enough to work on;
+- the source's own words, quoted, if short;
+- `posed_in` (the paper's id) and `posed_year`;
+- `status_in_source`;
+- `partial`: what this paper *does* settle, so the boundary of the question is visible;
+- `status_now`, which starts at `unchecked`.
+
+Then fill the **`status`** list: the two or three most noteworthy articles that have
+made progress since. Each needs a full reference and a link, and each must be
+*verified* against a bibliographic source you actually queried — zbMATH, arXiv, a
+DOI — recorded in `verified_from`. Set `read` honestly: `false` unless someone on
+this project has read the paper, and when it is `false` the `what` line must not
+claim more than the title, abstract and venue support.
+
+This is the one place the project looks forward rather than back, and the one place
+it may cite work later than the paper. The rule still holds: nothing asserted that
+was not read, and where the provenance is only an abstract, the entry says so.
+
 ## Handoff
 
 When the digestion is done, the paper's directory holds:

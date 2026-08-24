@@ -44,6 +44,13 @@
       wrote a paper with him, A to Z, with a collaborator score.
     </p>
     <p>
+      <a href="problems.html"><strong>Open problems</strong></a> collects what the papers
+      leave open, by field. Each entry keeps the question as its source posed it, the
+      year, and what that paper does settle — then a <em>Status</em> list of the two or
+      three most noteworthy articles that have made progress since, with references we
+      verified and a flag saying plainly whether we have read them.
+    </p>
+    <p>
       <a href="about.html"><strong>Method</strong></a> describes the two blueprints — one
       for expanding an article, one for harvesting its ideas — and the
       <code>/bourgainize</code> skill that runs them.
@@ -63,6 +70,8 @@
 
 <script src="data/papers.js"></script>
 <script src="data/collaborators.js"></script>
+<script src="data/toolkit.js"></script>
+<script src="data/problems.js"></script>
 <script src="assets/app.js"></script>
 <script>
 (function () {
@@ -81,7 +90,8 @@
     [BP.num(C.length), "coauthors"],
     [BP.num(cites), "citations"],
     [BP.num(digested) + " / " + BP.num(P.length), "digested", "small"],
-    [BP.num(ideas), "ideas in the toolkit"]
+    [BP.num(ideas), "ideas in the toolkit"],
+    [BP.num(((window.BOURGAIN_PROBLEMS || {}).problems || []).length), "open problems"]
   ];
   document.getElementById("stats").innerHTML = stats.map(function (s) {
     return '<div class="stat"><span class="n' + (s[2] ? " " + s[2] : "") + '">' +

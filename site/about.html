@@ -35,6 +35,10 @@
         separate work and needs an explicit yes.</li>
       <li><strong>Harvest</strong>, under <a href="#blueprint-b">Blueprint B</a>, into
         <code>ideas-&lt;name&gt;.md</code>, and reconcile against the toolkit.</li>
+      <li><strong>Record what it leaves open</strong> on the
+        <a href="problems.html">Open problems</a> page, with a Status list of the
+        articles that have made progress since — references verified, and each flagged
+        with whether we have read it.</li>
     </ol>
 
     <h2 id="blueprint-a">Blueprint A — the article</h2>
@@ -125,9 +129,12 @@
 python3 tools/build_data.py           # merge -> data/, site/data/, Papers/&lt;year&gt;.md
 python3 tools/enrich_collaborators.py # Wikidata dates and affiliations
 python3 tools/refresh_citations.py    # the weekly update
-sh tools/serve.sh                     # http://localhost:8017/</code></pre>
+Bourgain.local                        # start and open
+sh tools/serve.sh                     # or by hand: http://localhost:8017/site/</code></pre>
     <p>
-      The site is static and dependency-free; <code>site/index.html</code> also opens
+      The site is static and dependency-free. The server's document root is the repository
+      root, not <code>site/</code>, so that a paper's digestion under
+      <code>&lt;year&gt;/&lt;slug&gt;/</code> resolves; <code>site/index.html</code> also opens
       straight off the filesystem, since the data ships as JS globals rather than fetched
       JSON.
     </p>

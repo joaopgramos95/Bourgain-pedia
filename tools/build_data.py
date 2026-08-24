@@ -706,6 +706,7 @@ def write_outputs(entries):
 
     write_collaborators(entries, stamp)
     write_toolkit(entries, stamp)
+    write_problems(entries, stamp)
     write_year_files(entries, stamp, cites_stamp)
 
 
@@ -744,6 +745,42 @@ def write_toolkit(entries, stamp):
         json.dump(kit, fh, ensure_ascii=False, separators=(",", ":"))
         fh.write(";\n")
     print(f"  data/toolkit.json + site/data/toolkit.js  ({kit['count']} ideas)")
+
+
+def write_problems(entries, stamp):
+    """Publish data/problems.json to the site.
+
+    Open problems arrive the same way toolkit entries do: only from a paper the
+    project has actually digested.  The builder derives nothing here except a
+    check that every `posed_in` really names a paper in the catalogue.
+    """
+    path = os.path.join(DATA, "problems.json")
+    if not os.path.exists(path):
+        return
+    with open(path, encoding="utf-8") as fh:
+        probs = json.load(fh)
+
+    known = {e["id"] for e in entries}
+    fields = {f["key"] for f in probs.get("fields", [])}
+    for pr in probs.get("problems", []):
+        if pr.get("posed_in") and pr["posed_in"] not in known:
+            print(f"  ! open problem {pr['id']!r} cites unknown paper "
+                  f"{pr['posed_in']!r}", file=sys.stderr)
+        if pr.get("field") not in fields:
+            print(f"  ! open problem {pr['id']!r} has unknown field "
+                  f"{pr.get('field')!r}", file=sys.stderr)
+
+    probs["generated"] = stamp
+    probs["count"] = len(probs.get("problems", []))
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump(probs, fh, ensure_ascii=False, indent=1)
+    with open(os.path.join(SITE_DATA, "problems.js"), "w", encoding="utf-8") as fh:
+        fh.write("// generated from data/problems.json by tools/build_data.py\n")
+        fh.write("window.BOURGAIN_PROBLEMS = ")
+        json.dump(probs, fh, ensure_ascii=False, separators=(",", ":"))
+        fh.write(";\n")
+    print(f"  data/problems.json + site/data/problems.js  "
+          f"({probs['count']} open problem{'s' if probs['count'] != 1 else ''})")
 
 
 def canonical_name(name):

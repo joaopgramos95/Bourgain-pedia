@@ -23,8 +23,14 @@ tools/             fetch, merge, enrich, refresh
 ## The website
 
 ```sh
-sh tools/serve.sh          # http://localhost:8017/
+Bourgain.local             # start the server if needed and open the browser
+Bourgain.local stop        # stop it
+sh tools/serve.sh          # or by hand: http://localhost:8017/site/
 ```
+
+`Bourgain.local` is `tools/bourgain-local.sh`, symlinked into `~/.local/bin`
+(`Bourgan.local` works too). The document root is the repository, not `site/`, so
+that a paper's digestion under `<year>/<slug>/` resolves.
 
 or just open `site/index.html` — the data ships as JS globals, so it works off the
 filesystem too.
@@ -34,6 +40,7 @@ filesystem too.
 | **All articles** | The whole bibliography by year. Each entry: full reference, citation count, download links, and two slots we fill in — a **summary** (our précis, not the abstract) and a **digestion** (the expanded paper). |
 | **Bourgain's toolkit** | Ideas and techniques, from *orthogonality* and *stopping time* up to *sparseness* and *large deviations*. Each has a name, our explanation, and a **score** — the number of papers using it. Scaffolding only for now; entries arrive by reading. |
 | **Collaborators** | Everyone who wrote a paper with him, A–Z, with dates, affiliation, and a **collaborator score**. |
+| **Open problems** | Questions the papers leave open, by field. Each carries the source, the year, what that paper settles, and a **Status** list: the two or three most noteworthy articles making progress, with verified references and a flag saying whether we have read them. |
 | **Method** | The blueprints, and what is ours versus what is not. |
 
 ## Adding a paper

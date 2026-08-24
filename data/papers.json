@@ -11994,10 +11994,10 @@
     "OpenAlex",
     "hand-checked"
    ],
-   "summary": "",
-   "digestion": null,
+   "summary": "In dimension two a harmonic function whose boundary values and gradient both vanish on a set of positive measure must vanish identically, because f + if̃ is analytic. This note shows that from dimension three on, nothing of the kind survives even one derivative of smoothness: there is a harmonic f on the half space, C¹ up to the boundary, with f and ∇f vanishing together on a boundary set of positive measure. It sharpens an earlier construction of Wolff, which had reached a little past C¹ with only ∇f vanishing, by importing from Alexandrov and Kargaev a boundary datum whose harmonic extension has normal derivative close to −1 in a strong enough averaged sense. The proof is a correction scheme: start from data vanishing on a cube, and at each stage add corrections supported in tiny discs, which cut the local size of the normal derivative by a fixed factor while moving f itself only on a set small enough to sum over all stages. What survives both budgets is the set where f and ∇f vanish together. The technique — geometric decay bought with a summable measure loss, run on a nested grid of cubes — outlived the problem. Whether C² or smooth examples exist is left open.",
+   "digestion": "1990/a-remark-on-gradients-of-harmonic-functions-in-dimension-3/a-remark-on-gradients-of-harmonic-functions-in-dimension-3-expanded.pdf",
    "toolkit": [],
-   "notes": "",
+   "notes": "Digested from the IHES preprint M/89/31 (Sept 1989), not the published Colloq. Math. version. Six discrepancies found in the original, one substantive (Lemma 2 is missing a factor I(a_Q)). Proved here conditional on the imported Alexandrov-Kargaev inequality, whose source we could not obtain: ledger row B4. The open problem it poses was resolved in the negative by a 2026 preprint of Qin and Zhan; see the Open problems page.",
    "authors_raw": [
     "Bourgain, J.",
     "Wolff, T."

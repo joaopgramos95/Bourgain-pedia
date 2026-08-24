@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open problems · Bourgain-pedia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,600;0,700;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<main>
+  <h1 class="page-title">Open problems</h1>
+  <p class="page-lede">
+    Questions left open by the papers, gathered by field. A problem appears here only
+    because we found it posed in a paper we have digested — not because we remember it
+    being open. Each entry records the problem as its source stated it, the year, and
+    what the source itself proves; whether it is <em>still</em> open is a separate
+    field, and stays <em>unchecked</em> until someone verifies it against a source they
+    have read.
+  </p>
+
+  <div class="with-rail">
+    <aside class="rail">
+      <p class="rail-heading">Field</p>
+      <ul class="rail-list" id="fields"></ul>
+      <p class="rail-heading">Status now</p>
+      <ul class="rail-list" id="statuses"></ul>
+    </aside>
+
+    <section>
+      <div class="toolbar">
+        <input class="search" id="q" type="search" placeholder="Search open problems…"
+               autocomplete="off" spellcheck="false">
+      </div>
+      <div id="out"></div>
+      <a class="jump-top" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ back to top</a>
+    </section>
+  </div>
+</main>
+
+<script src="data/papers.js"></script>
+<script src="data/problems.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  BP.layout("problems");
+
+  var T = window.BOURGAIN_PROBLEMS || { fields: [], problems: [] };
+  var PROBS = T.problems || [], FIELDS = T.fields || [];
+  var P = (window.BOURGAIN_PAPERS || {}).papers || [];
+  var paper = {};
+  P.forEach(function (p) { paper[p.id] = p; });
+
+  var out = document.getElementById("out"),
+      fieldsEl = document.getElementById("fields"),
+      statusEl = document.getElementById("statuses"),
+      qEl = document.getElementById("q");
+  var state = { field: "all", status: "all", q: "" };
+
+  PROBS.forEach(function (i) {
+    i._hay = BP.fold([i.title, i.statement, i.quote, i.field, i.status_note,
+                      (i.partial || []).join(" ")].join(" "));
+  });
+
+  function countField(k) {
+    return PROBS.filter(function (i) { return i.field === k; }).length;
+  }
+  function countStatus(k) {
+    return PROBS.filter(function (i) { return (i.status_now || "unchecked") === k; }).length;
+  }
+
+  fieldsEl.innerHTML =
+    '<li><button data-field="all">All fields<span class="count">' + PROBS.length +
+    "</span></button></li>" +
+    FIELDS.map(function (f) {
+      var n = countField(f.key);
+      return '<li><button data-field="' + f.key + '"' + (n ? "" : " class=\"muted\"") +
+             ">" + BP.esc(f.name) + '<span class="count">' + n + "</span></button></li>";
+    }).join("");
+
+  var STATUSES = [["all", "Any"], ["unchecked", "Unchecked since"],
+                  ["open", "Still open"], ["partially solved", "Partly solved"],
+                  ["resolved-preprint", "Resolved (preprint)"], ["solved", "Solved since"]];
+  statusEl.innerHTML = STATUSES.map(function (s) {
+    var n = s[0] === "all" ? PROBS.length : countStatus(s[0]);
+    return '<li><button data-status="' + s[0] + '">' + s[1] +
+           '<span class="count">' + n + "</span></button></li>";
+  }).join("");
+
+  function statusChip(i) {
+    var now = i.status_now || "unchecked";
+    var label = { unchecked: "status unchecked", open: "still open",
+                  "partially solved": "partly solved", solved: "solved since",
+                  "resolved-preprint": "resolved · preprint" }[now] || now;
+    return '<span class="score status-' + BP.esc(now.replace(/\s+/g, "-")) +
+           '" title="' + BP.esc(i.status_note || "") + '">' + BP.esc(label) + "</span>";
+  }
+
+
+  var KIND = {
+    resolves:    ["resolves it",   "kind-resolves"],
+    negative:    ["negative",      "kind-resolves"],
+    positive:    ["positive side", "kind-positive"],
+    partial:     ["partial",       "kind-partial"],
+    predecessor: ["predecessor",   "kind-partial"]
+  };
+
+  function statusSection(i) {
+    var list = i.status || [];
+    if (!list.length) return "";
+    var rows = list.slice().sort(function (a, b) { return (b.year || 0) - (a.year || 0); })
+      .map(function (r) {
+        var k = KIND[r.kind] || [r.kind || "", "kind-partial"];
+        var reftxt = BP.esc(BP.tex(r.ref));
+        var link = r.url
+          ? '<a href="' + BP.esc(r.url) + '" target="_blank" rel="noopener">' +
+            reftxt + "</a>"
+          : reftxt;
+        return '<li class="prog">' +
+          '<span class="kind ' + k[1] + '">' + BP.esc(k[0]) + "</span>" +
+          '<div><p class="prog-ref">' + link + "</p>" +
+          (r.what ? '<p class="prog-what">' + BP.esc(BP.tex(r.what)) + "</p>" : "") +
+          '<p class="prog-prov">' +
+            (r.read ? "read by this project"
+                    : "<strong>not read by this project</strong>") +
+            (r.verified_from ? " · reference verified from " + BP.esc(r.verified_from) : "") +
+            (r.zbl ? " · Zbl " + BP.esc(r.zbl) : "") +
+          "</p></div></li>";
+      }).join("");
+    return '<p class="slot-label" style="margin-top:16px">Status — progress on this problem</p>' +
+           '<ul class="prog-list">' + rows + "</ul>";
+  }
+
+  function card(i) {
+    var src = paper[i.posed_in];
+    var field = FIELDS.filter(function (f) { return f.key === i.field; })[0];
+    var srcHtml = src
+      ? 'Posed in <a href="articles.html#' + BP.esc(i.posed_in) + '">' +
+        BP.esc(BP.tex(src.title)) + "</a>" +
+        (src.reference ? ", <em>" + BP.esc(BP.tex(src.reference)) + "</em>" : "") +
+        (i.posed_year ? " (" + i.posed_year + ")" : "")
+      : (i.posed_in ? "Posed in " + BP.esc(i.posed_in) : "");
+
+    return '<article class="idea" id="' + BP.esc(i.id) + '">' +
+      '<div class="idea-head">' +
+        '<h3 class="idea-name">' + BP.esc(BP.tex(i.title)) + "</h3>" + statusChip(i) +
+      "</div>" +
+      (field ? '<p class="prob-field">' + BP.esc(field.name) + "</p>" : "") +
+      '<p class="idea-gloss">' + BP.esc(BP.tex(i.statement)) + "</p>" +
+      (i.quote ? '<blockquote class="prob-quote">' + BP.esc(BP.tex(i.quote)) +
+                 "</blockquote>" : "") +
+      ((i.partial || []).length
+        ? '<p class="slot-label" style="margin-top:12px">What is known</p><ul class="prob-partial">' +
+          i.partial.map(function (t) { return "<li>" + BP.esc(BP.tex(t)) + "</li>"; }).join("") +
+          "</ul>"
+        : "") +
+      statusSection(i) +
+      (i.status_note ? '<p class="prob-status">' + BP.esc(i.status_note) + "</p>" : "") +
+      '<p class="person-papers">' + srcHtml + "</p>" +
+    "</article>";
+  }
+
+  function emptyState() {
+    return '<div class="empty-state">' +
+      "<p><strong>Nothing here yet.</strong> This page fills up as papers are digested.</p>" +
+      "<p>Blueprint A ends by reading a paper's closing remarks; anything the authors " +
+      "leave open is written into <code>data/problems.json</code> with the paper it came " +
+      "from, the year, and what the paper itself settles.</p>" +
+      "<p>Nothing is listed from memory. If we have not read a paper that poses a " +
+      "problem, the problem is not here.</p></div>";
+  }
+
+  function render() {
+    var rows = PROBS, heading, sub;
+    if (state.q) {
+      var needle = BP.fold(state.q);
+      rows = rows.filter(function (i) { return i._hay.indexOf(needle) !== -1; });
+      heading = "Search";
+    } else {
+      if (state.field !== "all") {
+        rows = rows.filter(function (i) { return i.field === state.field; });
+      }
+      if (state.status !== "all") {
+        rows = rows.filter(function (i) {
+          return (i.status_now || "unchecked") === state.status;
+        });
+      }
+      var f = FIELDS.filter(function (x) { return x.key === state.field; })[0];
+      heading = f ? f.name : "All fields";
+    }
+    sub = rows.length + (rows.length === 1 ? " problem" : " problems");
+
+    fieldsEl.querySelectorAll("button").forEach(function (b) {
+      b.setAttribute("aria-current", String(!state.q && b.dataset.field === state.field));
+    });
+    statusEl.querySelectorAll("button").forEach(function (b) {
+      b.setAttribute("aria-current", String(!state.q && b.dataset.status === state.status));
+    });
+
+    var f2 = FIELDS.filter(function (x) { return x.key === state.field; })[0];
+    out.innerHTML =
+      '<h2 class="year-heading">' + BP.esc(heading) + "</h2>" +
+      '<p class="year-sub">' + sub + "</p>" +
+      (f2 && f2.note ? '<p class="stratum-note">' + BP.esc(f2.note) + "</p>" : "") +
+      (rows.length ? rows.map(card).join("")
+                   : (PROBS.length ? '<div class="empty-state"><p>No problem matches.</p></div>'
+                                   : emptyState()));
+  }
+
+  fieldsEl.addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-field]");
+    if (!b) return;
+    state.field = b.dataset.field; state.q = ""; qEl.value = ""; render();
+  });
+  statusEl.addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-status]");
+    if (!b) return;
+    state.status = b.dataset.status; state.q = ""; qEl.value = ""; render();
+  });
+  qEl.addEventListener("input", BP.debounce(function () {
+    state.q = qEl.value.trim(); render();
+  }, 130));
+
+  var hash = decodeURIComponent(location.hash.replace(/^#/, ""));
+  if (hash && FIELDS.some(function (f) { return f.key === hash; })) state.field = hash;
+  render();
+  if (hash) {
+    var node = document.getElementById(hash);
+    if (node) node.scrollIntoView({ block: "center" });
+  }
+})();
+</script>
+</body>
+</html>
