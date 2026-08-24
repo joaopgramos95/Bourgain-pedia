@@ -27,7 +27,9 @@ Stage 3 leans on three skills. Both hosts have them under the same names:
 |---|---|---|
 | `$solve-math-rigorously` | `/solve-math-rigorously` | Every reconstructed step. Status discipline: `PROVED` / `PARTIAL` / `OPEN-GAP`, never promoted. |
 | `$grill-me` | `/grill-me` | Checkpointing the user on any genuine mathematical choice, one question at a time. |
+| `$grilling` | `/grilling` | The one-decision-at-a-time form `wayfinder` calls for its mathematical tickets. |
 | `$wayfinder` | `/wayfinder` | Long papers: chart the expansion as decision tickets and work them one at a time. |
+| `$latex-source-audit` | `/latex-source-audit` | Run on `<name>-expanded.tex` before every compile and at handoff. Catches bare commands, unresolved references and layout warnings — the failure class this project hits most. |
 
 The Codex originals are in `~/.codex/skills/`. For Claude Code they are installed
 user-wide at `~/.claude/skills/<name>/SKILL.md`, each a symlink to the Codex file so the
@@ -124,8 +126,8 @@ The result is:
 <year>/<slug>/notes.md
 ```
 
-Compile it. Report the page counts, original versus expansion, and any `caution` blocks
-that survived.
+Run `latex-source-audit` on the file, then compile. Report the page counts, original
+versus expansion, and any `caution` blocks that survived.
 
 ## Stage 4 — stop and ask
 

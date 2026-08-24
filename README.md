@@ -8,29 +8,65 @@ The bibliography is the easy part. The project is the reading.
 
 ---
 
+## Getting started
+
+```sh
+git clone https://github.com/joaopgramos95/Bourgain-pedia.git
+cd Bourgain-pedia
+sh tools/install.sh
+Bourgain.local
+```
+
+That is the whole setup. `install.sh` puts a link to `tools/bourgain-local.sh` on your
+PATH; `Bourgain.local` then serves *your* clone and opens the site in your browser,
+from any directory.
+
+```sh
+Bourgain.local          # serve and open (reuses a running server)
+Bourgain.local status   # is it running, and where
+Bourgain.local stop     # stop it
+Bourgain.local -p 9000  # force a port
+```
+
+If port 8017 is busy — including by something unrelated — the next free port is used
+automatically, and nothing else on your machine is disturbed. The link points back into
+the clone, so `git pull` updates the command too.
+
+**Requirements:** `python3` and a browser. Nothing else, no build step, no package
+manager. To rebuild the dataset or compile a digestion you also want a LaTeX
+distribution.
+
+> Why one command rather than none: git has no post-clone hook, by design — cloning a
+> repository must never execute code from it. One command after cloning is as close to
+> automatic as it can safely get. If you would rather not install anything, `sh
+> tools/serve.sh` does the same thing without touching your PATH.
+
 ## What is here
 
 ```
 Papers/            one Markdown file per year: numbered, referenced, with download links
-data/              the canonical dataset (papers, collaborators, toolkit) + raw source dumps
+data/              the canonical dataset (papers, collaborators, toolkit, problems)
 site/              the website — static, no build step, no dependencies
 blueprints/        the two procedures the project runs on
 skills/            the $bourgainize skill, shared by Codex and Claude Code
-tools/             fetch, merge, enrich, refresh
+.claude/skills/    the companion skills it calls, vendored so a clone is self-contained
+tools/             install, serve, fetch, merge, enrich, refresh
 <year>/<slug>/     one directory per digested paper (created by $bourgainize)
 ```
+
+`data/raw/` (the source dumps) and the paper PDFs are deliberately not tracked — see
+*Honest blanks* below. Everything the site needs is committed, so a fresh clone renders
+immediately.
 
 ## The website
 
 ```sh
-Bourgain.local             # start the server if needed and open the browser
-Bourgain.local stop        # stop it
-sh tools/serve.sh          # or by hand: http://localhost:8017/site/
+Bourgain.local             # see "Getting started" above
+sh tools/serve.sh          # or by hand, without installing anything
 ```
 
-`Bourgain.local` is `tools/bourgain-local.sh`, symlinked into `~/.local/bin`
-(`Bourgan.local` works too). The document root is the repository, not `site/`, so
-that a paper's digestion under `<year>/<slug>/` resolves.
+The document root is the repository, not `site/`, so that a paper's digestion under
+`<year>/<slug>/` resolves.
 
 or just open `site/index.html` — the data ships as JS globals, so it works off the
 filesystem too.

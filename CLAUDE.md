@@ -80,10 +80,13 @@ If a score looks wrong, the paper list is wrong. Fix the list.
 
 Use the skill. `/bourgainize` in Claude Code, `$bourgainize` in Codex — one canonical
 `skills/bourgainize/SKILL.md`, symlinked into `.claude/skills/` and `~/.codex/skills/`.
-The three skills it leans on (`grill-me`, `solve-math-rigorously`, `wayfinder`) are
-imported from Codex: `~/.claude/skills/<name>/SKILL.md` symlinks to the Codex original,
-so editing one edits both. This repository also carries plain copies under
-`.claude/skills/` so it stands alone if it moves.
+The companion skills it calls — `grill-me`, `grilling`, `solve-math-rigorously`,
+`wayfinder`, `latex-source-audit` — are vendored as plain copies under
+`.claude/skills/`, so a fresh clone is self-contained and a collaborator needs no setup
+beyond `sh tools/install.sh`. On this machine they are also installed user-wide at
+`~/.claude/skills/<name>/SKILL.md` as symlinks to the Codex originals, so editing one
+edits both; the vendored copies are snapshots and can drift. Re-vendor with
+`cp -R ~/.codex/skills/<name>/. .claude/skills/<name>/`.
 It reads `blueprints/article-blueprint.md`, then `blueprints/idea-blueprint.md`, and
 stops to ask between them.
 
@@ -95,7 +98,16 @@ with the leading year stripped. The expansion must be named `<name>-expanded.tex
 Everything under Blueprint A is governed by `solve-math-rigorously`: status is `PROVED`,
 `PARTIAL` or `OPEN-GAP`, and it is never promoted. A step that cannot be closed is a
 `caution` block in the PDF and an `OPEN-GAP` row in the ledger — visible, not smoothed
-over. See also `../AGENTS.math.md`.
+over. (On the maintainer's machine there is a further `AGENTS.math.md` one directory up,
+outside this repository; nothing here depends on it.)
+
+## Running it locally
+
+`sh tools/install.sh` once, then `Bourgain.local` from anywhere. The launcher resolves
+the repository from its own symlink, picks the first free port at or after 8017, reuses
+a server it already started, and never adopts or kills an unrelated one. Detaching the
+server's descriptors matters: without `</dev/null >/dev/null 2>&1` a pipeline such as
+`Bourgain.local | tee log` hangs, because the child holds the pipe open.
 
 ## The site
 

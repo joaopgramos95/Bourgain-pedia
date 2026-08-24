@@ -129,8 +129,9 @@
 python3 tools/build_data.py           # merge -> data/, site/data/, Papers/&lt;year&gt;.md
 python3 tools/enrich_collaborators.py # Wikidata dates and affiliations
 python3 tools/refresh_citations.py    # the weekly update
-Bourgain.local                        # start and open
-sh tools/serve.sh                     # or by hand: http://localhost:8017/site/</code></pre>
+sh tools/install.sh                   # once, after cloning
+Bourgain.local                        # serve this clone and open the site
+sh tools/serve.sh                     # or by hand, without installing anything</code></pre>
     <p>
       The site is static and dependency-free. The server's document root is the repository
       root, not <code>site/</code>, so that a paper's digestion under

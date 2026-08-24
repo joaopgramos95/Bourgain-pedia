@@ -1,0 +1,4 @@
+interface:
+  display_name: "LaTeX Source Audit"
+  short_description: "Catch malformed LaTeX commands before handoff"
+  default_prompt: "Use $latex-source-audit to audit and compile this LaTeX manuscript."

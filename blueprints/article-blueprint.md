@@ -142,6 +142,10 @@ Run these in order. Each is a full sweep of the document.
    PDF.
 7. **Size check.** Compare compiled page counts. If the expansion is not strictly
    longer than the original, rule 4 has been violated somewhere; find where.
+8. **Source audit.** Run `latex-source-audit` on `<name>-expanded.tex`. It catches the
+   things a clean compile does not: bare `qquad` and friends where a backslash was
+   dropped, unresolved references, overfull boxes. A digestion is not handed off until
+   it passes.
 
 Passes 4 and 5 are not optional and are not one-shot. Expect to run pass 4 three or
 four times on a dense paper.
