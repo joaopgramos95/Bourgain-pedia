@@ -42,6 +42,16 @@ someone here has read the article, and when it is `false` the description must n
 claim more than the title, abstract and venue support. `status_now` starts at
 `unchecked` and only moves on evidence.
 
+## Toolkit entries are broad on purpose
+
+An idea's score is the number of papers using it, so an entry only one paper could ever
+match is worthless — it sits at score 1 for ever. Names are two or three words
+(*stopping time selection*), not clauses describing what one paper did. Before adding
+anything, read `data/toolkit.json` in full: the default outcome of a harvest is that
+existing entries gain a paper, not that new ones appear. Widen an existing entry rather
+than adding a sibling. Paper-specific detail belongs in `ideas-<paper>.md`, filed under
+the broad entry's name.
+
 ## Scores are derived, never typed
 
 - A **collaborator score** is the number of papers whose `coauthors` contain that person.

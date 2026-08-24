@@ -93,17 +93,62 @@ list is finished when a sweep changes nothing.
 three. Both are correct outcomes. Cutting a real technique to reach a tidy number
 destroys exactly the data this project is collecting.
 
+**But do not inflate either.** Ten entries that recur are worth more than thirty that
+cannot. If a paper yields a long list, that is usually a sign that Pass 3½ has not been
+run properly rather than that the paper is unusually rich.
+
+## Pass 3½ — is it broad enough to recur?
+
+Before touching the toolkit, apply one more filter, and it is the one that is easiest
+to get wrong.
+
+**The score is the point.** An idea's score is the number of papers using it. An entry
+so specific that only this paper could ever match it will sit at score 1 for ever, and
+a toolkit of score-1 entries is not a toolkit — it is a summary of one paper, filed
+under a different name. Every entry must be phrased so that you can imagine writing
+*this same entry* after reading a different paper.
+
+Two tests, applied to each survivor:
+
+1. **Would you bet on a second paper matching it?** Not "could it in principle" —
+   would you expect it, among the papers still to be digested. If not, either raise the
+   level of abstraction until you would, or cut it.
+2. **Is the name a name, or a sentence?** Toolkit names are two or three words:
+   *stopping time selection*, *small support perturbation*, *dyadic decomposition*. If
+   the name is a clause describing what happened in this paper — "corrections with
+   small support, so the object barely moves" — it is pitched at the wrong level. Shorten
+   the name and the entry usually generalises itself.
+
+**Raise the level, do not delete the detail.** The paper-specific version of the move
+belongs in `ideas-<paper>.md`, under the broad entry's name, where it is evidence for
+the entry. It is only the *toolkit* that has to be general.
+
+And cut, do not generalise, when the row is a *remark* rather than an idea: a neat
+observation local to one proof, which nobody would go looking for. "A weak type (1,1)
+bound plus a Hölder bound gives a pointwise bound" is a good remark and a bad toolkit
+entry. Put it in the discard list with that reason.
+
 ## Pass 4 — reconcile with the toolkit
 
 Only now, open `data/toolkit.json`.
 
+**Read the whole file before adding anything.** The default outcome of this pass is
+*no new entry*: the move you just named is usually one the toolkit already has under a
+different word. Check the `name`, the `aliases` and the `gloss` of every existing idea
+against each survivor, and check the strata — the same move often sits one level up
+from where you expected. Only when nothing matches does a new entry get created, and
+new entries need the two tests above to have been applied.
+
 For each surviving entry:
 
 - **Existing idea, same move** → add this paper's id to the idea's `papers` list. The
-  score is derived from that list; never edit a score by hand.
+  score is derived from that list; never edit a score by hand. **This is the expected
+  case.**
 - **Existing idea, but this paper uses it in a way the gloss does not cover** → extend
   the gloss. Glosses grow as evidence accumulates; that growth is the point.
-- **New idea** → create an entry:
+- **Existing idea at the wrong level** → if the toolkit's version is narrower than what
+  you are seeing, *widen the existing entry* and add this paper. Do not create a sibling.
+- **New idea** → only if nothing above applies. Create an entry:
 
   ```json
   {
@@ -126,7 +171,9 @@ estimate is made; **transfer** if it carries the problem into a different subjec
 will reuse as an object.
 
 Write the gloss so that someone who has not read the paper can use the idea. Say what
-it does, not where it appeared.
+it does, not where it appeared — and in particular do not name this paper's objects in
+it. A gloss mentioning the specific kernel, exponent or domain of one paper is a sign
+the entry is still pitched too low.
 
 Finally, add the idea ids to the paper's `toolkit` array in `data/papers.json`, and run
 `python3 tools/build_data.py`. Scores recompute; the toolkit page updates.

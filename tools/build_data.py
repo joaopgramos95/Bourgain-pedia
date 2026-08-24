@@ -408,6 +408,7 @@ def build():
             if "hand-checked" not in e["provenance"]:
                 e["provenance"].append("hand-checked")
 
+    entries = assign_areas(entries)
     entries = canonicalise_people(entries)
     entries = carry_editorial(entries)
     write_outputs(entries)
@@ -571,6 +572,89 @@ def canonicalise_people(entries):
         print(f"  merged spelling variants for {merged} author name(s)")
     return entries
 
+# --------------------------------------------------------------- subject areas
+# Papers are grouped by area from their MSC codes (zbMATH supplies these for 536
+# of 548 items).  The map is over 2-digit MSC top-level classes; a paper's area
+# is decided by its *primary* code, and every area any of its codes touches is
+# recorded in "areas" so that cross-field work is findable from either side.
+AREAS = [
+    ("harmonic-analysis", "Harmonic analysis",
+     "Fourier analysis, singular integrals, restriction and Kakeya, maximal operators.",
+     ["42", "43"]),
+    ("banach-convex", "Banach spaces and convex geometry",
+     "Geometry of normed spaces, operator theory, convex bodies in high dimension.",
+     ["46", "47", "52"]),
+    ("number-theory", "Number theory",
+     "Exponential sums, arithmetic combinatorics, the distribution of arithmetic sequences.",
+     ["11"]),
+    ("pde", "Partial differential equations",
+     "Dispersive and nonlinear equations, well-posedness, elliptic problems.",
+     ["35"]),
+    ("dynamics", "Dynamics and ergodic theory",
+     "Pointwise convergence, equidistribution, quasi-periodic and homogeneous dynamics.",
+     ["37", "28"]),
+    ("probability", "Probability",
+     "Random series, concentration, random matrices and random constructions.",
+     ["60"]),
+    ("math-physics", "Mathematical physics",
+     "Schrodinger operators, Anderson localization, statistical mechanics.",
+     ["81", "82"]),
+    ("complex-analysis", "Complex and real analysis",
+     "Hardy spaces, holomorphic function theory, real-variable methods, potential theory.",
+     ["30", "31", "32", "26", "40", "41"]),
+    ("geometry-topology", "Geometry and topology",
+     "Differential geometry, global analysis, general topology.",
+     ["53", "54", "55", "57", "58"]),
+    ("groups", "Groups and representation theory",
+     "Growth and expansion in groups, Lie groups, representation theory.",
+     ["20", "22"]),
+    ("combinatorics-cs", "Combinatorics and computer science",
+     "Extremal and probabilistic combinatorics, Boolean functions, algorithms, coding.",
+     ["05", "68", "94"]),
+    ("variational", "Calculus of variations",
+     "Variational problems, optimisation, control.",
+     ["49", "93"]),
+    ("logic-foundations", "Logic and foundations",
+     "Set theory, descriptive set theory, measure-theoretic foundations.",
+     ["03", "04"]),
+    ("general", "General and historical",
+     "Surveys, collected volumes, obituaries, problem lists.",
+     ["00", "01"]),
+]
+MSC_TO_AREA = {code: key for key, _n, _d, codes in AREAS for code in codes}
+UNCLASSIFIED = ("unclassified", "Unclassified",
+                "No MSC code on record, so no area could be derived.")
+
+
+def assign_areas(entries):
+    """Give every paper a primary `area` and the set of `areas` it touches."""
+    for e in entries:
+        keys, primary = [], None
+        for i, code in enumerate(e.get("msc") or []):
+            key = MSC_TO_AREA.get(str(code)[:2])
+            if not key:
+                continue
+            if primary is None:
+                primary = key
+            if key not in keys:
+                keys.append(key)
+        e["area"] = primary or UNCLASSIFIED[0]
+        e["areas"] = keys or [UNCLASSIFIED[0]]
+    return entries
+
+
+def area_index(entries):
+    counts = defaultdict(int)
+    for e in entries:
+        counts[e["area"]] += 1
+    out = [{"key": k, "name": n, "note": d, "msc": codes, "count": counts.get(k, 0)}
+           for k, n, d, codes in AREAS]
+    if counts.get(UNCLASSIFIED[0]):
+        out.append({"key": UNCLASSIFIED[0], "name": UNCLASSIFIED[1],
+                    "note": UNCLASSIFIED[2], "msc": [],
+                    "count": counts[UNCLASSIFIED[0]]})
+    return [a for a in out if a["count"]]
+
 
 def make_entry(*, title, year, authors, doc_type, languages, reference, series,
                doi, arxiv_id, zbl, zbmath_url, msc, keywords, zb_links, oa,
@@ -631,6 +715,8 @@ def make_entry(*, title, year, authors, doc_type, languages, reference, series,
         ("zbl", zbl),
         ("zbmath_url", zbmath_url),
         ("openalex_ids", oa.get("openalex_ids") or []),
+        ("area", None),
+        ("areas", []),
         ("msc", [m.get("code") for m in msc if isinstance(m, dict)]),
         ("msc_text", [f"{m.get('code')} {m.get('text')}" for m in msc if isinstance(m, dict)]),
         ("keywords", keywords),
@@ -691,6 +777,7 @@ def write_outputs(entries):
         "sources": ["zbMATH Open", "OpenAlex", "arXiv"],
         "count": len(entries),
         "year_range": [years[0], years[-1]] if years else [None, None],
+        "areas": area_index(entries),
         "papers": entries,
     }
     os.makedirs(DATA, exist_ok=True)

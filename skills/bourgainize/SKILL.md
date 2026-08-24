@@ -158,7 +158,13 @@ Write the result to:
 
 Then wire it up:
 
-1. Add new ideas to `data/toolkit.json`, or extend the gloss of existing ones.
+1. **Read `data/toolkit.json` in full before adding anything.** The default is *no new
+   entry*: match each harvested move against every existing name, alias and gloss, and
+   add this paper's id to what is already there. Create a new entry only when nothing
+   matches — and only if you would bet on a *later* paper matching it too, and its name
+   is two or three words rather than a sentence. An entry that can only ever score 1 is
+   a summary of one paper, not a tool. Widen an existing entry in preference to adding a
+   sibling beside it.
 2. Add the idea ids to this paper's `toolkit` array in `data/papers.json`.
 3. Add every question the paper leaves open to `data/problems.json`, each with the
    paper it came from, the year, what the paper itself settles, and a `status` list

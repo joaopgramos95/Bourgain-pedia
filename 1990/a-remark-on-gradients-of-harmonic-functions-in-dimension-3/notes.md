@@ -86,55 +86,81 @@ their server is up.
 
 ## Status
 
-**Blueprint A complete.** Ledger: 79 rows closed, 1 `OPEN-GAP`, 2 open (bibliographic).
-Passes run: skeleton, expansion, computation, adversarial (three sweeps), reader,
+**Blueprint A complete. Blueprint B complete. Ledger: 82 of 82 rows closed.**
+Passes run: skeleton, expansion, computation, adversarial (four sweeps), reader,
 ledger, size.
 
 | | |
 |---|---|
 | original scan | 11 pages (+1 IHES cover) |
 | transcription, same typesetting | 7 pages |
-| **digestion** | **24 pages** |
+| **digestion** | **25 pages** |
+| ideas harvested | 20 (the toolkit was empty before) |
+| open problems recorded | 1 |
 
-### The one thing not closed
+### The paper's one import is now proved, not assumed
 
 `B4` — the Alexandrov–Kargaev inequality
-$\int(|1+dG_\varepsilon/dn|^p-1)\,dx<-2M<0$, imported from reference [1], "private
-communication (to appear)", which we could not obtain. It is the load-bearing input:
-Lemma 1 rests on it and everything else rests on Lemma 1. It is a `caution` block in
-§2.2 of the digestion, and the theorem is proved here *conditional on it*.
+$\int(|1+dG_\varepsilon/dn|^p-1)\,dx<-2M<0$ — was the only step we had to take on
+faith. Reference [1] is A.B. Aleksandrov and P. Kargaev, *Hardy classes of harmonic
+functions in a half-space*, Algebra i Analiz **5**, No. 2, 1–73 (1993). We did not
+obtain a copy, so §2.2 of the digestion **proves** the special case Lemma 1 needs
+instead. The centrepiece is an exact evaluation:
 
-§9(5) of the digestion records a formal leading-order computation: sending
-$\varepsilon\to0$ and expanding in $p$, the integral behaves like
-$p\,\omega_{d-2}L(d)$ with $L(d)=\int_0^\infty\log|1-u^{-d}|u^{d-2}du$, and
-numerically $L(d)=-\frac{\pi}{d-1}\cot\frac{\pi}{d}$ (19 digits at $d=3$). So
-$L(2)=0$ and $L(d)<0$ for $d\ge3$: the leading term is negative exactly in the
-dimensions where the theorem is true, and degenerates precisely at the borderline
-$d=2$. That is a reason to expect [1], not a proof of it, and the row stays open.
+$$\int_0^\infty\log\bigl|1-u^{-d}\bigr|\,u^{d-2}\,du\;=\;-\frac{\pi}{d-1}\cot\frac{\pi}{d}.$$
+
+Integration by parts turns the integral into a principal value (the two boundary terms
+at $u=1$ blow up but cancel exactly); the substitution $t=u^d$ and the classical
+$\mathrm{PV}\int_0^\infty t^{a-1}/(1-t)\,dt=\pi\cot\pi a$ evaluate it. Since
+$\cot(\pi/d)>0$ exactly for $d>2$, the quantity is negative for $d\ge3$ and
+**identically zero at $d=2$**. Two dominated-convergence arguments then give the
+inequality for small $p$ and small $\varepsilon$.
+
+So $d\ge3$ is visible in two independent places: the convergence of
+$\sum\varepsilon_n^{(d-1)/2}$ in §7, and the sign of the imported inequality itself.
+At $d=2$ both degenerate — as they must, since the theorem is false in the plane.
+
+Checked numerically at every step: the closed form to 19 significant digits at $d=3$
+and 14 at $d=4$; the full integral computed directly from the exact kernel at $d=3,4$
+converging to the predicted value as $\varepsilon\to0$; and the $d=2$ control
+returning a positive value.
 
 ### Six discrepancies in the original
 
-Five typographical or sign errors, each verified against the scan at 320 dpi:
-the exponent in $C\varepsilon\delta^{-p}$ (p.4); two identical terms in the first
-display of Lemma 2's proof (p.5); $e^{+\frac12p\beta}$ where the recomputation forces
+Five typographical or sign errors, each verified against the scan at 320 dpi: the
+exponent in $C\varepsilon\delta^{-p}$ (p.4); two identical terms in the first display
+of Lemma 2's proof (p.5); $e^{+\frac12p\beta}$ where the recomputation forces
 $e^{-\frac12p\beta}$ (p.9); $\varepsilon^{d-1}$ for $\varepsilon^{(d-1)/2}$ in
 condition (2) (p.10); $e^{-\beta pn}$ for $e^{+\beta pn}$ (p.10).
 
 The sixth is substantive: **Lemma 2 is stated with no factor $I(a_Q)$ multiplying
 $dF_\varepsilon/dn$.** As printed it is not homogeneous in $I$ and is false for large
-$|I(a_Q)|$; its proof establishes only the normalised case $I(a_Q)=1$; and Lemma 4
-applies it to a term that does carry the factor. Restoring the factor makes
-statement, proof and application agree. See ledger row `C9` and §3 of the digestion.
+$|I(a_Q)|$; its proof establishes only the normalised case; and Lemma 4 applies it to
+a term that does carry the factor. Restoring the factor makes statement, proof and
+application agree. Ledger `C9`, §3 of the digestion.
 
-Two further points needed a repair rather than a correction: the lower bound for
-$|1+dG_\varepsilon/dn|$ fails exactly at $|x|=1$, where the mean value theorem is
-applied across a zero (repaired by splitting at $|x|=2$, §2.6 and §3.3); and the
-final passage from "$f=0$ and $\partial_nf=0$" to "$\nabla f=0$" is absent from the
-paper altogether (supplied via density points, §7.5).
+Two further points needed repair rather than correction, and are the two surviving
+`caution` boxes: the lower bound for $|1+dG_\varepsilon/dn|$ fails exactly at $|x|=1$,
+where the original applies the mean value theorem across a zero (repaired by splitting
+at $|x|=2$, §2.6 and §3.3); and the final passage from "$f=0$ and $\partial_nf=0$" to
+"$\nabla f=0$" is absent from the paper altogether (supplied via density points, §7.5).
+
+### References traced
+
+- **[1]** Aleksandrov–Kargaev, Algebra i Analiz **5**:2, 1–73 (1993); Zbl 0842.42012.
+  Not obtained; superseded for our purposes by the proof in §2.2.
+- **[2]** T. Wolff, *Counterexamples with harmonic gradients in $\mathbb R^3$*,
+  Princeton Math. Ser. **42**, 321–384 (1995); Zbl 0836.31004. Verified from zbMATH;
+  not read.
+
+### The open problem it poses has since been resolved
+
+Remark 2 asks whether $C^2$ or $C^\infty$ examples exist. Qin and Zhan announce a
+negative answer in arXiv:2608.01683 (3 August 2026) — three weeks before this
+digestion. Recorded on the site's Open problems page with that provenance; we have
+read the abstract, not the proof, and it is unrefereed.
 
 ### Next
 
-- Blueprint B (idea harvest) has **not** been run.
-- Highest-value follow-up: identify reference [1] and close `B4`.
-- Second: obtain the published Colloq. Math. version and diff it against the
-  preprint this digestion follows.
+- Compare §2.2 against Aleksandrov–Kargaev's own argument, if a copy can be had.
+- Obtain the published Colloq. Math. version and diff it against this preprint.

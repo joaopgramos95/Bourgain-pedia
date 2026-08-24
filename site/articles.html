@@ -13,14 +13,21 @@
 <main>
   <h1 class="page-title">All articles</h1>
   <p class="page-lede">
-    The complete bibliography, year by year. Pick a year on the left, or search across
-    every year at once. Each entry shows its full reference and citation count, a link to
-    a copy, and the two slots this project fills in.
+    The complete bibliography. Group it by <strong>year</strong> or by <strong>area</strong>
+    on the left, or search across everything at once. Areas come from the MSC codes zbMATH
+    assigns, so they follow the subject rather than the chronology. Each entry shows its
+    full reference and citation count, a link to a copy, and the two slots this project
+    fills in.
   </p>
 
   <div class="with-rail">
     <aside class="rail">
-      <p class="rail-heading">Years</p>
+      <p class="rail-heading">Group by</p>
+      <ul class="rail-list groupby" id="groupby">
+        <li><button data-group="year" aria-current="true">Year</button></li>
+        <li><button data-group="area" aria-current="false">Area</button></li>
+      </ul>
+      <p class="rail-heading" id="rail-heading">Years</p>
       <ul class="rail-list" id="years"></ul>
     </aside>
 
@@ -73,15 +80,34 @@
     ].join(" "));
   });
 
-  var state = { year: null, q: "", sort: "title" };
+  var AREAS = DATA.areas || [];
+  var byArea = {};
+  AREAS.forEach(function (a) { byArea[a.key] = []; });
+  PAPERS.forEach(function (p) { (byArea[p.area] = byArea[p.area] || []).push(p); });
+
+  var state = { group: "year", year: null, area: null, q: "", sort: "title" };
+
+  function groups() {
+    return state.group === "area"
+      ? AREAS.map(function (a) {
+          return { key: a.key, label: a.name, rows: byArea[a.key] || [], note: a.note }; })
+      : years.map(function (y) {
+          return { key: String(y), label: String(y), rows: byYear[y], note: "" }; });
+  }
+  function currentKey() {
+    return state.group === "area"
+      ? state.area
+      : (state.year === null ? null : String(state.year));
+  }
 
   function railHTML() {
-    return '<li><button data-year="index">All years' +
+    var all = state.group === "area" ? "All areas" : "All years";
+    return '<li><button data-year="index">' + all +
            '<span class="count">' + PAPERS.length + "</span></button></li>" +
-           years.map(function (y) {
-      return '<li><button data-year="' + y + '">' + y +
-             '<span class="count">' + byYear[y].length + "</span></button></li>";
-    }).join("");
+           groups().map(function (g) {
+             return '<li><button data-year="' + BP.esc(g.key) + '">' + BP.esc(g.label) +
+                    '<span class="count">' + g.rows.length + "</span></button></li>";
+           }).join("");
   }
 
   function sortRows(rows) {
@@ -95,25 +121,27 @@
   }
 
   function yearIndex() {
-    var cells = years.map(function (y) {
-      var rows = byYear[y];
-      var cites = rows.reduce(function (a, p) { return a + (p.cited_by || 0); }, 0);
-      return '<button class="year-cell" data-year="' + y + '">' +
-               '<span class="y">' + y + "</span>" +
-               '<span class="c">' + rows.length + (rows.length === 1 ? " item" : " items") + "</span>" +
+    var area = state.group === "area";
+    var cells = groups().map(function (g) {
+      var cites = g.rows.reduce(function (a, p) { return a + (p.cited_by || 0); }, 0);
+      return '<button class="year-cell' + (area ? " area-cell" : "") +
+               '" data-year="' + BP.esc(g.key) + '">' +
+               '<span class="y">' + BP.esc(g.label) + "</span>" +
+               '<span class="c">' + g.rows.length + (g.rows.length === 1 ? " item" : " items") + "</span>" +
                '<span class="c">' + BP.num(cites) + " cites</span>" +
              "</button>";
     }).join("");
-    return '<h2 class="year-heading">By year</h2>' +
-           '<p class="year-sub">' + PAPERS.length + " works, " + years[0] + "–" +
-           years[years.length - 1] + ". Click a year.</p>" +
-           '<div class="year-index">' + cells + "</div>";
+    return '<h2 class="year-heading">' + (area ? "By area" : "By year") + "</h2>" +
+           '<p class="year-sub">' + PAPERS.length + " works, " +
+           (area ? AREAS.length + " areas, derived from the MSC codes zbMATH assigns. Click an area."
+                 : years[0] + "–" + years[years.length - 1] + ". Click a year.") + "</p>" +
+           '<div class="year-index' + (area ? " area-index" : "") + '">' + cells + "</div>";
   }
 
   function render() {
     var rows, heading, sub;
 
-    if (!state.q && state.year === null) {
+    if (!state.q && currentKey() === null) {
       railEl.querySelectorAll("button").forEach(function (b) {
         b.setAttribute("aria-current", "false");
       });
@@ -128,17 +156,19 @@
       sub = rows.length + (rows.length === 1 ? " match" : " matches") +
             ' for "' + BP.esc(state.q) + '" across all years';
     } else {
-      var y = state.year;
-      rows = byYear[y] || [];
-      heading = String(y);
+      var k = currentKey();
+      var g = groups().filter(function (x) { return x.key === k; })[0]
+              || { label: k, rows: [], note: "" };
+      rows = g.rows;
+      heading = g.label;
       var cites = rows.reduce(function (a, p) { return a + (p.cited_by || 0); }, 0);
       sub = rows.length + (rows.length === 1 ? " item" : " items") +
-            " · " + BP.num(cites) + " citations";
+            " · " + BP.num(cites) + " citations" + (g.note ? " — " + g.note : "");
     }
 
     railEl.querySelectorAll("button").forEach(function (b) {
       b.setAttribute("aria-current",
-        (!state.q && String(state.year) === b.dataset.year) ? "true" : "false");
+        (!state.q && currentKey() === b.dataset.year) ? "true" : "false");
     });
 
     out.innerHTML =
@@ -151,11 +181,14 @@
 
   railEl.innerHTML = railHTML();
   function pickYear(b) {
-    state.year = b.dataset.year === "undated" ? "undated"
-               : b.dataset.year === "index" ? null
-               : Number(b.dataset.year);
+    var k = b.dataset.year;
+    if (state.group === "area") {
+      state.area = k === "index" ? null : k;
+    } else {
+      state.year = k === "index" ? null : (k === "undated" ? "undated" : Number(k));
+    }
     state.q = ""; qEl.value = "";
-    history.replaceState(null, "", "#" + b.dataset.year);
+    history.replaceState(null, "", "#" + k);
     render();
     document.getElementById("out").scrollIntoView({ block: "start", behavior: "smooth" });
   }
@@ -166,6 +199,21 @@
   }
   railEl.addEventListener("click", delegateYear);
   out.addEventListener("click", delegateYear);
+
+  document.getElementById("groupby").addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-group]");
+    if (!b || b.dataset.group === state.group) return;
+    state.group = b.dataset.group;
+    state.year = null; state.area = null; state.q = ""; qEl.value = "";
+    this.querySelectorAll("button").forEach(function (x) {
+      x.setAttribute("aria-current", String(x === b));
+    });
+    document.getElementById("rail-heading").textContent =
+      state.group === "area" ? "Areas" : "Years";
+    railEl.innerHTML = railHTML();
+    history.replaceState(null, "", location.pathname);
+    render();
+  });
 
   document.getElementById("sort").addEventListener("click", function (e) {
     var b = e.target.closest("button[data-sort]");
@@ -197,6 +245,13 @@
     state.year = Number(hash);
   } else if (hash === "undated" && byYear.undated) {
     state.year = "undated";
+  } else if (AREAS.some(function (a) { return a.key === hash; })) {
+    state.group = "area"; state.area = hash;
+    document.getElementById("groupby").querySelectorAll("button").forEach(function (x) {
+      x.setAttribute("aria-current", String(x.dataset.group === "area"));
+    });
+    document.getElementById("rail-heading").textContent = "Areas";
+    railEl.innerHTML = railHTML();
   } else if (hash) {
     var hit = PAPERS.filter(function (p) { return p.id === hash; })[0];
     if (hit) { state.year = hit.year || "undated"; target = hash; }

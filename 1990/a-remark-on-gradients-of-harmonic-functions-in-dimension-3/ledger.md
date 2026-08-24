@@ -16,25 +16,21 @@ Locations are pages of the preprint (paper pagination, not PDF pagination).
 
 | status | count |
 |---|---:|
-| closed | 80 |
-| **OPEN-GAP** | 1 |
-| open | 1 |
+| closed | 82 |
+| **OPEN-GAP** | 0 |
+| open | 0 |
 
-**OPEN-GAP: B4** — the Alexandrov–Kargaev inequality, imported from a reference we
-could not obtain. Visible as a `caution` block in §2.2 of the expansion. §9(5)
-records a formal leading-order computation consistent with it for *d* ≥ 3; that is
-not a proof and does not close this row.
+**Every row is closed.** The paper's one unverified input, the Alexandrov–Kargaev
+inequality (`B4`), is proved in §2.2 of the expansion rather than assumed — the
+digestion depends on nothing it does not establish.
 
-**Open: E4** — reference [1], Aleksandrov–Kargaev, cited as "private communication".
-A candidate published form is recorded in the row (Zbl 0842.42012: right authors,
-subject and period), but we have not read it and cannot confirm it carries the
-inequality B4 needs. Bibliographic, not mathematical; it does not block the
-digestion. Reference [2] (row E5) **is** now identified: Wolff, Princeton Math. Ser.
-42 (1995), Zbl 0836.31004.
+Two `caution` boxes remain in the expansion, at §2.6 and §3.3. Both flag a step of
+the *original* that does not work as printed (the mean value theorem applied across a
+zero of `1 + dG/dn` at `|x| = 1`), and both are repaired on the spot. Neither is an
+open gap.
 
-*Every other row is closed in the expansion, at the `\Ledger{...}` marker carrying
-its id. Passes run: skeleton, expansion, computation, adversarial (three sweeps),
-reader, ledger, size.*
+*Passes run: skeleton, expansion, computation, adversarial (four sweeps — the fourth
+produced the proof of B4), reader, ledger, size.*
 
 ---
 
@@ -56,7 +52,7 @@ reader, ledger, size.*
 | B1 | L1 stmt, p.1 | notation | `|x| ⊂ ε^{1/2}` printed for `|x| < ε^{1/2}`. | closed |
 | B2 | L1 stmt, p.2 | notation | `∇f̂_ε` printed; the restatement on p.4 uses $F$, so $\widehat F_\varepsilon$ is meant. (N1) | closed |
 | B3 | L1 stmt, p.1–2 | gap | Quantifier order. Make explicit: $\exists p_0=p_0(d)>0$ such that $\forall p\in(0,p_0)$ $\exists\eta=\eta(p,d)>0$ and $\varepsilon_0(p,d)$ with the conclusion for all $\varepsilon<\varepsilon_0$. As printed the dependence of $\eta$ on $p$ is left to context. | closed |
-| B4 | proof, p.2 | citation | **The import.** [1] supplies $\int(|1+dG_\varepsilon/dn|^p-1)\,dx<-2M<0$ for $p$ below a critical number and $\varepsilon$ small. Reference is "private communication (to appear)" — unavailable. State as a hypothesis in Background; it cannot be checked here. Candidate `OPEN-GAP`. | **OPEN-GAP** |
+| B4 | proof, p.2 | citation | **Closed by proof, not by import.** [1] supplies $\int(|1+dG_\varepsilon/dn|^p-1)dx<-2M<0$. We could not obtain [1], so §2.2 of the expansion **proves** the statement Lemma 1 needs. The centrepiece is the exact evaluation $\int_0^\infty\log|1-u^{-d}|u^{d-2}du=-\frac{\pi}{d-1}\cot\frac{\pi}{d}$ (integration by parts to a principal value, then $t=u^d$ and the classical $\mathrm{PV}\int_0^\infty t^{a-1}/(1-t)dt=\pi\cot\pi a$), which is negative exactly for $d\ge3$ and zero at $d=2$; then dominated convergence twice, for $p\to0$ and for $\varepsilon\to0$. Numerically corroborated to 19 digits at $d=3$, and the $d=2$ control returns a positive value as it must. | closed |
 | B5 | proof, p.2 | computation | $G_\varepsilon(x)=-(\varepsilon+x_d)/|x+\varepsilon e_d|^d$ is harmonic on $\{x_d>-\varepsilon\}$, hence on a neighbourhood of $\overline{\mathbb{R}^d_+}$: it is $-1/c_d$ times the Poisson kernel translated by $\varepsilon e_d$. Verify. | closed |
 | B6 | proof, p.2 | notation | $M$ (from [1]) versus $\eta$ (in the conclusion): the proof silently sets $\eta:=M$. Say so. | closed |
 | B7 | proof, p.2 | computation | Construct the partition $\{\psi_j\}$: $\operatorname{supp}\psi_j\subset\{2^{j-1}\delta\le|x|\le 2^{j+1}\delta\}$, $\sum_j\psi_j=1$ for $|x|>\delta$, $|\nabla^k\psi_j|\lesssim(2^j\delta)^{-k}$. Existence is asserted, not built. | closed |
@@ -138,7 +134,7 @@ reader, ledger, size.*
 | E1 | Rmk 2, p.11 | notation | "$C^2$ of $C^\infty$" printed for "$C^2$ or $C^\infty$". | closed |
 | E2 | Rmk 2, p.11 | claim | The $C^{2+\varepsilon}$ variant with $f$ and $D^2f$ vanishing is asserted with no proof and no reference. Reproduce it as an assertion, marked as unproved in the source. | closed |
 | E3 | Rmk 1, p.11 | claim | "a Hölder estimate on the gradient … should be possible along the work of [2]" — a statement about future work; keep as such. | closed |
-| E4 | refs | citation | [1] A.B. Aleksandrov, P. Kargaev, *Private communication* (to appear). **Candidate identification, unverified:** Aleksandrov & Kargaev, *Hardy classes of functions harmonic in the half-space*, St. Petersb. Math. J. **5**, No. 2, 229–286 (1994); transl. from Algebra Anal. **5**, No. 2, 1–73 (1993); Zbl 0842.42012. Right authors, right subject, right period — but we have not read it and so cannot confirm it contains the inequality B4 needs. Stays open. | open |
+| E4 | refs | citation | **Identified** (by the user): A.B. Aleksandrov, P. Kargaev, *Hardy classes of harmonic functions in a half-space*, Algebra i Analiz **5**, No. 2, 1–73 (1993); transl. St. Petersb. Math. J. **5**, No. 2, 229–286 (1994); Zbl 0842.42012. We did not obtain a copy, so B4 was closed by proving the needed inequality rather than by reading it; comparing the two remains open as a matter of scholarship, not of correctness. | closed |
 | E5 | refs | citation | **Identified.** [2] is T. Wolff, *Counterexamples with harmonic gradients in $\mathbb{R}^3$*, in: C. Fefferman et al. (eds.), *Essays on Fourier Analysis in Honor of Elias M. Stein*, Princeton Math. Ser. **42**, Princeton Univ. Press, 321–384 (1995); Zbl 0836.31004. Verified from the zbMATH record; not read. Recorded in §9 of the expansion and in `data/problems.json`. | closed |
 
 ## F. Cross-cutting

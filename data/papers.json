@@ -11,6 +11,161 @@
   1976,
   2026
  ],
+ "areas": [
+  {
+   "key": "harmonic-analysis",
+   "name": "Harmonic analysis",
+   "note": "Fourier analysis, singular integrals, restriction and Kakeya, maximal operators.",
+   "msc": [
+    "42",
+    "43"
+   ],
+   "count": 68
+  },
+  {
+   "key": "banach-convex",
+   "name": "Banach spaces and convex geometry",
+   "note": "Geometry of normed spaces, operator theory, convex bodies in high dimension.",
+   "msc": [
+    "46",
+    "47",
+    "52"
+   ],
+   "count": 152
+  },
+  {
+   "key": "number-theory",
+   "name": "Number theory",
+   "note": "Exponential sums, arithmetic combinatorics, the distribution of arithmetic sequences.",
+   "msc": [
+    "11"
+   ],
+   "count": 115
+  },
+  {
+   "key": "pde",
+   "name": "Partial differential equations",
+   "note": "Dispersive and nonlinear equations, well-posedness, elliptic problems.",
+   "msc": [
+    "35"
+   ],
+   "count": 82
+  },
+  {
+   "key": "dynamics",
+   "name": "Dynamics and ergodic theory",
+   "note": "Pointwise convergence, equidistribution, quasi-periodic and homogeneous dynamics.",
+   "msc": [
+    "37",
+    "28"
+   ],
+   "count": 25
+  },
+  {
+   "key": "probability",
+   "name": "Probability",
+   "note": "Random series, concentration, random matrices and random constructions.",
+   "msc": [
+    "60"
+   ],
+   "count": 14
+  },
+  {
+   "key": "math-physics",
+   "name": "Mathematical physics",
+   "note": "Schrodinger operators, Anderson localization, statistical mechanics.",
+   "msc": [
+    "81",
+    "82"
+   ],
+   "count": 19
+  },
+  {
+   "key": "complex-analysis",
+   "name": "Complex and real analysis",
+   "note": "Hardy spaces, holomorphic function theory, real-variable methods, potential theory.",
+   "msc": [
+    "30",
+    "31",
+    "32",
+    "26",
+    "40",
+    "41"
+   ],
+   "count": 13
+  },
+  {
+   "key": "geometry-topology",
+   "name": "Geometry and topology",
+   "note": "Differential geometry, global analysis, general topology.",
+   "msc": [
+    "53",
+    "54",
+    "55",
+    "57",
+    "58"
+   ],
+   "count": 17
+  },
+  {
+   "key": "groups",
+   "name": "Groups and representation theory",
+   "note": "Growth and expansion in groups, Lie groups, representation theory.",
+   "msc": [
+    "20",
+    "22"
+   ],
+   "count": 11
+  },
+  {
+   "key": "combinatorics-cs",
+   "name": "Combinatorics and computer science",
+   "note": "Extremal and probabilistic combinatorics, Boolean functions, algorithms, coding.",
+   "msc": [
+    "05",
+    "68",
+    "94"
+   ],
+   "count": 10
+  },
+  {
+   "key": "variational",
+   "name": "Calculus of variations",
+   "note": "Variational problems, optimisation, control.",
+   "msc": [
+    "49",
+    "93"
+   ],
+   "count": 1
+  },
+  {
+   "key": "logic-foundations",
+   "name": "Logic and foundations",
+   "note": "Set theory, descriptive set theory, measure-theoretic foundations.",
+   "msc": [
+    "03",
+    "04"
+   ],
+   "count": 2
+  },
+  {
+   "key": "general",
+   "name": "General and historical",
+   "note": "Surveys, collected volumes, obituaries, problem lists.",
+   "msc": [
+    "00",
+    "01"
+   ],
+   "count": 7
+  },
+  {
+   "key": "unclassified",
+   "name": "Unclassified",
+   "note": "No MSC code on record, so no area could be derived.",
+   "msc": [],
+   "count": 12
+  }
+ ],
  "papers": [
   {
    "id": "1976-strongly-exposed-points-in-weakly-compact-convex-sets-in-banach-spaces",
@@ -41,6 +196,10 @@
    "zbmath_url": "https://zbmath.org/3484640",
    "openalex_ids": [
     "W2072327109"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B03"
@@ -102,6 +261,10 @@
    "zbl": "0416.54009",
    "zbmath_url": "https://zbmath.org/3647714",
    "openalex_ids": [],
+   "area": "geometry-topology",
+   "areas": [
+    "geometry-topology"
+   ],
    "msc": [
     "54C35",
     "54D30",
@@ -162,6 +325,10 @@
    "zbmath_url": "https://zbmath.org/3569258",
    "openalex_ids": [
     "W2048991539"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B99",
@@ -229,6 +396,10 @@
    "zbmath_url": "https://zbmath.org/3589174",
    "openalex_ids": [
     "W2537900522"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B99",
@@ -302,6 +473,10 @@
    "zbl": "0417.46019",
    "zbmath_url": "https://zbmath.org/3649429",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20",
     "46A45",
@@ -360,6 +535,10 @@
    "zbl": "0417.46015",
    "zbmath_url": "https://zbmath.org/3649425",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46A55",
     "46A50",
@@ -417,6 +596,12 @@
    "zbmath_url": "https://zbmath.org/3646888",
    "openalex_ids": [
     "W2728141329"
+   ],
+   "area": "logic-foundations",
+   "areas": [
+    "logic-foundations",
+    "dynamics",
+    "geometry-topology"
    ],
    "msc": [
     "03E15",
@@ -492,6 +677,10 @@
    "zbl": "0417.46018",
    "zbmath_url": "https://zbmath.org/3649428",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20",
     "46A55",
@@ -557,6 +746,10 @@
    "zbmath_url": "https://zbmath.org/3642285",
    "openalex_ids": [
     "W1991014694"
+   ],
+   "area": "geometry-topology",
+   "areas": [
+    "geometry-topology"
    ],
    "msc": [
     "54C35",
@@ -627,6 +820,10 @@
    "zbl": "0427.46011",
    "zbmath_url": "https://zbmath.org/3665607",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B25"
    ],
@@ -682,6 +879,11 @@
    "zbl": "0414.54011",
    "zbmath_url": "https://zbmath.org/3644114",
    "openalex_ids": [],
+   "area": "geometry-topology",
+   "areas": [
+    "geometry-topology",
+    "dynamics"
+   ],
    "msc": [
     "54C50",
     "54E52",
@@ -745,6 +947,11 @@
    "openalex_ids": [
     "W1968668406"
    ],
+   "area": "probability",
+   "areas": [
+    "probability",
+    "dynamics"
+   ],
    "msc": [
     "60B05",
     "28B05"
@@ -807,6 +1014,11 @@
    "zbl": "0434.46016",
    "zbmath_url": "https://zbmath.org/3676570",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "dynamics"
+   ],
    "msc": [
     "46B20",
     "46E30",
@@ -869,6 +1081,10 @@
    "zbl": "0503.46016",
    "zbmath_url": "https://zbmath.org/3792771",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20",
     "46B25",
@@ -929,6 +1145,11 @@
    "zbmath_url": "https://zbmath.org/3652656",
    "openalex_ids": [
     "W1175183626"
+   ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics",
+    "geometry-topology"
    ],
    "msc": [
     "28A05",
@@ -1006,6 +1227,10 @@
    "openalex_ids": [
     "W2070662406"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B22",
     "46G10",
@@ -1068,6 +1293,10 @@
    "openalex_ids": [
     "W653125609"
    ],
+   "area": "unclassified",
+   "areas": [
+    "unclassified"
+   ],
    "msc": [],
    "msc_text": [],
    "keywords": [],
@@ -1112,6 +1341,10 @@
    "zbl": "0438.46014",
    "zbmath_url": "https://zbmath.org/3684260",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46E15",
     "46E25",
@@ -1169,6 +1402,10 @@
    "zbmath_url": "https://zbmath.org/3658461",
    "openalex_ids": [
     "W2734864971"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B22",
@@ -1241,6 +1478,10 @@
    "zbmath_url": "https://zbmath.org/3658460",
    "openalex_ids": [
     "W3003577381"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B22",
@@ -1317,6 +1558,10 @@
    "openalex_ids": [
     "W1968520047"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20",
     "46E30",
@@ -1386,6 +1631,10 @@
    "zbmath_url": "https://zbmath.org/3730725",
    "openalex_ids": [
     "W2588633621"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B20",
@@ -1462,6 +1711,10 @@
    "openalex_ids": [
     "W750026585"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B22",
     "46B20",
@@ -1537,6 +1790,10 @@
    "zbl": "0441.46022",
    "zbmath_url": "https://zbmath.org/3688038",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46E15",
     "47B38",
@@ -1599,6 +1856,11 @@
    "zbmath_url": "https://zbmath.org/3723499",
    "openalex_ids": [
     "W888228543"
+   ],
+   "area": "geometry-topology",
+   "areas": [
+    "geometry-topology",
+    "logic-foundations"
    ],
    "msc": [
     "54H05",
@@ -1675,6 +1937,10 @@
    "openalex_ids": [
     "W1531317672",
     "W103552711"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B03",
@@ -1754,6 +2020,10 @@
    "openalex_ids": [
     "W4255314383"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46A55",
     "46A50"
@@ -1827,6 +2097,10 @@
    "openalex_ids": [
     "W2734435996"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20",
     "46E30",
@@ -1893,6 +2167,10 @@
    "zbmath_url": "https://zbmath.org/3676571",
    "openalex_ids": [
     "W1002560242"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B22",
@@ -1969,6 +2247,10 @@
    "openalex_ids": [
     "W2070662406"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20",
     "47B60",
@@ -2038,6 +2320,10 @@
    "zbl": "0462.46011",
    "zbmath_url": "https://zbmath.org/3723276",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B22",
     "46B20",
@@ -2098,6 +2384,11 @@
    "zbmath_url": "https://zbmath.org/3723498",
    "openalex_ids": [
     "W917637323"
+   ],
+   "area": "geometry-topology",
+   "areas": [
+    "geometry-topology",
+    "logic-foundations"
    ],
    "msc": [
     "54H05",
@@ -2176,6 +2467,10 @@
    "openalex_ids": [
     "W2590638291"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20",
     "46B22",
@@ -2247,6 +2542,11 @@
    "openalex_ids": [
     "W1978596072"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "probability"
+   ],
    "msc": [
     "46B22",
     "46B25",
@@ -2316,6 +2616,11 @@
    "zbl": "0474.54008",
    "zbmath_url": "https://zbmath.org/3744099",
    "openalex_ids": [],
+   "area": "geometry-topology",
+   "areas": [
+    "geometry-topology",
+    "banach-convex"
+   ],
    "msc": [
     "54C50",
     "46B20",
@@ -2374,6 +2679,10 @@
    "zbl": "0459.05005",
    "zbmath_url": "https://zbmath.org/3719145",
    "openalex_ids": [],
+   "area": "combinatorics-cs",
+   "areas": [
+    "combinatorics-cs"
+   ],
    "msc": [
     "05A05",
     "05A15"
@@ -2432,6 +2741,10 @@
    "zbmath_url": "https://zbmath.org/3684251",
    "openalex_ids": [
     "W2090019345"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B20",
@@ -2496,6 +2809,11 @@
    "zbl": "0462.46010",
    "zbmath_url": "https://zbmath.org/3723275",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "logic-foundations"
+   ],
    "msc": [
     "46B20",
     "46E30",
@@ -2556,6 +2874,11 @@
    "zbl": "0485.46007",
    "zbmath_url": "https://zbmath.org/3762646",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "geometry-topology"
+   ],
    "msc": [
     "46B10",
     "46B20",
@@ -2616,6 +2939,10 @@
    "zbmath_url": "https://zbmath.org/3561893",
    "openalex_ids": [
     "W783645614"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B10",
@@ -2692,6 +3019,10 @@
    "zbl": "0442.43016",
    "zbmath_url": "https://zbmath.org/3690018",
    "openalex_ids": [],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "43A75",
     "43A22",
@@ -2751,6 +3082,11 @@
    "zbl": "0441.46043",
    "zbmath_url": "https://zbmath.org/3688059",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "complex-analysis"
+   ],
    "msc": [
     "46J15",
     "30H05"
@@ -2806,6 +3142,10 @@
    "zbmath_url": "https://zbmath.org/3710782",
    "openalex_ids": [
     "W162150366"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B25",
@@ -2882,6 +3222,10 @@
    "openalex_ids": [
     "W2735037741"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B25",
     "46B42"
@@ -2957,6 +3301,10 @@
    "openalex_ids": [
     "W2319945642"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B22",
     "46B20",
@@ -3029,6 +3377,10 @@
    "openalex_ids": [
     "W2002203388"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20"
    ],
@@ -3093,6 +3445,11 @@
    "zbmath_url": "https://zbmath.org/3809545",
    "openalex_ids": [
     "W814349613"
+   ],
+   "area": "logic-foundations",
+   "areas": [
+    "logic-foundations",
+    "dynamics"
    ],
    "msc": [
     "03E15",
@@ -3172,6 +3529,10 @@
    "openalex_ids": [
     "W1979175220",
     "W4250033344"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B42",
@@ -3255,6 +3616,10 @@
     "W2886222405",
     "W2913182145"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20",
     "46-02",
@@ -3334,6 +3699,11 @@
    "openalex_ids": [
     "W4400653244"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "geometry-topology"
+   ],
    "msc": [
     "46A45",
     "54A20"
@@ -3401,6 +3771,10 @@
    "zbl": "0461.46016",
    "zbmath_url": "https://zbmath.org/3721511",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20",
     "47B10",
@@ -3464,6 +3838,11 @@
    "zbmath_url": "https://zbmath.org/3747817",
    "openalex_ids": [
     "W2714311582"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "complex-analysis"
    ],
    "msc": [
     "46J15",
@@ -3546,6 +3925,11 @@
    "openalex_ids": [
     "W2042211378"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "logic-foundations"
+   ],
    "msc": [
     "46E40",
     "46E30",
@@ -3625,6 +4009,11 @@
    "openalex_ids": [
     "W2101524689"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "harmonic-analysis"
+   ],
    "msc": [
     "46B10",
     "42B05",
@@ -3689,6 +4078,11 @@
    "zbl": "0483.10042",
    "zbmath_url": "https://zbmath.org/3758457",
    "openalex_ids": [],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "harmonic-analysis"
+   ],
    "msc": [
     "11P55",
     "11P32",
@@ -3747,6 +4141,10 @@
    "zbl": "0485.46024",
    "zbmath_url": "https://zbmath.org/3762663",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46J15",
     "47B10",
@@ -3807,6 +4205,10 @@
    "zbl": "0465.46048",
    "zbmath_url": "https://zbmath.org/3728889",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46J15",
     "46B25",
@@ -3863,6 +4265,10 @@
    "zbl": "0476.46019",
    "zbmath_url": "https://zbmath.org/3747788",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B15",
     "46B20"
@@ -3937,6 +4343,11 @@
    "openalex_ids": [
     "W2020514203"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "groups"
+   ],
    "msc": [
     "46B15",
     "46B03",
@@ -4009,6 +4420,10 @@
    "openalex_ids": [
     "W885166500"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B15",
     "46M10",
@@ -4080,6 +4495,10 @@
    "zbl": "0498.46021",
    "zbmath_url": "https://zbmath.org/3785584",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46E15",
     "46B25"
@@ -4136,6 +4555,12 @@
    "zbl": "0496.46017",
    "zbmath_url": "https://zbmath.org/3781826",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "probability",
+    "complex-analysis"
+   ],
    "msc": [
     "46E15",
     "60G46",
@@ -4196,6 +4621,10 @@
    "zbl": "0504.42004",
    "zbmath_url": "https://zbmath.org/3794660",
    "openalex_ids": [],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "42A20"
    ],
@@ -4252,6 +4681,11 @@
    "zbmath_url": "https://zbmath.org/3774324",
    "openalex_ids": [
     "W1993050134"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "complex-analysis"
    ],
    "msc": [
     "46J15",
@@ -4324,6 +4758,11 @@
    "zbmath_url": "https://zbmath.org/3779929",
    "openalex_ids": [
     "W1144443631"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "banach-convex"
    ],
    "msc": [
     "43A15",
@@ -4402,6 +4841,10 @@
    "openalex_ids": [
     "W2083049951"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20",
     "46B22",
@@ -4475,6 +4918,10 @@
    "openalex_ids": [
     "W1976304549"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20",
     "46B22",
@@ -4540,6 +4987,10 @@
    "zbl": "0521.30034",
    "zbmath_url": "https://zbmath.org/3824193",
    "openalex_ids": [],
+   "area": "complex-analysis",
+   "areas": [
+    "complex-analysis"
+   ],
    "msc": [
     "30E05",
     "30H05"
@@ -4599,6 +5050,12 @@
    "openalex_ids": [
     "W2064084974",
     "W2014409563"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "probability",
+    "complex-analysis"
    ],
    "msc": [
     "46J15",
@@ -4676,6 +5133,10 @@
    "zbl": "0578.46047",
    "zbmath_url": "https://zbmath.org/3925585",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46J15",
     "46E25",
@@ -4736,6 +5197,10 @@
    "zbmath_url": "https://zbmath.org/3846239",
    "openalex_ids": [
     "W896441284"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46J15",
@@ -4815,6 +5280,11 @@
    "openalex_ids": [
     "W1974483712",
     "W4255861308"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "complex-analysis"
    ],
    "msc": [
     "46H15",
@@ -4900,6 +5370,10 @@
    "openalex_ids": [
     "W2092328264"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20",
     "46J15",
@@ -4970,6 +5444,11 @@
    "openalex_ids": [
     "W2004739034"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "complex-analysis"
+   ],
    "msc": [
     "46J15",
     "32A35",
@@ -5034,6 +5513,11 @@
    "zbl": "0521.46016",
    "zbmath_url": "https://zbmath.org/3824453",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "complex-analysis"
+   ],
    "msc": [
     "46E15",
     "46B10",
@@ -5090,6 +5574,10 @@
    "zbl": "0577.47021",
    "zbmath_url": "https://zbmath.org/3923486",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "47B10",
     "47L10",
@@ -5150,6 +5638,10 @@
    "zbmath_url": "https://zbmath.org/3869953",
    "openalex_ids": [
     "W2585790162"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
    ],
    "msc": [
     "43A46"
@@ -5229,6 +5721,11 @@
    "zbl": "0571.46033",
    "zbmath_url": "https://zbmath.org/3911058",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "harmonic-analysis"
+   ],
    "msc": [
     "46J15",
     "46A45",
@@ -5289,6 +5786,12 @@
    "zbmath_url": "https://zbmath.org/3846212",
    "openalex_ids": [
     "W2061228338"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "probability",
+    "harmonic-analysis"
    ],
    "msc": [
     "46B42",
@@ -5365,6 +5868,10 @@
    "zbl": "0537.43016",
    "zbmath_url": "https://zbmath.org/3853721",
    "openalex_ids": [],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "43A46"
    ],
@@ -5417,6 +5924,11 @@
    "zbl": "0532.42002",
    "zbmath_url": "https://zbmath.org/3844337",
    "openalex_ids": [],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "banach-convex"
+   ],
    "msc": [
     "42A05",
     "44A15",
@@ -5475,6 +5987,11 @@
    "zbl": "0533.46036",
    "zbmath_url": "https://zbmath.org/3846240",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "complex-analysis"
+   ],
    "msc": [
     "46J15",
     "30H05"
@@ -5529,6 +6046,11 @@
    "zbl": "0527.60010",
    "zbmath_url": "https://zbmath.org/3837047",
    "openalex_ids": [],
+   "area": "probability",
+   "areas": [
+    "probability",
+    "harmonic-analysis"
+   ],
    "msc": [
     "60B15",
     "60G50",
@@ -5593,6 +6115,10 @@
    "zbmath_url": "https://zbmath.org/3881260",
    "openalex_ids": [
     "W2105557544"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
    ],
    "msc": [
     "43A46",
@@ -5681,6 +6207,10 @@
    "openalex_ids": [
     "W145059831"
    ],
+   "area": "unclassified",
+   "areas": [
+    "unclassified"
+   ],
    "msc": [],
    "msc_text": [],
    "keywords": [],
@@ -5754,6 +6284,10 @@
    "zbmath_url": "https://zbmath.org/3907124",
    "openalex_ids": [
     "W764894587"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B25"
@@ -5830,6 +6364,12 @@
    "openalex_ids": [
     "W2063142952",
     "W4230306784"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "complex-analysis",
+    "harmonic-analysis"
    ],
    "msc": [
     "46J15",
@@ -5910,6 +6450,11 @@
    "openalex_ids": [
     "W2057706073"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "probability"
+   ],
    "msc": [
     "46E30",
     "46B15",
@@ -5980,6 +6525,10 @@
    "openalex_ids": [
     "W2159649808"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "47B10",
     "47A05"
@@ -6041,6 +6590,11 @@
    "zbl": "0953.60516",
    "zbmath_url": "https://zbmath.org/1550382",
    "openalex_ids": [],
+   "area": "probability",
+   "areas": [
+    "probability",
+    "banach-convex"
+   ],
    "msc": [
     "60G46",
     "46B20"
@@ -6095,6 +6649,11 @@
    "zbl": "0592.46048",
    "zbmath_url": "https://zbmath.org/3951317",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "complex-analysis"
+   ],
    "msc": [
     "46J15",
     "41A05",
@@ -6156,6 +6715,10 @@
    "openalex_ids": [
     "W1974483712",
     "W4255861308"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46J15",
@@ -6231,6 +6794,11 @@
    "openalex_ids": [
     "W2073810645"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "harmonic-analysis"
+   ],
    "msc": [
     "46J15",
     "46B15",
@@ -6298,6 +6866,11 @@
    "openalex_ids": [
     "W2040351962"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "banach-convex"
+   ],
    "msc": [
     "42B20",
     "42B25",
@@ -6360,6 +6933,11 @@
    "zbl": "0574.46042",
    "zbmath_url": "https://zbmath.org/3917014",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "complex-analysis"
+   ],
    "msc": [
     "46J15",
     "46J20",
@@ -6418,6 +6996,11 @@
    "zbl": "0553.10029",
    "zbmath_url": "https://zbmath.org/3880813",
    "openalex_ids": [],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "harmonic-analysis"
+   ],
    "msc": [
     "11L03",
     "42A05",
@@ -6474,6 +7057,11 @@
    "zbl": "0537.43017",
    "zbmath_url": "https://zbmath.org/3853722",
    "openalex_ids": [],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "banach-convex"
+   ],
    "msc": [
     "43A46",
     "46E35"
@@ -6530,6 +7118,10 @@
    "zbl": "0565.43006",
    "zbmath_url": "https://zbmath.org/3901403",
    "openalex_ids": [],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "43A46"
    ],
@@ -6582,6 +7174,11 @@
    "zbl": "0585.46015",
    "zbmath_url": "https://zbmath.org/3937797",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "complex-analysis"
+   ],
    "msc": [
     "46B25",
     "46B20",
@@ -6646,6 +7243,12 @@
    "zbmath_url": "https://zbmath.org/3913040",
    "openalex_ids": [
     "W2040914646"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "complex-analysis",
+    "probability"
    ],
    "msc": [
     "46J15",
@@ -6715,6 +7318,10 @@
    "zbmath_url": "https://zbmath.org/3921280",
    "openalex_ids": [
     "W333677145"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46J15",
@@ -6792,6 +7399,11 @@
    "zbmath_url": "https://zbmath.org/3935755",
    "openalex_ids": [
     "W2072531254"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "complex-analysis"
    ],
    "msc": [
     "46J15",
@@ -6873,6 +7485,10 @@
    "openalex_ids": [
     "W2015968054"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B15",
     "46B25",
@@ -6943,6 +7559,10 @@
    "zbl": "0584.43005",
    "zbmath_url": "https://zbmath.org/3935689",
    "openalex_ids": [],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "43A46"
    ],
@@ -7000,6 +7620,10 @@
    "zbmath_url": "https://zbmath.org/3899578",
    "openalex_ids": [
     "W2327153070"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46J15",
@@ -7085,6 +7709,10 @@
    "openalex_ids": [
     "W2314241212"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "42B25"
    ],
@@ -7147,6 +7775,12 @@
    "zbmath_url": "https://zbmath.org/4073714",
    "openalex_ids": [
     "W2063491776"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "combinatorics-cs",
+    "geometry-topology"
    ],
    "msc": [
     "46B99",
@@ -7212,6 +7846,10 @@
    "zbl": "0613.42015",
    "zbmath_url": "https://zbmath.org/3992113",
    "openalex_ids": [],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "42B25"
    ],
@@ -7271,6 +7909,11 @@
    "zbmath_url": "https://zbmath.org/3935756",
    "openalex_ids": [
     "W2092328264"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "complex-analysis"
    ],
    "msc": [
     "46J15",
@@ -7337,6 +7980,10 @@
    "zbl": "0608.42014",
    "zbmath_url": "https://zbmath.org/3983824",
    "openalex_ids": [],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "42B25"
    ],
@@ -7404,6 +8051,10 @@
    "zbl": "0576.52002",
    "zbmath_url": "https://zbmath.org/3921379",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "52A40"
    ],
@@ -7461,6 +8112,10 @@
    "zbmath_url": "https://zbmath.org/3925511",
    "openalex_ids": [
     "W1967245832"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
    ],
    "msc": [
     "43A46"
@@ -7542,6 +8197,10 @@
    "openalex_ids": [
     "W111002486"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20",
     "46B25",
@@ -7604,6 +8263,10 @@
    "zbl": "0602.46060",
    "zbmath_url": "https://zbmath.org/3971525",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46J15",
     "46B25",
@@ -7666,6 +8329,11 @@
    "zbmath_url": "https://zbmath.org/3933732",
    "openalex_ids": [
     "W200545134"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "banach-convex"
    ],
    "msc": [
     "43A46",
@@ -7741,6 +8409,10 @@
    "openalex_ids": [
     "W1031540118"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "42A38"
    ],
@@ -7815,6 +8487,10 @@
    "openalex_ids": [
     "W1984712678"
    ],
+   "area": "complex-analysis",
+   "areas": [
+    "complex-analysis"
+   ],
    "msc": [
     "30D55"
    ],
@@ -7882,6 +8558,12 @@
    "zbmath_url": "https://zbmath.org/3985345",
    "openalex_ids": [
     "W2079996441"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "harmonic-analysis",
+    "dynamics"
    ],
    "msc": [
     "11B05",
@@ -7954,6 +8636,10 @@
    "openalex_ids": [
     "W1979653193"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "42B25"
    ],
@@ -8019,6 +8705,10 @@
    "zbmath_url": "https://zbmath.org/3944535",
    "openalex_ids": [
     "W2039785501"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B20",
@@ -8089,6 +8779,11 @@
    "openalex_ids": [
     "W2056923925"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "probability"
+   ],
    "msc": [
     "46B20",
     "46E40",
@@ -8156,6 +8851,10 @@
    "zbmath_url": "https://zbmath.org/4006926",
    "openalex_ids": [
     "W2314241212"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
    ],
    "msc": [
     "42B25"
@@ -8225,6 +8924,11 @@
    "openalex_ids": [
     "W1965817630"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "geometry-topology"
+   ],
    "msc": [
     "46B20",
     "54E35"
@@ -8291,6 +8995,10 @@
    "zbmath_url": "https://zbmath.org/4048344",
    "openalex_ids": [
     "W2123127052"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
    ],
    "msc": [
     "43A46",
@@ -8371,6 +9079,11 @@
    "openalex_ids": [
     "W2087733089"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "complex-analysis"
+   ],
    "msc": [
     "42B25",
     "31B99"
@@ -8435,6 +9148,11 @@
    "zbmath_url": "https://zbmath.org/3996324",
    "openalex_ids": [
     "W1530268989"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "harmonic-analysis"
    ],
    "msc": [
     "11L03",
@@ -8508,6 +9226,10 @@
    "openalex_ids": [
     "W2038701724"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "47A65",
     "47A45",
@@ -8579,6 +9301,10 @@
    "zbmath_url": "https://zbmath.org/4000730",
    "openalex_ids": [
     "W2082287043"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B20"
@@ -8655,6 +9381,10 @@
    "openalex_ids": [
     "W2006424173"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20"
    ],
@@ -8720,6 +9450,10 @@
    "zbl": "0605.46016",
    "zbmath_url": "https://zbmath.org/3977681",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20"
    ],
@@ -8778,6 +9512,10 @@
    "zbmath_url": "https://zbmath.org/4048371",
    "openalex_ids": [
     "W2066864620"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B20",
@@ -8843,6 +9581,10 @@
    "zbmath_url": "https://zbmath.org/3921224",
    "openalex_ids": [
     "W2328501368"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
    ],
    "msc": [
     "43A15"
@@ -8922,6 +9664,10 @@
    "zbl": "0602.42015",
    "zbmath_url": "https://zbmath.org/3971424",
    "openalex_ids": [],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "42A50"
    ],
@@ -8975,6 +9721,10 @@
    "zbmath_url": "https://zbmath.org/4015386",
    "openalex_ids": [
     "W82031405"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
    ],
    "msc": [
     "43A25",
@@ -9042,6 +9792,10 @@
    "zbmath_url": "https://zbmath.org/4021841",
    "openalex_ids": [
     "W217680496"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
    ],
    "msc": [
     "43A25",
@@ -9120,6 +9874,10 @@
    "openalex_ids": [
     "W950230667"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B25"
    ],
@@ -9184,6 +9942,10 @@
    "openalex_ids": [
     "W2086906474"
    ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics"
+   ],
    "msc": [
     "28A05",
     "28A75"
@@ -9245,6 +10007,11 @@
    "zbmath_url": "https://zbmath.org/4115281",
    "openalex_ids": [
     "W2071824193"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "harmonic-analysis"
    ],
    "msc": [
     "46B20",
@@ -9313,6 +10080,10 @@
    "zbmath_url": "https://zbmath.org/4026102",
    "openalex_ids": [
     "W2071824193"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B20",
@@ -9388,6 +10159,12 @@
    "zbmath_url": "https://zbmath.org/4000872",
    "openalex_ids": [
     "W2075603209"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "number-theory",
+    "harmonic-analysis"
    ],
    "msc": [
     "52A20",
@@ -9466,6 +10243,11 @@
    "openalex_ids": [
     "W55316350"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "harmonic-analysis"
+   ],
    "msc": [
     "52A20",
     "42B10",
@@ -9534,6 +10316,10 @@
    "openalex_ids": [
     "W9541835"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20"
    ],
@@ -9596,6 +10382,10 @@
    "zbmath_url": "https://zbmath.org/3998199",
    "openalex_ids": [
     "W1975631646"
+   ],
+   "area": "complex-analysis",
+   "areas": [
+    "complex-analysis"
    ],
    "msc": [
     "31B99"
@@ -9667,6 +10457,10 @@
    "openalex_ids": [
     "W196325200"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20"
    ],
@@ -9725,6 +10519,10 @@
    "zbl": "0655.52008",
    "zbmath_url": "https://zbmath.org/4069708",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "52A40"
    ],
@@ -9781,6 +10579,13 @@
    "zbmath_url": "https://zbmath.org/4047835",
    "openalex_ids": [
     "W1974504121"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "combinatorics-cs",
+    "dynamics",
+    "banach-convex"
    ],
    "msc": [
     "11B13",
@@ -9851,6 +10656,13 @@
    "zbmath_url": "https://zbmath.org/4032014",
    "openalex_ids": [
     "W2053652533"
+   ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics",
+    "number-theory",
+    "banach-convex",
+    "harmonic-analysis"
    ],
    "msc": [
     "28D05",
@@ -9933,6 +10745,14 @@
    "openalex_ids": [
     "W2022943002"
    ],
+   "area": "probability",
+   "areas": [
+    "probability",
+    "groups",
+    "dynamics",
+    "number-theory",
+    "complex-analysis"
+   ],
    "msc": [
     "60G15",
     "22D40",
@@ -10001,6 +10821,11 @@
    "openalex_ids": [
     "W38615643"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "dynamics"
+   ],
    "msc": [
     "47A35",
     "28D05"
@@ -10066,6 +10891,11 @@
    "openalex_ids": [
     "W2005734216"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "number-theory"
+   ],
    "msc": [
     "42A38",
     "11B83"
@@ -10130,6 +10960,10 @@
    "zbmath_url": "https://zbmath.org/4071650",
    "openalex_ids": [
     "W2016713660"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46C99",
@@ -10201,6 +11035,10 @@
    "openalex_ids": [
     "W2040059560"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "52A20"
    ],
@@ -10266,6 +11104,11 @@
    "zbmath_url": "https://zbmath.org/4052452",
    "openalex_ids": [
     "W74480084"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "probability"
    ],
    "msc": [
     "52A20",
@@ -10336,6 +11179,10 @@
    "zbl": "0639.52002",
    "zbmath_url": "https://zbmath.org/4042704",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "52A20",
     "52A40"
@@ -10400,6 +11247,10 @@
    "openalex_ids": [
     "W194787182"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20"
    ],
@@ -10463,6 +11314,10 @@
    "openalex_ids": [
     "W2189062140"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20"
    ],
@@ -10525,6 +11380,12 @@
    "zbmath_url": "https://zbmath.org/4046064",
    "openalex_ids": [
     "W2055765757"
+   ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics",
+    "number-theory",
+    "harmonic-analysis"
    ],
    "msc": [
     "28D05",
@@ -10597,6 +11458,13 @@
    "openalex_ids": [
     "W2089677797"
    ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics",
+    "number-theory",
+    "harmonic-analysis",
+    "probability"
+   ],
    "msc": [
     "28D05",
     "11L40",
@@ -10668,6 +11536,10 @@
    "openalex_ids": [
     "W4251131886"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "52A40",
     "52A20"
@@ -10731,6 +11603,10 @@
    "zbl": "0655.58022",
    "zbmath_url": "https://zbmath.org/4069880",
    "openalex_ids": [],
+   "area": "dynamics",
+   "areas": [
+    "dynamics"
+   ],
    "msc": [
     "37A99"
    ],
@@ -10790,6 +11666,10 @@
    "zbmath_url": "https://zbmath.org/4067597",
    "openalex_ids": [
     "W2002139129"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B20",
@@ -10853,6 +11733,11 @@
    "zbmath_url": "https://zbmath.org/4065665",
    "openalex_ids": [
     "W190744151"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "harmonic-analysis"
    ],
    "msc": [
     "46B20",
@@ -10921,6 +11806,10 @@
    "openalex_ids": [
     "W172165711"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20",
     "46B15",
@@ -10984,6 +11873,11 @@
    "zbl": "0697.47005",
    "zbmath_url": "https://zbmath.org/4142807",
    "openalex_ids": [],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "dynamics"
+   ],
    "msc": [
     "47A35",
     "28D05"
@@ -11047,6 +11941,10 @@
    "zbmath_url": "https://zbmath.org/4117209",
    "openalex_ids": [
     "W2014279255"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B20",
@@ -11112,6 +12010,10 @@
    "openalex_ids": [
     "W43870314"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "42B25",
     "42A50"
@@ -11176,6 +12078,11 @@
    "zbmath_url": "https://zbmath.org/4103690",
    "openalex_ids": [
     "W1982448086"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "banach-convex"
    ],
    "msc": [
     "43A46",
@@ -11243,6 +12150,11 @@
    "zbmath_url": "https://zbmath.org/4118984",
    "openalex_ids": [
     "W138073792"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "complex-analysis"
    ],
    "msc": [
     "46E35",
@@ -11312,6 +12224,10 @@
    "openalex_ids": [
     "W60427117"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "52A20"
    ],
@@ -11378,6 +12294,10 @@
    "zbmath_url": "https://zbmath.org/4107438",
    "openalex_ids": [
     "W77803884"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B20",
@@ -11446,6 +12366,10 @@
    "openalex_ids": [
     "W2002550816"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20",
     "46J15",
@@ -11509,6 +12433,11 @@
    "zbmath_url": "https://zbmath.org/4122529",
    "openalex_ids": [
     "W153972788"
+   ],
+   "area": "complex-analysis",
+   "areas": [
+    "complex-analysis",
+    "harmonic-analysis"
    ],
    "msc": [
     "40A05",
@@ -11576,6 +12505,11 @@
    "zbmath_url": "https://zbmath.org/4132849",
    "openalex_ids": [
     "W1983741744"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "number-theory"
    ],
    "msc": [
     "43A46",
@@ -11649,6 +12583,11 @@
    "openalex_ids": [
     "W8428469"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "banach-convex"
+   ],
    "msc": [
     "42A45",
     "42B25",
@@ -11720,6 +12659,10 @@
    "openalex_ids": [
     "W158261362"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "47B10",
     "46B20"
@@ -11788,6 +12731,13 @@
    "openalex_ids": [
     "W2053652533",
     "W1982871329"
+   ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics",
+    "number-theory",
+    "harmonic-analysis",
+    "probability"
    ],
    "msc": [
     "28D05",
@@ -11887,6 +12837,10 @@
    "openalex_ids": [
     "W2991129044"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "47B37",
     "46A45"
@@ -11956,6 +12910,10 @@
    "openalex_ids": [
     "W234848851"
    ],
+   "area": "complex-analysis",
+   "areas": [
+    "complex-analysis"
+   ],
    "msc": [
     "31B20",
     "31B05"
@@ -11996,7 +12954,21 @@
    ],
    "summary": "In dimension two a harmonic function whose boundary values and gradient both vanish on a set of positive measure must vanish identically, because f + if̃ is analytic. This note shows that from dimension three on, nothing of the kind survives even one derivative of smoothness: there is a harmonic f on the half space, C¹ up to the boundary, with f and ∇f vanishing together on a boundary set of positive measure. It sharpens an earlier construction of Wolff, which had reached a little past C¹ with only ∇f vanishing, by importing from Alexandrov and Kargaev a boundary datum whose harmonic extension has normal derivative close to −1 in a strong enough averaged sense. The proof is a correction scheme: start from data vanishing on a cube, and at each stage add corrections supported in tiny discs, which cut the local size of the normal derivative by a fixed factor while moving f itself only on a set small enough to sum over all stages. What survives both budgets is the set where f and ∇f vanish together. The technique — geometric decay bought with a summable measure loss, run on a nested grid of cubes — outlived the problem. Whether C² or smooth examples exist is left open.",
    "digestion": "1990/a-remark-on-gradients-of-harmonic-functions-in-dimension-3/a-remark-on-gradients-of-harmonic-functions-in-dimension-3-expanded.pdf",
-   "toolkit": [],
+   "toolkit": [
+    "iterative-correction",
+    "summable-loss-budget",
+    "stopping-time-selection",
+    "small-support-perturbation",
+    "dyadic-decomposition",
+    "scaling-normalisation",
+    "large-small-dichotomy",
+    "sub-unit-exponent",
+    "multiscale-parameter-hierarchy",
+    "boundary-to-singular-integral",
+    "extremal-datum",
+    "dimension-threshold",
+    "density-point-endgame"
+   ],
    "notes": "Digested from the IHES preprint M/89/31 (Sept 1989), not the published Colloq. Math. version. Six discrepancies found in the original, one substantive (Lemma 2 is missing a factor I(a_Q)). Proved here conditional on the imported Alexandrov-Kargaev inequality, whose source we could not obtain: ledger row B4. The open problem it poses was resolved in the negative by a 2026 preprint of Qin and Zhan; see the Open problems page.",
    "authors_raw": [
     "Bourgain, J.",
@@ -12032,6 +13004,11 @@
    "zbmath_url": "https://zbmath.org/4122270",
    "openalex_ids": [
     "W55131882"
+   ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics",
+    "number-theory"
    ],
    "msc": [
     "28D05",
@@ -12120,6 +13097,10 @@
    "openalex_ids": [
     "W2094643620"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B07",
     "46B25",
@@ -12184,6 +13165,10 @@
    "zbmath_url": "https://zbmath.org/4177149",
    "openalex_ids": [
     "W1837752427"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11B25",
@@ -12254,6 +13239,11 @@
    "openalex_ids": [
     "W1977362896"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "number-theory"
+   ],
    "msc": [
     "42A20",
     "11K70",
@@ -12316,6 +13306,10 @@
    "zbl": "0729.11038",
    "zbmath_url": "https://zbmath.org/4204456",
    "openalex_ids": [],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11K70"
    ],
@@ -12372,6 +13366,10 @@
    "zbmath_url": "https://zbmath.org/56877",
    "openalex_ids": [
     "W2023098069"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
    ],
    "msc": [
     "42B25",
@@ -12452,6 +13450,10 @@
    "openalex_ids": [
     "W2094901481"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "42B15"
    ],
@@ -12527,6 +13529,10 @@
    "zbmath_url": "https://zbmath.org/4205183",
    "openalex_ids": [
     "W24085606"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "47B37",
@@ -12609,6 +13615,10 @@
    "openalex_ids": [
     "W150898371"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46B20",
     "46B07"
@@ -12680,6 +13690,10 @@
    "openalex_ids": [
     "W2005587520"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "47A35"
    ],
@@ -12744,6 +13758,10 @@
    "zbmath_url": "https://zbmath.org/56887",
    "openalex_ids": [
     "W1970476235"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "52A40",
@@ -12817,6 +13835,10 @@
    "openalex_ids": [
     "W934596661"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46E30",
     "52A20"
@@ -12879,6 +13901,10 @@
    "openalex_ids": [
     "W40652687"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "42B15"
    ],
@@ -12938,6 +13964,12 @@
    "zbmath_url": "https://zbmath.org/177382",
    "openalex_ids": [
     "W159911677"
+   ],
+   "area": "complex-analysis",
+   "areas": [
+    "complex-analysis",
+    "banach-convex",
+    "number-theory"
    ],
    "msc": [
     "30B50",
@@ -13006,6 +14038,10 @@
    "openalex_ids": [
     "W2330283852"
    ],
+   "area": "pde",
+   "areas": [
+    "pde"
+   ],
    "msc": [
     "35Q40",
     "35B65",
@@ -13073,6 +14109,10 @@
    "openalex_ids": [
     "W2090527448"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46E30",
     "46B28"
@@ -13137,6 +14177,10 @@
    "zbmath_url": "https://zbmath.org/203271",
    "openalex_ids": [
     "W2371518270"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46M35"
@@ -13210,6 +14254,10 @@
    "openalex_ids": [
     "W1978526953"
    ],
+   "area": "probability",
+   "areas": [
+    "probability"
+   ],
    "msc": [
     "60A10"
    ],
@@ -13279,6 +14327,10 @@
    "zbmath_url": "https://zbmath.org/168597",
    "openalex_ids": [
     "W1998137637"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "52A21",
@@ -13361,6 +14413,11 @@
    "openalex_ids": [
     "W2045979035"
    ],
+   "area": "complex-analysis",
+   "areas": [
+    "complex-analysis",
+    "banach-convex"
+   ],
    "msc": [
     "30D45",
     "46G05"
@@ -13425,6 +14482,12 @@
    "zbmath_url": "https://zbmath.org/561203",
    "openalex_ids": [
     "W1594342568"
+   ],
+   "area": "probability",
+   "areas": [
+    "probability",
+    "complex-analysis",
+    "harmonic-analysis"
    ],
    "msc": [
     "60G50",
@@ -13498,6 +14561,10 @@
    "zbl": "0779.58039",
    "zbmath_url": "https://zbmath.org/404235",
    "openalex_ids": [],
+   "area": "geometry-topology",
+   "areas": [
+    "geometry-topology"
+   ],
    "msc": [
     "58J50"
    ],
@@ -13559,6 +14626,11 @@
    "zbmath_url": "https://zbmath.org/404290",
    "openalex_ids": [
     "W2036163097"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "harmonic-analysis"
    ],
    "msc": [
     "35Q55",
@@ -13636,6 +14708,11 @@
     "W2183692121",
     "W4247381331"
    ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "harmonic-analysis"
+   ],
    "msc": [
     "35Q55",
     "42B10"
@@ -13710,6 +14787,12 @@
    "zbmath_url": "https://zbmath.org/404289",
    "openalex_ids": [
     "W2280297536"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "harmonic-analysis",
+    "complex-analysis"
    ],
    "msc": [
     "35Q55",
@@ -13788,6 +14871,12 @@
    "openalex_ids": [
     "W1978509796"
    ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "harmonic-analysis",
+    "complex-analysis"
+   ],
    "msc": [
     "35Q53",
     "42B10",
@@ -13865,6 +14954,10 @@
    "openalex_ids": [
     "W2090213495"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11L40"
    ],
@@ -13927,6 +15020,10 @@
    "zbmath_url": "https://zbmath.org/404245",
    "openalex_ids": [
     "W1489331858"
+   ],
+   "area": "complex-analysis",
+   "areas": [
+    "complex-analysis"
    ],
    "msc": [
     "30D50"
@@ -13991,6 +15088,11 @@
    "openalex_ids": [
     "W2082170961"
    ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics",
+    "banach-convex"
+   ],
    "msc": [
     "28D05",
     "47A35"
@@ -14053,6 +15155,11 @@
    "openalex_ids": [
     "W169193414",
     "W4239881037"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "harmonic-analysis"
    ],
    "msc": [
     "35Q53",
@@ -14119,6 +15226,11 @@
    "zbl": "0818.35112",
    "zbmath_url": "https://zbmath.org/749578",
    "openalex_ids": [],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "dynamics"
+   ],
    "msc": [
     "35Q55",
     "37J99"
@@ -14181,6 +15293,11 @@
    "zbl": "0817.35102",
    "zbmath_url": "https://zbmath.org/749777",
    "openalex_ids": [],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "dynamics"
+   ],
    "msc": [
     "35Q55",
     "37J99"
@@ -14244,6 +15361,11 @@
    "zbmath_url": "https://zbmath.org/645156",
    "openalex_ids": [
     "W2027541899"
+   ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics",
+    "harmonic-analysis"
    ],
    "msc": [
     "28A78",
@@ -14309,6 +15431,11 @@
    "zbmath_url": "https://zbmath.org/727823",
    "openalex_ids": [
     "W1603692462"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "harmonic-analysis"
    ],
    "msc": [
     "35Q53",
@@ -14388,6 +15515,11 @@
     "W1990089063",
     "W2557193132"
    ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "dynamics"
+   ],
    "msc": [
     "35Q55",
     "37C10"
@@ -14462,6 +15594,10 @@
    "zbmath_url": "https://zbmath.org/731914",
    "openalex_ids": [
     "W944871795"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
    ],
    "msc": [
     "42B15",
@@ -14545,6 +15681,10 @@
    "openalex_ids": [
     "W1966366689"
    ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics"
+   ],
    "msc": [
     "28D10",
     "28D05",
@@ -14614,6 +15754,10 @@
    "openalex_ids": [
     "W2095383808",
     "W4240820078"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde"
    ],
    "msc": [
     "35B40",
@@ -14695,6 +15839,10 @@
    "openalex_ids": [
     "W2041599937"
    ],
+   "area": "pde",
+   "areas": [
+    "pde"
+   ],
    "msc": [
     "35L70",
     "35B10"
@@ -14772,6 +15920,10 @@
    "openalex_ids": [
     "W1550180207"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "43A85"
    ],
@@ -14831,6 +15983,11 @@
    "zbmath_url": "https://zbmath.org/849947",
    "openalex_ids": [
     "W2883495538"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "harmonic-analysis"
    ],
    "msc": [
     "35Q53",
@@ -14899,6 +16056,10 @@
    "openalex_ids": [
     "W3012518772"
    ],
+   "area": "pde",
+   "areas": [
+    "pde"
+   ],
    "msc": [
     "35Q53",
     "35A05",
@@ -14963,6 +16124,11 @@
    "openalex_ids": [
     "W151916461"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "harmonic-analysis"
+   ],
    "msc": [
     "11M26",
     "42A05"
@@ -15025,6 +16191,10 @@
    "openalex_ids": [
     "W2496992763"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "42B15",
     "42B20"
@@ -15085,6 +16255,11 @@
    "zbl": "1052.35514",
    "zbmath_url": "https://zbmath.org/1638606",
    "openalex_ids": [],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "math-physics"
+   ],
    "msc": [
     "35Q55",
     "81Q05"
@@ -15152,6 +16327,11 @@
    "zbmath_url": "https://zbmath.org/785233",
    "openalex_ids": [
     "W2321522050"
+   ],
+   "area": "complex-analysis",
+   "areas": [
+    "complex-analysis",
+    "pde"
    ],
    "msc": [
     "31A25",
@@ -15233,6 +16413,10 @@
    "zbmath_url": "https://zbmath.org/912451",
    "openalex_ids": [
     "W2038495787"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde"
    ],
    "msc": [
     "35B15",
@@ -15318,6 +16502,10 @@
    "openalex_ids": [
     "W4239294360"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11P21"
    ],
@@ -15378,6 +16566,10 @@
    "zbmath_url": "https://zbmath.org/922601",
    "openalex_ids": [
     "W1535573282"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde"
    ],
    "msc": [
     "35Q55",
@@ -15444,6 +16636,11 @@
    "openalex_ids": [
     "W2319542184"
    ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "dynamics"
+   ],
    "msc": [
     "35Q55",
     "37C10"
@@ -15507,6 +16704,11 @@
    "zbl": "0934.35166",
    "zbmath_url": "https://zbmath.org/892266",
    "openalex_ids": [],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "dynamics"
+   ],
    "msc": [
     "35Q55",
     "35B40",
@@ -15574,6 +16776,10 @@
    "zbl": "0909.35125",
    "zbmath_url": "https://zbmath.org/972697",
    "openalex_ids": [],
+   "area": "pde",
+   "areas": [
+    "pde"
+   ],
    "msc": [
     "35Q55"
    ],
@@ -15639,6 +16845,10 @@
    "zbl": "0853.35062",
    "zbmath_url": "https://zbmath.org/892261",
    "openalex_ids": [],
+   "area": "pde",
+   "areas": [
+    "pde"
+   ],
    "msc": [
     "35L05",
     "35B45",
@@ -15704,6 +16914,10 @@
    "zbl": "0852.42004",
    "zbmath_url": "https://zbmath.org/892255",
    "openalex_ids": [],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "42B08",
     "42A05"
@@ -15764,6 +16978,12 @@
    "zbmath_url": "https://zbmath.org/1072421",
    "openalex_ids": [
     "W4256605000"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "number-theory",
+    "pde"
    ],
    "msc": [
     "42B05",
@@ -15837,6 +17057,10 @@
    "zbmath_url": "https://zbmath.org/1766603",
    "openalex_ids": [
     "W2269017277"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde"
    ],
    "msc": [
     "35Q55",
@@ -15914,6 +17138,10 @@
    "openalex_ids": [
     "W1995106671"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11B75",
     "11B13"
@@ -15976,6 +17204,10 @@
    "openalex_ids": [
     "W4247101270"
    ],
+   "area": "pde",
+   "areas": [
+    "pde"
+   ],
    "msc": [
     "35Q55",
     "35B15"
@@ -16036,6 +17268,10 @@
    "openalex_ids": [
     "W2506595181"
    ],
+   "area": "unclassified",
+   "areas": [
+    "unclassified"
+   ],
    "msc": [],
    "msc_text": [],
    "keywords": [],
@@ -16091,6 +17327,11 @@
    "zbmath_url": "https://zbmath.org/1054106",
    "openalex_ids": [
     "W2094776848"
+   ],
+   "area": "groups",
+   "areas": [
+    "groups",
+    "combinatorics-cs"
    ],
    "msc": [
     "20B35",
@@ -16160,6 +17401,12 @@
    "zbmath_url": "https://zbmath.org/1146373",
    "openalex_ids": [
     "W2094531750"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "probability",
+    "dynamics"
    ],
    "msc": [
     "35Q55",
@@ -16233,6 +17480,10 @@
    "openalex_ids": [
     "W1970363007"
    ],
+   "area": "pde",
+   "areas": [
+    "pde"
+   ],
    "msc": [
     "35Q55",
     "35B40"
@@ -16297,6 +17548,10 @@
    "zbmath_url": "https://zbmath.org/1082972",
    "openalex_ids": [
     "W2327873314"
+   ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics"
    ],
    "msc": [
     "37J35",
@@ -16368,6 +17623,10 @@
    "zbl": "0882.35106",
    "zbmath_url": "https://zbmath.org/1018554",
    "openalex_ids": [],
+   "area": "pde",
+   "areas": [
+    "pde"
+   ],
    "msc": [
     "35Q53",
     "35B40"
@@ -16431,6 +17690,11 @@
    "zbmath_url": "https://zbmath.org/1061893",
    "openalex_ids": [
     "W2055501279"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "dynamics"
    ],
    "msc": [
     "35Q53",
@@ -16504,6 +17768,10 @@
    "openalex_ids": [
     "W3088072026"
    ],
+   "area": "pde",
+   "areas": [
+    "pde"
+   ],
    "msc": [
     "35Q58",
     "35B15",
@@ -16568,6 +17836,10 @@
    "openalex_ids": [
     "W609486467"
    ],
+   "area": "unclassified",
+   "areas": [
+    "unclassified"
+   ],
    "msc": [],
    "msc_text": [],
    "keywords": [],
@@ -16610,6 +17882,11 @@
    "zbl": "1103.35362",
    "zbmath_url": "https://zbmath.org/1784364",
    "openalex_ids": [],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "dynamics"
+   ],
    "msc": [
     "35Q55",
     "37K10",
@@ -16686,6 +17963,11 @@
    "openalex_ids": [
     "W2018535636"
    ],
+   "area": "probability",
+   "areas": [
+    "probability",
+    "math-physics"
+   ],
    "msc": [
     "60K35",
     "82C22"
@@ -16752,6 +18034,11 @@
    "zbmath_url": "https://zbmath.org/1267995",
    "openalex_ids": [
     "W1967673736"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "math-physics"
    ],
    "msc": [
     "35Q55",
@@ -16830,6 +18117,10 @@
    "zbl": "0917.35126",
    "zbmath_url": "https://zbmath.org/1162063",
    "openalex_ids": [],
+   "area": "pde",
+   "areas": [
+    "pde"
+   ],
    "msc": [
     "35Q55",
     "35A05"
@@ -16893,6 +18184,10 @@
    "zbmath_url": "https://zbmath.org/1221960",
    "openalex_ids": [
     "W2068270901"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde"
    ],
    "msc": [
     "35Q55",
@@ -16963,6 +18258,12 @@
     "W2477739861",
     "W2493103935",
     "W2502967621"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "dynamics",
+    "math-physics"
    ],
    "msc": [
     "35Q55",
@@ -17045,6 +18346,10 @@
    "openalex_ids": [
     "W1542602023"
    ],
+   "area": "pde",
+   "areas": [
+    "pde"
+   ],
    "msc": [
     "35Q55",
     "35A05",
@@ -17117,6 +18422,11 @@
    "openalex_ids": [
     "W1998794711"
    ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "banach-convex"
+   ],
    "msc": [
     "35Q40",
     "35J10",
@@ -17182,6 +18492,11 @@
    "zbmath_url": "https://zbmath.org/1284213",
    "openalex_ids": [
     "W2562131554"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "dynamics"
    ],
    "msc": [
     "35Q55",
@@ -17268,6 +18583,10 @@
    "openalex_ids": [
     "W1600628179"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "52A20",
     "52A40"
@@ -17339,6 +18658,11 @@
    "openalex_ids": [
     "W2332630497"
    ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "banach-convex"
+   ],
    "msc": [
     "35B40",
     "35G10",
@@ -17405,6 +18729,12 @@
    "zbmath_url": "https://zbmath.org/1309443",
    "openalex_ids": [
     "W2096324031"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "dynamics",
+    "number-theory"
    ],
    "msc": [
     "43A46",
@@ -17475,6 +18805,10 @@
    "openalex_ids": [
     "W1996922551"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11B25",
     "11P55"
@@ -17536,6 +18870,11 @@
    "zbmath_url": "https://zbmath.org/1423944",
    "openalex_ids": [
     "W4247101270"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "dynamics"
    ],
    "msc": [
     "35L70",
@@ -17604,6 +18943,11 @@
    "zbmath_url": "https://zbmath.org/1302647",
    "openalex_ids": [
     "W2246584701"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "probability"
    ],
    "msc": [
     "52A20",
@@ -17675,6 +19019,11 @@
    "zbl": "0932.05084",
    "zbmath_url": "https://zbmath.org/1329338",
    "openalex_ids": [],
+   "area": "combinatorics-cs",
+   "areas": [
+    "combinatorics-cs",
+    "harmonic-analysis"
+   ],
    "msc": [
     "05C80",
     "42C10"
@@ -17735,6 +19084,10 @@
    "zbmath_url": "https://zbmath.org/6857140",
    "openalex_ids": [
     "W2312651415"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde"
    ],
    "msc": [
     "35Q55",
@@ -17805,6 +19158,11 @@
    "zbmath_url": "https://zbmath.org/1302648",
    "openalex_ids": [
     "W1569455794"
+   ],
+   "area": "probability",
+   "areas": [
+    "probability",
+    "harmonic-analysis"
    ],
    "msc": [
     "60B15",
@@ -17881,6 +19239,10 @@
    "openalex_ids": [
     "W2200186092"
    ],
+   "area": "unclassified",
+   "areas": [
+    "unclassified"
+   ],
    "msc": [],
    "msc_text": [],
    "keywords": [],
@@ -17940,6 +19302,11 @@
    "zbmath_url": "https://zbmath.org/1631927",
    "openalex_ids": [
     "W2317853786"
+   ],
+   "area": "math-physics",
+   "areas": [
+    "math-physics",
+    "banach-convex"
    ],
    "msc": [
     "81Q10",
@@ -18013,6 +19380,11 @@
    "openalex_ids": [
     "W125385535"
    ],
+   "area": "math-physics",
+   "areas": [
+    "math-physics",
+    "banach-convex"
+   ],
    "msc": [
     "81Q10",
     "39A70",
@@ -18078,6 +19450,10 @@
    "zbl": "0960.00034",
    "zbmath_url": "https://zbmath.org/1591561",
    "openalex_ids": [],
+   "area": "general",
+   "areas": [
+    "general"
+   ],
    "msc": [
     "00B25",
     "01A67"
@@ -18128,6 +19504,10 @@
    "zbl": "0960.00035",
    "zbmath_url": "https://zbmath.org/1591563",
    "openalex_ids": [],
+   "area": "general",
+   "areas": [
+    "general"
+   ],
    "msc": [
     "00B25",
     "01A67"
@@ -18180,6 +19560,13 @@
    "zbl": "0963.42001",
    "zbmath_url": "https://zbmath.org/1503603",
    "openalex_ids": [],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "combinatorics-cs",
+    "number-theory",
+    "general"
+   ],
    "msc": [
     "42-02",
     "42B20",
@@ -18255,6 +19642,11 @@
    "openalex_ids": [
     "W1558901243"
    ],
+   "area": "math-physics",
+   "areas": [
+    "math-physics",
+    "banach-convex"
+   ],
    "msc": [
     "34L40",
     "82B44",
@@ -18323,6 +19715,11 @@
    "zbmath_url": "https://zbmath.org/1442064",
    "openalex_ids": [
     "W2071880131"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "dynamics"
    ],
    "msc": [
     "35Q55",
@@ -18398,6 +19795,10 @@
    "openalex_ids": [
     "W1970620614"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46E35"
    ],
@@ -18468,6 +19869,11 @@
    "openalex_ids": [
     "W2029786242"
    ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "dynamics"
+   ],
    "msc": [
     "35Q55",
     "37K55",
@@ -18533,6 +19939,10 @@
    "zbl": "1099.11511",
    "zbmath_url": "https://zbmath.org/1436287",
    "openalex_ids": [],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11M26"
    ],
@@ -18598,6 +20008,13 @@
    "openalex_ids": [
     "W2160881591",
     "W2951227628"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "banach-convex",
+    "probability",
+    "math-physics"
    ],
    "msc": [
     "39A70",
@@ -18707,6 +20124,11 @@
    "openalex_ids": [
     "W2059577442"
    ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "banach-convex"
+   ],
    "msc": [
     "35J85",
     "46E35",
@@ -18773,6 +20195,11 @@
    "openalex_ids": [
     "W44843395"
    ],
+   "area": "math-physics",
+   "areas": [
+    "math-physics",
+    "banach-convex"
+   ],
    "msc": [
     "81Q10",
     "39A70",
@@ -18838,6 +20265,10 @@
    "zbmath_url": "https://zbmath.org/1645813",
    "openalex_ids": [
     "W197591660"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde"
    ],
    "msc": [
     "35F20",
@@ -18915,6 +20346,10 @@
    "openalex_ids": [
     "W2027577971"
    ],
+   "area": "math-physics",
+   "areas": [
+    "math-physics"
+   ],
    "msc": [
     "82B99",
     "81Q10"
@@ -18984,6 +20419,10 @@
    "openalex_ids": [
     "W2620978636"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46E35"
    ],
@@ -19046,6 +20485,10 @@
    "zbl": "1022.42004",
    "zbmath_url": "https://zbmath.org/1848888",
    "openalex_ids": [],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "42A45"
    ],
@@ -19111,6 +20554,11 @@
    "zbmath_url": "https://zbmath.org/1586136",
    "openalex_ids": [
     "W1991869025"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "banach-convex"
    ],
    "msc": [
     "42B15",
@@ -19182,6 +20630,14 @@
    "zbmath_url": "https://zbmath.org/1684175",
    "openalex_ids": [
     "W1529328999"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "banach-convex",
+    "number-theory",
+    "pde",
+    "geometry-topology"
    ],
    "msc": [
     "43A46",
@@ -19278,6 +20734,10 @@
     "W1541161516",
     "W3169652528"
    ],
+   "area": "pde",
+   "areas": [
+    "pde"
+   ],
    "msc": [
     "35J60",
     "35B25",
@@ -19352,6 +20812,11 @@
    "zbmath_url": "https://zbmath.org/1777251",
    "openalex_ids": [
     "W1984861294"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "math-physics"
    ],
    "msc": [
     "47B39",
@@ -19429,6 +20894,11 @@
    "zbmath_url": "https://zbmath.org/1786646",
    "openalex_ids": [
     "W2323052534"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "math-physics"
    ],
    "msc": [
     "47B39",
@@ -19509,6 +20979,11 @@
    "openalex_ids": [
     "W1484558217",
     "W2951468687"
+   ],
+   "area": "math-physics",
+   "areas": [
+    "math-physics",
+    "banach-convex"
    ],
    "msc": [
     "81Q10",
@@ -19592,6 +21067,11 @@
    "openalex_ids": [
     "W2026911285"
    ],
+   "area": "math-physics",
+   "areas": [
+    "math-physics",
+    "pde"
+   ],
    "msc": [
     "82C10",
     "35A08",
@@ -19656,6 +21136,10 @@
    "openalex_ids": [
     "W4246899641"
    ],
+   "area": "unclassified",
+   "areas": [
+    "unclassified"
+   ],
    "msc": [],
    "msc_text": [],
    "keywords": [],
@@ -19718,6 +21202,10 @@
    "zbmath_url": "https://zbmath.org/1931224",
    "openalex_ids": [
     "W1973875578"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46E35"
@@ -19782,6 +21270,11 @@
    "zbmath_url": "https://zbmath.org/1854376",
    "openalex_ids": [
     "W1975756497"
+   ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics",
+    "pde"
    ],
    "msc": [
     "37N20",
@@ -19852,6 +21345,10 @@
    "openalex_ids": [
     "W4233218361"
    ],
+   "area": "math-physics",
+   "areas": [
+    "math-physics"
+   ],
    "msc": [
     "81Q10",
     "82B44"
@@ -19917,6 +21414,11 @@
    "zbmath_url": "https://zbmath.org/1736515",
    "openalex_ids": [
     "W2086239085"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "pde"
    ],
    "msc": [
     "47B80",
@@ -19993,6 +21495,10 @@
    "zbl": "1042.11054",
    "zbmath_url": "https://zbmath.org/1996323",
    "openalex_ids": [],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11M26",
     "11L40"
@@ -20051,6 +21557,10 @@
    "zbmath_url": "https://zbmath.org/1850613",
    "openalex_ids": [
     "W2005090831"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
    ],
    "msc": [
     "43A75",
@@ -20121,6 +21631,10 @@
    "openalex_ids": [
     "W2027154396"
    ],
+   "area": "pde",
+   "areas": [
+    "pde"
+   ],
    "msc": [
     "35F15"
    ],
@@ -20190,6 +21704,10 @@
    "openalex_ids": [
     "W1647867225",
     "W2530561127"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde"
    ],
    "msc": [
     "35Q55",
@@ -20268,6 +21786,11 @@
    "openalex_ids": [
     "W1981614724"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "math-physics"
+   ],
    "msc": [
     "47B39",
     "81Q10",
@@ -20338,6 +21861,11 @@
    "zbmath_url": "https://zbmath.org/1998321",
    "openalex_ids": [
     "W4243054343"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "math-physics"
    ],
    "msc": [
     "47A10",
@@ -20413,6 +21941,10 @@
    "zbmath_url": "https://zbmath.org/1981248",
    "openalex_ids": [
     "W2041875494"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "52A20",
@@ -20494,6 +22026,10 @@
    "openalex_ids": [
     "W1985754469"
    ],
+   "area": "geometry-topology",
+   "areas": [
+    "geometry-topology"
+   ],
    "msc": [
     "58J50"
    ],
@@ -20559,6 +22095,10 @@
    "zbmath_url": "https://zbmath.org/1981380",
    "openalex_ids": [
     "W2018262945"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11L07",
@@ -20633,6 +22173,11 @@
    "openalex_ids": [
     "W2491301873"
    ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "banach-convex"
+   ],
    "msc": [
     "35J10",
     "35B40",
@@ -20703,6 +22248,10 @@
    "zbmath_url": "https://zbmath.org/2014945",
    "openalex_ids": [
     "W2027846192"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11L07",
@@ -20783,6 +22332,12 @@
    "openalex_ids": [
     "W1571303534"
    ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "harmonic-analysis",
+    "banach-convex"
+   ],
    "msc": [
     "35F05",
     "35B10",
@@ -20860,6 +22415,11 @@
    "openalex_ids": [
     "W1997917721"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "dynamics"
+   ],
    "msc": [
     "11K55",
     "28A80"
@@ -20922,6 +22482,10 @@
    "openalex_ids": [
     "W2483103828"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "52A20",
     "52A21"
@@ -20983,6 +22547,11 @@
    "zbmath_url": "https://zbmath.org/1975221",
    "openalex_ids": [
     "W2497342538"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "math-physics"
    ],
    "msc": [
     "47B80",
@@ -21057,6 +22626,13 @@
    "openalex_ids": [
     "W2012099054",
     "W2312359555"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "dynamics",
+    "pde",
+    "math-physics"
    ],
    "msc": [
     "47B39",
@@ -21149,6 +22725,12 @@
     "W2052647521",
     "W2950777187"
    ],
+   "area": "math-physics",
+   "areas": [
+    "math-physics",
+    "pde",
+    "banach-convex"
+   ],
    "msc": [
     "82B44",
     "35B15",
@@ -21232,6 +22814,10 @@
    "zbl": "1069.30001",
    "zbmath_url": "https://zbmath.org/2151808",
    "openalex_ids": [],
+   "area": "complex-analysis",
+   "areas": [
+    "complex-analysis"
+   ],
    "msc": [
     "30A10"
    ],
@@ -21294,6 +22880,11 @@
    "zbmath_url": "https://zbmath.org/2209587",
    "openalex_ids": [
     "W2068956640"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "dynamics"
    ],
    "msc": [
     "35Q55",
@@ -21367,6 +22958,10 @@
    "openalex_ids": [
     "W1990524943",
     "W2951676251"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11B75",
@@ -21450,6 +23045,13 @@
    "openalex_ids": [
     "W2066518895",
     "W650318265"
+   ],
+   "area": "variational",
+   "areas": [
+    "variational",
+    "pde",
+    "banach-convex",
+    "math-physics"
    ],
    "msc": [
     "49Q20",
@@ -21556,6 +23158,10 @@
    "openalex_ids": [
     "W2015261071"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11L07",
     "11L05"
@@ -21630,6 +23236,11 @@
    "openalex_ids": [
     "W2038138902"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "combinatorics-cs"
+   ],
    "msc": [
     "11L07",
     "94A60"
@@ -21696,6 +23307,11 @@
    "zbmath_url": "https://zbmath.org/2093925",
    "openalex_ids": [
     "W2080217674"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "complex-analysis"
    ],
    "msc": [
     "35B25",
@@ -21774,6 +23390,13 @@
    "openalex_ids": [
     "W2482515039"
    ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "probability",
+    "banach-convex",
+    "math-physics"
+   ],
    "msc": [
     "35P20",
     "35J10",
@@ -21847,6 +23470,13 @@
    "zbmath_url": "https://zbmath.org/2077708",
    "openalex_ids": [
     "W2072186054"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "banach-convex",
+    "math-physics",
+    "dynamics"
    ],
    "msc": [
     "35P20",
@@ -21927,6 +23557,10 @@
     "W1932410633",
     "W2952221425"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11B75"
    ],
@@ -22006,6 +23640,11 @@
    "openalex_ids": [
     "W2072259735"
    ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics",
+    "pde"
+   ],
    "msc": [
     "37K55",
     "37K60",
@@ -22077,6 +23716,10 @@
    "openalex_ids": [
     "W2088615379"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11B75",
     "11L07"
@@ -22145,6 +23788,10 @@
    "openalex_ids": [
     "W2498448802"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "52A20",
     "52A40"
@@ -22211,6 +23858,11 @@
    "zbmath_url": "https://zbmath.org/5140620",
    "openalex_ids": [
     "W2911071830"
+   ],
+   "area": "math-physics",
+   "areas": [
+    "math-physics",
+    "probability"
    ],
    "msc": [
     "82B44",
@@ -22284,6 +23936,11 @@
    "zbmath_url": "https://zbmath.org/2182040",
    "openalex_ids": [
     "W2036879453"
+   ],
+   "area": "geometry-topology",
+   "areas": [
+    "geometry-topology",
+    "banach-convex"
    ],
    "msc": [
     "55M25",
@@ -22362,6 +24019,10 @@
    "openalex_ids": [
     "W2008699925"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11L07",
     "11B34",
@@ -22430,6 +24091,11 @@
    "openalex_ids": [
     "W2059892717"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "combinatorics-cs"
+   ],
    "msc": [
     "11L07",
     "68Q15",
@@ -22494,6 +24160,13 @@
    "openalex_ids": [
     "W4255881044",
     "W1485381709"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "dynamics",
+    "banach-convex",
+    "math-physics"
    ],
    "msc": [
     "35-02",
@@ -22582,6 +24255,11 @@
     "W2014577371",
     "W2737576564"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "complex-analysis"
+   ],
    "msc": [
     "46E35",
     "26D10",
@@ -22650,6 +24328,10 @@
    "zbmath_url": "https://zbmath.org/2150882",
    "openalex_ids": [
     "W1661988636"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11L07",
@@ -22725,6 +24407,10 @@
    "openalex_ids": [
     "W2158226503"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11B75",
     "11L05",
@@ -22788,6 +24474,12 @@
    "zbmath_url": "https://zbmath.org/5070431",
    "openalex_ids": [
     "W183130383"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "dynamics",
+    "combinatorics-cs"
    ],
    "msc": [
     "11B30",
@@ -22863,6 +24555,10 @@
    "openalex_ids": [
     "W2133553813"
    ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics"
+   ],
    "msc": [
     "37J40",
     "37J45",
@@ -22930,6 +24626,11 @@
    "zbmath_url": "https://zbmath.org/2240075",
    "openalex_ids": [
     "W2051633894"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "dynamics"
    ],
    "msc": [
     "35Q55",
@@ -23003,6 +24704,11 @@
    "openalex_ids": [
     "W1967068708"
    ],
+   "area": "math-physics",
+   "areas": [
+    "math-physics",
+    "banach-convex"
+   ],
    "msc": [
     "82B44",
     "47B80",
@@ -23070,6 +24776,12 @@
    "zbmath_url": "https://zbmath.org/5010213",
    "openalex_ids": [
     "W2315852012"
+   ],
+   "area": "math-physics",
+   "areas": [
+    "math-physics",
+    "dynamics",
+    "banach-convex"
    ],
    "msc": [
     "81Q10",
@@ -23150,6 +24862,10 @@
    "openalex_ids": [
     "W2017760303"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11T23"
    ],
@@ -23220,6 +24936,10 @@
    "zbmath_url": "https://zbmath.org/5046026",
    "openalex_ids": [
     "W2086509122"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46E35"
@@ -23295,6 +25015,10 @@
    "openalex_ids": [
     "W2002611642"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11B30",
     "11L07",
@@ -23369,6 +25093,10 @@
    "openalex_ids": [
     "W2047264328"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11L07",
     "11L05"
@@ -23435,6 +25163,10 @@
    "openalex_ids": [
     "W1994796562"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11L07"
    ],
@@ -23500,6 +25232,10 @@
    "openalex_ids": [
     "W2071719841"
    ],
+   "area": "combinatorics-cs",
+   "areas": [
+    "combinatorics-cs"
+   ],
    "msc": [
     "05C25"
    ],
@@ -23563,6 +25299,11 @@
    "zbmath_url": "https://zbmath.org/5057563",
    "openalex_ids": [
     "W2084898995"
+   ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics",
+    "pde"
    ],
    "msc": [
     "37L55",
@@ -23638,6 +25379,11 @@
    "openalex_ids": [
     "W2028933843"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "combinatorics-cs"
+   ],
    "msc": [
     "11T23",
     "11L07",
@@ -23711,6 +25457,10 @@
    "openalex_ids": [
     "W2095865835"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11N35",
     "11E57",
@@ -23779,6 +25529,12 @@
    "zbmath_url": "https://zbmath.org/5207479",
    "openalex_ids": [
     "W2063141203"
+   ],
+   "area": "math-physics",
+   "areas": [
+    "math-physics",
+    "banach-convex",
+    "probability"
    ],
    "msc": [
     "82B44",
@@ -23849,6 +25605,13 @@
     "W1679412906",
     "W4245821335"
    ],
+   "area": "groups",
+   "areas": [
+    "groups",
+    "harmonic-analysis",
+    "geometry-topology",
+    "math-physics"
+   ],
    "msc": [
     "22E45",
     "42A38",
@@ -23914,6 +25677,12 @@
    "zbmath_url": "https://zbmath.org/5208491",
    "openalex_ids": [
     "W1004246944"
+   ],
+   "area": "math-physics",
+   "areas": [
+    "math-physics",
+    "number-theory",
+    "geometry-topology"
    ],
    "msc": [
     "81Q50",
@@ -23984,6 +25753,11 @@
    "openalex_ids": [
     "W2485361631"
    ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "dynamics"
+   ],
    "msc": [
     "35Q55",
     "37K60"
@@ -24049,6 +25823,10 @@
    "zbmath_url": "https://zbmath.org/5243807",
    "openalex_ids": [
     "W2041847691"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11L07",
@@ -24122,6 +25900,12 @@
    "zbmath_url": "https://zbmath.org/5178513",
    "openalex_ids": [
     "W2084601434"
+   ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics",
+    "number-theory",
+    "groups"
    ],
    "msc": [
     "37A45",
@@ -24208,6 +25992,11 @@
    "openalex_ids": [
     "W2044782453"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "probability"
+   ],
    "msc": [
     "11D45",
     "11D07",
@@ -24278,6 +26067,11 @@
     "W2499830443",
     "W1572144246"
    ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "general"
+   ],
    "msc": [
     "35-06",
     "00B25"
@@ -24343,6 +26137,13 @@
    "zbmath_url": "https://zbmath.org/5177827",
    "openalex_ids": [
     "W2018540675"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "harmonic-analysis",
+    "banach-convex",
+    "geometry-topology"
    ],
    "msc": [
     "35J48",
@@ -24426,6 +26227,10 @@
    "zbl": "1200.35283",
    "zbmath_url": "https://zbmath.org/5819354",
    "openalex_ids": [],
+   "area": "pde",
+   "areas": [
+    "pde"
+   ],
    "msc": [
     "35Q55",
     "35B15"
@@ -24488,6 +26293,12 @@
    "openalex_ids": [
     "W2073376308",
     "W2950396148"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "dynamics",
+    "geometry-topology"
    ],
    "msc": [
     "42A16",
@@ -24582,6 +26393,10 @@
    "openalex_ids": [
     "W2082216223"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11L07",
     "11L05",
@@ -24648,6 +26463,11 @@
    "zbmath_url": "https://zbmath.org/5218187",
    "openalex_ids": [
     "W2475654506"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "geometry-topology"
    ],
    "msc": [
     "35Q55",
@@ -24718,6 +26538,12 @@
    "openalex_ids": [
     "W2064339630"
    ],
+   "area": "combinatorics-cs",
+   "areas": [
+    "combinatorics-cs",
+    "number-theory",
+    "probability"
+   ],
    "msc": [
     "68R10",
     "11L07",
@@ -24783,6 +26609,10 @@
    "zbmath_url": "https://zbmath.org/5208492",
    "openalex_ids": [
     "W2182360404"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11T23",
@@ -24851,6 +26681,10 @@
    "zbmath_url": "https://zbmath.org/5143671",
    "openalex_ids": [
     "W2074635726"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11B75",
@@ -24927,6 +26761,10 @@
    "zbl": "1142.01354",
    "zbmath_url": "https://zbmath.org/5251054",
    "openalex_ids": [],
+   "area": "general",
+   "areas": [
+    "general"
+   ],
    "msc": [
     "01A70"
    ],
@@ -24994,6 +26832,10 @@
    "zbmath_url": "https://zbmath.org/5303342",
    "openalex_ids": [
     "W2080017601"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11L07",
@@ -25071,6 +26913,12 @@
    "openalex_ids": [
     "W4235438866",
     "W2736402867"
+   ],
+   "area": "groups",
+   "areas": [
+    "groups",
+    "combinatorics-cs",
+    "probability"
    ],
    "msc": [
     "20G40",
@@ -25156,6 +27004,10 @@
     "W2964200067",
     "W2117742228"
    ],
+   "area": "pde",
+   "areas": [
+    "pde"
+   ],
    "msc": [
     "35Q30",
     "35B05"
@@ -25234,6 +27086,11 @@
    "openalex_ids": [
     "W4230132845"
    ],
+   "area": "probability",
+   "areas": [
+    "probability",
+    "banach-convex"
+   ],
    "msc": [
     "60H25",
     "47B80"
@@ -25301,6 +27158,12 @@
    "zbmath_url": "https://zbmath.org/5236752",
    "openalex_ids": [
     "W2031808668"
+   ],
+   "area": "groups",
+   "areas": [
+    "groups",
+    "harmonic-analysis",
+    "number-theory"
    ],
    "msc": [
     "22E30",
@@ -25375,6 +27238,10 @@
    "openalex_ids": [
     "W2096511259",
     "W2095263366"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11A07",
@@ -25451,6 +27318,12 @@
    "openalex_ids": [
     "W2733608443",
     "W2095082713"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "probability",
+    "math-physics"
    ],
    "msc": [
     "35R60",
@@ -25543,6 +27416,12 @@
    "openalex_ids": [
     "W1556156972"
    ],
+   "area": "groups",
+   "areas": [
+    "groups",
+    "combinatorics-cs",
+    "probability"
+   ],
    "msc": [
     "20G40",
     "05C25",
@@ -25613,6 +27492,10 @@
    "openalex_ids": [
     "W2083670163"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11B25",
     "11P55"
@@ -25677,6 +27560,10 @@
    "zbmath_url": "https://zbmath.org/5508687",
    "openalex_ids": [
     "W2045963062"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11B13",
@@ -25745,6 +27632,12 @@
    "zbmath_url": "https://zbmath.org/5578701",
    "openalex_ids": [
     "W2069084184"
+   ],
+   "area": "groups",
+   "areas": [
+    "groups",
+    "combinatorics-cs",
+    "number-theory"
    ],
    "msc": [
     "20G40",
@@ -25834,6 +27727,12 @@
    "openalex_ids": [
     "W2088013291"
    ],
+   "area": "math-physics",
+   "areas": [
+    "math-physics",
+    "pde",
+    "banach-convex"
+   ],
    "msc": [
     "82B44",
     "82B20",
@@ -25910,6 +27809,11 @@
    "openalex_ids": [
     "W2107123510"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "combinatorics-cs"
+   ],
    "msc": [
     "11A07",
     "11A15",
@@ -25985,6 +27889,12 @@
    "openalex_ids": [
     "W2094783167"
    ],
+   "area": "groups",
+   "areas": [
+    "groups",
+    "harmonic-analysis",
+    "number-theory"
+   ],
    "msc": [
     "22E45",
     "43A75",
@@ -26059,6 +27969,12 @@
    "zbmath_url": "https://zbmath.org/5608954",
    "openalex_ids": [
     "W2073039745"
+   ],
+   "area": "groups",
+   "areas": [
+    "groups",
+    "combinatorics-cs",
+    "probability"
    ],
    "msc": [
     "20G40",
@@ -26137,6 +28053,10 @@
    "openalex_ids": [
     "W4241789985"
    ],
+   "area": "geometry-topology",
+   "areas": [
+    "geometry-topology"
+   ],
    "msc": [
     "58J50",
     "58J37"
@@ -26201,6 +28121,10 @@
    "zbmath_url": "https://zbmath.org/5528905",
    "openalex_ids": [
     "W2026117048"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11L07",
@@ -26272,6 +28196,10 @@
    "openalex_ids": [
     "W1965702545"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11L07",
     "11B13"
@@ -26339,6 +28267,10 @@
    "zbl": "1170.42001",
    "zbmath_url": "https://zbmath.org/5565394",
    "openalex_ids": [],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "42A05"
    ],
@@ -26406,6 +28338,10 @@
    "zbmath_url": "https://zbmath.org/5610597",
    "openalex_ids": [
     "W71885251"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11B05",
@@ -26480,6 +28416,10 @@
    "zbmath_url": "https://zbmath.org/5643770",
    "openalex_ids": [
     "W2035058378"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11A07",
@@ -26556,6 +28496,11 @@
    "openalex_ids": [
     "W2964165222",
     "W2012321181"
+   ],
+   "area": "geometry-topology",
+   "areas": [
+    "geometry-topology",
+    "pde"
    ],
    "msc": [
     "58J50",
@@ -26643,6 +28588,10 @@
    "openalex_ids": [
     "W1979720289"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11C08",
     "11G25",
@@ -26725,6 +28674,10 @@
    "openalex_ids": [
     "W645049012"
    ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics"
+   ],
    "msc": [
     "37A05",
     "28D20"
@@ -26801,6 +28754,10 @@
    "openalex_ids": [
     "W1967261778"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11B30",
     "11R99"
@@ -26862,6 +28819,12 @@
    "zbl": "1221.11030",
    "zbmath_url": "https://zbmath.org/5528953",
    "openalex_ids": [],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "combinatorics-cs",
+    "groups"
+   ],
    "msc": [
     "11B30",
     "11B75",
@@ -26935,6 +28898,10 @@
    "zbmath_url": "https://zbmath.org/5675041",
    "openalex_ids": [
     "W2035394841"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11N35",
@@ -27012,6 +28979,10 @@
    "zbmath_url": "https://zbmath.org/5833799",
    "openalex_ids": [
     "W2037870764"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11F12",
@@ -27096,6 +29067,10 @@
    "openalex_ids": [
     "W2058855731"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11L07",
     "11L05"
@@ -27163,6 +29138,10 @@
    "zbmath_url": "https://zbmath.org/5793929",
    "openalex_ids": [
     "W2092098492"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
    ],
    "msc": [
     "42A16"
@@ -27255,6 +29234,11 @@
    "openalex_ids": [
     "W2254051992"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "groups"
+   ],
    "msc": [
     "11B30",
     "20G40",
@@ -27323,6 +29307,10 @@
    "zbmath_url": "https://zbmath.org/5682588",
    "openalex_ids": [
     "W2079326852"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11L40"
@@ -27395,6 +29383,10 @@
    "openalex_ids": [
     "W2068949955",
     "W2953014873"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11E25"
@@ -27472,6 +29464,10 @@
    "openalex_ids": [
     "W138605413"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11T23",
     "11L05"
@@ -27540,6 +29536,10 @@
    "openalex_ids": [
     "W2011080264",
     "W1645545914"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11F12",
@@ -27626,6 +29626,10 @@
    "openalex_ids": [
     "W2093265813"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11N69",
     "11A07",
@@ -27708,6 +29712,10 @@
    "openalex_ids": [
     "W1995416687",
     "W2951327528"
+   ],
+   "area": "probability",
+   "areas": [
+    "probability"
    ],
    "msc": [
     "60B20",
@@ -27799,6 +29807,10 @@
    "openalex_ids": [
     "W1970060325"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11M41"
    ],
@@ -27867,6 +29879,11 @@
    "zbmath_url": "https://zbmath.org/5822837",
    "openalex_ids": [
     "W2065590161"
+   ],
+   "area": "groups",
+   "areas": [
+    "groups",
+    "dynamics"
    ],
    "msc": [
     "22E45",
@@ -27951,6 +29968,10 @@
    "openalex_ids": [
     "W1511393365"
    ],
+   "area": "groups",
+   "areas": [
+    "groups"
+   ],
    "msc": [
     "22E30"
    ],
@@ -28016,6 +30037,10 @@
    "zbmath_url": "https://zbmath.org/5885125",
    "openalex_ids": [
     "W2167375701"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11L07",
@@ -28085,6 +30110,11 @@
    "zbmath_url": "https://zbmath.org/5864352",
    "openalex_ids": [
     "W1965246163"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "dynamics"
    ],
    "msc": [
     "11B30",
@@ -28158,6 +30188,11 @@
    "openalex_ids": [
     "W1558981179",
     "W2949184846"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "harmonic-analysis"
    ],
    "msc": [
     "11R42",
@@ -28249,6 +30284,10 @@
    "zbl": "1185.00038",
    "zbmath_url": "https://zbmath.org/5662096",
    "openalex_ids": [],
+   "area": "general",
+   "areas": [
+    "general"
+   ],
    "msc": [
     "00B25",
     "01A67"
@@ -28303,6 +30342,10 @@
    "zbmath_url": "https://zbmath.org/5662095",
    "openalex_ids": [
     "W4241796606"
+   ],
+   "area": "general",
+   "areas": [
+    "general"
    ],
    "msc": [
     "01A67",
@@ -28372,6 +30415,11 @@
     "W2950776894",
     "W4321033838",
     "W3008068024"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "banach-convex"
    ],
    "msc": [
     "11H31",
@@ -28467,6 +30515,10 @@
    "openalex_ids": [
     "W2093811858"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "42B20"
    ],
@@ -28544,6 +30596,11 @@
    "openalex_ids": [
     "W2102463446",
     "W2951140304"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "banach-convex"
    ],
    "msc": [
     "42B20",
@@ -28628,6 +30685,10 @@
     "W2003868973",
     "W2186271622"
    ],
+   "area": "combinatorics-cs",
+   "areas": [
+    "combinatorics-cs"
+   ],
    "msc": [
     "68P30",
     "68W05"
@@ -28705,6 +30766,12 @@
    "zbmath_url": "https://zbmath.org/5941084",
    "openalex_ids": [
     "W3105703423"
+   ],
+   "area": "combinatorics-cs",
+   "areas": [
+    "combinatorics-cs",
+    "number-theory",
+    "complex-analysis"
    ],
    "msc": [
     "94A12",
@@ -28796,6 +30863,10 @@
    "openalex_ids": [
     "W2031022397"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11T23",
     "11L07",
@@ -28869,6 +30940,10 @@
    "openalex_ids": [
     "W2593370177",
     "W2950864842"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11F72",
@@ -28955,6 +31030,10 @@
    "openalex_ids": [
     "W1975495885"
    ],
+   "area": "geometry-topology",
+   "areas": [
+    "geometry-topology"
+   ],
    "msc": [
     "58J50",
     "58C40"
@@ -29039,6 +31118,10 @@
    "openalex_ids": [
     "W3104385371"
    ],
+   "area": "geometry-topology",
+   "areas": [
+    "geometry-topology"
+   ],
    "msc": [
     "58J50",
     "58C40"
@@ -29122,6 +31205,10 @@
    "openalex_ids": [
     "W2331145162"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11N69",
     "11K36",
@@ -29203,6 +31290,10 @@
     "W2008701128",
     "W4300090264",
     "W4394639508"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11A55",
@@ -29297,6 +31388,12 @@
    "openalex_ids": [
     "W2089236760"
    ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics",
+    "number-theory",
+    "groups"
+   ],
    "msc": [
     "37A45",
     "37A17",
@@ -29373,6 +31470,10 @@
    "openalex_ids": [
     "W1982823249"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11B30",
     "11T99"
@@ -29442,6 +31543,10 @@
    "zbmath_url": "https://zbmath.org/900151156",
    "openalex_ids": [
     "W2255485431"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11N05",
@@ -29520,6 +31625,12 @@
    "zbmath_url": "https://zbmath.org/6095887",
    "openalex_ids": [
     "W2068585082"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "number-theory",
+    "groups"
    ],
    "msc": [
     "43A75",
@@ -29609,6 +31720,10 @@
    "openalex_ids": [
     "W2080199575"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11B30"
    ],
@@ -29687,6 +31802,11 @@
    "openalex_ids": [
     "W3124631259"
    ],
+   "area": "groups",
+   "areas": [
+    "groups",
+    "combinatorics-cs"
+   ],
    "msc": [
     "20G40",
     "20F05",
@@ -29762,6 +31882,10 @@
    "openalex_ids": [
     "W7687707"
    ],
+   "area": "probability",
+   "areas": [
+    "probability"
+   ],
    "msc": [
     "60B15"
    ],
@@ -29829,6 +31953,10 @@
     "W2950280316",
     "W4297958270",
     "W2188394858"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde"
    ],
    "msc": [
     "35Q55",
@@ -29921,6 +32049,11 @@
     "W2594607613",
     "W2952537136"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "number-theory"
+   ],
    "msc": [
     "52C15",
     "11H55"
@@ -30002,6 +32135,11 @@
    "zbmath_url": "https://zbmath.org/6149446",
    "openalex_ids": [
     "W3037639758"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "math-physics"
    ],
    "msc": [
     "35P20",
@@ -30090,6 +32228,10 @@
     "W3037025887",
     "W4293411733"
    ],
+   "area": "combinatorics-cs",
+   "areas": [
+    "combinatorics-cs"
+   ],
    "msc": [
     "68R10",
     "05C40"
@@ -30169,6 +32311,10 @@
    "openalex_ids": [
     "W2048793214",
     "W2949316040"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11E16",
@@ -30250,6 +32396,10 @@
     "W2951781900",
     "W4298129730"
    ],
+   "area": "math-physics",
+   "areas": [
+    "math-physics"
+   ],
    "msc": [
     "82B44"
    ],
@@ -30329,6 +32479,11 @@
    "zbmath_url": "https://zbmath.org/6146315",
    "openalex_ids": [
     "W2018522713"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "combinatorics-cs"
    ],
    "msc": [
     "11T06",
@@ -30410,6 +32565,10 @@
    "zbmath_url": "https://zbmath.org/6100614",
    "openalex_ids": [
     "W2061000403"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11A67",
@@ -30493,6 +32652,10 @@
    "openalex_ids": [
     "W1972507835"
    ],
+   "area": "geometry-topology",
+   "areas": [
+    "geometry-topology"
+   ],
    "msc": [
     "53C21",
     "53C40",
@@ -30574,6 +32737,10 @@
    "openalex_ids": [
     "W2041124047"
    ],
+   "area": "complex-analysis",
+   "areas": [
+    "complex-analysis"
+   ],
    "msc": [
     "30B50",
     "41A46"
@@ -30639,6 +32806,11 @@
    "zbmath_url": "https://zbmath.org/6235201",
    "openalex_ids": [
     "W1983554675"
+   ],
+   "area": "math-physics",
+   "areas": [
+    "math-physics",
+    "probability"
    ],
    "msc": [
     "82B44",
@@ -30714,6 +32886,10 @@
    "openalex_ids": [
     "W152445509"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11B30",
     "11P70"
@@ -30781,6 +32957,10 @@
    "zbmath_url": "https://zbmath.org/6225182",
    "openalex_ids": [
     "W3098935834"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde"
    ],
    "msc": [
     "35J10",
@@ -30863,6 +33043,11 @@
    "openalex_ids": [
     "W2049002510",
     "W2950575002"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "geometry-topology"
    ],
    "msc": [
     "35J10",
@@ -30948,6 +33133,11 @@
    "openalex_ids": [
     "W1990547060"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "number-theory"
+   ],
    "msc": [
     "52C15",
     "11H55"
@@ -31020,6 +33210,11 @@
    "openalex_ids": [
     "W1607270352",
     "W4298225238"
+   ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics",
+    "number-theory"
    ],
    "msc": [
     "37D40",
@@ -31101,6 +33296,10 @@
    "openalex_ids": [
     "W2009590126"
    ],
+   "area": "combinatorics-cs",
+   "areas": [
+    "combinatorics-cs"
+   ],
    "msc": [
     "05C25",
     "05C80",
@@ -31174,6 +33373,11 @@
    "openalex_ids": [
     "W1557360229",
     "W4299492452"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "number-theory"
    ],
    "msc": [
     "42B05",
@@ -31264,6 +33468,10 @@
     "W2051074156",
     "W2949261118"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11N37"
    ],
@@ -31338,6 +33546,10 @@
     "W2003035873",
     "W2951835206",
     "W4301929988"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
    ],
    "msc": [
     "42C05"
@@ -31420,6 +33632,10 @@
     "W1972147519",
     "W2951242482"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11D79",
     "11L40",
@@ -31500,6 +33716,11 @@
    "zbl": "1464.35160",
    "zbmath_url": "https://zbmath.org/6437691",
    "openalex_ids": [],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "geometry-topology"
+   ],
    "msc": [
     "35P05",
     "58J50"
@@ -31564,6 +33785,11 @@
    "openalex_ids": [
     "W2034940338",
     "W1535205119"
+   ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics",
+    "number-theory"
    ],
    "msc": [
     "37A30",
@@ -31643,6 +33869,10 @@
     "W2914278148",
     "W2953244305"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11F30",
     "11P55"
@@ -31715,6 +33945,11 @@
    "openalex_ids": [
     "W1784227015",
     "W4300849396"
+   ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics",
+    "math-physics"
    ],
    "msc": [
     "37D25",
@@ -31802,6 +34037,12 @@
    "openalex_ids": [
     "W1989878775"
    ],
+   "area": "complex-analysis",
+   "areas": [
+    "complex-analysis",
+    "banach-convex",
+    "geometry-topology"
+   ],
    "msc": [
     "26B30",
     "46E35",
@@ -31887,6 +34128,11 @@
     "W2073707421",
     "W2950731450"
    ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "harmonic-analysis"
+   ],
    "msc": [
     "35Q41",
     "42B20",
@@ -31964,6 +34210,10 @@
    "openalex_ids": [
     "W2042041813",
     "W2949359493"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11N05",
@@ -32045,6 +34295,11 @@
    "openalex_ids": [
     "W2008963183"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "combinatorics-cs"
+   ],
    "msc": [
     "11B30",
     "05C25",
@@ -32110,6 +34365,10 @@
    "zbmath_url": "https://zbmath.org/900180035",
    "openalex_ids": [
     "W2513458383"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11G30",
@@ -32195,6 +34454,11 @@
     "W2763807351",
     "W4300976127"
    ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "math-physics"
+   ],
    "msc": [
     "35Q55",
     "82B10"
@@ -32278,6 +34542,10 @@
    "zbmath_url": "https://zbmath.org/6378483",
    "openalex_ids": [
     "W2044219349"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde"
    ],
    "msc": [
     "35Q55",
@@ -32368,6 +34636,10 @@
     "W2592040886",
     "W2951205795"
    ],
+   "area": "math-physics",
+   "areas": [
+    "math-physics"
+   ],
    "msc": [
     "82B44"
    ],
@@ -32438,6 +34710,11 @@
    "openalex_ids": [
     "W641843003"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "combinatorics-cs"
+   ],
    "msc": [
     "46B07",
     "94A20",
@@ -32504,6 +34781,10 @@
    "zbmath_url": "https://zbmath.org/900186841",
    "openalex_ids": [
     "W2154417557"
+   ],
+   "area": "unclassified",
+   "areas": [
+    "unclassified"
    ],
    "msc": [],
    "msc_text": [],
@@ -32579,6 +34860,10 @@
    "openalex_ids": [
     "W2001028989",
     "W4297914559"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde"
    ],
    "msc": [
     "35L71",
@@ -32665,6 +34950,10 @@
     "W2962820274",
     "W2030066216"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11L05"
    ],
@@ -32742,6 +35031,10 @@
    "openalex_ids": [
     "W1781479974"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "42A70"
    ],
@@ -32816,6 +35109,10 @@
    "openalex_ids": [
     "W2161171711",
     "W2952771709"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11N56",
@@ -32902,6 +35199,10 @@
     "W2017277338",
     "W2950667477"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11A07",
     "11L05"
@@ -32982,6 +35283,11 @@
    "openalex_ids": [
     "W1565772157"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "banach-convex"
+   ],
    "msc": [
     "42B15",
     "42B20",
@@ -33049,6 +35355,11 @@
    "openalex_ids": [
     "W1696973093",
     "W4298930562"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "math-physics"
    ],
    "msc": [
     "35P15",
@@ -33123,6 +35434,10 @@
     "W4241680241",
     "W2497308208"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "42B20",
     "42B15",
@@ -33186,6 +35501,11 @@
    "zbmath_url": "https://zbmath.org/6445127",
    "openalex_ids": [
     "W2206326492"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "variational"
    ],
    "msc": [
     "35Q41",
@@ -33254,6 +35574,10 @@
    "openalex_ids": [
     "W1978855282",
     "W2949786046"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
    ],
    "msc": [
     "42B25"
@@ -33325,6 +35649,11 @@
    "openalex_ids": [
     "W1589760201",
     "W4302107335"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "math-physics"
    ],
    "msc": [
     "35P15",
@@ -33405,6 +35734,11 @@
     "W1530354142",
     "W2950222558"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "banach-convex"
+   ],
    "msc": [
     "11F03",
     "52C26",
@@ -33483,6 +35817,10 @@
    "openalex_ids": [
     "W2591747415",
     "W2950951587"
+   ],
+   "area": "probability",
+   "areas": [
+    "probability"
    ],
    "msc": [
     "60B99"
@@ -33563,6 +35901,10 @@
     "W4300090264",
     "W4394639508",
     "W141811253"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11J70",
@@ -33658,6 +36000,10 @@
    "openalex_ids": [
     "W2063750419"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46E30"
    ],
@@ -33736,6 +36082,10 @@
    "openalex_ids": [
     "W1987160642"
    ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics"
+   ],
    "msc": [
     "37B20",
     "37L99"
@@ -33809,6 +36159,10 @@
    "zbl": "1370.11082",
    "zbmath_url": "https://zbmath.org/6587480",
    "openalex_ids": [],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11J70",
     "11H31"
@@ -33871,6 +36225,10 @@
    "openalex_ids": [
     "W2963709927",
     "W2018837709"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11L05",
@@ -33956,6 +36314,10 @@
     "W2134269164",
     "W4300977194"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "46E35"
    ],
@@ -34026,6 +36388,11 @@
    "zbmath_url": "https://zbmath.org/6440259",
    "openalex_ids": [
     "W1982399961"
+   ],
+   "area": "math-physics",
+   "areas": [
+    "math-physics",
+    "banach-convex"
    ],
    "msc": [
     "82B44",
@@ -34115,6 +36482,10 @@
    "openalex_ids": [
     "W2033839668"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11E25",
     "11D45",
@@ -34188,6 +36559,10 @@
    "openalex_ids": [
     "W2058903901",
     "W2952174703"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11D09",
@@ -34269,6 +36644,11 @@
    "openalex_ids": [
     "W2055966713",
     "W4298175102"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "combinatorics-cs"
    ],
    "msc": [
     "11T06",
@@ -34368,6 +36748,10 @@
    "zbl": "1338.01046",
    "zbmath_url": "https://zbmath.org/6593380",
    "openalex_ids": [],
+   "area": "general",
+   "areas": [
+    "general"
+   ],
    "msc": [
     "01A70"
    ],
@@ -34442,6 +36826,12 @@
    "openalex_ids": [
     "W2321545141",
     "W1827964356"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "banach-convex",
+    "number-theory"
    ],
    "msc": [
     "42B10",
@@ -34526,6 +36916,10 @@
    "openalex_ids": [
     "W2038321659"
    ],
+   "area": "geometry-topology",
+   "areas": [
+    "geometry-topology"
+   ],
    "msc": [
     "58J50"
    ],
@@ -34608,6 +37002,10 @@
     "W2066254388",
     "W2952145695"
    ],
+   "area": "geometry-topology",
+   "areas": [
+    "geometry-topology"
+   ],
    "msc": [
     "58J50"
    ],
@@ -34684,6 +37082,11 @@
    "openalex_ids": [
     "W2079618200",
     "W2950202681"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "geometry-topology"
    ],
    "msc": [
     "35P05",
@@ -34767,6 +37170,12 @@
     "W1574390304",
     "W4293729241"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "geometry-topology",
+    "complex-analysis"
+   ],
    "msc": [
     "46E35",
     "58K05",
@@ -34849,6 +37258,10 @@
    "openalex_ids": [
     "W1962555097"
    ],
+   "area": "unclassified",
+   "areas": [
+    "unclassified"
+   ],
    "msc": [],
    "msc_text": [],
    "keywords": [],
@@ -34919,6 +37332,10 @@
    "openalex_ids": [
     "W4242494653",
     "W2269388292"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11N05",
@@ -34998,6 +37415,10 @@
    "openalex_ids": [
     "W2014792425",
     "W2952329349"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde"
    ],
    "msc": [
     "35Q31"
@@ -35087,6 +37508,10 @@
     "W2158129648",
     "W2950453121"
    ],
+   "area": "pde",
+   "areas": [
+    "pde"
+   ],
    "msc": [
     "35Q31",
     "35B30",
@@ -35174,6 +37599,10 @@
     "W2963601014",
     "W1968766270"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11N35",
     "11N36"
@@ -35252,6 +37681,11 @@
    "zbmath_url": "https://zbmath.org/6456013",
    "openalex_ids": [
     "W2101393066"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "number-theory"
    ],
    "msc": [
     "42B10",
@@ -35335,6 +37769,12 @@
    "zbmath_url": "https://zbmath.org/900254658",
    "openalex_ids": [
     "W2238180082"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "dynamics",
+    "groups"
    ],
    "msc": [
     "11A55",
@@ -35422,6 +37862,10 @@
     "W2062139226",
     "W2952019664",
     "W4299168148"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
    ],
    "msc": [
     "46B07",
@@ -35519,6 +37963,10 @@
     "W2952019664",
     "W4299168148"
    ],
+   "area": "combinatorics-cs",
+   "areas": [
+    "combinatorics-cs"
+   ],
    "msc": [
     "68U05",
     "68T05",
@@ -35609,6 +38057,11 @@
     "W1517838246",
     "W2594979582"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "combinatorics-cs"
+   ],
    "msc": [
     "11T23",
     "68W20"
@@ -35686,6 +38139,10 @@
    "openalex_ids": [
     "W2522608118"
    ],
+   "area": "pde",
+   "areas": [
+    "pde"
+   ],
    "msc": [
     "35Q41",
     "35J10"
@@ -35760,6 +38217,10 @@
    "zbmath_url": "https://zbmath.org/6673582",
    "openalex_ids": [
     "W2338738010"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11E20",
@@ -35843,6 +38304,12 @@
    "openalex_ids": [
     "W1945494909",
     "W2949380832"
+   ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "harmonic-analysis",
+    "dynamics"
    ],
    "msc": [
     "46E30",
@@ -35933,6 +38400,10 @@
     "W2963553121",
     "W1941347332"
    ],
+   "area": "geometry-topology",
+   "areas": [
+    "geometry-topology"
+   ],
    "msc": [
     "53A07"
    ],
@@ -36009,6 +38480,10 @@
    "openalex_ids": [
     "W1557519337",
     "W4299518981"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11K36",
@@ -36097,6 +38572,10 @@
    "openalex_ids": [
     "W2472703806"
    ],
+   "area": "unclassified",
+   "areas": [
+    "unclassified"
+   ],
    "msc": [],
    "msc_text": [],
    "keywords": [],
@@ -36171,6 +38650,10 @@
    "zbmath_url": "https://zbmath.org/6688726",
    "openalex_ids": [
     "W426338810"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11D25",
@@ -36266,6 +38749,11 @@
    "openalex_ids": [
     "W2257477076"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "harmonic-analysis"
+   ],
    "msc": [
     "11L07",
     "42A45"
@@ -36337,6 +38825,10 @@
    "openalex_ids": [
     "W2469794911"
    ],
+   "area": "unclassified",
+   "areas": [
+    "unclassified"
+   ],
    "msc": [],
    "msc_text": [],
    "keywords": [],
@@ -36405,6 +38897,10 @@
    "zbmath_url": "https://zbmath.org/6575181",
    "openalex_ids": [
     "W2074021479"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11F30",
@@ -36481,6 +38977,10 @@
    "openalex_ids": [
     "W2336787249",
     "W574820268"
+   ],
+   "area": "complex-analysis",
+   "areas": [
+    "complex-analysis"
    ],
    "msc": [
     "32A37"
@@ -36566,6 +39066,11 @@
     "W2963179430",
     "W2192574323"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "harmonic-analysis"
+   ],
    "msc": [
     "11L07",
     "42B37"
@@ -36649,6 +39154,10 @@
     "W1524820794",
     "W4302378658"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex"
+   ],
    "msc": [
     "47B10",
     "47B15",
@@ -36729,6 +39238,10 @@
    "zbmath_url": "https://zbmath.org/6707251",
    "openalex_ids": [
     "W2337264288"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
    ],
    "msc": [
     "42B37",
@@ -36811,6 +39324,11 @@
    "openalex_ids": [
     "W1529668061"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "dynamics"
+   ],
    "msc": [
     "11J70",
     "11N36",
@@ -36889,6 +39407,11 @@
    "openalex_ids": [
     "W1592212038",
     "W2952369299"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "harmonic-analysis"
    ],
    "msc": [
     "11M06",
@@ -36972,6 +39495,11 @@
    "openalex_ids": [
     "W2276104834"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "number-theory"
+   ],
    "msc": [
     "42B10",
     "11L07"
@@ -37049,6 +39577,10 @@
    "zbmath_url": "https://zbmath.org/6822169",
    "openalex_ids": [
     "W1763824309"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
    ],
    "msc": [
     "42B37",
@@ -37132,6 +39664,12 @@
    "zbmath_url": "https://zbmath.org/6766918",
    "openalex_ids": [
     "W3100791469"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "dynamics",
+    "geometry-topology"
    ],
    "msc": [
     "11M36",
@@ -37225,6 +39763,11 @@
     "W2950337102",
     "W4309357847"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "dynamics"
+   ],
    "msc": [
     "11B30",
     "37A44"
@@ -37298,6 +39841,10 @@
    "openalex_ids": [
     "W2605838548"
    ],
+   "area": "probability",
+   "areas": [
+    "probability"
+   ],
    "msc": [
     "60B20",
     "15B52"
@@ -37360,6 +39907,11 @@
    "openalex_ids": [
     "W1854241383",
     "W4301757129"
+   ],
+   "area": "probability",
+   "areas": [
+    "probability",
+    "groups"
    ],
    "msc": [
     "60G50",
@@ -37438,6 +39990,10 @@
    "zbmath_url": "https://zbmath.org/6740895",
    "openalex_ids": [
     "W2254143618"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11P55",
@@ -37524,6 +40080,11 @@
     "W2964115243",
     "W2513041523"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "harmonic-analysis"
+   ],
    "msc": [
     "11L07",
     "42A45"
@@ -37603,6 +40164,10 @@
    "zbmath_url": "https://zbmath.org/6821975",
    "openalex_ids": [
     "W765552506"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
    ],
    "msc": [
     "43A46",
@@ -37693,6 +40258,11 @@
     "W2963648052",
     "W2338863159",
     "W4394651589"
+   ],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "number-theory"
    ],
    "msc": [
     "35P20",
@@ -37804,6 +40374,10 @@
     "W4300911566",
     "W2472119140"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11K36",
     "11E25",
@@ -37887,6 +40461,10 @@
     "W2756281923",
     "W4297699319"
    ],
+   "area": "unclassified",
+   "areas": [
+    "unclassified"
+   ],
    "msc": [],
    "msc_text": [],
    "keywords": [],
@@ -37953,6 +40531,10 @@
    "zbl": "1390.01053",
    "zbmath_url": "https://zbmath.org/6881488",
    "openalex_ids": [],
+   "area": "general",
+   "areas": [
+    "general"
+   ],
    "msc": [
     "01A70"
    ],
@@ -38009,6 +40591,10 @@
    "zbmath_url": "https://zbmath.org/6999196",
    "openalex_ids": [
     "W2155265819"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11J70",
@@ -38094,6 +40680,10 @@
    "openalex_ids": [
     "W217202944",
     "W4297914352"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11N37",
@@ -38181,6 +40771,12 @@
    "zbl": "1401.35356",
    "zbmath_url": "https://zbmath.org/6945672",
    "openalex_ids": [],
+   "area": "pde",
+   "areas": [
+    "pde",
+    "banach-convex",
+    "probability"
+   ],
    "msc": [
     "35R60",
     "47G10",
@@ -38261,6 +40857,11 @@
     "W2734332248",
     "W2200022365",
     "W2962756617"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "harmonic-analysis"
    ],
    "msc": [
     "11C08",
@@ -38350,6 +40951,11 @@
     "W2963562217",
     "W2748785677"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "banach-convex"
+   ],
    "msc": [
     "42B25",
     "47J20",
@@ -38430,6 +41036,10 @@
    "openalex_ids": [
     "W2296488302"
    ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
+   ],
    "msc": [
     "11D09",
     "11L05"
@@ -38503,6 +41113,10 @@
    "openalex_ids": [
     "W2903139443"
    ],
+   "area": "unclassified",
+   "areas": [
+    "unclassified"
+   ],
    "msc": [],
    "msc_text": [],
    "keywords": [],
@@ -38575,6 +41189,12 @@
    "zbmath_url": "https://zbmath.org/6864391",
    "openalex_ids": [
     "W2564484887"
+   ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics",
+    "complex-analysis",
+    "pde"
    ],
    "msc": [
     "37K25",
@@ -38671,6 +41291,11 @@
     "W2900963555",
     "W2949476165"
    ],
+   "area": "banach-convex",
+   "areas": [
+    "banach-convex",
+    "math-physics"
+   ],
    "msc": [
     "47Bxx",
     "34Bxx",
@@ -38750,6 +41375,11 @@
    "zbl": "1447.11079",
    "zbmath_url": "https://zbmath.org/7174391",
    "openalex_ids": [],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "dynamics"
+   ],
    "msc": [
     "11J70",
     "11N36",
@@ -38841,6 +41471,10 @@
     "W2799264886",
     "W4293197064"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "42B25"
    ],
@@ -38920,6 +41554,10 @@
    "openalex_ids": [
     "W2918131864"
    ],
+   "area": "pde",
+   "areas": [
+    "pde"
+   ],
    "msc": [
     "35Q31",
     "76D03",
@@ -38997,6 +41635,11 @@
    "openalex_ids": [
     "W2969824762",
     "W4288260225"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "number-theory"
    ],
    "msc": [
     "42B10",
@@ -39081,6 +41724,10 @@
    "openalex_ids": [
     "W4289220902"
    ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis"
+   ],
    "msc": [
     "42B25"
    ],
@@ -39157,6 +41804,10 @@
    "openalex_ids": [
     "W2902404054",
     "W4289236766"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory"
    ],
    "msc": [
     "11L03"
@@ -39236,6 +41887,11 @@
    "openalex_ids": [
     "W2902576419",
     "W4289233405"
+   ],
+   "area": "harmonic-analysis",
+   "areas": [
+    "harmonic-analysis",
+    "banach-convex"
    ],
    "msc": [
     "42B25",
@@ -39320,6 +41976,10 @@
    "openalex_ids": [
     "W2967064632"
    ],
+   "area": "pde",
+   "areas": [
+    "pde"
+   ],
    "msc": [
     "35Q31",
     "76D03"
@@ -39392,6 +42052,12 @@
    "openalex_ids": [
     "W4386847906",
     "W4297847532"
+   ],
+   "area": "dynamics",
+   "areas": [
+    "dynamics",
+    "harmonic-analysis",
+    "number-theory"
    ],
    "msc": [
     "37A30",
@@ -39490,6 +42156,11 @@
    "zbl": null,
    "zbmath_url": "https://zbmath.org/7933858",
    "openalex_ids": [],
+   "area": "combinatorics-cs",
+   "areas": [
+    "combinatorics-cs",
+    "probability"
+   ],
    "msc": [
     "68Qxx",
     "05D05",
@@ -39564,6 +42235,11 @@
    "zbmath_url": "https://zbmath.org/8104010",
    "openalex_ids": [
     "W4413816611"
+   ],
+   "area": "number-theory",
+   "areas": [
+    "number-theory",
+    "groups"
    ],
    "msc": [
     "11D99",

@@ -1,5 +1,4 @@
 {
- "_comment": "Scaffolding only. Ideas arrive here from ideas-<paper>.md files produced by blueprints/idea-blueprint.md, merged by tools/merge_ideas.py. Do not hand-write the toolkit ahead of the reading; the point is that it is the residue of digesting actual papers.",
  "schema": {
   "id": "kebab-case stable key, e.g. 'induction-on-scales'",
   "name": "display name, e.g. 'Induction on scales'",
@@ -71,7 +70,244 @@
    ]
   }
  ],
- "ideas": [],
+ "ideas": [
+  {
+   "id": "iterative-correction",
+   "name": "Iterative correction",
+   "stratum": "strategy",
+   "gloss": "Do not build the object; build a sequence converging to it. At each stage add a correction that improves the target quantity by a factor bounded away from 1, uniformly in the stage, and let the limit inherit what every stage had. The difficulty is always to extract a stage-independent gain from a construction whose ingredients are all chosen afresh each time.",
+   "aliases": [
+    "correction theorem",
+    "successive modification",
+    "iteration scheme"
+   ],
+   "papers": [
+    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3"
+   ],
+   "first_seen": "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
+   "see_also": [
+    "summable-loss-budget",
+    "stopping-time-selection"
+   ],
+   "score": 1
+  },
+  {
+   "id": "summable-loss-budget",
+   "name": "Summable loss budget",
+   "stratum": "strategy",
+   "gloss": "Let each stage of a construction destroy a little of the arena, arrange the losses to be summable, and require the total to fall short of the whole. What is left over is the conclusion. Turns an existence statement into an inequality between constants and shows at once which parameter to tune when it fails.",
+   "aliases": [
+    "measure budget",
+    "exceptional set accounting"
+   ],
+   "papers": [
+    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3"
+   ],
+   "first_seen": "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
+   "see_also": [
+    "iterative-correction",
+    "stopping-time-selection"
+   ],
+   "score": 1
+  },
+  {
+   "id": "stopping-time-selection",
+   "name": "Stopping time selection",
+   "stratum": "technique",
+   "gloss": "Run a nested family of scales and, at each one, keep only the cells passing a local test — typically that a local average is below a stage-dependent threshold. The cells that fail are discarded, and their total measure is read straight off the failed test rather than estimated separately. The nesting is what makes the survivor sets decrease.",
+   "aliases": [
+    "stopping time",
+    "selection algorithm",
+    "survivor set",
+    "good/bad cells"
+   ],
+   "papers": [
+    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3"
+   ],
+   "first_seen": "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
+   "see_also": [
+    "summable-loss-budget",
+    "large-small-dichotomy"
+   ],
+   "score": 1
+  },
+  {
+   "id": "small-support-perturbation",
+   "name": "Small support perturbation",
+   "stratum": "technique",
+   "gloss": "Perturb on a set small enough that the total measure touched, summed over all stages, stays under budget. The perturbation can then change a derivative or a spectral quantity everywhere while leaving the object itself unchanged off a negligible set — which is what lets two properties be forced on one and the same set rather than on two different ones.",
+   "aliases": [
+    "compactly supported correction",
+    "local surgery"
+   ],
+   "papers": [
+    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3"
+   ],
+   "first_seen": "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
+   "see_also": [
+    "scaling-normalisation",
+    "summable-loss-budget"
+   ],
+   "score": 1
+  },
+  {
+   "id": "dyadic-decomposition",
+   "name": "Dyadic decomposition",
+   "stratum": "primitive",
+   "gloss": "Split an object across dyadic scales, estimate each scale separately, and sum. The payoff is that a bound which is false uniformly is often true scale by scale with a geometric factor, so the sum converges. Also the standard way to truncate a slowly decaying object without losing control of its derivatives at the cut.",
+   "aliases": [
+    "Littlewood-Paley",
+    "annular decomposition",
+    "dyadic pigeonholing"
+   ],
+   "papers": [
+    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3"
+   ],
+   "first_seen": "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
+   "see_also": [],
+   "score": 1
+  },
+  {
+   "id": "scaling-normalisation",
+   "name": "Scaling normalisation",
+   "stratum": "primitive",
+   "gloss": "Choose the scaling of a construction so that the competing quantities land at the orders the argument needs — typically so that one of them is O(1) while another is small. Equivalently, state a local statement in a form homogeneous in the local data and reduce to the unit case. When a statement fails to be homogeneous, that is usually a symptom of a missing factor rather than of a subtlety.",
+   "aliases": [
+    "reduction to unit scale",
+    "homogeneity",
+    "amplitude scaling"
+   ],
+   "papers": [
+    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3"
+   ],
+   "first_seen": "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
+   "see_also": [],
+   "score": 1
+  },
+  {
+   "id": "large-small-dichotomy",
+   "name": "Large/small dichotomy",
+   "stratum": "technique",
+   "gloss": "Split the objects of a stage by whether some quantity exceeds a threshold. Where it is large, apply machinery that gains a factor; where it is small, do not bother — bound it absolutely, since it is already past the target. Machinery that has to divide by the quantity is useless where it is near zero, and the dichotomy quarantines exactly those cases.",
+   "aliases": [
+    "type 1 / type 2",
+    "big-small split"
+   ],
+   "papers": [
+    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3"
+   ],
+   "first_seen": "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
+   "see_also": [
+    "stopping-time-selection"
+   ],
+   "score": 1
+  },
+  {
+   "id": "sub-unit-exponent",
+   "name": "Working below exponent one",
+   "stratum": "technique",
+   "gloss": "For 0 < p < 1 there is no norm and no triangle inequality, but |.|^p is subadditive and small powers flatten large values almost completely — so an integral of |1+t|^p can sit below the measure of the domain, which is impossible for p >= 1. That deficit is often the only source of a strict sign in the whole argument. Comparisons must be re-derived: subadditivity where the quantity can vanish, the mean value theorem where it is bounded away from zero.",
+   "aliases": [
+    "p<1",
+    "quasi-norm",
+    "subadditivity"
+   ],
+   "papers": [
+    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3"
+   ],
+   "first_seen": "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
+   "see_also": [],
+   "score": 1
+  },
+  {
+   "id": "multiscale-parameter-hierarchy",
+   "name": "Parameter hierarchy",
+   "stratum": "primitive",
+   "gloss": "In a construction with many interacting constants, fix and record the order in which each is chosen and what it may depend on. Steps that look circular are frequently legitimate precisely because a later parameter is chosen after an earlier object exists; steps that look fine are sometimes circular for the same reason. The hierarchy is part of the theorem.",
+   "aliases": [
+    "order of quantifiers",
+    "choice of constants"
+   ],
+   "papers": [
+    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3"
+   ],
+   "first_seen": "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
+   "see_also": [
+    "iterative-correction"
+   ],
+   "score": 1
+  },
+  {
+   "id": "boundary-to-singular-integral",
+   "name": "Boundary problem as singular integral",
+   "stratum": "transfer",
+   "gloss": "Recast a question about the boundary behaviour of a solution as a question about singular integral operators acting on the boundary data — for the half-space, the normal derivative of a harmonic extension is a Riesz-transform combination of the tangential gradient. The whole Calderon-Zygmund toolkit then applies to an object that began in potential theory.",
+   "aliases": [
+    "Dirichlet-to-Neumann",
+    "half-Laplacian",
+    "Riesz transforms"
+   ],
+   "papers": [
+    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3"
+   ],
+   "first_seen": "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
+   "see_also": [],
+   "score": 1
+  },
+  {
+   "id": "extremal-datum",
+   "name": "Extremal datum reused at every scale",
+   "stratum": "obstruction",
+   "gloss": "Build or import a single object achieving a strict inequality that nothing generic achieves, then insert rescaled copies of it at every scale and location a construction needs. The object carries the whole sign of the argument; everything else is bookkeeping. Its existence is usually the hardest part and is often quoted rather than proved.",
+   "aliases": [
+    "extremal example",
+    "building block",
+    "profile"
+   ],
+   "papers": [
+    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3"
+   ],
+   "first_seen": "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
+   "see_also": [
+    "small-support-perturbation",
+    "iterative-correction"
+   ],
+   "score": 1
+  },
+  {
+   "id": "dimension-threshold",
+   "name": "Dimension threshold",
+   "stratum": "obstruction",
+   "gloss": "A statement true above some dimension and false below it. The low-dimensional obstruction — in the plane, usually the existence of a harmonic conjugate and hence analyticity — is a genuine audit of any proof of the high-dimensional case: the argument must degenerate exactly at the threshold, and finding where it does is a check on whether it is right.",
+   "aliases": [
+    "low-dimensional obstruction",
+    "conjugate function obstruction"
+   ],
+   "papers": [
+    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3"
+   ],
+   "first_seen": "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
+   "see_also": [],
+   "score": 1
+  },
+  {
+   "id": "density-point-endgame",
+   "name": "Density point endgame",
+   "stratum": "primitive",
+   "gloss": "Convert a statement about a function vanishing on a set into a statement about its derivatives there: a C^1 function vanishing on a measurable set has vanishing gradient at almost every point of it. Often halves the work, since only the transverse derivative then needs separate control.",
+   "aliases": [
+    "Lebesgue density",
+    "a.e. differentiability"
+   ],
+   "papers": [
+    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3"
+   ],
+   "first_seen": "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
+   "see_also": [],
+   "score": 1
+  }
+ ],
  "generated": "2026-08-24",
- "count": 0
+ "count": 13,
+ "_comment": "Ideas arrive here only from ideas-<paper>.md files produced by blueprints/idea-blueprint.md, applied to a paper that has been digested. Scores and the 'papers' lists are recomputed by tools/build_data.py from the 'toolkit' arrays in data/papers.json; never edit a score by hand."
 }

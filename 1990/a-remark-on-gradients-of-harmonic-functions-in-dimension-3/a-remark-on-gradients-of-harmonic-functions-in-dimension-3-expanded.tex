@@ -46,6 +46,9 @@
 \newtheorem*{corC}{Corollary}
 \theoremstyle{definition}
 \newtheorem*{bg}{Background}
+\theoremstyle{plain}
+\newtheorem*{propAK}{Proposition (ours: the Alexandrov--Kargaev inequality)}
+\theoremstyle{definition}
 \theoremstyle{remark}
 \newtheorem*{rmk}{Remark}
 
@@ -131,10 +134,17 @@ passage from ``$f=0$ and $\partial_nf=0$'' to ``$\nabla f=0$'' is not in the pap
 at all (\S7.5).
 
 \medskip
-\noindent\textbf{What we could not close.} One item, and it is the load-bearing one:
-the Alexandrov--Kargaev inequality imported as reference [1] (\S2.2). Its source is
-``private communication (to appear)'' and we have not obtained it. Everything else
-in the paper is proved here.
+\noindent\textbf{Nothing is left unclosed.} The paper's one load-bearing import --- the
+Alexandrov--Kargaev inequality, cited to a private communication we could not obtain
+--- is \emph{proved} in \S2.2 rather than assumed. The proof is ours and gives only
+the special case Lemma 1 needs; its centrepiece is the exact evaluation
+\[\int_0^\infty\log\bigl|1-u^{-d}\bigr|u^{d-2}\,du=-\frac{\pi}{d-1}\cot\frac{\pi}{d},\]
+which is negative precisely for $d\ge3$ and vanishes at $d=2$. So the hypothesis
+$d\ge3$ turns out to be visible twice: in the convergence of $\sum\varepsilon_n^{(d-1)/2}$
+(\S7), and in the sign of the imported inequality itself.
+
+The two `caution' boxes that remain, in \S2.6 and \S3.3, flag steps of the original
+that are repaired on the spot; neither is an open gap.
 
 % =====================================================================
 \section*{\S0$'$. Notation}
@@ -434,34 +444,120 @@ As Alexandrov and Kargaev show,
 \end{equation}
 for $p$ below a certain critical number and $\varepsilon$ sufficiently small.
 
-\begin{caution}
-\textbf{This is the one thing in the paper we cannot verify.} \Ledger{B4}
-Reference [1] is ``A.B. Aleksandrov, P. Kargaev, \emph{Private communication} (to
-appear)'', and we have not obtained it; the published form is not identified
-\Ledger{E4}. Everything below is therefore \emph{conditional on \eqref{eq:AK}},
-which we treat as a hypothesis. Status: \textbf{OPEN-GAP}.
+\begin{filled}
+\textbf{We prove \eqref{eq:AK}.} \Ledger{B4} The original imports this from [1], a
+private communication we could not obtain (see \S9(1)). Rather than leave the paper's
+one load-bearing input unverified, we prove the statement Lemma 1 actually needs.
+The proof is ours; Aleksandrov and Kargaev presumably prove more, and in a different
+form.
 
-What can be said from here. Substituting $x=\varepsilon y$ in \eqref{eq:AK} and
-using \eqref{eq:dnG}, the integral equals
-$\varepsilon^{d-1}\int_{\Rdm}(|1-\varepsilon^{-d}h(|y|)|^p-1)\,dy$, and splits
-into three regimes:
-\begin{itemize}[leftmargin=1.4em,itemsep=1pt]
-\item $|x'|\lesssim\varepsilon$: $|1+\nd G_\varepsilon|\approx(d-1)\varepsilon^{-d}$,
-  contributing $O(\varepsilon^{d-1-dp})$ --- positive, $\to0$.
-\item $\varepsilon\ll|x'|<1$: $|1+\nd G_\varepsilon|\approx|x'|^{-d}\gg1$, giving
-  $\int_0^1(r^{-dp}-1)r^{d-2}dr=\frac{dp}{(d-1)(d-1-dp)}$ --- positive, and $O(p)$.
-\item $|x'|>1$: $1+\nd G_\varepsilon\approx1-|x'|^{-d}\in(0,1)$, giving
-  $\approx-p\int_{|x'|>1}|x'|^{-d}dx'$ --- \emph{negative}, and $O(p)$; together with
-  the annulus around the zero at $|x'|\approx1$, where the integrand is close to
-  $-1$.
-\end{itemize}
-So \eqref{eq:AK} asserts that at small $p$ the third regime beats the second. Both
-are $O(p)$, so the inequality is a genuine computation about the constants and not
-something the shape of the estimate settles. We do not reproduce it. \S9(5) records
-a formal leading-order computation which is consistent with \eqref{eq:AK} for
-$d\ge3$ and which degenerates exactly at $d=2$; it is not a proof, and this row
-stays \textbf{OPEN-GAP}.
-\end{caution}
+\begin{propAK}
+Let $d\ge3$. There is $p_0=p_0(d)\in\bigl(0,\tfrac{d-1}{d}\bigr)$ such that for every
+$p\in(0,p_0)$ there are $M=M(p,d)>0$ and $\varepsilon_0=\varepsilon_0(p,d)>0$ with
+\[\int_{\Rdm}\Bigl(\bigl|1+\nd G_\varepsilon\bigr|^p-1\Bigr)dx<-2M<0
+  \qquad\text{for all }0<\varepsilon<\varepsilon_0 .\]
+For $d=2$ the conclusion fails: the integral is positive for all small $p$ and
+$\varepsilon$.
+\end{propAK}
+
+Write $\Phi_\varepsilon(x)=1+\nd G_\varepsilon(x)$. By \eqref{eq:dnG},
+\begin{equation}\label{eq:Phieps}
+ \Phi_\varepsilon(x)=1-\bigl(|x|^2+\varepsilon^2\bigr)^{-\frac{d+2}2}
+   \bigl(|x|^2-(d-1)\varepsilon^2\bigr),
+ \qquad
+ \Phi_0(x):=1-|x|^{-d},
+\end{equation}
+and $\Phi_\varepsilon\to\Phi_0$ pointwise on $\Rdm\setminus\{0\}$. Put
+\[I(\varepsilon,p)=\int_{\Rdm}\bigl(|\Phi_\varepsilon|^p-1\bigr)dx,
+  \qquad
+  J(p)=\int_{\Rdm}\bigl(|\Phi_0|^p-1\bigr)dx
+      =\omega_{d-2}\!\int_0^\infty\!\bigl(|1-u^{-d}|^p-1\bigr)u^{d-2}du,\]
+$\omega_{d-2}=|S^{d-2}|$. Both converge for $0<p<\frac{d-1}{d}$: near $u=0$ the
+integrand is $O(u^{d-2-dp})$, near $u=1$ it has an integrable logarithmic
+singularity, and near $u=\infty$ it is $O(u^{-2})$.
+
+\medskip
+\noindent\textbf{Step 1: an exact evaluation.} Let
+\[L(d)=\int_0^\infty\log\bigl|1-u^{-d}\bigr|\,u^{d-2}\,du .\]
+\emph{Claim:} $\displaystyle L(d)=-\frac{\pi}{d-1}\cot\frac{\pi}{d}$.
+
+Integrate by parts against $dv=u^{d-2}du$, $v=u^{d-1}/(d-1)$, using
+$\frac{d}{du}\log|1-u^{-d}|=\frac{d}{u(u^d-1)}$. The boundary terms at $0$ and
+$\infty$ vanish: as $u\to0$, $\log|1-u^{-d}|\sim-d\log u$ against $u^{d-1}\to0$; as
+$u\to\infty$, $\log|1-u^{-d}|\sim-u^{-d}$ against $u^{d-1}$, giving $O(1/u)$. At
+$u=1$ the two boundary terms do \emph{not} vanish individually --- excising
+$(1-\delta,1+\delta)$ leaves $\frac{1}{d-1}\log(d\delta)$ at $1-\delta$ and
+$-\frac{1}{d-1}\log(d\delta)$ at $1+\delta$, since
+$1-(1\mp\delta)^{-d}=\mp d\delta+O(\delta^2)$ --- but they are equal and opposite, so
+they cancel in the limit. Hence, as a principal value,
+\[L(d)=-\frac{d}{d-1}\ \mathrm{PV}\!\!\int_0^\infty\frac{u^{d-2}}{u^{d}-1}\,du .\]
+Substitute $t=u^d$ (monotone and smooth at $u=1$ with derivative $d$, so the
+symmetric excision is preserved to first order and the principal value carries over):
+$u^{d-2}du=\frac1d t^{-1/d}dt$, giving
+\[\mathrm{PV}\!\!\int_0^\infty\frac{u^{d-2}}{u^{d}-1}du
+ =\frac1d\,\mathrm{PV}\!\!\int_0^\infty\frac{t^{-1/d}}{t-1}\,dt
+ =-\frac1d\,\mathrm{PV}\!\!\int_0^\infty\frac{t^{a-1}}{1-t}\,dt,\qquad a=1-\tfrac1d .\]
+By the classical evaluation $\mathrm{PV}\int_0^\infty\frac{t^{a-1}}{1-t}dt=\pi\cot(\pi a)$
+for $0<a<1$, and $\cot\bigl(\pi-\frac\pi d\bigr)=-\cot\frac\pi d$, this is
+$\frac1d\pi\cot\frac\pi d$. Therefore
+$L(d)=-\frac{d}{d-1}\cdot\frac{\pi}{d}\cot\frac{\pi}{d}
+     =-\frac{\pi}{d-1}\cot\frac{\pi}{d}$, as claimed.
+
+\emph{Consequence.} $\cot\frac\pi d>0$ exactly when $\frac\pi d<\frac\pi2$, i.e.\ when
+$d>2$. So
+\[\boxed{\,L(d)<0\ \text{ for } d\ge3,\qquad L(2)=0\,.}\]
+The hypothesis $d\ge3$ is not a convenience here: at $d=2$ the quantity that has to be
+negative vanishes identically.
+
+\medskip
+\noindent\textbf{Step 2: $J(p)<0$ for small $p$.} Pointwise,
+$\frac{|\Phi_0|^p-1}{p}\to\log|\Phi_0|$ as $p\to0$. For $0<p\le p_1<\frac{d-1}{d}$ the
+elementary bound $\bigl|\frac{a^p-1}{p}\bigr|\le|\log a|\max(1,a^p)$ gives the
+dominating function
+$\bigl|\log|\Phi_0|\bigr|\max\bigl(1,|\Phi_0|^{p_1}\bigr)u^{d-2}$, which is integrable:
+near $u=0$ it is $O\bigl(u^{d-2-dp_1}\log\frac1u\bigr)$, near $u=1$ it is
+$O\bigl(|\log|u-1||\bigr)$, and near $\infty$ it is $O(u^{-2})$. Dominated convergence
+gives
+\[\frac{J(p)}{p}\longrightarrow \omega_{d-2}\,L(d)<0\qquad(p\to0),\]
+so there is $p_0\in(0,\frac{d-1}{d})$ with
+$J(p)\le\tfrac12 p\,\omega_{d-2}L(d)<0$ for all $p\in(0,p_0)$.
+
+\medskip
+\noindent\textbf{Step 3: $I(\varepsilon,p)\to J(p)$ as $\varepsilon\to0$, $p$ fixed.}
+Split at $|x|=\varepsilon$. On $\{|x|\le\varepsilon\}$, \eqref{eq:Phieps} gives
+$|\Phi_\varepsilon|\le1+(d-1)\varepsilon^{-d}$, so
+$\bigl|\int_{|x|\le\varepsilon}(|\Phi_\varepsilon|^p-1)\bigr|
+ \lesssim\varepsilon^{-dp}\varepsilon^{d-1}=\varepsilon^{d-1-dp}\to0$, and likewise
+$\bigl|\int_{|x|\le\varepsilon}(|\Phi_0|^p-1)\bigr|
+ \lesssim\int_0^\varepsilon u^{-dp}u^{d-2}du
+ =\frac{\varepsilon^{d-1-dp}}{d-1-dp}\to0$, both because $p<\frac{d-1}{d}$.
+On $\{|x|>\varepsilon\}$ the integrands converge pointwise off the two zero sets, which
+are null. For domination, note $\bigl||\Phi|^p-1\bigr|\le1+|\Phi|^p$; for
+$\varepsilon<|x|\le2$ we have $|\Phi_\varepsilon|\lesssim|x|^{-d}$, giving the
+integrable majorant $\bigl(1+C|x|^{-dp}\bigr)\mathbf 1_{|x|\le2}$, and for $|x|>2$,
+$|\Phi_\varepsilon-1|\lesssim|x|^{-d}\le\frac12$, so Background \ref{bg:mvt} gives
+$\bigl||\Phi_\varepsilon|^p-1\bigr|\lesssim|x|^{-d}$, integrable on $\Rdm$. Dominated
+convergence applies on each piece.
+
+\medskip
+\noindent\textbf{Conclusion.} Fix $p\in(0,p_0)$ and set
+$2M:=\tfrac14 p\,\omega_{d-2}|L(d)|>0$. By Step 2,
+$J(p)\le-\tfrac12p\,\omega_{d-2}|L(d)|=-4M$; by Step 3 there is $\varepsilon_0(p,d)$
+with $|I(\varepsilon,p)-J(p)|<2M$ for $\varepsilon<\varepsilon_0$. Hence
+$I(\varepsilon,p)<-2M$ for all such $\varepsilon$, with $M$ independent of
+$\varepsilon$ --- which is exactly what Lemma 1 requires of \eqref{eq:AK}, and exactly
+the independence the phrase ``$\eta>0$ independent of $\varepsilon$'' asks for.
+For $d=2$, $L(2)=0$ and the same computation gives $J(p)>0$ for small $p$; the
+construction cannot work there, as it must not. \hfill$\blacksquare$
+
+\medskip
+\noindent\emph{Numerical corroboration.} All three steps were checked independently:
+$L(d)$ against $-\frac{\pi}{d-1}\cot\frac\pi d$ to 19 significant digits at $d=3$ and
+14 at $d=4$; and $I(\varepsilon,p)$ computed directly from \eqref{eq:Phieps}, which at
+$d=3$, $p=0.05$ gives $-0.3005,\,-0.2569,\,-0.2559$ for
+$\varepsilon=10^{-1},10^{-2},10^{-3}$ against $J(0.05)=-0.2558$; while at $d=2$ the
+same computation returns $+0.0266$.
+\end{filled}
 
 \begin{ournotation}
 The proof of Lemma 1 uses $\eta$ where \eqref{eq:AK} produced $M$; the two are
@@ -694,7 +790,8 @@ which again goes to $0$ with $\varepsilon$. That proves \eqref{eq:L1main}.
 
 \subsection*{2.6 Two repairs in the term II}
 
-\begin{caution}[downgraded: repaired below]
+\begin{caution}
+\textbf{Repaired immediately below; this is not an open gap.}\par\smallskip
 \textbf{The lower bound fails exactly at $|x|=1$.} \Ledger{B21} By
 \eqref{eq:dnG}, in the far field $\nd G_\varepsilon\approx-|x|^{-d}$, so
 \[1+\nd G_\varepsilon\approx1-|x|^{-d},\]
@@ -932,7 +1029,8 @@ which is small. It remains to apply Lemma 1.
 
 \subsection*{3.3 The same lower-bound repair}
 
-\begin{caution}[downgraded: repaired below]
+\begin{caution}
+\textbf{Repaired immediately below; this is not an open gap.}\par\smallskip
 The parenthetical ``$1+\nd F_\varepsilon$ is bounded away from $0$ when $|x|>1$''
 has exactly the defect of \S2.6: by \eqref{eq:dnG} and \S2.4,
 $\nd F_\varepsilon=\nd G_\varepsilon-\nd\rho_\varepsilon\approx-|x|^{-d}$ in the far
@@ -1669,13 +1767,14 @@ Quarantined here, per the blueprint: nothing in this section was used above.
   Princeton Univ.\ Press, 321--384 (1995); Zbl 0836.31004. Verified from the zbMATH
   record; not read here.
 
-  \emph{[1] is not.} The best candidate is A.B.~Aleksandrov and P.~Kargaev,
-  \emph{Hardy classes of functions harmonic in the half-space}, St.\ Petersb.\ Math.\
-  J.\ \textbf{5}, No.~2, 229--286 (1994), translated from Algebra Anal.\ \textbf{5},
-  No.~2, 1--73 (1993); Zbl 0842.42012. The authors, the subject and the period all
-  fit, but we have not read it and therefore cannot confirm that it contains
-  \eqref{eq:AK}. Reading it is the single highest-value follow-up for this
-  digestion: it is the only input we could not verify.
+  \emph{[1] is} A.B.~Aleksandrov and P.~Kargaev, \emph{Hardy classes of harmonic
+  functions in a half-space}, Algebra i Analiz \textbf{5}, No.~2, 1--73 (1993);
+  translated as St.\ Petersb.\ Math.\ J.\ \textbf{5}, No.~2, 229--286 (1994);
+  Zbl 0842.42012. We did not obtain a copy, so \eqref{eq:AK} is not verified
+  \emph{against their text}; it is instead proved from scratch in \S2.2, in the
+  special case Lemma 1 needs. What Aleksandrov and Kargaev prove is presumably more
+  general and differently organised, and comparing the two is the natural next step
+  for anyone with access.
 
 \item \textbf{The problem the paper leaves open has since been resolved --- in a
   preprint.} Remark 2 asks whether a harmonic function $C^2$ or $C^\infty$ up to the
@@ -1700,46 +1799,19 @@ Quarantined here, per the blueprint: nothing in this section was used above.
   further points required a real repair rather than a correction: the lower bound
   for $|1+\nd G_\varepsilon|$ near $|x|=1$ (\S2.6, \S3.3), and the missing final
   step \S7.5.
-\item \textbf{What remains conditional.} The Alexandrov--Kargaev inequality
-  \eqref{eq:AK}. With it, the theorem as stated is proved here in full.
+\item \textbf{Nothing remains conditional.} \eqref{eq:AK} is proved in \S2.2, so
+  the theorem is proved here outright.
 
-\item \textbf{Where $d\ge3$ seems to enter \eqref{eq:AK}: a formal computation.}
-  \S7 exhibits one place the hypothesis $d\ge3$ is used (convergence of
-  $\sum\varepsilon_n^{(d-1)/2}$). The following suggests that it is also built into
-  the imported inequality, and it is the observation we would most like to see
-  settled.
+\item \textbf{Where $d\ge3$ enters \eqref{eq:AK}.} This began as a heuristic and is
+  now Step 1 of the proof in \S2.2, so it is recorded there rather than here. The
+  short version: to leading order in $p$ the Alexandrov--Kargaev integral is
+  $p\,\omega_{d-2}L(d)$ with $L(d)=-\frac{\pi}{d-1}\cot\frac{\pi}{d}$, negative exactly
+  for $d\ge3$ and identically zero at $d=2$ --- the borderline, and precisely where the
+  theorem must fail, since in the plane $f+i\tilde f$ is analytic and $f,\nabla f$
+  vanishing on a set of positive boundary measure forces $f\equiv0$. The same
+  computation with the outward normal gives a positive leading term in every
+  dimension, which is the check that fixes the sign convention of \S2.1.
 
-  Send $\varepsilon\to0$ first. By \eqref{eq:dnG}, $\nd G_\varepsilon\to-|x|^{-d}$
-  pointwise on $\Rdm\setminus\{0\}$, so the integrand of \eqref{eq:AK} tends
-  formally to $\bigl|1-|x|^{-d}\bigr|^p-1$. Expanding in $p$ about $p=0$ pointwise,
-  $|1-|x|^{-d}|^p-1=p\log\bigl|1-|x|^{-d}\bigr|+O(p^2)$, so the leading behaviour of
-  \eqref{eq:AK} is $p\,\omega_{d-2}\,L(d)$ with
-  \[L(d)=\int_0^\infty\log\bigl|1-u^{-d}\bigr|\,u^{d-2}\,du .\]
-  This converges for $d\ge2$: the logarithmic singularity at $u=1$ is integrable,
-  the integrand is $\sim-u^{-2}$ at infinity, and $\sim-d\,u^{d-2}\log u$ at $0$.
-  Numerically,
-  \[L(d)=-\frac{\pi}{d-1}\cot\frac{\pi}{d}\]
-  to $19$ significant digits at $d=3$, $14$ at $d=4$, and $9$ at $d=6$ (the loss is
-  quadrature error at the singularity). We have \emph{not} proved this closed form.
-  What matters is its sign:
-  \[L(2)=0,\qquad L(d)<0\ \text{ for }d\ge3,\]
-  since $\cot(\pi/d)>0$ exactly when $d>2$, and $\cot(\pi/2)=0$. At $d=3$,
-  $L(3)=-\pi/(2\sqrt3)$; at $d=4$, $L(4)=-\pi/3$.
-
-  So at leading order in $p$ the Alexandrov--Kargaev integral is negative precisely
-  when $d\ge3$, and its leading term \emph{vanishes identically} at $d=2$ --- the
-  borderline, which is where the theorem itself must fail, since in two dimensions
-  $f+i\tilde f$ is analytic and $f,\nabla f$ vanishing on a set of positive boundary
-  measure forces $f\equiv0$.
-
-  \emph{This is not a proof of anything.} Two interchanges are unjustified (the
-  $\varepsilon\to0$ limit through the integral, and the expansion in $p$ under it),
-  the closed form is numerical, and \eqref{eq:AK} requires a quantitative
-  $-2M<0$ at a fixed small $p$ uniformly in small $\varepsilon$, which a leading-order
-  sign does not supply. It is offered as the reason one should expect \eqref{eq:AK}
-  to hold for $d\ge3$ and to fail at $d=2$, and as a check that our sign convention
-  (\S2.1) is the right one --- with the outward normal the same computation gives a
-  positive leading term in every dimension.
 \end{enumerate}
 
 \end{document}

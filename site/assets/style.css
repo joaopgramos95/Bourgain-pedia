@@ -659,3 +659,19 @@ footer.colophon {
   .prog { grid-template-columns: 1fr; gap: 2px; }
 }
 .score.status-resolved-preprint { color: #7a5a1f; background: #f5eddb; border-color: #e4d5b4; }
+
+/* grouping switch on the articles page */
+.rail-list.groupby { display: flex; gap: 4px; margin-bottom: 22px; }
+.rail-list.groupby li { flex: 1 1 0; }
+.rail-list.groupby button {
+  justify-content: center;
+  border: 1px solid var(--rule-soft);
+  border-radius: 3px;
+  background: var(--paper-raised);
+  padding: 6px 8px;
+}
+.rail-list.groupby button[aria-current="true"] {
+  background: var(--accent); border-color: var(--accent); color: #fffdf8;
+}
+.year-index.area-index { grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); }
+.area-index .y { font-size: 16px; line-height: 1.25; }
