@@ -160,7 +160,31 @@ negative answer in arXiv:2608.01683 (3 August 2026) — three weeks before this
 digestion. Recorded on the site's Open problems page with that provenance; we have
 read the abstract, not the proof, and it is unrefereed.
 
+### A second exposition
+
+R. C. D. de Andrade, *On zeros of gradients of harmonic functions on the upper half
+space*, master's thesis, IMPA (supervisor: J. Ramos), 2 June 2026, 87 pp. Read after
+the digestion was finished. It:
+
+- **confirms** the exponent `(d-1)/2` in condition (2), independently (`D23`);
+- **confirms** that Lemma 2 is printed without the factor `I(a_Q)` (`C9`) — so that is
+  a defect of the paper, not a misreading — while showing a lighter repair: factor the
+  amplitude out by hand and apply the lemma only with `I ≡ 1`;
+- **also quotes the Alexandrov–Kargaev inequality without proof** ("its proof is beyond
+  our interest"), so the proof in §2.2 is not a reconstruction of something already
+  available in the literature we have seen;
+- **supplies the motivation** now in §0.5: Calderón / electrical impedance tomography,
+  and the reading of this theorem as boundary invisibility — a part of the boundary
+  carrying neither voltage nor current while the interior potential is nonzero;
+- **sharpens the d = 2 obstruction**: its chapter 2 derives it from the characterisation
+  of moduli of H^p functions, `∫ log h(t)/(1+t²) dt > −∞`, which vanishing on a
+  positive-measure set violates. We have not verified that chapter.
+
+The file is at `Master_s_Thesis.pdf` in this directory and is gitignored, like the paper
+scan — it is not ours to redistribute from a public repository.
+
 ### Next
 
 - Compare §2.2 against Aleksandrov–Kargaev's own argument, if a copy can be had.
 - Obtain the published Colloq. Math. version and diff it against this preprint.
+- Verify chapter 2 of the thesis and promote the sharp d = 2 statement out of §9.

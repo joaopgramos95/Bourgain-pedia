@@ -675,3 +675,10 @@ footer.colophon {
 }
 .year-index.area-index { grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); }
 .area-index .y { font-size: 16px; line-height: 1.25; }
+
+.readings { list-style: none; margin: 0; padding: 0; font-size: 15px; }
+.readings li { margin: 0 0 6px; }
+.readings li:last-child { margin-bottom: 0; }
+.reading-note {
+  display: block; font-size: 12.5px; color: var(--ink-faint); margin-top: 1px;
+}

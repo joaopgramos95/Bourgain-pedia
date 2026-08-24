@@ -227,6 +227,25 @@
       : '<p class="slot-body empty">Not yet produced — run <code>/bourgainize</code> ' +
         "to expand this paper.</p>";
 
+    /* further readings: other people's expositions of the same paper */
+    var readings = (p.readings || []).map(function (r) {
+      var href = r.url || (r.path && !/^(https?:)?\/\//.test(r.path)
+        ? "../" + r.path.replace(/^\.\//, "") : r.path);
+      return '<li>' +
+        (href ? '<a href="' + esc(href) + '" target="_blank" rel="noopener">' +
+                esc(r.title) + "</a>" : esc(r.title)) +
+        (r.author ? " — " + esc(r.author) : "") +
+        (r.where ? ", <em>" + esc(r.where) + "</em>" : "") +
+        (r.year ? " (" + esc(r.year) + ")" : "") +
+        (r.note ? '<span class="reading-note">' + esc(r.note) + "</span>" : "") +
+        (r.local ? '<span class="reading-note">Local file, not in the repository.</span>' : "") +
+      "</li>";
+    }).join("");
+    var readingsBlock = readings
+      ? '<div class="slot filled"><p class="slot-label">Also read</p>' +
+        '<ul class="readings">' + readings + "</ul></div>"
+      : "";
+
     var bits = metaBits(p);
 
     return '<li class="paper" id="' + esc(p.id) + '">' +
@@ -242,7 +261,7 @@
       "</div>" +
       '<div class="slot' + (p.digestion ? " filled" : "") + '">' +
         '<p class="slot-label">Digestion</p>' + digestion +
-      "</div>" +
+      "</div>" + readingsBlock +
       '<p class="paper-links">' + links + "</p>" +
     "</li>";
   };

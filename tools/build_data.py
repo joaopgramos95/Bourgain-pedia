@@ -29,7 +29,7 @@ DATA = os.path.join(HERE, "data")
 SITE_DATA = os.path.join(HERE, "site", "data")
 PAPERS_DIR = os.path.join(HERE, "Papers")
 
-EDITORIAL_FIELDS = ("summary", "digestion", "toolkit", "notes")
+EDITORIAL_FIELDS = ("summary", "digestion", "toolkit", "notes", "readings")
 
 
 # ------------------------------------------------------------------ utilities
@@ -727,6 +727,7 @@ def make_entry(*, title, year, authors, doc_type, languages, reference, series,
         # ---- editorial fields, filled in by the project, never by the builder
         ("summary", ""),
         ("digestion", None),
+        ("readings", []),
         ("toolkit", []),
         ("notes", ""),
     ])

@@ -147,6 +147,50 @@ The two `caution' boxes that remain, in \S2.6 and \S3.3, flag steps of the origi
 that are repaired on the spot; neither is an open gap.
 
 % =====================================================================
+\section*{\S0.5. Why the question matters}
+% =====================================================================
+
+\begin{ournotation}
+\textbf{This section is context, and it is not the authors'.} The paper offers no
+motivation --- it says only that ``the reader may wish to consult [2] for a
+motivation'' --- and the framing below is later than 1989. It is drawn from
+R.~C.~D.~de Andrade's master's thesis (\S9(6)), chapter 1, which is careful to record
+that ``the work of Bourgain and Wolff was not originally motivated by the Calder\'on
+problem, but rather by fundamental questions in harmonic analysis concerning boundary
+behavior and uniqueness for harmonic functions.'' We keep it here rather than in \S9
+because a reader meeting the theorem cold deserves to know what is at stake; nothing
+in the proof depends on any of it.
+\end{ournotation}
+
+\noindent\textbf{The inverse problem.} In electrical impedance tomography one applies
+voltages on the boundary of a body, measures the resulting currents, and tries to
+recover the conductivity inside. The data is the Dirichlet-to-Neumann map
+$\Lambda_\gamma: f\mapsto\gamma\,\partial_\nu u|_{\partial\Omega}$, and Calder\'on's
+problem asks whether $\Lambda_\gamma$ determines $\gamma$. It does, in considerable
+generality. But the reconstruction is severely ill-posed: the modulus of continuity in
+the known stability estimates is only logarithmic.
+
+\medskip
+\noindent\textbf{What this theorem says about that.} Take the simplest case,
+$\gamma\equiv1$, so the boundary flux is just the normal derivative and the interior
+equation is $\Delta u=0$. The theorem produces a harmonic $f\not\equiv0$ whose trace
+\emph{and} normal derivative vanish together on a boundary set of positive measure. In
+tomographic terms: on a substantial part of the boundary there is neither applied
+voltage nor measured current, and yet the potential inside is not zero. That part of
+the interior is invisible to the measurement.
+
+This does not contradict unique continuation in the \emph{interior}, which holds. What
+it shows is that boundary data can degenerate on a large set --- a concrete mechanism
+for the instability, rather than merely a bound that happens to be weak.
+
+\medskip
+\noindent\textbf{And it is dimension-dependent.} In the plane the same statement is
+false: if the Dirichlet and Neumann data of a harmonic function both vanish on a set
+of positive boundary measure, the function vanishes identically (\S9(7)). So the
+phenomenon appears exactly when $d\ge3$ --- which is the hypothesis of the theorem,
+and which \S2.2 and \S7 both locate inside the proof.
+
+% =====================================================================
 \section*{\S0$'$. Notation}
 % =====================================================================
 
@@ -935,6 +979,21 @@ With the factor restored, both sides of \eqref{eq:L2} are homogeneous of degree 
 in $I$, the hypothesis is scale-invariant, and \S3.1 reduces the general case to the
 normalised one that the proof establishes. Statement, proof and application then
 agree.
+
+\smallskip
+\emph{A second repair, and a milder diagnosis.} Andrade's thesis (\S9(6)) states this
+lemma exactly as the original does, factor and all --- so the defect is in the
+statement, not in our reading of it. But its \emph{application} takes a different
+route: rather than restating the lemma, it factors the amplitude out by hand before
+applying it, writing
+\[\nd u_{n+1}(x)=\nd u_n(a_Q)\Bigl[1+\nd F_{\varepsilon_{n+1}}
+   \bigl(N\delta_{n+1}^{-1}(x-a_Q)\bigr)\Bigr]+J(x),\]
+and then invoking the lemma only in the case $I\equiv1$, with everything else absorbed
+into the remainder $J$. That works, and it suggests a milder diagnosis: the printed
+lemma is not so much wrong as \emph{over-stated}. Its proof gives the normalised case;
+the normalised case is all anyone ever needs; and the general-$I$ form, which is what
+fails, is never actually used. We keep the restated version, because a lemma one
+cannot apply as written is worth flagging --- but either repair closes the gap.
 \end{filled}
 
 \begin{ournotation}
@@ -1547,7 +1606,7 @@ $\varepsilon_{n+1}^{d-1}$. The quantity condition (2) is used to bound, in \S7.3
 $C\sum\varepsilon_{n+1}^{(d-1)/2}$, and since $\varepsilon<1$ we have
 $\varepsilon^{d-1}<\varepsilon^{(d-1)/2}$ --- so smallness of
 $\sum\varepsilon^{d-1}$ does \emph{not} give smallness of
-$\sum\varepsilon^{(d-1)/2}$. The exponent must be $(d-1)/2$, as written above.
+$\sum\varepsilon^{(d-1)/2}$. The exponent must be $(d-1)/2$, as written above. Andrade's thesis (\S9(6)) states condition (2) with the exponent $(d-1)/2$, independently of us --- so this correction is not a matter of taste.
 
 \textbf{Compatibility, checked.} \Ledger{D24} With
 $\varepsilon_n=C^{-1}n^{-2}$ and $K_n=Cn^{2/p}$:
@@ -1801,6 +1860,36 @@ Quarantined here, per the blueprint: nothing in this section was used above.
   step \S7.5.
 \item \textbf{Nothing remains conditional.} \eqref{eq:AK} is proved in \S2.2, so
   the theorem is proved here outright.
+
+\item \textbf{A second exposition, and what it settles.} R.~C.~D.~de Andrade,
+  \emph{On zeros of gradients of harmonic functions on the upper half space},
+  master's thesis, IMPA, supervised by J.~Ramos, 2 June 2026, 87 pp. A full and
+  careful account of this paper: chapter~1 gives the Calder\'on/EIT motivation used
+  in \S0.5, chapter~2 treats $d=2$, and chapter~3 works through the $d\ge3$
+  construction in detail. Three things it settles for us:
+  \begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item It states condition (2) with the exponent $(d-1)/2$, confirming \Ledger{D23}
+    independently.
+  \item It states Lemma 2 exactly as the original does --- so \Ledger{C9} is a defect
+    of the paper, not a misreading --- but applies it only after factoring the
+    amplitude out by hand, which is a second and lighter repair (\S3).
+  \item It quotes \eqref{eq:AK} without proof, exactly as the original does: ``this
+    lemma is due to Aleksandrov and Kargaev, its proof is beyond our interest''. So
+    the proof in \S2.2 is not a reconstruction of something already written down in
+    the literature we have seen --- both accounts of this paper take the inequality
+    on trust.
+  \end{itemize}
+  We read the thesis after the digestion was complete; it changed the two items above
+  and supplied \S0.5, and confirmed the rest.
+
+\item \textbf{The two-dimensional case, sharply.} \S0.5 and the
+  \texttt{dimension-threshold} entry say only that $d=2$ fails ``because $f+i\tilde f$
+  is analytic''. Chapter~2 of Andrade's thesis makes this precise, deriving it from
+  the characterisation of moduli of $H^p$ functions: a nonnegative $h\in L^p(\mathbb R)$
+  is $|f|$ for some $f\in H^p$ if and only if
+  $\int\frac{\log h(t)}{1+t^2}\,dt>-\infty$. Vanishing on a set of positive measure
+  makes that integral $-\infty$, which forces $f\equiv0$. We have not verified the
+  chapter; the statement is recorded here as the sharp form of the obstruction.
 
 \item \textbf{Where $d\ge3$ enters \eqref{eq:AK}.} This began as a heuristic and is
   now Step 1 of the proof in \S2.2, so it is recorded there rather than here. The
