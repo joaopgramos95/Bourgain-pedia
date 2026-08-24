@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bourgain's toolkit · Bourgain-pedia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,600;0,700;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<main>
+  <h1 class="page-title">Bourgain's toolkit</h1>
+  <p class="page-lede">
+    The ideas and techniques his papers actually run on — from the elementary
+    (<em>orthogonality</em>, <em>stopping time</em>) up to the conceptual
+    (<em>sparseness</em>, <em>large deviations</em>). Each entry has a name, a short
+    explanation written by us, and a <em>score</em>: the number of catalogued papers in
+    which the idea is used. Entries arrive here only through the idea blueprint, applied
+    to a paper that has already been digested.
+  </p>
+
+  <div class="with-rail">
+    <aside class="rail">
+      <p class="rail-heading">Strata</p>
+      <ul class="rail-list" id="strata"></ul>
+    </aside>
+
+    <section>
+      <div class="toolbar">
+        <input class="search" id="q" type="search" placeholder="Search ideas…"
+               autocomplete="off" spellcheck="false">
+        <div class="sortbar" id="sort">
+          <span>Sort</span>
+          <button data-sort="score" aria-pressed="true">Score</button>
+          <button data-sort="name"  aria-pressed="false">A–Z</button>
+        </div>
+      </div>
+      <div id="out"></div>
+    </section>
+  </div>
+</main>
+
+<script src="data/papers.js"></script>
+<script src="data/toolkit.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  BP.layout("toolkit");
+
+  var T = window.BOURGAIN_TOOLKIT || { strata: [], ideas: [] };
+  var IDEAS = T.ideas || [];
+  var STRATA = T.strata || [];
+  var P = (window.BOURGAIN_PAPERS || {}).papers || [];
+  var titleOf = {};
+  P.forEach(function (p) { titleOf[p.id] = p; });
+
+  var out = document.getElementById("out");
+  var strataEl = document.getElementById("strata");
+  var qEl = document.getElementById("q");
+  var state = { stratum: null, q: "", sort: "score" };
+
+  IDEAS.forEach(function (i) {
+    i._hay = BP.fold([i.name, i.gloss, (i.aliases || []).join(" ")].join(" "));
+  });
+
+  function countIn(key) {
+    return IDEAS.filter(function (i) { return i.stratum === key; }).length;
+  }
+
+  strataEl.innerHTML =
+    '<li><button data-stratum="all">All strata<span class="count">' + IDEAS.length +
+    "</span></button></li>" +
+    STRATA.map(function (s) {
+      return '<li><button data-stratum="' + s.key + '">' + BP.esc(s.name) +
+             '<span class="count">' + countIn(s.key) + "</span></button></li>";
+    }).join("");
+
+  function ideaCard(i) {
+    var papers = (i.papers || []).map(function (id) {
+      var p = titleOf[id];
+      return p ? '<a href="articles.html#' + BP.esc(id) + '">' + BP.esc(BP.tex(p.title)) + "</a>"
+               : "";
+    }).filter(Boolean).join(" · ");
+    return '<article class="idea">' +
+      '<div class="idea-head">' +
+        '<h3 class="idea-name">' + BP.esc(i.name) + "</h3>" +
+        '<span class="score" title="papers using this idea">score ' +
+          ((i.papers || []).length || i.score || 0) + "</span>" +
+      "</div>" +
+      (i.gloss ? '<p class="idea-gloss">' + BP.esc(i.gloss) + "</p>"
+               : '<p class="idea-gloss empty">Explanation not written yet.</p>') +
+      (papers ? '<p class="person-papers">' + papers + "</p>" : "") +
+    "</article>";
+  }
+
+  function emptyState() {
+    return '<div class="empty-state">' +
+      "<p><strong>The toolkit is empty on purpose.</strong> It is not a list we sat down " +
+      "and wrote; it is the residue of reading. An idea appears here only after a paper " +
+      "has gone through both blueprints.</p>" +
+      "<p>The pipeline, for one paper: <code>/bourgainize</code> downloads it, expands it " +
+      "into <code>X-expanded.tex</code> under <code>&lt;year&gt;/&lt;slug&gt;/</code>, then " +
+      "walks the expansion line by line, harvesting every technique with a keyword, " +
+      "discarding the merely routine over two or three passes, and writing what survives " +
+      "to <code>ideas-X.md</code>.</p>" +
+      "<p>Those keywords are merged into <code>data/toolkit.json</code> and land on this " +
+      "page with their score attached. Until the first paper is digested, there is " +
+      "nothing here to show.</p>" +
+    "</div>";
+  }
+
+  function render() {
+    if (!IDEAS.length) {
+      strataEl.querySelectorAll("button").forEach(function (b) {
+        b.setAttribute("aria-current", "false");
+      });
+      out.innerHTML = '<h2 class="year-heading">Nothing yet</h2>' +
+        '<p class="year-sub">0 ideas · ' +
+        P.filter(function (p) { return p.digestion; }).length + " of " + P.length +
+        " papers digested</p>" + emptyState() + strataScaffold();
+      return;
+    }
+
+    var rows = IDEAS;
+    if (state.q) {
+      var needle = BP.fold(state.q);
+      rows = rows.filter(function (i) { return i._hay.indexOf(needle) !== -1; });
+    } else if (state.stratum && state.stratum !== "all") {
+      rows = rows.filter(function (i) { return i.stratum === state.stratum; });
+    }
+    rows = rows.slice().sort(state.sort === "name"
+      ? function (a, b) { return BP.fold(a.name).localeCompare(BP.fold(b.name)); }
+      : function (a, b) {
+          return ((b.papers || []).length || b.score || 0) -
+                 ((a.papers || []).length || a.score || 0) ||
+                 BP.fold(a.name).localeCompare(BP.fold(b.name));
+        });
+
+    var s = STRATA.filter(function (x) { return x.key === state.stratum; })[0];
+    strataEl.querySelectorAll("button").forEach(function (b) {
+      b.setAttribute("aria-current", String(!state.q && b.dataset.stratum === (state.stratum || "all")));
+    });
+
+    out.innerHTML =
+      '<h2 class="year-heading">' + BP.esc(state.q ? "Search" : (s ? s.name : "All strata")) + "</h2>" +
+      '<p class="year-sub">' + rows.length + (rows.length === 1 ? " idea" : " ideas") + "</p>" +
+      (s && s.note ? '<p class="stratum-note">' + BP.esc(s.note) + "</p>" : "") +
+      (rows.length ? rows.map(ideaCard).join("")
+                   : '<div class="empty-state"><p>No idea matches.</p></div>');
+  }
+
+  /* while the toolkit is empty, show the strata themselves as the scaffolding */
+  function strataScaffold() {
+    return STRATA.map(function (s) {
+      return '<section class="stratum"><h2>' + BP.esc(s.name) + "</h2>" +
+        '<p class="stratum-note">' + BP.esc(s.note || "") + "</p>" +
+        '<p class="idea-gloss empty">' + BP.esc(s.examples
+          ? "Will hold entries such as: " + s.examples.join(", ") + "."
+          : "No entries yet.") + "</p></section>";
+    }).join("");
+  }
+
+  strataEl.addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-stratum]");
+    if (!b) return;
+    state.stratum = b.dataset.stratum; state.q = ""; qEl.value = "";
+    render();
+  });
+  document.getElementById("sort").addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-sort]");
+    if (!b) return;
+    state.sort = b.dataset.sort;
+    this.querySelectorAll("button").forEach(function (x) {
+      x.setAttribute("aria-pressed", String(x === b));
+    });
+    render();
+  });
+  qEl.addEventListener("input", BP.debounce(function () {
+    state.q = qEl.value.trim(); render();
+  }, 130));
+
+  render();
+})();
+</script>
+</body>
+</html>

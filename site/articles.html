@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>All articles · Bourgain-pedia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,600;0,700;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<main>
+  <h1 class="page-title">All articles</h1>
+  <p class="page-lede">
+    The complete bibliography, year by year. Pick a year on the left, or search across
+    every year at once. Each entry shows its full reference and citation count, a link to
+    a copy, and the two slots this project fills in.
+  </p>
+
+  <div class="with-rail">
+    <aside class="rail">
+      <p class="rail-heading">Years</p>
+      <ul class="rail-list" id="years"></ul>
+    </aside>
+
+    <section>
+      <div class="toolbar">
+        <input class="search" id="q" type="search"
+               placeholder="Search titles, coauthors, journals, MSC codes…"
+               autocomplete="off" spellcheck="false">
+        <div class="sortbar" id="sort">
+          <span>Sort</span>
+          <button data-sort="title"  aria-pressed="true">A–Z</button>
+          <button data-sort="cites"  aria-pressed="false">Most cited</button>
+          <button data-sort="year"   aria-pressed="false">Year</button>
+        </div>
+      </div>
+      <div id="out"></div>
+      <a class="jump-top" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ back to top</a>
+    </section>
+  </div>
+</main>
+
+<script src="data/papers.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  BP.layout("articles");
+
+  var DATA   = window.BOURGAIN_PAPERS || { papers: [] };
+  var PAPERS = DATA.papers || [];
+  var out    = document.getElementById("out");
+  var railEl = document.getElementById("years");
+  var qEl    = document.getElementById("q");
+
+  var years = [];
+  var byYear = {};
+  PAPERS.forEach(function (p) {
+    var y = p.year || "undated";
+    (byYear[y] = byYear[y] || []).push(p);
+  });
+  years = Object.keys(byYear).filter(function (y) { return y !== "undated"; })
+                .map(Number).sort(function (a, b) { return a - b; });
+  if (byYear.undated) years.push("undated");
+
+  /* a cheap search index, built once */
+  PAPERS.forEach(function (p) {
+    p._hay = BP.fold([
+      p.title, BP.tex(p.title), (p.authors || []).join(" "), p.reference,
+      p.journal, p.journal_full, (p.msc || []).join(" "),
+      (p.keywords || []).join(" "), p.zbl, p.doi, p.arxiv, p.summary
+    ].join(" "));
+  });
+
+  var state = { year: null, q: "", sort: "title" };
+
+  function railHTML() {
+    return '<li><button data-year="index">All years' +
+           '<span class="count">' + PAPERS.length + "</span></button></li>" +
+           years.map(function (y) {
+      return '<li><button data-year="' + y + '">' + y +
+             '<span class="count">' + byYear[y].length + "</span></button></li>";
+    }).join("");
+  }
+
+  function sortRows(rows) {
+    var cmp = {
+      title: function (a, b) { return BP.fold(BP.tex(a.title)).localeCompare(BP.fold(BP.tex(b.title))); },
+      cites: function (a, b) { return (b.cited_by || 0) - (a.cited_by || 0); },
+      year:  function (a, b) { return (a.year || 0) - (b.year || 0) ||
+                                      BP.fold(a.title).localeCompare(BP.fold(b.title)); }
+    }[state.sort];
+    return rows.slice().sort(cmp);
+  }
+
+  function yearIndex() {
+    var cells = years.map(function (y) {
+      var rows = byYear[y];
+      var cites = rows.reduce(function (a, p) { return a + (p.cited_by || 0); }, 0);
+      return '<button class="year-cell" data-year="' + y + '">' +
+               '<span class="y">' + y + "</span>" +
+               '<span class="c">' + rows.length + (rows.length === 1 ? " item" : " items") + "</span>" +
+               '<span class="c">' + BP.num(cites) + " cites</span>" +
+             "</button>";
+    }).join("");
+    return '<h2 class="year-heading">By year</h2>' +
+           '<p class="year-sub">' + PAPERS.length + " works, " + years[0] + "–" +
+           years[years.length - 1] + ". Click a year.</p>" +
+           '<div class="year-index">' + cells + "</div>";
+  }
+
+  function render() {
+    var rows, heading, sub;
+
+    if (!state.q && state.year === null) {
+      railEl.querySelectorAll("button").forEach(function (b) {
+        b.setAttribute("aria-current", "false");
+      });
+      out.innerHTML = yearIndex();
+      return;
+    }
+
+    if (state.q) {
+      var needle = BP.fold(state.q);
+      rows = PAPERS.filter(function (p) { return p._hay.indexOf(needle) !== -1; });
+      heading = "Search";
+      sub = rows.length + (rows.length === 1 ? " match" : " matches") +
+            ' for "' + BP.esc(state.q) + '" across all years';
+    } else {
+      var y = state.year;
+      rows = byYear[y] || [];
+      heading = String(y);
+      var cites = rows.reduce(function (a, p) { return a + (p.cited_by || 0); }, 0);
+      sub = rows.length + (rows.length === 1 ? " item" : " items") +
+            " · " + BP.num(cites) + " citations";
+    }
+
+    railEl.querySelectorAll("button").forEach(function (b) {
+      b.setAttribute("aria-current",
+        (!state.q && String(state.year) === b.dataset.year) ? "true" : "false");
+    });
+
+    out.innerHTML =
+      '<h2 class="year-heading">' + heading + "</h2>" +
+      '<p class="year-sub">' + sub + "</p>" +
+      (rows.length
+        ? '<ul class="paper-list">' + sortRows(rows).map(BP.paperCard).join("") + "</ul>"
+        : '<div class="empty-state"><p>Nothing here.</p></div>');
+  }
+
+  railEl.innerHTML = railHTML();
+  function pickYear(b) {
+    state.year = b.dataset.year === "undated" ? "undated"
+               : b.dataset.year === "index" ? null
+               : Number(b.dataset.year);
+    state.q = ""; qEl.value = "";
+    history.replaceState(null, "", "#" + b.dataset.year);
+    render();
+    document.getElementById("out").scrollIntoView({ block: "start", behavior: "smooth" });
+  }
+
+  function delegateYear(e) {
+    var b = e.target.closest("button[data-year]");
+    if (b) pickYear(b);
+  }
+  railEl.addEventListener("click", delegateYear);
+  out.addEventListener("click", delegateYear);
+
+  document.getElementById("sort").addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-sort]");
+    if (!b) return;
+    state.sort = b.dataset.sort;
+    this.querySelectorAll("button").forEach(function (x) {
+      x.setAttribute("aria-pressed", String(x === b));
+    });
+    render();
+  });
+
+  qEl.addEventListener("input", BP.debounce(function () {
+    state.q = qEl.value.trim();
+    render();
+  }, 130));
+
+  /* deep links: ?q=… preloads a search; #1994 opens a year;
+     #<paper-id> opens its year and scrolls to it */
+  var preset = new URLSearchParams(location.search).get("q");
+  if (preset) {
+    state.q = preset;
+    qEl.value = preset;
+    render();
+    return;
+  }
+  var hash = decodeURIComponent(location.hash.replace(/^#/, ""));
+  var target = null;
+  if (/^\d{4}$/.test(hash) && byYear[Number(hash)]) {
+    state.year = Number(hash);
+  } else if (hash === "undated" && byYear.undated) {
+    state.year = "undated";
+  } else if (hash) {
+    var hit = PAPERS.filter(function (p) { return p.id === hash; })[0];
+    if (hit) { state.year = hit.year || "undated"; target = hash; }
+  }
+  render();
+  if (target) {
+    var node = document.getElementById(target);
+    if (node) node.scrollIntoView({ block: "center" });
+  }
+})();
+</script>
+</body>
+</html>

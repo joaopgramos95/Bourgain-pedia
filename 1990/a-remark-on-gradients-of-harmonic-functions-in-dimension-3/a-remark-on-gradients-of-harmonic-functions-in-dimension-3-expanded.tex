@@ -1,0 +1,1599 @@
+% =====================================================================
+%  Bourgain-pedia digestion of:
+%    J. Bourgain, T. Wolff, "A remark on gradients of harmonic functions
+%    in dimension >= 3", IHES/M/89/31 (September 1989);
+%    published as Colloq. Math. 60/61, No. 1, 253-260 (1990).
+%    Zbl 0731.31006 -- DOI 10.4064/cm-60-61-1-253-260
+%
+%  Original: 11 pages (IHES preprint scan).
+%  Transcription: ...-original.tex.  Ledger: ledger.md.
+% =====================================================================
+\documentclass[11pt,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=teal}
+
+% ----- the four editorial environments -------------------------------
+\definecolor{expcol}{HTML}{2F5D7C}
+\definecolor{filcol}{HTML}{2E6B4F}
+\definecolor{notcol}{HTML}{6B4E9B}
+\definecolor{caucol}{HTML}{9C3B22}
+
+\newtcolorbox{expansion}{breakable,enhanced,colback=expcol!4,colframe=expcol!55,
+  boxrule=0.35pt,left=6pt,right=6pt,top=4pt,bottom=4pt,
+  fonttitle=\bfseries\scriptsize,title={EXPANSION \textnormal{--- a step he compressed, written out}}}
+\newtcolorbox{filled}{breakable,enhanced,colback=filcol!4,colframe=filcol!55,
+  boxrule=0.35pt,left=6pt,right=6pt,top=4pt,bottom=4pt,
+  fonttitle=\bfseries\scriptsize,title={FILLED \textnormal{--- an argument omitted in the original, supplied here}}}
+\newtcolorbox{ournotation}{breakable,enhanced,colback=notcol!4,colframe=notcol!55,
+  boxrule=0.35pt,left=6pt,right=6pt,top=4pt,bottom=4pt,
+  fonttitle=\bfseries\scriptsize,title={OUR NOTATION \textnormal{--- not in the original}}}
+\newtcolorbox{caution}{breakable,enhanced,colback=caucol!5,colframe=caucol!70,
+  boxrule=0.8pt,left=6pt,right=6pt,top=4pt,bottom=4pt,
+  fonttitle=\bfseries\scriptsize,title={CAUTION \textnormal{--- not fully justified here; OPEN-GAP in the ledger}}}
+
+\theoremstyle{plain}
+\newtheorem*{thmB}{Theorem (Bourgain--Wolff)}
+\newtheorem*{lemA}{Lemma 1}
+\newtheorem*{lemB}{Lemma 2}
+\newtheorem*{lemC}{Lemma 3}
+\newtheorem*{lemD}{Lemma 4}
+\newtheorem*{corC}{Corollary}
+\theoremstyle{definition}
+\newtheorem*{bg}{Background}
+\theoremstyle{remark}
+\newtheorem*{rmk}{Remark}
+
+\newcommand{\Rd}{\mathbb{R}^d_+}
+\newcommand{\Rdm}{\mathbb{R}^{d-1}}
+\newcommand{\nd}{\partial_n}
+\newcommand{\he}[1]{\widehat{#1}}
+\newcommand{\Ftil}{\widehat{F}_\varepsilon}
+\DeclareMathOperator{\supp}{supp}
+\newcommand{\Ledger}[1]{{\scriptsize\textsf{[#1]}}}
+
+\begin{document}
+
+\title[Gradients of harmonic functions in dimension $\ge3$ --- digestion]
+      {A remark on gradients of harmonic functions in dimension $\geq 3$\\
+       \normalsize a Bourgain-pedia digestion}
+\author{J. Bourgain and T. Wolff}
+\address{Original: IHES/M/89/31, September 1989; Colloq.\ Math.\ 60/61 (1990), 253--260}
+\date{Digestion generated \today}
+\maketitle
+
+% =====================================================================
+\section*{\S0. Editorial preface}
+% =====================================================================
+
+This document is the Bourgain-pedia \emph{digestion} of the Bourgain--Wolff note
+\emph{A remark on gradients of harmonic functions in dimension $\ge3$}. It is that
+paper at full length: every step the authors compressed is written out, every
+argument they omitted is supplied, and nothing else has been changed. It is not a
+survey, not a modernisation, and not a better proof. Where a modern route exists it
+is confined to \S9.
+
+Read it beside the transcription
+\texttt{...-original.tex}, which reproduces the preprint as printed, including its
+slips. Section and lemma numbering here is the authors'.
+
+\medskip
+\noindent\textbf{How to read the boxes.} Four kinds of material are ours, and each
+is boxed so that you can see at a glance where the authors stop and we start:
+\emph{expansion} (a step of theirs, written out), \emph{filled} (an argument absent
+from the original), \emph{our notation}, and \emph{caution} (a step we could not
+close). Unboxed prose and displays are theirs.
+
+\medskip
+\noindent\textbf{Source.} The IHES preprint (September 1989), obtained from the IHES
+preprint fonds. The journal version appeared in 1990 and may differ after
+refereeing; every claim here is a claim about the preprint. \Ledger{F4}
+
+\medskip
+\noindent\textbf{Five discrepancies in the original}, each verified against the scan
+at 320\,dpi and each repaired below with the repair marked:
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+\item p.~4: $\int_{|x|>1}|d\rho_\varepsilon/dn|\le C\varepsilon\delta^{-p}$ is
+  printed; the estimate $(*)$ yields exponent $-1$, not $-p$. Both give the
+  conclusion. \Ledger{B23}
+\item p.~5: the first display of Lemma 2's proof prints
+  $|1+d\Ftil/dn|^p-|1+d\Ftil/dn|^p$, identically $0$; the first term must be
+  $|I+d\Ftil/dn|^p$. \Ledger{C4}
+\item p.~9: the final parenthesis of Lemma 4 prints $e^{+\frac12p\beta}$, which is
+  $>1$ and contradicts the sentence after it; the recomputation forces
+  $e^{-\frac12p\beta}$. \Ledger{D21}
+\item p.~10: condition (2) prints $\varepsilon_{n+1}^{d-1}$; the use made of it
+  requires $\varepsilon_{n+1}^{(d-1)/2}$. \Ledger{D23}
+\item p.~10: $|Q|<K_{n+1}^{-p}e^{-\beta pn}\int_Q|du_n/dn|^p$ is printed; the
+  algebra gives $e^{+\beta pn}$, and the next display on p.~11 uses $+$.
+  \Ledger{D31}
+\end{enumerate}
+None of the five affects the theorem. Two further points needed real repair rather
+than a sign change, and are treated where they arise: the lower bound for
+$|1+d\he G_\varepsilon/dn|$ fails exactly at $|x|=1$ (\S2.6, \S3.3), and the final
+passage from ``$f=0$ and $\partial_nf=0$'' to ``$\nabla f=0$'' is not in the paper
+at all (\S7.5).
+
+\medskip
+\noindent\textbf{What we could not close.} One item, and it is the load-bearing one:
+the Alexandrov--Kargaev inequality imported as reference [1] (\S2.2). Its source is
+``private communication (to appear)'' and we have not obtained it. Everything else
+in the paper is proved here.
+
+% =====================================================================
+\section*{\S0$'$. Notation}
+% =====================================================================
+
+\noindent\textbf{The authors' notation.}
+\begin{itemize}[leftmargin=1.6em,itemsep=1pt]
+\item $\Rd=\{x=(x',x_d):x'\in\Rdm,\ x_d>0\}$, boundary identified with $\Rdm$.
+\item $D(0,r)\subset\Rdm$ is the open ball of radius $r$; $|E|$ is Lebesgue measure
+  on $\Rdm$.
+\item $Q(N)=[-\tfrac N2,\tfrac N2]^{d-1}$; in particular $Q(1)$ is the unit cube.
+  $\ell(Q)$ is the side length of a cube $Q$ and $a_Q$ its centre.
+\item $\he g$ is the harmonic extension of $g:\Rdm\to\mathbb R$ to $\Rd$. From \S4
+  on the authors drop the hat and let $g$ denote both. \Ledger{F2}
+\item $d/dn$ is the normal derivative on $\{x_d=0\}$ of a harmonic extension;
+  $\nabla_T$ is differentiation in the $\Rdm$ directions.
+\item $\mathcal H_n$: the $\delta_n^{-(d-1)}$ closed cubes of side $\delta_n$
+  tiling $Q(1)$. $\mathcal Q_n\subset\mathcal H_n$, and
+  $V_n=\bigcup\{Q:Q\in\mathcal Q_n\}$.
+\item $e_d$ is the unit vector in the $x_d$ direction.
+\end{itemize}
+
+\begin{ournotation}
+\begin{itemize}[leftmargin=1.6em,itemsep=1pt]
+\item \textbf{$\nd$ for $d/dn$}, and we fix the convention the paper never states:
+  \[\nd g(x'):=\frac{\partial \he g}{\partial x_d}(x',0^+),\]
+  the derivative along the \emph{inward} normal $+e_d$. \S2.1 shows this is the
+  convention the paper's estimates are written in. \Ledger{A4}
+\item \textbf{$A\lesssim B$} means $A\le CB$ with $C$ depending only on $d$, on $p$,
+  and on the fixed parameter $N$ once it is chosen --- never on
+  $\varepsilon,\delta,\lambda,j,n$, nor on $K_n,\varepsilon_n,\delta_n$. Any other
+  dependence is written out. The paper uses $\lesssim$ without ever saying this.
+  \Ledger{F1}
+\item \textbf{$\|g\|_p:=(\int|g|^p)^{1/p}$ for $0<p<1$.} This is \emph{not} a norm
+  and obeys no triangle inequality; every step that looks like one is justified by
+  Background \ref{bg:sub} instead. \Ledger{F3}
+\item \textbf{$P$} for the Poisson kernel of $\Rd$ (Background \ref{bg:poisson}).
+\item \textbf{$s=|x'|/\varepsilon$}, the natural variable in \S2.
+\end{itemize}
+\end{ournotation}
+
+% =====================================================================
+\section*{\S0$''$. Background}
+% =====================================================================
+
+Everything the paper imports, stated in full. The authors state none of these.
+
+\begin{bg}[Poisson kernel and harmonic extension]\label{bg:poisson}
+For $x'\in\Rdm$, $t>0$ put
+$P(x',t)=c_d\,t\,(|x'|^2+t^2)^{-d/2}$ with $c_d=\Gamma(d/2)\pi^{-d/2}$, so that
+$\int_{\Rdm}P(x',t)\,dx'=1$ for every $t>0$. For bounded continuous $g$ the
+harmonic extension is $\he g(x',t)=(P(\cdot,t)*g)(x')$; it is harmonic in $\Rd$ and
+$\he g(\cdot,t)\to g$ as $t\downarrow0$.
+\end{bg}
+
+\begin{bg}[Dirichlet-to-Neumann operator]\label{bg:dtn}
+With $\he{g}(\xi,t)=e^{-|\xi|t}\hat g(\xi)$ on the Fourier side,
+\[\nd g=\frac{\partial \he g}{\partial x_d}\Big|_{x_d=0^+}=-|\nabla'|g,
+  \qquad \widehat{|\nabla'|g}(\xi)=|\xi|\hat g(\xi).\]
+Since $|\nabla'|=\sum_{k=1}^{d-1}R_k\partial_k$ with $R_k$ the Riesz transforms on
+$\Rdm$ (multipliers $-i\xi_k/|\xi|$),
+\begin{equation}\label{eq:dtn}
+  \nd g=-\sum_{k=1}^{d-1}R_k\,\partial_k g .
+\end{equation}
+\end{bg}
+
+\begin{filled}
+\eqref{eq:dtn} is \emph{the} reason the Riesz transforms appear in Lemma 1, and the
+paper never says so: it writes ``By $L^1\to$ weak-$L^1$ and H\"older estimates for the
+Riesz transforms we have\dots'' with no indication of what the Riesz transforms are
+being applied to. They are applied to $\nabla_T\rho^j_\varepsilon$, and
+\eqref{eq:dtn} is what converts a bound on the \emph{tangential} gradient of a
+boundary function into a bound on the \emph{normal} derivative of its harmonic
+extension. \Ledger{B13}
+\end{filled}
+
+\begin{bg}[Riesz transforms: the two estimates used]\label{bg:riesz}
+On $\Rdm$: (i) each $R_k$ is of weak type $(1,1)$:
+$|\{|R_kh|>\lambda\}|\le C_d\lambda^{-1}\|h\|_1$; (ii) for $0<\alpha<1$ each $R_k$
+is bounded on the homogeneous H\"older space $C^\alpha$:
+$\|R_kh\|_{C^\alpha}\le C_{d,\alpha}\|h\|_{C^\alpha}$.
+\end{bg}
+
+\begin{bg}[Representation away from the support]\label{bg:rep}
+If $h\in C_c^\infty(\Rdm)$ and $x\notin\supp h$ then
+$\nd h(x)=c_d'\int_{\Rdm}|x-y|^{-d}h(y)\,dy$ with $c_d'=-c_d\,(d-1)\!\int\!\cdots$;
+only $|c_d'|\lesssim1$ is used. This is $\eqref{eq:dtn}$ written as a singular
+integral, legitimate off the support because the kernel is then smooth.
+\end{bg}
+
+\begin{bg}[$p$-subadditivity, $0<p\le1$]\label{bg:sub}
+$(a+b)^p\le a^p+b^p$ for $a,b\ge0$; consequently, for all real $a,b$,
+\begin{equation}\label{eq:sub}
+  \bigl||1+a|^p-|1+b|^p\bigr|\le|a-b|^p .
+\end{equation}
+\end{bg}
+
+\begin{filled}
+\emph{Proof of Background \ref{bg:sub}.} For $0<p\le1$ the function $t\mapsto t^p$
+is concave on $[0,\infty)$ with $0^p=0$, hence subadditive: for $a,b\ge0$,
+$\frac{a}{a+b}(a+b)^p+\frac{b}{a+b}(a+b)^p=(a+b)^p$ while concavity through the
+origin gives $a^p\ge\frac{a}{a+b}(a+b)^p$ and $b^p\ge\frac{b}{a+b}(a+b)^p$; adding
+yields $a^p+b^p\ge(a+b)^p$. For \eqref{eq:sub}, put $u=|1+a|$, $v=|1+b|$ and assume
+$u\ge v$. Then $u\le v+|a-b|$ by the triangle inequality, so
+$u^p\le(v+|a-b|)^p\le v^p+|a-b|^p$, i.e. $u^p-v^p\le|a-b|^p$. \hfill$\square$
+\Ledger{B19}
+\end{filled}
+
+\begin{bg}[Mean value step]\label{bg:mvt}
+If $|1+a|\ge c>0$ and $|1+b|\ge c>0$ then
+$\bigl||1+a|^p-|1+b|^p\bigr|\le p\,c^{p-1}|a-b|$.
+\end{bg}
+
+\begin{filled}
+\emph{Proof.} $t\mapsto|t|^p$ is $C^1$ away from $0$ with derivative of modulus
+$p|t|^{p-1}$, which for $0<p<1$ is decreasing in $|t|$; on the segment joining
+$1+a$ to $1+b$ --- which stays in $\{|t|\ge c\}$ when $1+a$ and $1+b$ have the same
+sign --- the derivative is at most $pc^{p-1}$. If $1+a$ and $1+b$ have opposite signs
+the segment crosses $0$; but then $|a-b|\ge2c$ and the claim follows from
+$\bigl||1+a|^p-|1+b|^p\bigr|\le\max(|1+a|,|1+b|)^p$ together with
+$|1+a|,|1+b|\le|a-b|+c\le\frac32|a-b|$. \hfill$\square$ \Ledger{B22}
+\end{filled}
+
+\begin{bg}[Density points]\label{bg:density}
+If $E\subset\Rdm$ is measurable, a.e.\ $x\in E$ is a point of density $1$ of $E$.
+If moreover $g\in C^1$ and $g\equiv0$ on $E$, then $\nabla g(x)=0$ at every density
+point $x$ of $E$.
+\end{bg}
+
+\begin{filled}
+\emph{Proof of the second sentence.} Let $x$ be a density point of $E$ and suppose
+$\nabla g(x)=v\ne0$. Pick the unit vector $e=v/|v|$. By differentiability,
+$g(x+ry)=r\langle v,y\rangle+o(r)$ uniformly for $|y|\le1$. The set
+$S=\{y:|y|\le1,\ \langle v,y\rangle>\tfrac12|v|\}$ is a spherical cap of positive
+measure $\kappa$, and for $r$ small $g>0$ on $x+rS$, so $(x+rS)\cap E=\emptyset$.
+Then $|B(x,r)\setminus E|\ge\kappa r^{d-1}$, contradicting density $1$.
+\hfill$\square$ \Ledger{D34}
+\end{filled}
+
+\begin{bg}[Maximum principle for the gradient]\label{bg:max}
+If $v$ is harmonic and bounded on $\Rd$, continuous on $\overline{\Rd}$, and
+$v(x)\to0$ as $|x|\to\infty$, then $\sup_{\Rd}|v|=\sup_{\Rdm}|v|$. Each partial
+derivative of a harmonic function is harmonic, so the same holds for each
+$\partial_jv$ provided it too is bounded and decays.
+\end{bg}
+
+% =====================================================================
+\section*{\S1. The theorem}
+% =====================================================================
+
+\begin{thmB}
+If $d\ge3$ there is a harmonic function $f:\Rd\to\mathbb R$ which is $C^1$ up to the
+boundary and such that $f$ and $\nabla f$ vanish on a common boundary set with
+positive measure.
+\end{thmB}
+
+\begin{ournotation}
+The original prints ``$C'$'' for $C^1$. \Ledger{A1}
+\end{ournotation}
+
+\begin{filled}
+\textbf{What the statement must mean, and one thing it must exclude.} \Ledger{A2, A3}
+
+$f$ is harmonic in the open half space and extends to a $C^1$ function on
+$\overline{\Rd}$; ``$f$ vanishes'' refers to its boundary values, and ``$\nabla f$
+vanishes'' to the full gradient of that $C^1$ extension, evaluated on the boundary.
+So the assertion is: there is $E\subset\Rdm$ with $|E|>0$ and
+$f|_E=0$, $\nabla f|_E=0$.
+
+As literally stated the theorem is satisfied by $f\equiv0$. The construction does
+better, and nontriviality has to be read into it: we record here that the
+construction produces $f\not\equiv0$, and where. In \S4 the initial datum $u_0$ is a
+smooth function on $\Rdm$ vanishing on $Q(1)$; if $u_0\not\equiv0$ then, since every
+later modification is supported inside $Q(1)$ (\S4.4), $f=u_0$ on
+$\Rdm\setminus Q(1)$ and hence $f\not\equiv0$. \emph{So: choose $u_0$ smooth,
+vanishing on $Q(1)$, and not identically zero.} The paper does not say this.
+\end{filled}
+
+\noindent\emph{Outline of proof (theirs).} Start with a function $u_0$ which
+vanishes on an open subset of the boundary. Using a successive modification
+(``correction theorem'') procedure, decrease the normal derivative to $0$ on a
+subset with large measure. To get the theorem it is necessary to keep the original
+function unchanged on a set with large measure. Thus the functions added on during
+the modification procedure must have small compact support. The idea for
+constructing those functions is due to A.B. Alexandrov and P. Kargaev [1].
+
+\begin{expansion}
+\textbf{The shape of the argument, in one paragraph.} The whole proof is a
+contest between two budgets. Modifying $u_n$ on a cube $Q$ multiplies the local
+$L^p$ size of $\partial_nu_n$ by a definite factor $e^{-2\beta}<1$ (Lemma 2) ---
+that is the gain. The modification is not free: it changes $u_n$ itself on a disc
+inside $Q$, and it perturbs $\partial_nu_n$ on \emph{other} cubes (Lemma 3
+controls the interference). The gain is geometric in $n$; the two costs are
+$\sum\varepsilon_{n+1}^{(d-1)/2}$ (measure where $f$ moved) and
+$\sum K_{n+1}^{-p}$ (measure discarded from $V_n$). Condition (2) of \S7 says the
+two costs together come to less than $|Q(1)|=1$, so something is left over, and
+that leftover is the set $E$.
+\end{expansion}
+
+% =====================================================================
+\section*{\S2. Lemma 1: the Alexandrov--Kargaev building block}
+% =====================================================================
+
+\begin{lemA}
+If $p>0$ is small enough then for all sufficiently small $\varepsilon$ there is
+$F_\varepsilon:\Rdm\to\mathbb R$ with
+$\supp F_\varepsilon\subset D(0,\varepsilon^{1/2})$ and, $\Ftil$ denoting its
+harmonic extension to $\Rd$,
+\begin{equation}\label{eq:L1main}
+  \int_{\Rdm}\Bigl(\bigl|1+\nd F_\varepsilon\bigr|^p-1\Bigr)dx<-\eta
+\end{equation}
+with $\eta>0$ independent of $\varepsilon$; moreover
+\begin{equation}\label{eq:L1grad}
+  |\nabla\Ftil|\lesssim\min(\varepsilon^{-d},|x|^{-d})\quad\text{on }\Rdm .
+\end{equation}
+\end{lemA}
+
+\begin{ournotation}
+The original prints $|x|\subset\varepsilon^{1/2}$ for $|x|<\varepsilon^{1/2}$
+\Ledger{B1}, and in \eqref{eq:L1grad} prints a lower-case $\he f_\varepsilon$ where
+$\Ftil$ is meant, as its own restatement on p.~4 confirms \Ledger{B2}.
+\end{ournotation}
+
+\begin{filled}
+\textbf{Quantifier order.} \Ledger{B3} The statement is: there is $p_0=p_0(d)>0$
+such that for every $p\in(0,p_0)$ there are $\eta=\eta(p,d)>0$ and
+$\varepsilon_0=\varepsilon_0(p,d)>0$ with the following property: for every
+$\varepsilon\in(0,\varepsilon_0)$ there exists $F_\varepsilon$ as described. The
+point of ``$\eta$ independent of $\varepsilon$'' is that $\eta$ may depend on $p$
+and $d$ but not on $\varepsilon$; \S2.7 shows where that matters. \S2.5 will force
+$p<(d-1)/d$, so $p_0\le(d-1)/d$.
+\end{filled}
+
+\subsection*{2.1 The Alexandrov--Kargaev function, and the sign convention}
+
+Alexandrov--Kargaev use the function $G_\varepsilon:\Rd\to\mathbb R$,
+\begin{equation}\label{eq:G}
+  G_\varepsilon(x)=\frac{-(\varepsilon+x_d)}{|x+\varepsilon e_d|^{d}} .
+\end{equation}
+
+\begin{expansion}
+\textbf{$G_\varepsilon$ is harmonic on a neighbourhood of $\overline{\Rd}$.}
+\Ledger{B5} By Background \ref{bg:poisson},
+$P(x',t)=c_dt(|x'|^2+t^2)^{-d/2}$, so
+\[G_\varepsilon(x)=-\frac1{c_d}P(x',x_d+\varepsilon),\]
+i.e. $G_\varepsilon$ is $-1/c_d$ times the Poisson kernel translated \emph{down}
+by $\varepsilon$. The Poisson kernel is harmonic on the open upper half space, so
+$G_\varepsilon$ is harmonic on $\{x_d>-\varepsilon\}$, which contains
+$\overline{\Rd}$. In particular $G_\varepsilon$ is real-analytic up to and across
+the boundary $\{x_d=0\}$, and $\nd G_\varepsilon$ below is an honest classical
+derivative, not a boundary limit.
+\end{expansion}
+
+\begin{expansion}
+\textbf{The normal derivative, computed exactly.} Differentiating \eqref{eq:G} in
+$x_d$ and setting $x_d=0$, with $r=(|x'|^2+\varepsilon^2)^{1/2}$:
+\[
+ \nd G_\varepsilon(x')=\frac{\partial G_\varepsilon}{\partial x_d}(x',0)
+  =-r^{-d}+d\,\varepsilon^2r^{-d-2}
+  =-r^{-d-2}\bigl(r^2-d\varepsilon^2\bigr).
+\]
+In the scaled variable $s=|x'|/\varepsilon$, so that $r=\varepsilon(s^2+1)^{1/2}$,
+\begin{equation}\label{eq:dnG}
+  \nd G_\varepsilon= -\,\varepsilon^{-d}\,h(s),
+  \qquad h(s)=(s^2+1)^{-\frac{d+2}2}\bigl(s^2+1-d\bigr).
+\end{equation}
+Three features of \eqref{eq:dnG} drive everything below:
+\[
+ \nd G_\varepsilon(0)=(d-1)\varepsilon^{-d}>0,\qquad
+ \nd G_\varepsilon=0 \text{ at } |x'|=\varepsilon\sqrt{d-1},\qquad
+ \nd G_\varepsilon\sim-|x'|^{-d}\ \ (|x'|\gg\varepsilon).
+\]
+\end{expansion}
+
+\begin{filled}
+\textbf{Why the inward normal.} \Ledger{A4} The paper never fixes the sign of
+$d/dn$, and the two choices are not interchangeable here. With the inward
+convention $\nd=\partial_{x_d}|_{x_d=0}$ used above, $\nd G_\varepsilon\sim-|x'|^{-d}$
+in the far field, so $1+\nd G_\varepsilon\sim1-|x'|^{-d}$ passes through $0$ near
+$|x'|=1$ and is $<1$ beyond it --- and it is precisely the region
+$|x'|\gtrsim1$, where $|1+\nd G_\varepsilon|^p-1\approx-p|x'|^{-d}<0$, that can
+make the integral \eqref{eq:AK} negative. With the outward convention every regime
+contributes a positive amount and \eqref{eq:AK} is false. So the inward normal is
+the paper's convention, and we adopt it.
+\end{filled}
+
+\subsection*{2.2 The imported inequality}
+
+As Alexandrov and Kargaev show,
+\begin{equation}\label{eq:AK}
+  \int_{\Rdm}\Bigl(\bigl|1+\nd G_\varepsilon\bigr|^p-1\Bigr)dx<-2M<0
+\end{equation}
+for $p$ below a certain critical number and $\varepsilon$ sufficiently small.
+
+\begin{caution}
+\textbf{This is the one thing in the paper we cannot verify.} \Ledger{B4}
+Reference [1] is ``A.B. Aleksandrov, P. Kargaev, \emph{Private communication} (to
+appear)'', and we have not obtained it; the published form is not identified
+\Ledger{E4}. Everything below is therefore \emph{conditional on \eqref{eq:AK}},
+which we treat as a hypothesis. Status: \textbf{OPEN-GAP}.
+
+What can be said from here. Substituting $x=\varepsilon y$ in \eqref{eq:AK} and
+using \eqref{eq:dnG}, the integral equals
+$\varepsilon^{d-1}\int_{\Rdm}(|1-\varepsilon^{-d}h(|y|)|^p-1)\,dy$, and splits
+into three regimes:
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt]
+\item $|x'|\lesssim\varepsilon$: $|1+\nd G_\varepsilon|\approx(d-1)\varepsilon^{-d}$,
+  contributing $O(\varepsilon^{d-1-dp})$ --- positive, $\to0$.
+\item $\varepsilon\ll|x'|<1$: $|1+\nd G_\varepsilon|\approx|x'|^{-d}\gg1$, giving
+  $\int_0^1(r^{-dp}-1)r^{d-2}dr=\frac{dp}{(d-1)(d-1-dp)}$ --- positive, and $O(p)$.
+\item $|x'|>1$: $1+\nd G_\varepsilon\approx1-|x'|^{-d}\in(0,1)$, giving
+  $\approx-p\int_{|x'|>1}|x'|^{-d}dx'$ --- \emph{negative}, and $O(p)$; together with
+  the annulus around the zero at $|x'|\approx1$, where the integrand is close to
+  $-1$.
+\end{itemize}
+So \eqref{eq:AK} asserts that at small $p$ the third regime beats the second. Both
+are $O(p)$, so the inequality is a genuine computation about the constants and not
+something the shape of the estimate settles. We do not reproduce it.
+\end{caution}
+
+\begin{ournotation}
+The proof of Lemma 1 uses $\eta$ where \eqref{eq:AK} produced $M$; the two are
+identified, $\eta:=M$. \Ledger{B6}
+\end{ournotation}
+
+\subsection*{2.3 The cut-off, and why $\supp F_\varepsilon$ is small}
+
+Let $\delta=\varepsilon^{1/2}$ and for $j=0,1,2,\dots$ let $\psi_j:\Rdm\to\mathbb R$
+be functions with
+\[\supp\psi_j\subset\{2^{j-1}\delta\le|x|\le2^{j+1}\delta\},\qquad
+  \sum_j\psi_j=1\ \text{ for }|x|>\delta,\qquad
+  |\nabla^k\psi_j|\lesssim(2^j\delta)^{-k}.\]
+Put $\psi=\sum_j\psi_j$, $\rho^j_\varepsilon=\psi_jG_\varepsilon$,
+$\rho_\varepsilon=\sum_j\rho^j_\varepsilon=\psi G_\varepsilon$, and
+\[F_\varepsilon=G_\varepsilon-\rho_\varepsilon=(1-\psi)G_\varepsilon .\]
+
+\begin{filled}
+\textbf{Such a family exists.} \Ledger{B7} Fix $\chi\in C^\infty_c(\mathbb R)$ with
+$\supp\chi\subset[\frac12,2]$, $\chi\ge0$, and $\sum_{j\in\mathbb Z}\chi(2^{-j}t)=1$
+for $t>0$ (a standard dyadic partition: take any $\theta\in C^\infty_c$ with
+$\theta=1$ on $[0,1]$, $\theta=0$ on $[2,\infty)$, and set
+$\chi(t)=\theta(t)-\theta(2t)$). Put $\psi_j(x)=\chi\!\left(|x|/(2^j\delta)\right)$
+for $j\ge0$. Then $\supp\psi_j\subset\{2^{j-1}\delta\le|x|\le2^{j+1}\delta\}$;
+$\sum_{j\ge0}\psi_j(x)=1$ once $|x|>\delta$, because the omitted terms $j<0$ are
+supported in $\{|x|<\delta\}$; and $|\nabla^k\psi_j|\le\|\chi^{(k)}\|_\infty
+(2^j\delta)^{-k}$ by the chain rule.
+\end{filled}
+
+\begin{expansion}
+\textbf{$\supp F_\varepsilon\subset D(0,\varepsilon^{1/2})$, and $F_\varepsilon$ is
+smooth.} \Ledger{B8} With the $\psi_j$ above, $\psi=0$ on $\{|x|<\delta/2\}$ (every
+$\psi_j$, $j\ge0$, vanishes there) and $\psi=1$ on $\{|x|>\delta\}$. Hence
+$1-\psi$ is supported in $\overline{D(0,\delta)}$, and since
+$F_\varepsilon=(1-\psi)G_\varepsilon$,
+\[\supp F_\varepsilon\subset\overline{D(0,\delta)}=\overline{D(0,\varepsilon^{1/2})},\]
+which is the claim in Lemma 1. Smoothness: on the boundary
+$G_\varepsilon(x',0)=-\varepsilon(|x'|^2+\varepsilon^2)^{-d/2}$ is real-analytic
+(the denominator never vanishes, as $\varepsilon>0$), and $1-\psi$ is smooth; so
+$F_\varepsilon\in C_c^\infty(\Rdm)$. Note in passing that $F_\varepsilon$ agrees
+with $G_\varepsilon$ on $\{|x|<\delta/2\}$: the cut-off removes the far field, not
+the singular core.
+\end{expansion}
+
+\subsection*{2.4 Estimates on $\rho_\varepsilon$}
+
+Let $\nabla_T$ be differentiation in the $\Rdm$ directions. Then
+$|\nabla_T^kG_\varepsilon|\lesssim\varepsilon|x|^{-(d+k)}$ for $k=0,1,2$; therefore
+$|\nabla_T^k\rho^j_\varepsilon|\lesssim\varepsilon(2^j\delta)^{-(d+k)}$, whence
+\[\|\nabla_T\rho^j_\varepsilon\|_1\lesssim\varepsilon(2^j\delta)^{-2},
+  \qquad
+  \|\nabla_T\rho^j_\varepsilon\|_{C^\alpha}\lesssim\varepsilon(2^j\delta)^{-(d+1+\alpha)} .\]
+
+\begin{expansion}
+\textbf{The three estimates, done.} \Ledger{B9, B10, B11, B12}
+On the boundary, $G_\varepsilon(x',0)=-\varepsilon(|x'|^2+\varepsilon^2)^{-d/2}$.
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+\item $k=0$: $|G_\varepsilon|=\varepsilon(|x'|^2+\varepsilon^2)^{-d/2}
+  \le\varepsilon|x'|^{-d}$, with constant $1$.
+\item $k=1$: $\nabla_TG_\varepsilon
+  =d\,\varepsilon\,x'(|x'|^2+\varepsilon^2)^{-\frac d2-1}$, so
+  $|\nabla_TG_\varepsilon|\le d\,\varepsilon|x'|\cdot|x'|^{-d-2}
+  =d\,\varepsilon|x'|^{-(d+1)}$.
+\item $k=2$: differentiating once more produces two terms, of sizes
+  $d\varepsilon(|x'|^2+\varepsilon^2)^{-\frac d2-1}$ and
+  $d(d+2)\varepsilon|x'|^2(|x'|^2+\varepsilon^2)^{-\frac d2-2}$, both
+  $\le C_d\,\varepsilon|x'|^{-(d+2)}$.
+\end{itemize}
+Note the paper writes ``$\le$'' where the constant depends on $d$; we write
+$\lesssim$.
+
+For $\rho^j_\varepsilon=\psi_jG_\varepsilon$, Leibniz gives
+$\nabla_T^k\rho^j_\varepsilon=\sum_{i\le k}\binom ki
+ (\nabla_T^i\psi_j)(\nabla_T^{k-i}G_\varepsilon)$, and on $\supp\psi_j$ we have
+$|x|\sim2^j\delta$, so
+\[|\nabla_T^k\rho^j_\varepsilon|
+ \lesssim\sum_{i\le k}(2^j\delta)^{-i}\cdot\varepsilon(2^j\delta)^{-(d+k-i)}
+ \lesssim\varepsilon(2^j\delta)^{-(d+k)} .\]
+For the $L^1$ bound, $\supp\nabla_T\rho^j_\varepsilon$ lies in an annulus of measure
+$\lesssim(2^j\delta)^{d-1}$, so
+\[\|\nabla_T\rho^j_\varepsilon\|_1
+ \lesssim\varepsilon(2^j\delta)^{-(d+1)}\cdot(2^j\delta)^{d-1}
+ =\varepsilon(2^j\delta)^{-2}. \]
+For the H\"older bound, fix once and for all an $\alpha\in(0,1)$ (any choice works;
+$\alpha=\frac12$ will do). A function with
+$|\nabla_T\rho^j|\lesssim\varepsilon(2^j\delta)^{-(d+1)}$ and
+$|\nabla_T^2\rho^j|\lesssim\varepsilon(2^j\delta)^{-(d+2)}$ satisfies
+$\|\nabla_T\rho^j\|_{C^\alpha}\lesssim
+ \|\nabla_T\rho^j\|_\infty^{1-\alpha}\|\nabla^2_T\rho^j\|_\infty^{\alpha}
+ \lesssim\varepsilon(2^j\delta)^{-(d+1+\alpha)}$, which is the stated bound.
+\end{expansion}
+
+By \eqref{eq:dtn} and Background \ref{bg:riesz} applied to
+$h=\partial_k\rho^j_\varepsilon$,
+\begin{equation}\label{eq:weak}
+  \Bigl|\Bigl\{x:\bigl|\nd\rho^j_\varepsilon(x)\bigr|>\lambda\Bigr\}\Bigr|
+   \lesssim\varepsilon(2^j\delta)^{-2}\lambda^{-1},
+\end{equation}
+\begin{equation}\label{eq:hold}
+  \bigl\|\nd\rho^j_\varepsilon\bigr\|_{C^\alpha}
+   \lesssim\varepsilon(2^j\delta)^{-(d+1+\alpha)} .
+\end{equation}
+
+\begin{expansion}
+\textbf{Near field: $|\nd\rho^j_\varepsilon(x)|\lesssim\varepsilon(2^j\delta)^{-(d+1)}$
+for $|x|<2\cdot2^{j+1}\delta$.} \Ledger{B15} Write $R=2\cdot2^{j+1}\delta$,
+$T=\varepsilon(2^j\delta)^{-(d+1)}$, and $g=\nd\rho^j_\varepsilon$.
+
+By \eqref{eq:weak} with $\lambda=T$, the set $\{|g|>T\}$ has measure
+$\lesssim\varepsilon(2^j\delta)^{-2}T^{-1}=(2^j\delta)^{d-1}$. The ball $D(0,R)$ has
+measure $c_{d}R^{d-1}=c_d\,4^{d-1}(2^j\delta)^{d-1}$. So if the implicit constant in
+\eqref{eq:weak} is $C_1$, then applying \eqref{eq:weak} at level $\lambda=KT$
+instead, with $K$ a constant chosen so that $C_1K^{-1}<c_d4^{d-1}$, gives
+\[|\{|g|>KT\}\cap D(0,R)|<|D(0,R)|,\]
+so there exists $x_0\in D(0,R)$ with $|g(x_0)|\le KT$. That is the ``\emph{some} $x$''
+of the original.
+
+To pass to \emph{all} $x\in D(0,R)$, use \eqref{eq:hold}: for any $x\in D(0,R)$,
+\[|g(x)|\le|g(x_0)|+\|g\|_{C^\alpha}|x-x_0|^\alpha
+ \le KT+C_2\,\varepsilon(2^j\delta)^{-(d+1+\alpha)}(2R)^\alpha .\]
+Since $2R=8\cdot2^j\delta$, the second term is
+$C_2 8^\alpha\varepsilon(2^j\delta)^{-(d+1)}=C_2 8^\alpha T$. Hence
+$|g(x)|\le(K+C_28^\alpha)T\lesssim T$ throughout $D(0,R)$, as claimed. The
+constants depend only on $d$ and $\alpha$, both fixed.
+\end{expansion}
+
+Furthermore, if $|x|>2\cdot2^{j+1}\delta$ then, by Background \ref{bg:rep},
+\begin{equation}\label{eq:far}
+ \bigl|\nd\rho^j_\varepsilon(x)\bigr|
+  =\Bigl|c_d'\!\!\int_{|y|<2^{j+1}\delta}\!\!|x-y|^{-d}\rho^j_\varepsilon(y)\,dy\Bigr|
+  \lesssim\varepsilon(2^j\delta)^{-1}|x|^{-d},
+\end{equation}
+using $|\rho^j_\varepsilon|\lesssim\varepsilon(2^j\delta)^{-d}$.
+
+\begin{expansion}
+\textbf{Where \eqref{eq:far} comes from.} \Ledger{B16} Since
+$|x|>2\cdot2^{j+1}\delta$ and $|y|<2^{j+1}\delta$ we have $|x-y|\ge\frac12|x|$, so
+$|x-y|^{-d}\le2^d|x|^{-d}$ and the integral is at most
+$2^d|x|^{-d}\|\rho^j_\varepsilon\|_1$. Now
+$\|\rho^j_\varepsilon\|_1\lesssim\varepsilon(2^j\delta)^{-d}\cdot(2^j\delta)^{d-1}
+ =\varepsilon(2^j\delta)^{-1}$, the annulus again having measure
+$\lesssim(2^j\delta)^{d-1}$. This gives \eqref{eq:far}. The representation itself is
+legitimate because $x$ lies outside $\supp\rho^j_\varepsilon$, where the kernel of
+$|\nabla'|$ is smooth.
+\end{expansion}
+
+In other words
+\begin{equation}\label{eq:combined}
+ \bigl|\nd\rho^j_\varepsilon\bigr|
+  \lesssim\varepsilon(2^j\delta)^{-1}\min\!\bigl(|x|^{-d},(2^j\delta)^{-d}\bigr)
+  \quad\text{on }\Rdm,
+\end{equation}
+and summing over $j$,
+\begin{equation}\label{eq:star}\tag{$*$}
+ \bigl|\nd\rho_\varepsilon\bigr|
+  \lesssim\varepsilon\,\delta^{-1}\min\!\bigl(\delta^{-d},|x|^{-d}\bigr).
+\end{equation}
+
+\begin{expansion}
+\textbf{The summation.} \Ledger{B17} Fix $x$ and let $j_0$ be the least $j$ with
+$2^j\delta\ge|x|$. For $j<j_0$ the minimum in \eqref{eq:combined} is $|x|^{-d}$ and
+the terms are $\varepsilon(2^j\delta)^{-1}|x|^{-d}$, a geometric series in $2^{-j}$
+summing to $\lesssim\varepsilon\delta^{-1}|x|^{-d}$ (dominated by $j=0$). For
+$j\ge j_0$ the minimum is $(2^j\delta)^{-d}$ and the terms are
+$\varepsilon(2^j\delta)^{-(d+1)}$, again geometric, summing to
+$\lesssim\varepsilon(2^{j_0}\delta)^{-(d+1)}\le\varepsilon\delta^{-1}|x|^{-d}$
+whenever $|x|\ge\delta$. For $|x|<\delta$ only $j\ge j_0=0$ occurs and the sum is
+$\lesssim\varepsilon\delta^{-(d+1)}=\varepsilon\delta^{-1}\delta^{-d}$. Both cases
+are \eqref{eq:star}.
+\end{expansion}
+
+\subsection*{2.5 The main integral}
+
+Then for small $p$ and appropriate $\eta$, using
+$\nd F_\varepsilon=\nd G_\varepsilon-\nd\rho_\varepsilon$,
+\begin{align}
+ \int\Bigl(\bigl|1+\nd F_\varepsilon\bigr|^p-1\Bigr)
+ &=\underbrace{\int\Bigl(\bigl|1+\nd G_\varepsilon\bigr|^p-1\Bigr)}_{<\,-2\eta
+   \ \text{by \eqref{eq:AK}}}
+  +\int\Bigl(\bigl|1+\nd F_\varepsilon\bigr|^p-\bigl|1+\nd G_\varepsilon\bigr|^p\Bigr)
+  \notag\\
+ &\le-2\eta
+  +\underbrace{\int_{|x|<1}\Bigl|\,\bigl|1+\nd F_\varepsilon\bigr|^p
+    -\bigl|1+\nd G_\varepsilon\bigr|^p\Bigr|}_{=:\,\mathrm{I}}\notag\\
+ &\qquad\qquad
+  +\underbrace{\int_{|x|>1}\Bigl(\bigl|1+\nd F_\varepsilon\bigr|^p
+    -\bigl|1+\nd G_\varepsilon\bigr|^p\Bigr)}_{=:\,\mathrm{II}} .
+  \label{eq:split}
+\end{align}
+
+\noindent\textbf{The term I.} By Background \ref{bg:sub},
+\[\mathrm I\le\int_{|x|\le1}\bigl|\nd\rho_\varepsilon\bigr|^p ,\]
+and $(*)$ implies this goes to $0$ with $\varepsilon$.
+
+\begin{expansion}
+\textbf{It goes to $0$ --- and this is where $p$ is constrained.} \Ledger{B20}
+By \eqref{eq:star}, $|\nd\rho_\varepsilon|\lesssim\varepsilon\delta^{-1}
+\min(\delta^{-d},|x|^{-d})$, and $\varepsilon\delta^{-1}=\varepsilon^{1/2}$ since
+$\delta=\varepsilon^{1/2}$. Split at $|x|=\delta$.
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+\item $|x|<\delta$: the integrand is
+  $\lesssim(\varepsilon^{1/2}\delta^{-d})^p$ over a set of measure
+  $\lesssim\delta^{d-1}$, giving
+  $\varepsilon^{p/2}\delta^{-dp+d-1}
+   =\varepsilon^{\frac p2}\varepsilon^{\frac{-dp+d-1}{2}}
+   =\varepsilon^{\frac{(d-1)(1-p)}{2}}\longrightarrow0$ for $p<1$.
+\item $\delta<|x|\le1$: the integrand is
+  $\lesssim\varepsilon^{p/2}|x|^{-dp}$, and
+  \[\int_\delta^1 r^{-dp}\,r^{d-2}\,dr
+    =\int_\delta^1 r^{\,d-2-dp}\,dr,\]
+  which stays bounded as $\delta\downarrow0$ \emph{iff} $d-2-dp>-1$, i.e.
+  \[\boxed{\,p<\tfrac{d-1}{d}\,}\]
+  and then the whole piece is $\lesssim\varepsilon^{p/2}\to0$.
+\end{itemize}
+The paper says only ``for small $p$''. The explicit constraint is
+$p<\frac{d-1}d$, which for $d\ge3$ means $p<\frac23$; combined with $p<1$ from
+Background \ref{bg:sub} the binding constraint is $p<\frac{d-1}{d}$. Together with
+whatever ``below a certain critical number'' means in \eqref{eq:AK}, this fixes
+$p_0(d)$.
+\end{expansion}
+
+\noindent\textbf{The term II.} When $|x|>1$ we have a lower bound for
+$|1+\nd G_\varepsilon|$, and $|\nd\rho_\varepsilon|$ is small; it follows by the
+mean value theorem that
+$\bigl||1+\nd F_\varepsilon|^p-|1+\nd G_\varepsilon|^p\bigr|
+ \le C|\nd\rho_\varepsilon|$, and therefore
+\[\mathrm{II}\le C\int_{|x|>1}\bigl|\nd\rho_\varepsilon\bigr|
+  \le C\varepsilon\delta^{-p},\]
+which again goes to $0$ with $\varepsilon$. That proves \eqref{eq:L1main}.
+
+\subsection*{2.6 Two repairs in the term II}
+
+\begin{caution}[downgraded: repaired below]
+\textbf{The lower bound fails exactly at $|x|=1$.} \Ledger{B21} By
+\eqref{eq:dnG}, in the far field $\nd G_\varepsilon\approx-|x|^{-d}$, so
+\[1+\nd G_\varepsilon\approx1-|x|^{-d},\]
+which \emph{vanishes at $|x|\approx1$} and is only $\approx d(|x|-1)$ just beyond
+it. So ``we have a lower bound for $|1+\nd G_\varepsilon|$ when $|x|>1$'' is not
+true as stated: the mean value theorem is being applied across the very point where
+the function it is applied to has a zero. The following repair costs nothing.
+\end{caution}
+
+\begin{filled}
+\textbf{Repair: split $\{|x|>1\}$ at $|x|=2$.}
+\emph{(a) On $\{1<|x|<2\}$}, do not use the mean value theorem. Background
+\ref{bg:sub} gives directly
+\[\int_{1<|x|<2}\Bigl|\,\bigl|1+\nd F_\varepsilon\bigr|^p
+   -\bigl|1+\nd G_\varepsilon\bigr|^p\Bigr|
+  \le\int_{1<|x|<2}\bigl|\nd\rho_\varepsilon\bigr|^p
+  \lesssim\bigl(\varepsilon^{1/2}\bigr)^{p}\longrightarrow0,\]
+using $|\nd\rho_\varepsilon|\lesssim\varepsilon^{1/2}|x|^{-d}\le\varepsilon^{1/2}$
+there and the finite measure of the annulus. This is the same computation as for
+term I, on a region of measure $O(1)$.
+
+\emph{(b) On $\{|x|>2\}$} the lower bound is genuine: $|x|^{-d}\le2^{-d}\le\frac12$,
+so $1+\nd G_\varepsilon\ge1-2^{-d}\ge\frac12$; and
+$|\nd\rho_\varepsilon|\lesssim\varepsilon^{1/2}|x|^{-d}\le\varepsilon^{1/2}2^{-d}$,
+so also $1+\nd F_\varepsilon\ge\frac12-\varepsilon^{1/2}\ge\frac14$ for
+$\varepsilon$ small. Background \ref{bg:mvt} with $c=\frac14$ then gives
+$\bigl||1+\nd F_\varepsilon|^p-|1+\nd G_\varepsilon|^p\bigr|
+ \le p4^{1-p}\,|\nd\rho_\varepsilon|$, so
+\[\int_{|x|>2}\bigl|\cdots\bigr|\le C\int_{|x|>2}\bigl|\nd\rho_\varepsilon\bigr| .\]
+The repaired split changes nothing downstream: both pieces $\to0$ with
+$\varepsilon$, which is all \eqref{eq:split} needs.
+\end{filled}
+
+\begin{expansion}
+\textbf{The exponent in $C\varepsilon\delta^{-p}$.} \Ledger{B23} What $(*)$ yields
+is
+\[\int_{|x|>2}\bigl|\nd\rho_\varepsilon\bigr|
+ \lesssim\varepsilon\delta^{-1}\int_{|x|>2}|x|^{-d}dx
+ =c\,\varepsilon\delta^{-1}=c\,\varepsilon^{1/2},\]
+since $\int_{|x|>2}|x|^{-d}dx=c\int_2^\infty r^{-d}r^{d-2}dr=c\int_2^\infty
+r^{-2}dr<\infty$ in $\Rdm$. The original prints the exponent $-p$ rather than $-1$;
+as $\delta<1$ and $p<1$, $\delta^{-p}<\delta^{-1}$, so the printed bound is the
+\emph{stronger} of the two and is not what $(*)$ delivers. Since both
+$\varepsilon\delta^{-1}=\varepsilon^{1/2}$ and
+$\varepsilon\delta^{-p}=\varepsilon^{1-p/2}$ tend to $0$, the conclusion is
+unaffected. We use $\varepsilon^{1/2}$.
+\end{expansion}
+
+\subsection*{2.7 The gradient bound \eqref{eq:L1grad}}
+
+To prove $|\nabla\Ftil|\lesssim\min(\varepsilon^{-d},|x|^{-d})$: this estimate is
+obvious for $|\nabla G_\varepsilon|$ and for $|\nabla_T\rho_\varepsilon|$; for
+$|\nd\rho_\varepsilon|$ it follows from $(*)$.
+
+\begin{expansion}
+\textbf{``Obvious'', done.} \Ledger{B24} Since
+$\nabla\Ftil=\nabla G_\varepsilon-\nabla\rho_\varepsilon$ and
+$\nabla=(\nabla_T,\nd)$, there are three pieces.
+
+\emph{(i) $\nabla G_\varepsilon$.} The normal component is \eqref{eq:dnG}:
+$|\nd G_\varepsilon|=\varepsilon^{-d}|h(s)|$ with $h$ bounded, so
+$|\nd G_\varepsilon|\le(d-1)\varepsilon^{-d}$ always, while for $|x|\gg\varepsilon$,
+$|h(s)|\approx s^{-d}$ gives $|\nd G_\varepsilon|\approx|x|^{-d}$. Hence
+$|\nd G_\varepsilon|\lesssim\min(\varepsilon^{-d},|x|^{-d})$ --- this is exactly the
+shape asserted, and it is the term that forces the $\varepsilon^{-d}$ in
+\eqref{eq:L1grad}. The tangential component is
+$|\nabla_TG_\varepsilon|\lesssim\varepsilon|x|^{-(d+1)}$ from \S2.4, which is
+smaller.
+
+\emph{(ii) $\nabla_T\rho_\varepsilon$.} On $\supp\psi_j$, \S2.4 gives
+$|\nabla_T\rho^j_\varepsilon|\lesssim\varepsilon(2^j\delta)^{-(d+1)}
+ \approx\varepsilon|x|^{-(d+1)}$; the $\psi_j$ have bounded overlap, so
+$|\nabla_T\rho_\varepsilon|\lesssim\varepsilon|x|^{-(d+1)}$, and since
+$\rho_\varepsilon$ is supported in $\{|x|>\delta/2\}$ this is
+$\le2\varepsilon\delta^{-1}|x|^{-d}=2\varepsilon^{1/2}|x|^{-d}\le|x|^{-d}$.
+
+\emph{(iii) $\nd\rho_\varepsilon$.} By $(*)$,
+$|\nd\rho_\varepsilon|\lesssim\varepsilon^{1/2}\min(\delta^{-d},|x|^{-d})$. The
+second entry is already $\le|x|^{-d}$; for the first,
+$\varepsilon^{1/2}\delta^{-d}=\varepsilon^{\frac{1-d}2}\le\varepsilon^{-d}$
+because $\frac{d-1}2\le d$ for $d\ge1$.
+
+Adding, $|\nabla\Ftil|\lesssim\min(\varepsilon^{-d},|x|^{-d})$. \hfill$\square$
+\end{expansion}
+
+% =====================================================================
+\section*{\S3. Lemma 2: the correction step on a cube}
+% =====================================================================
+
+\begin{lemB}
+If $N$ is large enough there is a constant $\beta=\beta(N)>0$ such that: if
+$Q\subset\Rdm$ is a cube, $a_Q$ its centre and $I:Q\to\mathbb R$ a function such
+that
+\begin{equation}\label{eq:L2hyp}
+  N^{d-1}\,|I(a_Q)|^{-1}\sup_{x\in Q}|I(x)-I(a_Q)|
+\end{equation}
+is sufficiently small (independently of $N$ and $\varepsilon$), then
+\begin{equation}\label{eq:L2}
+ \Bigl(\int_Q\Bigl|I(x)+\nd F_\varepsilon\bigl(N\ell(Q)^{-1}(x-a_Q)\bigr)\Bigr|^p dx
+ \Bigr)^{1/p}<e^{-2\beta}\,|I(a_Q)|\,|Q|^{1/p}.
+\end{equation}
+\end{lemB}
+
+\begin{ournotation}
+The original prints $\beta\subset\beta(N)$ for $\beta=\beta(N)$. \Ledger{C1}
+\end{ournotation}
+
+\begin{filled}
+\textbf{Order of quantifiers.} \Ledger{C2} Read: there are $N_0(d,p)$ and an
+absolute threshold $\tau=\tau(d,p)>0$ such that for every $N\ge N_0$ there is
+$\beta=\beta(N,d,p)>0$ such that for all $\varepsilon<\varepsilon_0(p,d)$ (as in
+Lemma 1), all cubes $Q$, and all $I$ with \eqref{eq:L2hyp} $<\tau$, the conclusion
+\eqref{eq:L2} holds. The parenthetical ``independently of $N$ and $\varepsilon$''
+refers to $\tau$, not to $\beta$: $\beta$ certainly depends on $N$.
+\end{filled}
+
+\subsection*{3.1 Reduction to $Q=Q(N)$ and $I(a_Q)=1$}
+
+We can assume $Q=Q(N)$. It is then equivalent to show that if $N^{d-1}\|I-1\|_\infty$
+is sufficiently small then
+\begin{equation}\label{eq:L2red}
+ \int_{Q(N)}\Bigl(\bigl|I+\nd F_\varepsilon\bigr|^p-1\Bigr)\le-\eta
+\end{equation}
+for suitable $\eta>0$.
+
+\begin{expansion}
+\textbf{The two reductions.} \Ledger{C3}
+\emph{Scaling.} The map $\Phi(x)=N\ell(Q)^{-1}(x-a_Q)$ carries $Q$ onto $Q(N)$ and
+$a_Q$ to $0$; it has constant Jacobian $(N/\ell(Q))^{d-1}$, and
+$|Q|=\ell(Q)^{d-1}$, $|Q(N)|=N^{d-1}$, so $|Q(N)|/|Q|=(N/\ell(Q))^{d-1}$. Writing
+$\tilde I=I\circ\Phi^{-1}$ and substituting $y=\Phi(x)$,
+\[\int_Q\bigl|I(x)+\nd F_\varepsilon(\Phi(x))\bigr|^pdx
+ =\frac{|Q|}{|Q(N)|}\int_{Q(N)}\bigl|\tilde I(y)+\nd F_\varepsilon(y)\bigr|^pdy .\]
+Since $|Q|^{1/p}$ appears on the right of \eqref{eq:L2}, the inequality is
+equivalent to
+$\frac1{|Q(N)|}\int_{Q(N)}|\tilde I+\nd F_\varepsilon|^p<e^{-2\beta p}|\tilde I(0)|^p$,
+which involves $Q$ only through $\tilde I$; and \eqref{eq:L2hyp} is invariant under
+$\Phi$ because it is built from the values of $I$ alone.
+
+\emph{Normalisation.} Both sides of the resulting inequality are homogeneous of
+degree $p$ in $(\tilde I,\nd F_\varepsilon)$ jointly --- but $\nd F_\varepsilon$ is
+fixed, so we cannot rescale it. What we can do is divide by $|\tilde I(0)|$: it is
+enough to prove the statement when $\tilde I(0)=1$, replacing $F_\varepsilon$ by
+$F_\varepsilon/|\tilde I(0)|$ --- and here the argument uses that Lemma 1 is applied
+to a \emph{fixed} $F_\varepsilon$ while $I$ varies. In the application (\S6) $I$ is
+$\partial_nu_n(a_Q)$ plus a small perturbation, and the factor $\partial_nu_n(a_Q)$
+is exactly the coefficient multiplying $F_{\varepsilon_{n+1}}$ in the definition of
+$u_{n+1}$, so the two scalings match. With $\tilde I(0)=1$, \eqref{eq:L2hyp} becomes
+$N^{d-1}\|\tilde I-1\|_{\infty}$, and \eqref{eq:L2} becomes \eqref{eq:L2red} with
+$e^{-2\beta p}=1-\eta/N^{d-1}$; see \S3.4.
+\end{expansion}
+
+\subsection*{3.2 The estimate}
+
+This last inequality is true since
+\begin{align}
+ \int_{Q(N)}\Bigl(\bigl|I+\nd F_\varepsilon\bigr|^p
+   -\bigl|1+\nd F_\varepsilon\bigr|^p\Bigr)dx
+ &\le\int_{Q(N)\setminus D(0,1)}+\int_{D(0,1)} \notag\\
+ &\le C\!\int_{Q(N)\setminus D(0,1)}\!\!|I-1|\,dx
+   +\int_{D(0,1)}|I-1|^p dx \label{eq:L2chain}
+\end{align}
+(because $1+\nd F_\varepsilon$ is bounded away from $0$ when $|x|>1$)
+\[\le C\|I-1\|_\infty N^{d-1}+C\|I-1\|_\infty^{\,p},\]
+which is small. It remains to apply Lemma 1.
+
+\begin{expansion}
+\textbf{Three corrections in that chain.}
+\begin{itemize}[leftmargin=1.4em,itemsep=3pt]
+\item \Ledger{C4} The original prints both terms of the first line as
+  $|1+\nd F_\varepsilon|^p$, so the left side is identically $0$. The first must be
+  $|I+\nd F_\varepsilon|^p$: the whole point is to compare the $I$-version with the
+  $1$-version, which is what Lemma 1 controls. We have restored $I$.
+\item \Ledger{C6} The original's last line prints $C\|I-1\|_\infty$ for the second
+  term. That term is $\int_{D(0,1)}|I-1|^p\le|D(0,1)|\cdot\|I-1\|_\infty^p$, so the
+  exponent is $p$, not $1$. Since $\|I-1\|_\infty<1$ and $p<1$ we have
+  $\|I-1\|_\infty^p>\|I-1\|_\infty$, so the printed bound is the smaller one and is
+  not what the line before yields. Harmless: the hypothesis
+  $N^{d-1}\|I-1\|_\infty<\tau$ with $N\ge1$ forces $\|I-1\|_\infty<\tau$, hence
+  $\|I-1\|_\infty^p<\tau^p$, and $\tau$ is at our disposal.
+\item The first term: $\int_{Q(N)\setminus D(0,1)}|I-1|\le\|I-1\|_\infty|Q(N)|
+  =\|I-1\|_\infty N^{d-1}$, which is where the $N^{d-1}$ in \eqref{eq:L2hyp} comes
+  from --- and it is the only place. This is why the hypothesis carries the factor
+  $N^{d-1}$ and not, say, $N^{d}$.
+\end{itemize}
+\end{expansion}
+
+\subsection*{3.3 The same lower-bound repair}
+
+\begin{caution}[downgraded: repaired below]
+The parenthetical ``$1+\nd F_\varepsilon$ is bounded away from $0$ when $|x|>1$''
+has exactly the defect of \S2.6: by \eqref{eq:dnG} and \S2.4,
+$\nd F_\varepsilon=\nd G_\varepsilon-\nd\rho_\varepsilon\approx-|x|^{-d}$ in the far
+field, so $1+\nd F_\varepsilon$ has a zero near $|x|=1$. \Ledger{C5}
+\end{caution}
+
+\begin{filled}
+\textbf{Repair.} Split $Q(N)\setminus D(0,1)$ into the annulus
+$A=\{1<|x|<2\}$ and $Q(N)\setminus D(0,2)$.
+On $A$, use Background \ref{bg:sub}: the integrand is $\le|I-1|^p$, so this piece
+contributes $\le|A|\cdot\|I-1\|_\infty^p\le C\|I-1\|_\infty^p$ --- the same shape as
+the $D(0,1)$ term, and absorbed into it.
+On $Q(N)\setminus D(0,2)$ the bound $|1+\nd F_\varepsilon|\ge\frac14$ of \S2.6(b)
+holds, so Background \ref{bg:mvt} applies and gives $C|I-1|$ pointwise, hence
+$C\|I-1\|_\infty N^{d-1}$.
+The final bound is therefore
+$C\|I-1\|_\infty N^{d-1}+C\|I-1\|_\infty^{\,p}$, exactly as in \S3.2, and the
+argument proceeds unchanged.
+\end{filled}
+
+\subsection*{3.4 Applying Lemma 1, and what $\beta$ is}
+
+\begin{filled}
+\textbf{``It remains to apply lemma 1'' --- the tail.} \Ledger{C7} Lemma 1 controls
+$\int_{\Rdm}(|1+\nd F_\varepsilon|^p-1)<-\eta_1$, an integral over the whole
+hyperplane, whereas \eqref{eq:L2red} is over $Q(N)$. The difference is
+\[\int_{\Rdm\setminus Q(N)}\Bigl(\bigl|1+\nd F_\varepsilon\bigr|^p-1\Bigr),\]
+and $\Rdm\setminus Q(N)\subset\{|x|>N/2\}$. There
+$|\nd F_\varepsilon|\lesssim|x|^{-d}\le(N/2)^{-d}\le\frac12$ for $N$ large, so by
+Background \ref{bg:mvt} with $c=\frac12$,
+$\bigl||1+\nd F_\varepsilon|^p-1\bigr|\le p2^{1-p}|\nd F_\varepsilon|
+ \lesssim|x|^{-d}$, and
+\[\Bigl|\int_{\Rdm\setminus Q(N)}\Bigr|\lesssim\int_{|x|>N/2}|x|^{-d}dx
+ =c\,N^{-1}.\]
+Choosing $N$ large enough that $cN^{-1}<\eta_1/2$ gives
+\[\int_{Q(N)}\Bigl(\bigl|1+\nd F_\varepsilon\bigr|^p-1\Bigr)<-\tfrac{\eta_1}2 .\]
+Adding \eqref{eq:L2chain}, whose right-hand side is $<\eta_1/4$ once
+$N^{d-1}\|I-1\|_\infty<\tau$ with $\tau$ small, yields \eqref{eq:L2red} with
+$\eta=\eta_1/4$. \emph{Note the order}: $\eta_1$ comes from Lemma 1 and depends on
+$p,d$ only; $N$ is then chosen; then $\tau$; and only then $\beta$.
+\end{filled}
+
+\begin{expansion}
+\textbf{Where $e^{-2\beta}$ comes from, and what it depends on.} \Ledger{C8}
+\eqref{eq:L2red} says $\int_{Q(N)}|I+\nd F_\varepsilon|^p\le|Q(N)|-\eta$. Hence
+\[\Bigl(\int_{Q(N)}\bigl|I+\nd F_\varepsilon\bigr|^p\Bigr)^{1/p}
+ \le\bigl(1-\eta/N^{d-1}\bigr)^{1/p}|Q(N)|^{1/p},\]
+so \eqref{eq:L2} holds with
+\[\boxed{\ \beta=\beta(N)=-\frac1{2p}\log\bigl(1-\eta N^{-(d-1)}\bigr)>0\ }\]
+which depends on $p$, $d$ and $N$ --- and on nothing else. This is the $\beta$ that
+governs the geometric decay of the whole construction, and it is fixed once and
+for all as soon as $N$ is. \hfill$\square$
+\end{expansion}
+
+% =====================================================================
+\section*{\S4. The recursive construction}
+% =====================================================================
+
+For a sufficiently large $N$ to be determined, choose $\beta$ according to Lemma 2.
+Also fix sequences $K_n\to\infty$, $\varepsilon_n\searrow0$ (to be determined).
+Constants denoted $C$ will be independent of these choices. Let $u_0$ be a smooth
+function on $\Rdm$ which vanishes on $Q(1)$.
+
+\begin{filled}
+\textbf{$u_0$ vanishes \emph{on} $Q(1)$ --- this is correct, and is the single most
+confusing line in the paper.} \Ledger{D2} $u_0$ is \emph{boundary data}. That
+$u_0\equiv0$ on $Q(1)$ does \emph{not} make $\nd u_0$ vanish there: the normal
+derivative of the harmonic extension at a boundary point is determined by $u_0$
+everywhere, not just nearby, and is in general nonzero on $Q(1)$. It is precisely
+this nonzero normal derivative that the recursion drives to $0$. And, per \S1, take
+$u_0\not\equiv0$, so that $f\not\equiv0$.
+\end{filled}
+
+\begin{ournotation}
+\textbf{The order in which everything is chosen} \Ledger{D4} --- the paper gives
+only part of this, and the argument is unreadable without it:
+\[
+ \begin{aligned}
+  d,\;p \;&\longrightarrow\; \eta_1\ (\text{Lemma 1})
+  \;\longrightarrow\; N \;\longrightarrow\; \tau,\ \beta=\beta(N)\\
+  \;&\longrightarrow\; A \;\longrightarrow\; \{K_n\},\{\varepsilon_n\}
+  \;\longrightarrow\; \delta_{n+1}\ \text{at each stage.}
+ \end{aligned}
+\]
+A constant written $C$ may depend on $d,p,N$ but never on
+$A,K_n,\varepsilon_n,\delta_n$ or $n$. Crucially $\delta_{n+1}$ is chosen
+\emph{after} $u_n$ exists, so it may depend on the modulus of continuity of
+$\nd u_n$ --- used at D10 and D18 below.
+\end{ournotation}
+
+We drop the $\widehat{\phantom{x}}$ and identify functions on $\Rdm$ with their
+harmonic extensions.
+
+\subsection*{4.1 The inductive data}
+
+If the $n$th stage has been done $(n\ge0)$ we have: $\delta_n>0$ with
+$\delta_n^{-1}\in\mathbb Z$; a subset $\mathcal Q_n\subset\mathcal H_n$, where
+$\mathcal H_n$ is the collection of $\delta_n^{-(d-1)}$ cubes of side $\delta_n$
+whose union is $Q(1)$; and a smooth $u_n$ with
+\begin{equation}\label{eq:IH}
+ \Bigl(\int_{V_n}\bigl|\nd u_n\bigr|^p\Bigr)^{1/p}\le A\,e^{-\beta n},
+ \qquad V_n=\bigcup\{Q:Q\in\mathcal Q_n\},
+\end{equation}
+$A$ a large constant independent of $n$. To start, $\delta_0=1$,
+$\mathcal Q_0=\{Q(1)\}$.
+
+\begin{expansion}
+\textbf{Base case.} \Ledger{D3} At $n=0$, $V_0=Q(1)$ and \eqref{eq:IH} reads
+$(\int_{Q(1)}|\nd u_0|^p)^{1/p}\le A$. Since $u_0$ is smooth and $Q(1)$ has measure
+$1$, $\nd u_0$ is bounded on $Q(1)$ and the left side is finite; take
+$A\ge\|\nd u_0\|_{L^\infty(Q(1))}$. This is one of the constraints on $A$; \S6
+imposes the other, and both are lower bounds, so a single large $A$ serves.
+\end{expansion}
+
+\subsection*{4.2 Stage $n+1$}
+
+Choose $\delta_{n+1}$ with $\delta_n/\delta_{n+1}\in\mathbb Z$, extremely small
+(how small is determined later). Then $\mathcal Q_{n+1}$ is all cubes
+$Q\in\mathcal H_{n+1}$ such that
+\begin{itemize}[leftmargin=2.4em]
+\item[(a)] the cube $Q'\in\mathcal H_n$ with $Q\subset Q'$ satisfies
+  $Q'\in\mathcal Q_n$, and
+\item[(b)] $\displaystyle\Bigl(\frac1{|Q|}\int_Q\bigl|\nd u_n\bigr|^p\Bigr)^{1/p}
+  <K_{n+1}e^{-\beta n}$.
+\end{itemize}
+Let $a_Q$ be the centre of $Q$ and define
+\begin{equation}\label{eq:un1}
+ u_{n+1}(x)=u_n(x)+\sum_{Q\in\mathcal Q_{n+1}}\nd u_n(a_Q)\,
+   F_{\varepsilon_{n+1}}\bigl(N\delta_{n+1}^{-1}(x-a_Q)\bigr)\cdot
+   \frac{\delta_{n+1}}N,
+\end{equation}
+so that
+\begin{equation}\label{eq:gradun1}
+ \nabla u_{n+1}(x)=\nabla u_n(x)+\sum_{Q\in\mathcal Q_{n+1}}\nd u_n(a_Q)\,
+   \nabla F_{\varepsilon_{n+1}}\bigl(N\delta_{n+1}^{-1}(x-a_Q)\bigr).
+\end{equation}
+
+\begin{expansion}
+\textbf{Why the factor $\delta_{n+1}/N$ disappears.} \Ledger{D5} Writing
+$\Phi_Q(x)=N\delta_{n+1}^{-1}(x-a_Q)$, the chain rule gives
+$\nabla\bigl[F(\Phi_Q(x))\bigr]=N\delta_{n+1}^{-1}(\nabla F)(\Phi_Q(x))$, and the
+prefactor $\delta_{n+1}/N$ in \eqref{eq:un1} cancels it exactly. This is the reason
+for that factor: the \emph{amplitude} of the correction is $O(\delta_{n+1}/N)$, so
+$u$ barely moves, while its \emph{gradient} is $O(1)$ --- which is what has to be
+$O(1)$ for Lemma 2 to bite. Without the factor the corrections would not converge in
+$C^0$; with a larger factor they would not correct the gradient at all.
+\end{expansion}
+
+\subsection*{4.3 Support of the correction}
+
+\begin{expansion}
+\Ledger{D6, D29} $\supp F_\varepsilon\subset D(0,\varepsilon^{1/2})$, so the
+$Q$-term of \eqref{eq:un1} is supported where
+$|N\delta_{n+1}^{-1}(x-a_Q)|<\varepsilon_{n+1}^{1/2}$, i.e. in
+\[D\Bigl(a_Q,\ \frac{\delta_{n+1}\varepsilon_{n+1}^{1/2}}{N}\Bigr).\]
+The original writes the radius as $\delta_{n+1}\varepsilon_{n+1}^{1/2}$, omitting
+the $1/N$; since $N$ is fixed this only changes constants, and we keep the correct
+radius. For $\delta_{n+1}$ small this disc is contained in $Q$, hence in $Q(1)$.
+Consequently
+\[u_{n+1}=u_n\ \text{ on }\Rdm\setminus Q(1)\quad\text{for every }n,
+  \qquad\text{so}\qquad f=u_0\ \text{ on }\Rdm\setminus Q(1),\]
+which is the fact \S1 needs for $f\not\equiv0$.
+\end{expansion}
+
+% =====================================================================
+\section*{\S5. Lemma 3 and its corollary: controlling the interference}
+% =====================================================================
+
+\begin{lemC}
+For all $\rho>\mathrm{const}\cdot\delta_{n+1}$ and $x\in\Rdm$,
+\begin{equation}\label{eq:L3}
+ \sum_{\substack{Q\in\mathcal Q_{n+1}\\|x-a_Q|>\rho}}
+  \bigl|\nabla F_{\varepsilon_{n+1}}\bigl(N\delta_{n+1}^{-1}(x-a_Q)\bigr)\bigr|
+ \le C\,N^{-d}\,\delta_{n+1}\,\rho^{-1},
+\end{equation}
+where $C$ depends on a lower bound for $\rho/\delta_{n+1}$.
+\end{lemC}
+
+\begin{proof}
+The left hand side is
+$\le\sum_{|x-a_Q|>\rho}\bigl(N\delta_{n+1}^{-1}|x-a_Q|\bigr)^{-d}$ by the last part
+of Lemma 1. Lemma 3 follows by considering
+$\sum\delta_{n+1}^{d-1}|x-a_Q|^{-d}$ as a Riemann sum for
+$\int_{|x|>\rho}|x|^{-d}$, which is justified as long as $\rho/\delta_{n+1}$ does
+not approach $0$.
+\end{proof}
+
+\begin{expansion}
+\textbf{The arithmetic.} \Ledger{D7} By \eqref{eq:L1grad} applied to
+$\varepsilon=\varepsilon_{n+1}$ at the point $y=N\delta_{n+1}^{-1}(x-a_Q)$,
+$|\nabla F_{\varepsilon_{n+1}}(y)|\lesssim|y|^{-d}
+ =N^{-d}\delta_{n+1}^{d}|x-a_Q|^{-d}$; the other entry $\varepsilon^{-d}$ of the
+minimum is not used here because $|x-a_Q|>\rho$ keeps $|y|$ large. Pulling out the
+constants,
+\[\text{LHS}\ \lesssim\ N^{-d}\delta_{n+1}^{d}\!\!\sum_{|x-a_Q|>\rho}\!\!|x-a_Q|^{-d}
+ \;=\;N^{-d}\,\delta_{n+1}\cdot
+ \Bigl[\delta_{n+1}^{\,d-1}\!\!\sum_{|x-a_Q|>\rho}\!\!|x-a_Q|^{-d}\Bigr].\]
+The bracket is a Riemann sum: the centres $a_Q$ of the cubes of $\mathcal H_{n+1}$
+form a lattice of spacing $\delta_{n+1}$ in $\Rdm$, so each contributes a cell of
+volume $\delta_{n+1}^{d-1}$, and the bracket approximates
+\[\int_{|y|>\rho}|y|^{-d}\,dy
+ =\omega_{d-2}\int_\rho^\infty r^{-d}r^{d-2}\,dr
+ =\omega_{d-2}\int_\rho^\infty r^{-2}\,dr=\omega_{d-2}\,\rho^{-1}\]
+in $\Rdm$. Combining gives \eqref{eq:L3}. Note where $d\ge2$ is needed for the
+integral to converge at infinity --- it always does, since the exponent is $-2$
+independently of $d$.
+\end{expansion}
+
+\begin{filled}
+\textbf{The Riemann-sum comparison, made quantitative.} \Ledger{D8} Let
+$L=\rho/\delta_{n+1}$, assumed $\ge L_0$ for some fixed $L_0>1$ --- this is the
+``$\rho>\mathrm{const}\cdot\delta_{n+1}$'' and the ``$C$ depends on a lower bound
+for $\rho/\delta_{n+1}$'' of the statement. For a lattice point $a_Q$ with
+$|x-a_Q|>\rho$, every $y$ in its cell $a_Q+[-\frac{\delta_{n+1}}2,
+\frac{\delta_{n+1}}2]^{d-1}$ satisfies
+$|x-y|\ge|x-a_Q|-\tfrac{\sqrt{d-1}}2\delta_{n+1}
+ \ge|x-a_Q|\bigl(1-\tfrac{\sqrt{d-1}}{2L}\bigr)$.
+Choosing $L_0=\sqrt{d-1}$ gives $|x-y|\ge\frac12|x-a_Q|$, hence
+$|x-a_Q|^{-d}\le2^{d}|x-y|^{-d}$ and
+\[\delta_{n+1}^{\,d-1}\!\!\sum_{|x-a_Q|>\rho}\!\!|x-a_Q|^{-d}
+ \le2^{d}\!\!\int_{|x-y|>\rho/2}\!\!|x-y|^{-d}dy
+ =2^{d}\,\omega_{d-2}\,(\rho/2)^{-1},\]
+the cells being disjoint and contained in $\{|x-y|>\rho/2\}$. So
+$C=2^{d+1}\omega_{d-2}$ works, and the dependence on the lower bound $L_0$ is
+explicit. Without $L\ge L_0$ the cell containing $x$ itself could be included and
+the sum would diverge --- which is exactly the caveat the paper states.
+\end{filled}
+
+\begin{corC}
+If $\delta_{n+1}$ is small enough, then on $\Rdm$,
+\begin{equation}\label{eq:cor}
+ |\nabla u_{n+1}-\nabla u_n|\le C\,K_{n+1}\,e^{-\beta n}\,\varepsilon_{n+1}^{-d}.
+\end{equation}
+\end{corC}
+
+\begin{proof}
+Assume for notational purposes $x\in Q\in\mathcal Q_{n+1}$ --- the other case is a
+little simpler. If $\delta_{n+1}$ is small, then by (b) and smoothness of $u_n$,
+\begin{equation}\label{eq:ptwise}
+ \bigl|\nd u_n(a_{Q'})\bigr|\le2K_{n+1}e^{-\beta n}
+ \qquad\text{for all }Q'\in\mathcal Q_{n+1}.
+\end{equation}
+So, by \eqref{eq:gradun1},
+\begin{align*}
+ |\nabla u_{n+1}(x)-\nabla u_n(x)|
+ &\le\sum_{\substack{Q'\in\mathcal Q_{n+1}\\Q'\ne Q}}
+   \bigl|\nd u_n(a_{Q'})\bigr|\,
+   \bigl|\nabla F_{\varepsilon_{n+1}}(N\delta_{n+1}^{-1}(x-a_{Q'}))\bigr|\\
+ &\qquad+\bigl|\nd u_n(a_{Q})\bigr|\,
+   \bigl|\nabla F_{\varepsilon_{n+1}}(N\delta_{n+1}^{-1}(x-a_{Q}))\bigr|\\
+ &\le2K_{n+1}e^{-\beta n}\bigl(C+C\varepsilon_{n+1}^{-d}\bigr),
+\end{align*}
+the sum by Lemma 3 and the remaining term by Lemma 1.
+\end{proof}
+
+\begin{expansion}
+\textbf{Two things to fix and one to justify.}
+\begin{itemize}[leftmargin=1.4em,itemsep=3pt]
+\item \Ledger{D9} The original writes $|\nabla u_n(a_{Q'})|$ throughout this proof.
+  But the coefficient in \eqref{eq:gradun1} is $\nd u_n(a_{Q'})$, the \emph{normal}
+  derivative, and hypothesis (b) controls only the normal derivative. We have
+  written $\nd u_n(a_{Q'})$. (Since $|\nd u_n|\le|\nabla u_n|$, the printed version
+  is an over-estimate of the coefficient, but it is not one that (b) supports.)
+\item \Ledger{D10} \eqref{eq:ptwise} is the step ``by (b) and smoothness of $u_n$''.
+  Hypothesis (b) is an $L^p$ average over $Q'$; to convert it to the pointwise value
+  at $a_{Q'}$, note that $\nd u_n$ is continuous, so
+  $|\nd u_n(a_{Q'})|^p\le\frac1{|Q'|}\int_{Q'}|\nd u_n|^p+\omega(\delta_{n+1})$
+  where $\omega$ is a modulus of continuity for $|\nd u_n|^p$ on $Q(1)$. Choosing
+  $\delta_{n+1}$ small enough that
+  $\omega(\delta_{n+1})\le(2^p-1)K_{n+1}^pe^{-p\beta n}$ gives
+  $|\nd u_n(a_{Q'})|\le2K_{n+1}e^{-\beta n}$. This is legitimate because
+  $\delta_{n+1}$ is chosen after $u_n$ (see the ordering block in \S4); $\omega$
+  depends on $n$, and that is allowed.
+\item \Ledger{D11} The two terms. For $Q'\ne Q$ apply Lemma 3 with
+  $\rho=\frac12\delta_{n+1}$: distinct cube centres are $\ge\delta_{n+1}$ apart, so
+  every $Q'\ne Q$ has $|x-a_{Q'}|\ge\frac12\delta_{n+1}$ when $x\in Q$; the sum is
+  then $\le CN^{-d}\delta_{n+1}(\frac12\delta_{n+1})^{-1}=2CN^{-d}\le C$. For
+  $Q'=Q$ we cannot use Lemma 3 ($x$ may equal $a_Q$), and instead use the other
+  entry of the minimum in \eqref{eq:L1grad}:
+  $|\nabla F_{\varepsilon_{n+1}}|\lesssim\varepsilon_{n+1}^{-d}$. That single term
+  is the sole source of the factor $\varepsilon_{n+1}^{-d}$ in \eqref{eq:cor}, and
+  hence the sole reason condition (1) of \S7 carries $\varepsilon_{n+1}^{-d}$.
+\end{itemize}
+\end{expansion}
+
+% =====================================================================
+\section*{\S6. Lemma 4: the induction step}
+% =====================================================================
+
+\begin{lemD}
+If $A$ is large then
+$\displaystyle\Bigl(\int_{V_{n+1}}\bigl|\nd u_{n+1}\bigr|^p\Bigr)^{1/p}
+ <A\,e^{-\beta(n+1)}$.
+\end{lemD}
+
+\subsection*{6.1 The interference estimate $(*)$}
+
+\noindent First we claim: given $\gamma>0$, if $\delta_{n+1}$ is small enough then
+for any $x\in Q\in\mathcal Q_{n+1}$
+\begin{equation}\label{eq:star2}\tag{$*$}
+ \sum_{\substack{Q'\in\mathcal Q_{n+1}\\Q'\ne Q}}
+  \bigl|\nd u_n(a_{Q'})\bigr|\,
+  \bigl|\nabla F_{\varepsilon_{n+1}}(N\delta_{n+1}^{-1}(x-a_{Q'}))\bigr|
+ \le C\,N^{-d}\bigl|\nd u_n(x)\bigr|+\gamma .
+\end{equation}
+
+\begin{filled}
+\textbf{Order of choices in $(*)$.} \Ledger{D14} The printed proof ``fixes''
+$M<\infty$, then at the end says $M$ is arbitrary. Read it as: given $\gamma>0$,
+first choose $M$ so large that the far part is $<\gamma/2$; then choose
+$\delta_{n+1}$ so small that the near part is within $\gamma/2$ of its limit. Both
+choices are made after $u_n$, $K_{n+1}$, $\varepsilon_{n+1}$ are known.
+\end{filled}
+
+\begin{proof}[Proof of $(*)$]
+Fix $M<\infty$ and split the sum at $|x-a_{Q'}|=M\delta_{n+1}$.
+
+\emph{Near part.}
+\begin{align*}
+ \sum_{|x-a_{Q'}|<M\delta_{n+1}}
+ &\le\sup\Bigl\{\bigl|\nd u_n(a_{Q'})\bigr|:|x-a_{Q'}|<M\delta_{n+1}\Bigr\}
+   \cdot\!\!\sum_{Q'\ne Q}\!\!
+   \bigl|\nabla F_{\varepsilon_{n+1}}(N\delta_{n+1}^{-1}(x-a_{Q'}))\bigr|\\
+ &<CN^{-d}\sup\Bigl\{\bigl|\nd u_n(a_{Q'})\bigr|:|x-a_{Q'}|<M\delta_{n+1}\Bigr\}
+ \qquad\text{(Lemma 3 with }\rho=\tfrac12\delta_{n+1})\\
+ &<CN^{-d}\Bigl(\bigl|\nd u_n(x)\bigr|+\gamma\Bigr),
+\end{align*}
+where $\gamma\to0$ as $\delta_{n+1}\to0$ by continuity of $|\nd u_n|$.
+
+\emph{Far part.}
+\begin{align*}
+ \sum_{|x-a_{Q'}|>M\delta_{n+1}}
+ &\le\sup\bigl\{|\nd u_n(y)|:y\in V_{n+1}\bigr\}\cdot\!\!
+   \sum_{|x-a_{Q'}|>M\delta_{n+1}}\!\!
+   \bigl|\nabla F_{\varepsilon_{n+1}}(N\delta_{n+1}^{-1}(x-a_{Q'}))\bigr|\\
+ &\le2K_{n+1}e^{-\beta n}\!\!\sum_{|x-a_{Q'}|>M\delta_{n+1}}\!\!
+   \bigl|\nabla F_{\varepsilon_{n+1}}(\cdots)\bigr|
+ \qquad(\delta_{n+1}\text{ small enough})\\
+ &\le C\,K_{n+1}\,e^{-\beta n}\,M^{-1}
+ \qquad\text{(Lemma 3 with }\rho=M\delta_{n+1}).
+\end{align*}
+Since $M$ is arbitrary we can make this as small as we want, which proves $(*)$.
+\end{proof}
+
+\begin{expansion}
+\Ledger{D12, D13} Two details. The near part uses Lemma 3 with
+$\rho=\frac12\delta_{n+1}$, giving $CN^{-d}\delta_{n+1}\cdot2\delta_{n+1}^{-1}
+ =2CN^{-d}$; the sup is then handled by continuity, as in D10. The original writes
+``$\gamma\to0$ as $\delta_n\to0$''; it is $\delta_{n+1}$, the side of the
+stage-$(n{+}1)$ cubes, that shrinks and forces $a_{Q'}\to x$. The far part uses
+Lemma 3 with $\rho=M\delta_{n+1}$, giving
+$CN^{-d}\delta_{n+1}(M\delta_{n+1})^{-1}=CN^{-d}M^{-1}$, and the pointwise bound
+\eqref{eq:ptwise} for the coefficients.
+\end{expansion}
+
+\subsection*{6.2 Type 1 and type 2 cubes}
+
+Call $Q\in\mathcal Q_{n+1}$ \emph{type 1} if
+$|\nd u_n(a_Q)|>e^{-4\beta(n+1)}$, and \emph{type 2} otherwise. Fix
+$Q\in\mathcal Q_{n+1}$ and write, for $x\in Q$,
+\begin{equation}\label{eq:decomp}
+ \nd u_{n+1}(x)=\underbrace{\nd u_n(a_Q)}_{\text{the ``}I(a_Q)\text{''}}
+ \;+\;\mathrm{Br}(x)\;+\;\nd u_n(a_Q)\,
+   \nd F_{\varepsilon_{n+1}}\bigl(N\delta_{n+1}^{-1}(x-a_Q)\bigr),
+\end{equation}
+where the \emph{bracket} is
+\begin{equation}\label{eq:bracket}
+ \mathrm{Br}(x)=\nd u_n(x)-\nd u_n(a_Q)
+  +\!\!\!\sum_{\substack{Q'\in\mathcal Q_{n+1}\\ Q'\ne Q}}\!\!\!\nd u_n(a_{Q'})\,
+   \nd F_{\varepsilon_{n+1}}\bigl(N\delta_{n+1}^{-1}(x-a_{Q'})\bigr).
+\end{equation}
+
+\begin{expansion}
+\Ledger{D16} The printed bracket is unbalanced (the closing bracket sits after the
+sum, and the opening one before $\nd u_n(x)$); \eqref{eq:decomp} is the reading that
+makes it an identity, and it is an identity: taking $\nd$ of \eqref{eq:un1} and
+adding and subtracting $\nd u_n(a_Q)$ gives exactly these three groups. The
+decomposition is engineered so that \emph{$I:=\nd u_n(a_Q)+\text{bracket}$ is nearly
+constant on $Q$}, which is what Lemma 2 requires, while the last term is the
+correction Lemma 2 acts on.
+\end{expansion}
+
+By $(*)$ and smoothness of $\nd u_n$, the bracket may be made less than
+$CN^{-d}|\nd u_n(a_Q)|+\gamma$ with $\gamma$ arbitrarily small.
+
+\subsection*{6.3 Type 1 cubes}
+
+For $Q$ type 1 the bracket is therefore $<CN^{-d}|\nd u_n(a_Q)|$ provided $\gamma$
+is chosen right. So Lemma 2 applies (using here that $CN^{-d}<cN^{-(d-1)}$ for large
+$N$) and we get
+\begin{equation}\label{eq:type1}
+ \Bigl(\int_Q\bigl|\nd u_{n+1}\bigr|^p\Bigr)^{1/p}
+ <e^{-2\beta}\bigl|\nd u_n(a_Q)\bigr||Q|^{1/p}
+ <e^{-\frac32\beta}\Bigl(\int_Q\bigl|\nd u_n\bigr|^p\Bigr)^{1/p}
+ \quad\text{if }\delta_{n+1}\text{ is small.}
+\end{equation}
+
+\begin{expansion}
+\textbf{Checking Lemma 2's hypothesis.} \Ledger{D17} Put
+$I(x)=\nd u_n(a_Q)+\text{bracket}(x)$, so $I(a_Q)=\nd u_n(a_Q)$ (the bracket
+vanishes at $x=a_Q$: its first two terms cancel and the sum is evaluated at
+$x=a_Q$ --- strictly, the sum does not vanish at $a_Q$, so $I(a_Q)$ differs from
+$\nd u_n(a_Q)$ by at most the same bound, which is absorbed). Then
+\[N^{d-1}|I(a_Q)|^{-1}\sup_Q|I-I(a_Q)|
+ \le N^{d-1}\cdot\frac{2CN^{-d}|\nd u_n(a_Q)|}{|\nd u_n(a_Q)|}=2CN^{-1},\]
+which is $<\tau$ for $N$ large. \emph{This is precisely the parenthetical remark}
+``we're using here that $CN^{-d}<cN^{-(d-1)}$ for large $N$'': the gain of one power
+of $N$ between the bracket's $N^{-d}$ and the hypothesis's $N^{d-1}$ is what makes
+the hypothesis verifiable, and it is why type 1 is defined by a lower bound on
+$|\nd u_n(a_Q)|$ --- without one, dividing by $|I(a_Q)|$ is uncontrolled. The $\gamma$
+is absorbed because for type 1, $|\nd u_n(a_Q)|>e^{-4\beta(n+1)}$ is a fixed
+positive number at this stage, so $\gamma$ may be taken far smaller.
+
+\textbf{The second inequality of \eqref{eq:type1}.} \Ledger{D18} We must pass from
+$|\nd u_n(a_Q)||Q|^{1/p}$ to $(\int_Q|\nd u_n|^p)^{1/p}$. By continuity of
+$\nd u_n$, for $\delta_{n+1}$ small,
+$\frac1{|Q|}\int_Q|\nd u_n|^p\ge|\nd u_n(a_Q)|^p-\omega(\delta_{n+1})
+ \ge e^{-\frac12\beta p}|\nd u_n(a_Q)|^p$,
+the last step because $|\nd u_n(a_Q)|>e^{-4\beta(n+1)}$ is bounded below at this
+stage while $\omega(\delta_{n+1})\to0$. Taking $p$-th roots,
+$|\nd u_n(a_Q)||Q|^{1/p}\le e^{\frac12\beta}(\int_Q|\nd u_n|^p)^{1/p}$, and
+$e^{-2\beta}\cdot e^{\frac12\beta}=e^{-\frac32\beta}$.
+\end{expansion}
+
+\subsection*{6.4 Type 2 cubes}
+
+If $Q$ is type 2 the bracket is $<CN^{-d}|\nd u_n(a_Q)|+\gamma$, which may be taken
+$<e^{-4\beta(n+1)}$. So
+\begin{equation}\label{eq:type2}
+ \int_Q\bigl|\nd u_{n+1}\bigr|^p
+ \le\bigl|\nd u_{n}(a_Q)\bigr|^p
+   \int_Q\Bigl|1+\nd F_{\varepsilon_{n+1}}\bigl(N\delta_{n+1}^{-1}(x-a_Q)\bigr)
+   \Bigr|^p+\int_Q[\ \cdot\ ]^p
+ \le2\,e^{-4\beta(n+1)p}\,|Q|,
+\end{equation}
+since (say) the first integral is $<|Q|$ by Lemma 2.
+
+\begin{expansion}
+\Ledger{D19} Unpacking: by \eqref{eq:decomp} and Background \ref{bg:sub},
+$|\nd u_{n+1}|^p\le|\nd u_n(a_Q)|^p|1+\nd F_{\varepsilon_{n+1}}(\cdots)|^p
+ +|\text{bracket}|^p$. For type 2, $|\nd u_n(a_Q)|^p\le e^{-4\beta(n+1)p}$ and the
+bracket is $<e^{-4\beta(n+1)}$, so the second integral is
+$\le e^{-4\beta(n+1)p}|Q|$. For the first, we need
+$\int_Q|1+\nd F_{\varepsilon_{n+1}}(N\delta_{n+1}^{-1}(x-a_Q))|^p<|Q|$: by the
+scaling of \S3.1 this equals $\frac{|Q|}{|Q(N)|}\int_{Q(N)}|1+\nd F_\varepsilon|^p$,
+and \S3.4 showed $\int_{Q(N)}(|1+\nd F_\varepsilon|^p-1)<-\eta_1/2<0$, i.e.
+$\int_{Q(N)}|1+\nd F_\varepsilon|^p<|Q(N)|$. Hence the first integral is $<|Q|$ and
+the two together give $2e^{-4\beta(n+1)p}|Q|$. Note this uses Lemma 2 only in the
+degenerate case $I\equiv1$, which is why ``say'' appears in the original.
+\end{expansion}
+
+\subsection*{6.5 Summing, and the sign that must change}
+
+We conclude
+\begin{align}
+ \int_{V_{n+1}}\bigl|\nd u_{n+1}\bigr|^p
+ &=\int_{\bigcup\{Q\text{ type }1\}}+\int_{\bigcup\{Q\text{ type }2\}}\notag\\
+ &\le e^{-\frac32p\beta}\int_{\bigcup\{Q\text{ type }1\}}\bigl|\nd u_n\bigr|^p
+   +C\,e^{-4p\beta(n+1)}\!\!\sum_{Q\text{ type }2}\!\!|Q|\notag\\
+ &\le A^pe^{-p\beta(n+1)}\cdot e^{-\frac12p\beta}+C\,e^{-4p\beta(n+1)}\notag\\
+ &=A^pe^{-p\beta(n+1)}\Bigl(e^{-\frac12p\beta}+CA^{-p}e^{-3p\beta(n+1)}\Bigr).
+ \label{eq:final}
+\end{align}
+The parenthesis term is $<1$ if $A$ was large enough.
+
+\begin{expansion}
+\textbf{The sign, corrected.} \Ledger{D21} The original prints
+$e^{+\frac12p\beta}$ in the last two lines, and then asserts the parenthesis is
+$<1$. It cannot be: $e^{+\frac12p\beta}>1$ already. The recomputation forces the
+minus sign. From \eqref{eq:type1}, raising to the $p$-th power and summing over
+type 1 cubes,
+\[\int_{\bigcup\{Q\text{ type }1\}}\bigl|\nd u_{n+1}\bigr|^p
+ \le e^{-\frac32p\beta}\int_{V_n}\bigl|\nd u_n\bigr|^p
+ \le e^{-\frac32p\beta}\cdot A^pe^{-p\beta n}\]
+by the induction hypothesis \eqref{eq:IH}. Now factor out $A^pe^{-p\beta(n+1)}$:
+\[e^{-\frac32p\beta}A^pe^{-p\beta n}
+ =A^pe^{-p\beta(n+1)}\cdot e^{-\frac32p\beta+p\beta}
+ =A^pe^{-p\beta(n+1)}\,e^{-\frac12p\beta}.\]
+So the exponent is $-\frac12p\beta$, and with it the parenthesis is
+$e^{-\frac12p\beta}+CA^{-p}e^{-3p\beta(n+1)}$. The first summand is $<1$ by a fixed
+margin, and the second is $\le CA^{-p}$, which is $<1-e^{-\frac12p\beta}$ once
+$A$ is large --- this is the second constraint on $A$, the first being the base case
+of \S4.1. Both are lower bounds on $A$, so one $A$ serves. \hfill$\square$
+
+\Ledger{D20} The step $\sum_{Q\text{ type }2}|Q|\le1$ is just
+$\bigcup\mathcal Q_{n+1}\subset Q(1)$ and $|Q(1)|=1$.
+\end{expansion}
+
+% =====================================================================
+\section*{\S7. The conditions on $K_n,\varepsilon_n$, and the conclusion}
+% =====================================================================
+
+The $K_n$ and $\varepsilon_n$ should satisfy
+\begin{align}
+ &\textbf{(1)}\quad \sum_n\varepsilon_{n+1}^{-d}K_{n+1}e^{-\beta n}<\infty,
+ \label{eq:cond1}\\
+ &\textbf{(2)}\quad \sum_n\Bigl(K_{n+1}^{-p}+\varepsilon_{n+1}^{\frac{d-1}2}\Bigr)
+   \ \text{is sufficiently small.}\label{eq:cond2}
+\end{align}
+These are clearly compatible: e.g. $\varepsilon_n=C^{-1}n^{-2}$, $K_n=Cn^{2/p}$ for
+a suitably large constant $C$.
+
+\begin{expansion}
+\textbf{The exponent in (2).} \Ledger{D23} The original prints
+$\varepsilon_{n+1}^{d-1}$. The quantity condition (2) is used to bound, in \S7.3, is
+$C\sum\varepsilon_{n+1}^{(d-1)/2}$, and since $\varepsilon<1$ we have
+$\varepsilon^{d-1}<\varepsilon^{(d-1)/2}$ --- so smallness of
+$\sum\varepsilon^{d-1}$ does \emph{not} give smallness of
+$\sum\varepsilon^{(d-1)/2}$. The exponent must be $(d-1)/2$, as written above.
+
+\textbf{Compatibility, checked.} \Ledger{D24} With
+$\varepsilon_n=C^{-1}n^{-2}$ and $K_n=Cn^{2/p}$:
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+\item (1): the terms are
+  $C^{d}(n+1)^{2d}\cdot C(n+1)^{2/p}\cdot e^{-\beta n}$, which is
+  (polynomial)$\times$(geometric) and so summable for every $C$.
+\item (2): $\sum K_{n+1}^{-p}=C^{-p}\sum(n+1)^{-2}=C^{-p}(\pi^2/6-1)$, small for
+  $C$ large; and
+  $\sum\varepsilon_{n+1}^{(d-1)/2}
+   =C^{-\frac{d-1}2}\sum(n+1)^{-(d-1)}$, which \emph{converges iff $d-1\ge2$}, and
+  is then small for $C$ large.
+\end{itemize}
+\textbf{So $d\ge3$ enters here.} \Ledger{A6} For $d=2$ the second series is
+$\sum(n+1)^{-1}$, divergent, and this route fails --- as it must, since in two
+dimensions the theorem is false. We record this as \emph{a} place where the
+hypothesis is used, not \emph{the} place: the imported inequality \eqref{eq:AK} may
+also require $d\ge3$, and since we do not have [1] we cannot say. Reporting the
+$d=2$ obstruction as though it were the only one would overstate what this paper
+shows.
+\end{expansion}
+
+\subsection*{7.1 Convergence}
+
+Condition (1) implies, by the Corollary to Lemma 3, that the $u_n$ converge in $C^1$
+norm on the closed upper half space. Call the limit function $f$.
+
+\begin{expansion}
+\Ledger{D25} The original says ``the corollary to lemma 2''. The Corollary in
+question is the one stated after Lemma 3 in \S5, whose proof invokes Lemmas 1 and 3.
+\end{expansion}
+
+\begin{filled}
+\textbf{From the boundary to the closed half space.} \Ledger{D26, D27} The
+Corollary \eqref{eq:cor} bounds $|\nabla u_{n+1}-\nabla u_n|$ \emph{on $\Rdm$}. Two
+gaps to close.
+
+\emph{(i) $C^0$ convergence.} From \eqref{eq:un1}, the discs $D(a_Q,\cdot)$ being
+disjoint,
+\[\|u_{n+1}-u_n\|_\infty
+ \le\sup_{Q}\bigl|\nd u_n(a_Q)\bigr|\cdot\|F_{\varepsilon_{n+1}}\|_\infty\cdot
+   \frac{\delta_{n+1}}N
+ \le 2K_{n+1}e^{-\beta n}\|F_{\varepsilon_{n+1}}\|_\infty\frac{\delta_{n+1}}N,\]
+using \eqref{eq:ptwise}. Since $\delta_{n+1}$ is at our disposal \emph{after}
+$K_{n+1}$ and $\varepsilon_{n+1}$ are fixed, choose it small enough that this is
+$\le2^{-n}$; then $\sum\|u_{n+1}-u_n\|_\infty<\infty$ and $u_n\to f$ uniformly on
+$\Rdm$. (The paper never estimates $u_{n+1}-u_n$ itself, only its gradient.)
+
+\emph{(ii) Interior.} $v_n:=u_{n+1}-u_n$ is harmonic in $\Rd$, continuous on
+$\overline{\Rd}$, and tends to $0$ at infinity (its boundary data is compactly
+supported in $Q(1)$). Each $\partial_jv_n$ is harmonic, bounded, and tends to $0$ at
+infinity, so by Background \ref{bg:max}
+\[\sup_{\Rd}|\nabla v_n|=\sup_{\Rdm}|\nabla v_n|
+ \le CK_{n+1}e^{-\beta n}\varepsilon_{n+1}^{-d}.\]
+Condition \eqref{eq:cond1} makes $\sum_n\sup_{\Rd}|\nabla v_n|<\infty$, so
+$\nabla u_n$ converges uniformly on $\overline{\Rd}$; with (i), $u_n\to f$ in $C^1$
+on $\overline{\Rd}$, $f$ is harmonic in $\Rd$ (a locally uniform limit of harmonic
+functions), and $f\in C^1(\overline{\Rd})$. This is the $C^1$-up-to-the-boundary
+assertion of the Theorem.
+\end{filled}
+
+We have to show $f=\nd f=0$ on a set of positive measure.
+
+\subsection*{7.2 Where $f$ moved}
+
+\begin{equation}\label{eq:fmoved}
+ \bigl|\{x\in Q(1):f(x)\ne0\}\bigr|
+ \le\sum_n\bigl|\{x\in Q(1):u_{n+1}(x)\ne u_n(x)\}\bigr|,
+\end{equation}
+and $\{x:u_{n+1}(x)\ne u_n(x)\}$ is a union of at most $\delta_{n+1}^{-(d-1)}$
+discs each of radius $\delta_{n+1}\varepsilon_{n+1}^{1/2}/N$ (because
+$\supp F_\varepsilon\subset D(0,\varepsilon^{1/2})$). So
+\begin{equation}\label{eq:fmeasure}
+ \bigl|\{x\in Q(1):f(x)\ne0\}\bigr|
+ \le C\sum_n\delta_{n+1}^{-(d-1)}
+   \Bigl(\frac{\delta_{n+1}\varepsilon_{n+1}^{1/2}}N\Bigr)^{d-1}
+ \le C\sum_n\varepsilon_{n+1}^{\frac{d-1}2}.
+\end{equation}
+
+\begin{expansion}
+\Ledger{D28} $u_0=0$ on $Q(1)$, so $f\ne0$ at a point of $Q(1)$ forces
+$u_{n+1}\ne u_n$ there for some $n$; that is \eqref{eq:fmoved}. There are at most
+$|\mathcal H_{n+1}|=\delta_{n+1}^{-(d-1)}$ cubes, hence at most that many discs;
+each has measure $c_d(\delta_{n+1}\varepsilon_{n+1}^{1/2}/N)^{d-1}$. Multiplying,
+the $\delta_{n+1}$ cancels exactly and $N^{-(d-1)}$ is absorbed into $C$, leaving
+$\varepsilon_{n+1}^{(d-1)/2}$ --- which is the exponent condition (2) must control,
+and the reason for the correction at D23.
+\end{expansion}
+
+\subsection*{7.3 Where the normal derivative failed to vanish}
+
+Also $\nd f=0$ on $\bigcap_nV_n$. Thus
+$\bigl|\{x\in Q(1):\nd f(x)\ne0\}\bigr|\le\sum_n|V_n\setminus V_{n+1}|$.
+
+\begin{filled}
+\textbf{Why $\nd f=0$ on $\bigcap_nV_n$.} \Ledger{D30} The paper asserts this
+without argument. Let $x\in\bigcap_nV_n$. The induction hypothesis \eqref{eq:IH}
+gives $\int_{V_m}|\nd u_m|^p\le A^pe^{-p\beta m}$ for every $m$; since
+$\bigcap_nV_n\subset V_m$,
+\[\int_{\bigcap_nV_n}\bigl|\nd u_m\bigr|^p\le A^pe^{-p\beta m}\xrightarrow[m\to\infty]{}0 .\]
+By \S7.1, $\nd u_m\to\nd f$ uniformly on $\Rdm$, so
+$\int_{\bigcap_nV_n}|\nd u_m|^p\to\int_{\bigcap_nV_n}|\nd f|^p$ (the domain has
+finite measure and the integrands converge uniformly). Hence
+$\int_{\bigcap_nV_n}|\nd f|^p=0$ and $\nd f=0$ a.e. on $\bigcap_nV_n$ --- which is
+all that is needed, the conclusion being about measure.
+\end{filled}
+
+If $Q\notin\mathcal Q_{n+1}$ but $Q\subset Q'\in\mathcal Q_n$, then $Q$ fails (b),
+i.e.
+\[\frac1{|Q|}\int_Q\bigl|\nd u_n\bigr|^p>K_{n+1}^pe^{-p\beta n},
+ \qquad\text{i.e.}\qquad
+ |Q|<K_{n+1}^{-p}e^{+\beta pn}\int_Q\bigl|\nd u_n\bigr|^p .\]
+
+\begin{expansion}
+\Ledger{D31} The original prints $e^{-\beta pn}$ here. Rearranging
+$\frac1{|Q|}\int_Q|\nd u_n|^p>K_{n+1}^pe^{-p\beta n}$ gives
+$\int_Q|\nd u_n|^p>|Q|K_{n+1}^pe^{-p\beta n}$ and hence
+$|Q|<K_{n+1}^{-p}e^{+p\beta n}\int_Q|\nd u_n|^p$: the exponent flips sign when
+$e^{-p\beta n}$ moves across. The next display in the original uses $+\beta pn$,
+confirming the slip.
+\end{expansion}
+
+So
+\begin{equation}\label{eq:VnVn1}
+ |V_n\setminus V_{n+1}|\le K_{n+1}^{-p}e^{\beta pn}\int_{V_n}\bigl|\nd u_n\bigr|^p
+ \le A^pK_{n+1}^{-p},
+\end{equation}
+and $\bigl|\{x\in Q(1):\nd f(x)\ne0\}\bigr|\le A^p\sum_nK_{n+1}^{-p}$.
+
+\begin{expansion}
+\Ledger{D32} Summing the previous display over the cubes $Q$ making up
+$V_n\setminus V_{n+1}$ --- they are disjoint and contained in $V_n$ --- gives the first
+inequality; the second is \eqref{eq:IH}, $\int_{V_n}|\nd u_n|^p\le A^pe^{-p\beta n}$,
+whose exponential exactly cancels the $e^{+\beta pn}$.
+\end{expansion}
+
+\subsection*{7.4 The two costs, added}
+
+\begin{equation}\label{eq:total}
+ \bigl|\{x\in Q(1):\nd f(x)\ne0\}\bigr|+\bigl|\{x\in Q(1):f(x)\ne0\}\bigr|
+ \le C\sum_n\varepsilon_{n+1}^{\frac{d-1}2}+A^p\sum_nK_{n+1}^{-p}<1,
+\end{equation}
+if (2) holds. So
+$E:=Q(1)\cap\{\nd f=0\}\cap\{f=0\}$ must have positive measure.
+
+\begin{expansion}
+\Ledger{D33} $|Q(1)|=1$, and \eqref{eq:total} bounds the measure of the union of the
+two bad sets by something $<1$; the complement within $Q(1)$ is $E$, so
+$|E|\ge1-(\text{that bound})>0$. Note that condition (2) must be small enough to beat
+the constants $C$ and $A^p$, both of which are already fixed at this point --- which
+is why (2) says ``sufficiently small'' rather than ``finite''.
+\end{expansion}
+
+\subsection*{7.5 From $\nd f=0$ to $\nabla f=0$ --- the step the paper omits}
+
+\begin{filled}
+\Ledger{D34} The construction has produced $E\subset Q(1)$ with $|E|>0$,
+$f|_E=0$ and $\nd f|_E=0$. The Theorem claims $\nabla f=0$ on a set of positive
+measure. The remaining step --- absent from the original --- is that the
+\emph{tangential} gradient also vanishes.
+
+Write $\nabla f=(\nabla_Tf,\nd f)$ on the boundary. We know $\nd f=0$ a.e. on $E$.
+For the tangential part: $f$ restricted to $\Rdm$ is $C^1$ (\S7.1) and vanishes
+identically on $E$, so by Background \ref{bg:density}, $\nabla_Tf(x)=0$ at every
+density point $x$ of $E$. Almost every point of $E$ is a density point, so
+$\nabla_Tf=0$ a.e. on $E$.
+
+Hence $\nabla f=0$ a.e. on $E$, and discarding a null set we obtain a set of
+positive measure on which $f$ and $\nabla f$ both vanish. Together with \S1
+($f\not\equiv0$, since $f=u_0\not\equiv0$ off $Q(1)$) and \S7.1 ($f$ harmonic, $C^1$
+up to the boundary), this is the Theorem. \hfill$\blacksquare$
+\end{filled}
+
+% =====================================================================
+\section*{\S8. Remarks (theirs)}
+% =====================================================================
+
+\begin{rmk}[1]
+To minimize technicalities we did not try to obtain a H\"older estimate on the
+gradient although this should be possible along the work of [2].
+\end{rmk}
+
+\begin{rmk}[2]
+The main question remains open, that is, whether it is possible to have harmonic
+functions $C^2$ or $C^\infty$ smooth up to the boundary whose gradients vanish on
+sets of positive measure. A variant of the previous construction permits to get a
+$C^{2+\varepsilon}$ harmonic function $f:\Rd\to\mathbb R$ such that $f$ and $D^2f$
+vanish on a common boundary of positive measure.
+\end{rmk}
+
+\begin{ournotation}
+The original prints ``$C^2$ of $C^\infty$'' for ``or''. \Ledger{E1} The
+$C^{2+\varepsilon}$ variant of Remark 2 is asserted with neither proof nor
+reference; we reproduce it as an assertion of the authors and do not verify it.
+\Ledger{E2}
+\end{ournotation}
+
+% =====================================================================
+\section*{\S9. Editorial remarks --- everything later than the paper}
+% =====================================================================
+
+Quarantined here, per the blueprint: nothing in this section was used above.
+
+\begin{enumerate}[leftmargin=1.6em,itemsep=4pt]
+\item \textbf{The references.} [1] is cited as ``private communication (to
+  appear)'' and [2] as ``to appear''. We have not identified the published form of
+  either from a source we have read, and do not guess. \Ledger{E4, E5} Identifying
+  [1] is the single highest-value follow-up for this digestion: it is the only
+  input we could not verify.
+\item \textbf{Preprint versus journal version.} This digestion follows
+  IHES/M/89/31 (September 1989). The published version is Colloq.\ Math.\ 60/61
+  (1990), 253--260, which we could not obtain (the publisher's server was
+  unreachable). Numbering and text may differ. \Ledger{F4}
+\item \textbf{The five slips.} Listed in \S0. All are typographical or
+  sign errors; none affects the theorem. Two further points required a real
+  repair rather than a correction: the lower bound for $|1+\nd G_\varepsilon|$
+  near $|x|=1$ (\S2.6, \S3.3), and the missing final step \S7.5.
+\item \textbf{What remains conditional.} The Alexandrov--Kargaev inequality
+  \eqref{eq:AK}. With it, the theorem as stated is proved here in full.
+\end{enumerate}
+
+\end{document}

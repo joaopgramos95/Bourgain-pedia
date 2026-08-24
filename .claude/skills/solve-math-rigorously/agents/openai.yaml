@@ -1,0 +1,4 @@
+interface:
+  display_name: "Solve Math Rigorously"
+  short_description: "Develop and audit rigorous mathematical arguments"
+  default_prompt: "Use $solve-math-rigorously to solve this problem with a gap-checked proof or counterexample."

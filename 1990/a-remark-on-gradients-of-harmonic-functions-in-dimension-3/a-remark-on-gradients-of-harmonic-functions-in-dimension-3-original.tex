@@ -1,0 +1,513 @@
+% =====================================================================
+%  FAITHFUL TRANSCRIPTION -- Bourgain-pedia
+%
+%  J. Bourgain, T. Wolff,
+%  "A remark on gradients of harmonic functions in dimension >= 3"
+%  IHES/M/89/31, Institut des Hautes Etudes Scientifiques, Septembre 1989.
+%  Published as: Colloq. Math. 60/61, No. 1, 253-260 (1990).
+%  Zbl 0731.31006 -- DOI 10.4064/cm-60-61-1-253-260
+%
+%  Transcribed from the IHES preprint scan (12 PDF pages: cover + pp. 1-11),
+%  https://repo-archives.ihes.fr/FONDS_IHES/I_Prepublications/BOURGAIN/
+%      1984-1989/M_89_31/M_89_31.pdf
+%
+%  THIS FILE IS A TRANSCRIPTION, NOT AN EDITION.  Nothing is corrected.
+%  Where the preprint contains an evident slip it is reproduced as printed
+%  and flagged with a "% [sic ...]" comment on the following line, so that
+%  the digestion can cite the ledger row rather than silently repair it.
+%  Original page breaks are marked "% --- p. N ---".
+% =====================================================================
+
+\documentclass[11pt,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.1in]{geometry}
+
+\newtheorem*{thm}{Theorem}
+\newtheorem*{lemA}{Lemma 1}
+\newtheorem*{lemB}{Lemma 2}
+\newtheorem*{lemC}{Lemma 3}
+\newtheorem*{lemD}{Lemma 4}
+\newtheorem*{cor}{Corollary}
+
+\newcommand{\Rd}{\mathbb{R}^d_+}
+\newcommand{\Rdm}{\mathbb{R}^{d-1}}
+\newcommand{\dn}[1]{\frac{d#1}{dn}}
+\newcommand{\he}[1]{\widehat{#1}}          % harmonic extension (the paper's hat)
+\newcommand{\lesssimeq}{\lesssim}
+\DeclareMathOperator{\supp}{supp}
+
+\begin{document}
+
+\title{A remark on gradients of harmonic functions in dimension $\geq 3$}
+\author{J. Bourgain}
+\address{IHES}
+\author{T. Wolff}
+\address{California Institute of Technology}
+\date{Septembre 1989.\quad IHES/M/89/31}
+\maketitle
+
+% --- p. 1 ---
+\section*{Introduction}
+
+The purpose of this note is to refine the result of [2] on the existence of
+$C^{1+\varepsilon}$-harmonic functions on $\Rd$ $(d\geq 3)$ for which $\nabla f$
+vanishes on a boundary set of positive measure.
+
+Using some new ingredients originating from [1], one actually gets vanishing of
+$f$, $\nabla f$ simultaneously (see the Theorem below).  The problem whether this
+may happen for functions of class $C^2$ or $C^\infty$ remains open (see the
+remarks at the end).  The present construction is based on the same techniques as
+in [2] but in this case is simpler because the correction theorem is applied to
+scalar functions rather than vector valued functions.  The reader may wish to
+consult [2] for a motivation and more detailed discussion of this problematic.
+
+\begin{thm}
+If $d\geq 3$ there is a harmonic function $f:\Rd\to\mathbb{R}$ which is $C'$ up to
+the boundary and such that $f$ and $\nabla f$ vanish on a common boundary set with
+positive measure.
+\end{thm}
+% [sic: "C'" is printed for C^1 throughout the statement.]
+
+Outline of proof is as follows.  Start with a function $u_0$ which vanishes on an
+open subset of the boundary.  Using a successive modification (``correction
+theorem'') procedure, decrease the normal derivative to $0$ on a subset with large
+measure.  To get the theorem it is necessary to keep the original function
+unchanged on a set with large measure.  Thus the functions added on during the
+modification procedure must have small compact support.  The idea for constructing
+those functions is due to A.B. Alexandrov - P. Kargaev [1] who used it for a
+closely related problem.
+
+\begin{lemA}
+If $p>0$ is small enough then for all sufficiently small $\varepsilon$
+$\exists F_\varepsilon:\Rdm\to\mathbb{R}$, $\supp F_\varepsilon\subset
+D(0,\varepsilon^{1/2})$ $(=\{x\in\Rdm : |x|\subset\varepsilon^{1/2}\})$
+% [sic: "|x| \subset \varepsilon^{1/2}" is printed for |x| < \varepsilon^{1/2}.]
+and (letting $\he{F}_\varepsilon$ be its harmonic extension to $\Rd$)
+% --- p. 2 ---
+\begin{equation*}
+  \int_{\Rdm}\left(\left|1+\dn{\he{F}_\varepsilon}\right|^{p}-1\right)dx < -\eta
+\end{equation*}
+with $\eta>0$ independent of $\varepsilon$.  Moreover
+$|\nabla \he{f}_\varepsilon| \lesssim \min(\varepsilon^{-d},|x|^{-d})$ on $\Rdm$.
+% [The glyph is ambiguous in the scan -- it reads as a lower-case f with a hat.
+%  The restatement on p. 4 ("To prove |\nabla \he{F}_\varepsilon| \lesssim ...")
+%  uses capital F, so F is meant.  Ledger row N1.]
+\end{lemA}
+
+\begin{proof}
+Alexandrov-Kargaev use the function $G_\varepsilon:\Rd\to\mathbb{R}$ defined by
+\begin{equation*}
+  G_\varepsilon(x)=\frac{-(\varepsilon+x_d)}{|x+\varepsilon e_d|^{d}}
+\end{equation*}
+($e_d$ = unit vector in $x_d$ direction) which, as they show, satisfies
+\begin{equation*}
+  \int\left(\left|1+\dn{G_\varepsilon}\right|^{p}-1\right)dx < -2M < 0
+\end{equation*}
+for $p$ below a certain critical number and $\varepsilon$ sufficiently small.  One
+can go from this function to $\he{F}_\varepsilon$ as above, as follows:
+
+Let $\delta=\varepsilon^{1/2}$ and for $j=0,1,2,\dots$ let
+$\psi_j=\Rdm\to\mathbb{R}$ be functions with
+% [sic: "=" is printed for ":" in "\psi_j = \mathbb{R}^{d-1} \to \mathbb{R}".]
+$\supp\psi_j\subset\{2^{j-1}\delta\leq|x|\leq 2^{j+1}\delta\}$ and
+$\sum\psi_j=1$ for $|x|>\delta$, and with the natural bounds i.e.
+$|\nabla^k\psi_j|\lesssim (2^j\delta)^{-k}$.  Let $\psi=\sum\psi_j$.  Let
+$\rho_\varepsilon^{j}=\psi_j G_\varepsilon$,
+$\rho_\varepsilon=\sum_j\rho_\varepsilon^{j}=\psi G_\varepsilon$.  Let
+$F_\varepsilon=G_\varepsilon-\rho_\varepsilon$.  To make the estimates, let
+$\nabla_T$ be differentiation in the $\Rdm$ directions.  Then
+$|\nabla_T^k G_\varepsilon|\leq\varepsilon|x|^{-(d+k)}$, $k=0,1,2$.  Therefore
+$|\nabla_T^k\rho_\varepsilon^{j}|\lesssim\varepsilon\cdot(2^j\delta)^{-(d+k)}$.
+This implies $\|\nabla_T\rho_\varepsilon^{j}\|_{1}\lesssim\varepsilon(2^j\delta)^{-2}$,
+and also
+$\|\nabla_T\rho_\varepsilon^{j}\|_{C^\alpha}\lesssim\varepsilon(2^j\delta)^{-(d+1+\alpha)}$.
+By $L^1\to$ weak $-L^1$ and H\"older estimates for the Riesz transforms we have
+\begin{equation*}
+  \left|\left\{x:\left|\dn{\he{\rho}_\varepsilon^{j}}(x)\right|>\lambda\right\}\right|
+    <\varepsilon\left(2^j\delta\right)^{-2}\lambda^{-1}
+\end{equation*}
+\begin{equation*}
+  \left\|\dn{\he{\rho}_\varepsilon^{j}}\right\|_{C^\alpha}
+    \lesssim\varepsilon\left(2^j\delta\right)^{-(d+1+\alpha)}
+\end{equation*}
+It follows that
+$\left|\dn{\he{\rho}_\varepsilon^{j}}(x)\right|\lesssim\varepsilon(2^j\delta)^{-(d+1)}$
+when $|x|<2\cdot 2^{j+1}\delta$ (the weak type 1 estimate implies this holds for
+\emph{some} $x$ with $|x|<2\cdot 2^{j+1}\delta$ and the H\"older estimate extends
+it to \emph{all} such $x$).  Furthermore if $|x|>2\cdot 2^{j+1}\delta$ then
+% --- p. 3 ---
+\begin{equation*}
+  \left|\dn{\he{\rho}_\varepsilon^{j}}(x)\right|
+   =\left|\mathrm{const}\cdot\int_{|y|<2^{j+1}\delta}|x-y|^{-d}\rho_\varepsilon^{j}(y)\,dy\right|
+   \lesssim\varepsilon\left(2^j\delta\right)^{-1}|x|^{-d},
+\end{equation*}
+using $|\rho_\varepsilon^{j}|\lesssim\varepsilon\cdot(2^j\delta)^{-d}$.
+
+In other words we have the following:
+\begin{equation*}
+  \left|\dn{\he{\rho}_\varepsilon^{j}}\right|
+   \lesssim\varepsilon\left(2^j\delta\right)^{-1}
+     \min\!\left(|x|^{-d},\left(2^j\delta\right)^{-d}\right)\quad\text{on }\Rdm .
+\end{equation*}
+Summing over $j$ we obtain
+\begin{equation}\tag{$*$}
+  \left|\dn{\he{\rho}_\varepsilon}\right|
+   \lesssim\varepsilon\,\delta^{-1}\min\!\left(\delta^{-d},|x|^{-d}\right)
+\end{equation}
+
+Then for small $p$ and appropriate $\eta$
+\begin{align*}
+ \int\left|1+\dn{\he{F}_\varepsilon}\right|^{p}-1
+ &=\left(\int\left|1+\dn{G_\varepsilon}\right|^{p}-1\right)
+  +\left(\int\left|1+\dn{\he{F}_\varepsilon}\right|^{p}
+        -\left|1+\dn{G_\varepsilon}\right|^{p}\right)\\
+ &\leq -2\eta+\int_{|x|<1}\left|\left|1+\dn{\he{F}_\varepsilon}\right|^{p}
+        -\left|1+\dn{G_\varepsilon}\right|^{p}\right|
+  +\int_{|x|>1}\left(\left|1+\dn{\he{F}_\varepsilon}\right|^{p}
+        -\left|1+\dn{G_\varepsilon}\right|^{p}\right)
+\end{align*}
+Now
+\begin{equation*}
+ \int_{|x|<1}\left|\left|1+\dn{\he{F}_\varepsilon}\right|^{p}
+   -\left|1+\dn{G_\varepsilon}\right|^{p}\right|
+ \leq\int_{|x|\leq 1}\left|\dn{\rho_\varepsilon}\right|^{p}
+ \qquad ((a+b)^p\leq a^p+b^p \text{ when } p<1)
+\end{equation*}
+and $(*)$ implies this goes to $0$ with $\varepsilon$.  When $|x|>1$ we have a
+lower hand for $|1+\dn{G_\varepsilon}|$, and $|\dn{\rho_\varepsilon}|$ is small.
+% [sic: "lower hand" is printed for "lower bound".]
+It follows by the mean value theorem that
+\begin{equation*}
+ \left|\left|1+\dn{\he{F}_\varepsilon}\right|^{p}
+  -\left|1+\dn{G_\varepsilon}\right|^{p}\right|\leq C\cdot\left|\dn{\rho_\varepsilon}\right|
+\end{equation*}
+% --- p. 4 ---
+and therefore that
+\begin{equation*}
+ \int_{|x|>1}\left|1+\dn{\he{F}_\varepsilon}\right|^{p}
+  -\left|1+\dn{G_\varepsilon}\right|^{p}
+ \leq C\int_{|x|>1}\left|\dn{\rho_\varepsilon}\right|
+ \leq C\varepsilon\delta^{-p}
+\end{equation*}
+% [sic: the exponent is printed "-p"; see ledger row C7.]
+which again goes to $0$ with $\varepsilon$.  That proves
+$\int\left|1+\dn{\he{F}_\varepsilon}\right|^{p}-1<-\eta$.
+
+To prove $|\nabla\he{F}_\varepsilon|\lesssim\min(\varepsilon^{-d},|x|^{-d})$: this
+estimate is obvious for $|\nabla G_\varepsilon|$ and for $|\nabla_T\rho_\varepsilon|$.
+For $|\dn{\he{\rho}_\varepsilon}|$ it follows from $(*)$.
+\end{proof}
+
+\begin{lemB}
+If $N$ is large enough there is a constant $\beta\subset\beta(N)>0$ such that:
+% [sic: "\subset" is printed for "=".]
+if $Q\subset\Rdm$ is a cube, $a_Q$ its center and $I:Q\to\mathbb{R}$ is a function
+such that
+\begin{equation*}
+  N^{d-1}\,|I(a_Q)|^{-1}\sup_{x\in Q}|I(x)-I(a_Q)|
+\end{equation*}
+is sufficiently small (independently of $N$ and $\varepsilon$) then
+\begin{equation*}
+ \left(\int_Q\left|I(x)+\dn{\he{F}_\varepsilon}\!\left(N\ell(Q)^{-1}(x-a_Q)\right)\right|^{p}dx\right)^{1/p}
+  < e^{-2\beta}\,|I(a_Q)|\,|Q|^{1/p}.
+\end{equation*}
+\end{lemB}
+
+\begin{proof}
+We can assume $Q=Q(N)=\left[-\tfrac{N}{2},\tfrac{N}{2}\right]\times\dots\times
+\left[-\tfrac{N}{2},\tfrac{N}{2}\right]$.  It is then equivalent to show that if
+$N^{d-1}\|I-1\|_\infty$ is sufficiently small then
+\begin{equation*}
+ \int_{Q(N)}\left|I+\dn{\he{F}_\varepsilon}\right|^{p}-1\leq-\eta
+\end{equation*}
+for suitable $\eta>0$.  This last inequality is true since
+% --- p. 5 ---
+\begin{align*}
+ \int_{Q(N)}\left|1+\dn{\he{F}_\varepsilon}\right|^{p}
+  -\left|1+\dn{\he{F}_\varepsilon}\right|^{p}dx
+ &\leq\int_{Q(N)\setminus D(0,1)}+\int_{D(0,1)}\\
+ &\leq C\int_{Q(N)\setminus D(0,1)}|I-1|\,dx+\int_{D(0,1)}|I-1|^{p}dx
+\end{align*}
+% [sic: both terms of the first line are printed identically; the first
+%  integrand must be |I + dF/dn|^p, cf. ledger row C8.]
+(because $1+\dn{\he{F}_\varepsilon}$ is bounded away from $0$ when $|x|>1$)
+\begin{equation*}
+ \leq C\|I-1\|_\infty N^{d-1}+C\|I-1\|_\infty ,
+\end{equation*}
+which is small.  It remains to apply lemma 1.
+\end{proof}
+
+Now we give the recursive construction.  For a sufficiently large $N$ to be
+determined, choose $\beta$ according to lemma 2.  Also fix sequences
+$K_n\to\infty$, $\varepsilon_n\searrow 0$ (to be determined).  Constants denoted
+$C$ will be independent of these choices.  Let $u_0$ be a smooth function on
+$\Rdm$ which vanishes on $Q(1)$.
+% NOT an error: u_0 is boundary data vanishing on the cube Q(1); the normal
+% derivative of its harmonic extension on Q(1) is in general nonzero, and it
+% is that normal derivative the recursion drives to 0.  Cf. ledger row N3.
+
+We will drop the $\widehat{\phantom{x}}$ notation and identify functions on $\Rdm$
+to their harmonic extensions when there is no confusion.
+
+If the $n$th stage of the construction has been done $(n\geq 0)$ we will have the
+following data: a number $\delta_n>0$ with $\delta_n^{-1}\in\mathbb{Z}$, a subset
+$\mathcal{Q}_n\subset\mathcal{H}_n$ where $\mathcal{H}_n$ is the collection of
+$\delta_n^{-(d-1)}$ cubes of side $\delta_n$ whose union is $Q(1)$, and a smooth
+function $u_n$ such that
+\begin{equation*}
+ \left(\int_{V_n}\left|\dn{u_n}\right|^{p}\right)^{1/p}\leq A\,e^{-\beta n}
+\end{equation*}
+where $V_n=\bigcup\{Q:Q\in\mathcal{Q}_n\}$, $\beta$ is as above and $A$ is a
+sufficiently large constant which is independent of $n$.  To start take
+$\delta_0=1$, $\mathcal{Q}_0=\{Q(1)\}$.
+
+To do stage $n+1$ choose $\delta_{n+1}$ with
+$\frac{\delta_n}{\delta_{n+1}}\in\mathbb{Z}$ such that $\delta_{n+1}$ is extremely
+small - how small will be determined later.  $\mathcal{Q}_{n+1}$ is then all cubes
+$Q\in\mathcal{H}_{n+1}$ such that
+% --- p. 6 ---
+\begin{itemize}
+\item[(a)] the cube $Q'\in\mathcal{H}_n$ with $Q\subset Q'$ satisfies
+  $Q'\in\mathcal{Q}_n$, and
+\item[(b)] $\displaystyle\left(\frac{1}{|Q|}\int_Q\left|\dn{u_n}\right|^{p}\right)^{1/p}
+  < K_{n+1}e^{-\beta n}.$
+\end{itemize}
+
+Let $a_Q$ be the center of $Q$ and define
+\begin{equation*}
+ u_{n+1}(x)=u_n(x)+\sum_{Q\in\mathcal{Q}_{n+1}}\dn{u_n}(a_Q)\,
+   F_{\varepsilon_{n+1}}\!\left(N\delta_{n+1}^{-1}(x-a_Q)\right)\cdot\frac{\delta_{n+1}}{N}
+\end{equation*}
+so that
+\begin{equation*}
+ \nabla u_{n+1}(x)=\nabla u_n(x)+\sum_{Q\in\mathcal{Q}_{n+1}}\dn{u_n}(a_Q)\,
+   \nabla F_{\varepsilon_{n+1}}\!\left(N\delta_{n+1}^{-1}(x-a_Q)\right).
+\end{equation*}
+
+\begin{lemC}
+\begin{equation*}
+ \sum_{Q\in\mathcal{Q}_{n+1}\,:\,|x-a_Q|>\rho}
+  \left|\nabla F_{\varepsilon_{n+1}}\!\left(N\delta_{n+1}^{-1}(x-a_Q)\right)\right|
+  \leq C\,N^{-d}\,\delta_{n+1}\,\rho^{-1}
+\end{equation*}
+For all $\rho>\mathrm{const}\cdot\delta_{n+1}$ and $x\in\Rdm$ ($C$ depends on a
+lower bound for $\frac{\rho}{\delta_{n+1}}$)
+\end{lemC}
+
+\begin{proof}
+The left hand side is
+$\leq\sum_{|x-a_Q|>\rho}\left(N\delta_{n+1}^{-1}|x-a_Q|\right)^{-d}$
+by the last part of lemma 1.  Lemma 3 follows by considering
+$\sum\delta_{n+1}^{d-1}|x-a_Q|^{-d}$ as Riemann sum for
+$\int_{|x|>\rho}|x|^{-d}$, which is justified as long as
+$\frac{\rho}{\delta_{n+1}}$ does not approach $0$.
+\end{proof}
+
+\begin{cor}
+If $\delta_{n+1}$ is small enough, then on $\Rdm$,
+\begin{equation*}
+ |\nabla u_{n+1}-\nabla u_n|\leq C\,K_{n+1}\,e^{-\beta n}\,\varepsilon_{n+1}^{-d}
+\end{equation*}
+\end{cor}
+
+\begin{proof}
+Assume for notational purposes that $x\in Q\in\mathcal{Q}_{n+1}$ - the other case
+is a little simpler.  If $\delta_{n+1}$ is small, then by (b) and smoothness on
+$u_n$, we know
+\begin{equation*}
+ |\nabla u_n(a_{Q'})|\leq 2K_{n+1}e^{-\beta n}
+\end{equation*}
+% --- p. 7 ---
+for all $Q'\in\mathcal{Q}_{n+1}$.  So
+\begin{align*}
+ |\nabla u_{n+1}(x)-\nabla u_n(x)|
+ &\leq\sum_{\substack{Q'\in\mathcal{Q}_{n+1}\\ Q'\neq Q}}
+   |\nabla u_n(a_{Q'})|\,
+   \left|\nabla F_{\varepsilon_{n+1}}(N\delta_{n+1}^{-1}(x-a_{Q'}))\right|\\
+ &\qquad+|\nabla u_n(a_Q)|\,
+   \left|\nabla F_{\varepsilon_{n+1}}(N\delta_{n+1}^{-1}(x-a_Q))\right|\\
+ &\leq 2K_{n+1}e^{-\beta n}\Big[\sum_{Q'\neq Q}
+   \left|\nabla F_{\varepsilon_{n+1}}(N\delta_{n+1}^{-1}(x-a_{Q'}))\right|\\
+ &\qquad\qquad+\left|\nabla F_{\varepsilon_{n+1}}(N\delta_{n+1}^{-1}(x-a_Q))\right|\Big]\\
+ &\leq 2K_{n+1}e^{-\beta n}\left(C+C\varepsilon_{n+1}^{-d}\right)
+\end{align*}
+where the sum was estimated by lemma 3 and the other term by lemma 1.
+\end{proof}
+
+Next we verify the induction hypothesis at stage $n+1$ i.e.
+
+\begin{lemD}
+If $A$ is large then
+$\displaystyle\left(\int_{V_{n+1}}\left|\dn{u_{n+1}}\right|^{p}\right)^{1/p}
+ < A\,e^{-\beta(n+1)}$
+\end{lemD}
+
+\begin{proof}
+First we claim the following statement: suppose $\gamma>0$ is given.  Then if
+$\delta_{n+1}$ is small enough we will have for any $x\in Q\in\mathcal{Q}_{n+1}$
+\begin{equation}\tag{$*$}
+ \sum_{\substack{Q'\in\mathcal{Q}_{n+1}\\ Q'\neq Q}}
+  \left|\dn{u_n}(a_{Q'})\right|\,
+  \left|\nabla F_{\varepsilon_{n+1}}(N\delta_{n+1}^{-1}(x-a_{Q'}))\right|
+ \leq C\,N^{-d}\left|\dn{u_n}(x)\right|+\gamma
+\end{equation}
+
+\emph{Proof of $(*)$}: Fix $M<\infty$ and split the sum into
+$\sum_{Q':|x-a_{Q'}|<M\delta_{n+1}}$ and $\sum_{Q':|x-a_{Q'}|>M\delta_{n+1}}$.
+Then
+% --- p. 8 ---
+\begin{align*}
+ \sum_{Q':|x-a_{Q'}|<M\delta_{n+1}}
+ &\leq\sup\left(\left|\dn{u_n}(a_{Q'})\right| : |x-a_{Q'}|<M\delta_{n+1}\right)
+   \cdot\sum_{Q'\neq Q}\left|\nabla F_{\varepsilon_{n+1}}(N\delta_{n+1}^{-1}(x-a_{Q'}))\right|\\
+ &< C N^{-d}\sup\left(\left|\dn{u_n}(a_{Q'})\right| : |x-a_{Q'}|<M\delta_{n+1}\right)
+\end{align*}
+(by lemma 3 with $\rho=\tfrac12\delta_{n+1}$).
+\begin{equation*}
+ < C N^{-d}\left(\left|\dn{u_n}(x)\right|+\gamma\right)
+\end{equation*}
+where $\gamma\to 0$ as $\delta_n\to 0$ by continuity of $\left|\dn{u_n}\right|$.
+Also
+\begin{align*}
+ \sum_{Q':|x-a_{Q'}|>M\delta_{n+1}}
+ &\leq\sup\left(\left|\dn{u_n}(y)\right| : y\in V_{n+1}\right)\cdot
+   \sum_{|x-a_{Q'}|>M\delta_{n+1}}
+   \left|\nabla F_{\varepsilon_{n+1}}(N\delta_{n+1}^{-1}(x-a_{Q'}))\right|\\
+ &\leq 2K_{n+1}e^{-\beta n}\sum_{|x-a_{Q'}|>M\delta_{n+1}}
+   \left|\nabla F_{\varepsilon_{n+1}}(N\delta_{n+1}^{-1}(x-a_{Q'}))\right|
+\end{align*}
+(provided $\delta_{n+1}$ small enough)
+\begin{equation*}
+ \leq C K_{n+1}e^{-\beta n}\cdot M^{-1}
+\end{equation*}
+by lemma 3 ($\rho=M\delta_{n+1}$).  Since $M$ is arbitrary we can make this as
+small as we want which proves $(*)$.
+
+Now, we will call $Q\in\mathcal{Q}_{n+1}$ \emph{type 1} if
+$\left|\dn{u_n}(a_Q)\right|>e^{-4\beta(n+1)}$ and \emph{type 2} otherwise.
+Fix $Q\in\mathcal{Q}_{n+1}$.  Write (for $x\in Q$)
+\begin{align*}
+ \dn{u_{n+1}}(x)&=\dn{u_n}(a_Q)+\Big[\dn{u_n}(x)-\dn{u_n}(a_Q)\\
+ &\quad+\sum_{\substack{Q'\neq Q\\ Q'\in\mathcal{Q}_{n+1}}}\dn{u_n}(a_{Q'})\cdot
+   \dn{F_{\varepsilon_{n+1}}}(N\delta_{n+1}^{-1}(x-a_{Q'}))\Big]
+   +\dn{u_n}(a_Q)\,\dn{F_{\varepsilon_{n+1}}}(N\delta_{n+1}^{-1}(x-a_Q))
+\end{align*}
+
+By $(*)$ and smoothness of $\dn{u_n}$ the term in brackets may be made less than
+$C N^{-d}\left|\dn{u_n}(a_Q)\right|+\gamma$ with $\gamma$ arbitrarily small.  For
+$Q$ type 1, the bracket term is therefore
+% --- p. 9 ---
+$<C N^{-d}\left|\dn{u_n}(a_Q)\right|$ provided $\gamma$ is chosen right.  So lemma
+2 applies (we're using here that $C N^{-d}<c N^{-(d-1)}$ for large $N$) and we get
+\begin{align*}
+ \left(\int_Q\left|\dn{u_{n+1}}\right|^{p}\right)^{1/p}
+ &<e^{-2\beta}\left|\dn{u_n}(a_Q)\right||Q|^{1/p}\\
+ &<e^{-\frac32\beta}\left(\int_Q\left|\dn{u_n}\right|^{p}\right)^{1/p}
+   \qquad\text{if }\delta_{n+1}\text{ is small}
+\end{align*}
+
+If $Q$ is type 2 the bracket term is
+$<C N^{-d}\left|\dn{u_n}(a_Q)\right|+\gamma$ which may be taken
+$<e^{-4\beta(n+1)}$.  So,
+\begin{align*}
+ \int_Q\left|\dn{u_{n+1}}\right|^{p}
+ &\leq\left|\dn{u_{n+1}}(a_Q)\right|^{p}
+   \int_Q\left|1+\dn{F_{\varepsilon_{n+1}}}\!\left(N\delta_{n+1}^{-1}(x-a_Q)\right)\right|^{p}
+   +\int_Q[\;]^{p}\\
+ &\leq 2\cdot e^{-4\beta(n+1)p}|Q|
+\end{align*}
+since (say) the first integral is $<|Q|$ by lemma 2.  We conclude
+\begin{align*}
+ \int_{V_{n+1}}\left|\dn{u_{n+1}}\right|^{p}
+ &=\int_{\bigcup\{Q\text{ type }1\}}+\int_{\bigcup\{Q\text{ type }2\}}\\
+ &\leq e^{-\frac32 p\beta}\int_{\bigcup\{Q\text{ type }1\}}\left|\dn{u_n}\right|^{p}
+   +C e^{-4p\beta(n+1)}\sum_{Q\text{ type }2}|Q|\\
+ &\leq A^{p}e^{-p\beta(n+1)}\cdot e^{\frac12 p\beta}+C e^{-4p\beta(n+1)}\\
+ &=A^{p}e^{-p\beta(n+1)}\left(e^{\frac12 p\beta}+C A^{-p}e^{-3p\beta(n+1)}\right)
+\end{align*}
+The parenthesis term is $<1$ if $A$ was large enough.
+% [sic: e^{p\beta/2} > 1, so the parenthesis is > 1 as printed; cf. ledger row C12.]
+\end{proof}
+
+Now we give the conditions on the $K_n$ and $\varepsilon_n$: they should satisfy
+% --- p. 10 ---
+\begin{itemize}
+\item[(1)] $\sum\varepsilon_{n+1}^{-d}K_{n+1}e^{-\beta n}<\infty$
+\item[(2)] $\sum K_{n+1}^{-p}+\varepsilon_{n+1}^{d-1}$ is sufficiently small.
+\end{itemize}
+% [sic: the exponent in (2) is printed "d-1"; the estimate it is used for
+%  produces \varepsilon^{(d-1)/2}, cf. ledger row C13.]
+
+These are clearly compatible e.g. we can take $\varepsilon_n=C^{-1}n^{-2}$,
+$K_n=Cn^{2/p}$ for a suitable large constant $C$.
+
+Condition (1) implies by the corollary to lemma 2 that the $\he{u}_n$ converge in
+$C^1$ norm on the closed upper half space.
+% [sic: "corollary to lemma 2"; the Corollary above is to lemma 3.]
+Call the limit function $f$.  We have to show $f=\dn{f}=0$ on a set of positive
+measure.  But
+\begin{equation*}
+ |\{x\in Q(1):f(x)\neq 0\}|\leq\sum_n|\{x\in Q(1):u_{n+1}(x)\neq u_n(x)\}|
+\end{equation*}
+and $\{x:u_{n+1}(x)\neq u_n(x)\}$ is a union of at most $\delta_{n+1}^{-(d-1)}$
+discs each of radius $\delta_{n+1}\varepsilon_{n+1}^{1/2}$ (because of
+$\supp F_\varepsilon$ being contained in $D(0,\varepsilon^{1/2})$).  So,
+\begin{align*}
+ |\{x\in Q(1):f(x)\neq 0\}|
+ &\leq C\sum_n\delta_{n+1}^{-(d-1)}\left(\delta_{n+1}\varepsilon_{n+1}^{1/2}\right)^{d-1}\\
+ &\leq C\sum\varepsilon_{n+1}^{\frac{d-1}{2}}
+\end{align*}
+
+Also, $\dn{\he{f}}=0$ on $\bigcap_n V_n$.  Thus
+\begin{equation*}
+ \left|\left\{x\in Q(1):\dn{\he{f}}(x)\neq 0\right\}\right|
+  \leq\sum_n|V_n\setminus V_{n+1}|
+\end{equation*}
+
+What is the measure of $V_n\setminus V_{n+1}$?  If $Q\notin\mathcal{Q}_{n+1}$ but
+$Q\subset Q'\in\mathcal{Q}_n$, then
+\begin{equation*}
+ \frac{1}{|Q|}\int_Q\left|\dn{u_n}\right|^{p}>K_{n+1}^{p}e^{-p\beta n}
+ \quad\text{i.e.}\quad
+ |Q|<K_{n+1}^{-p}e^{-\beta pn}\int_Q\left|\dn{u_n}\right|^{p}.
+\end{equation*}
+% [sic: the printed inequality omits the factor e^{+\beta p n} bookkeeping;
+%  cf. ledger row C14.]
+% --- p. 11 ---
+So,
+\begin{equation*}
+ |V_n\setminus V_{n+1}|\leq K_{n+1}^{-p}e^{\beta pn}\int_{V_n}\left|\dn{u_n}\right|^{p}
+ \leq A^{p}K_{n+1}^{-p}
+\end{equation*}
+and $\left|\left\{x\in Q(1):\dn{\he{f}}(x)\neq 0\right\}\right|
+\leq A^{p}\sum K_{n+1}^{-p}$.  That means
+\begin{equation*}
+ \left|\left\{x\in Q(1):\dn{\he{f}}(x)\neq 0\right\}\right|
+ +|\{x\in Q(1):f(x)\neq 0\}|
+ \leq C\sum\varepsilon_{n+1}^{\frac{d-1}{2}}+A^{p}\sum K_{n+1}^{-p}
+ <1,\ \text{if (2) holds.}
+\end{equation*}
+
+So $Q(1)\cap\left\{x:\dn{\he{f}}(x)=0\right\}\cap\{x:f(x)=0\}$ must have positive
+measure.
+
+\subsection*{Remarks}
+
+1) To minimize technicalities we did not try to obtain a H\"older estimate on the
+gradient although this should be possible along the work of [2].
+
+2) The main question remains open, that is, whether it is possible to have
+harmonic functions $C^2$ of $C^\infty$ smooth up to the boundary whose gradients
+% [sic: "C^2 of C^\infty" is printed for "C^2 or C^\infty".]
+vanish on sets of positive measure.  A variant of previous construction permits to
+get a $C^{2+\varepsilon}$ harmonic function $f:\Rd\to\mathbb{R}$ such that $f$ and
+$D^2 f$ vanish on a common boundary of positive measure.
+
+\begin{thebibliography}{[2]}
+\bibitem{AK} A.B. Aleksandrov, P. Kargaev, \emph{Private communication} (to appear)
+\bibitem{W}  T. Wolff, \emph{Counter examples with harmonic gradients in
+  $\mathbb{R}^3$} (to appear)
+\end{thebibliography}
+
+\end{document}

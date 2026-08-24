@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bourgain-pedia</title>
+<meta name="description" content="An encyclopedia of the work of Jean Bourgain: every paper, digested, and the toolkit of ideas behind them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,600;0,700;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<main>
+  <p class="eyebrow">A collaborative reading project</p>
+  <h1 class="page-title">Every paper Jean Bourgain wrote, read down to its ideas.</h1>
+  <p class="page-lede">
+    Bourgain left behind a body of work that is famously hard to enter: short papers,
+    compressed arguments, whole techniques introduced in a paragraph. This project
+    goes through them one at a time — expanding each paper into a version where nothing
+    is omitted, then extracting the ideas it runs on and committing them back to a
+    shared toolkit.
+  </p>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="prose">
+    <h2>How to read this site</h2>
+    <p>
+      <a href="articles.html"><strong>All articles</strong></a> is the spine: the complete
+      bibliography, by year. Each entry carries its full reference, its citation count, a
+      download link, and two slots this project fills in — a <em>summary</em> (our précis,
+      not the abstract) and a <em>digestion</em> (the expanded paper we produce).
+    </p>
+    <p>
+      <a href="toolkit.html"><strong>Bourgain's toolkit</strong></a> is where the work
+      accumulates. Every idea and technique found in a digested paper — from
+      <em>orthogonality</em> and <em>stopping time</em> up through <em>sparseness</em> and
+      <em>large deviations</em> — gets a name, a short explanation, and a score: the number
+      of papers it appears in.
+    </p>
+    <p>
+      <a href="collaborators.html"><strong>Collaborators</strong></a> lists everyone who
+      wrote a paper with him, A to Z, with a collaborator score.
+    </p>
+    <p>
+      <a href="about.html"><strong>Method</strong></a> describes the two blueprints — one
+      for expanding an article, one for harvesting its ideas — and the
+      <code>/bourgainize</code> skill that runs them.
+    </p>
+
+    <h2>Where the bibliography comes from</h2>
+    <p>
+      The list is merged from three open sources: <strong>zbMATH Open</strong> (the
+      authoritative, disambiguated mathematical bibliography — the spine),
+      <strong>OpenAlex</strong> (citation counts and open-access copies) and
+      <strong>arXiv</strong> (preprints). Nothing on the article pages is written by a
+      publisher: the summaries and digestions are ours.
+    </p>
+    <p id="freshness" class="page-lede" style="margin-top:14px"></p>
+  </div>
+</main>
+
+<script src="data/papers.js"></script>
+<script src="data/collaborators.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  BP.layout("home");
+  var P = (window.BOURGAIN_PAPERS || {}).papers || [];
+  var C = (window.BOURGAIN_COLLABORATORS || {}).collaborators || [];
+  var meta = window.BOURGAIN_PAPERS || {};
+  var years = P.map(function (p) { return p.year; }).filter(Boolean);
+  var cites = P.reduce(function (a, p) { return a + (p.cited_by || 0); }, 0);
+  var digested = P.filter(function (p) { return p.digestion; }).length;
+  var ideas = ((window.BOURGAIN_TOOLKIT || {}).ideas || []).length;
+
+  var stats = [
+    [BP.num(P.length), "works catalogued"],
+    [Math.min.apply(null, years) + "–" + Math.max.apply(null, years), "years of output", "small"],
+    [BP.num(C.length), "coauthors"],
+    [BP.num(cites), "citations"],
+    [BP.num(digested) + " / " + BP.num(P.length), "digested", "small"],
+    [BP.num(ideas), "ideas in the toolkit"]
+  ];
+  document.getElementById("stats").innerHTML = stats.map(function (s) {
+    return '<div class="stat"><span class="n' + (s[2] ? " " + s[2] : "") + '">' +
+           s[0] + '</span><span class="k">' + s[1] + "</span></div>";
+  }).join("");
+
+  document.getElementById("freshness").textContent =
+    "Bibliography built " + (meta.generated || "—") + "; citation counts last refreshed " +
+    (meta.citations_updated || "—") + ". Run tools/refresh_citations.py to update them.";
+})();
+</script>
+</body>
+</html>

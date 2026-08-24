@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Method · Bourgain-pedia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,600;0,700;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<main>
+  <h1 class="page-title">Method</h1>
+  <p class="page-lede">
+    How a paper gets from the bibliography into the toolkit, and what the site does and
+    does not claim.
+  </p>
+
+  <div class="prose">
+    <h2>The pipeline</h2>
+    <p>
+      Everything here runs one paper at a time, through the skill
+      <code>$bourgainize</code> (Codex) / <code>/bourgainize</code> (Claude Code):
+    </p>
+    <ol>
+      <li><strong>Choose.</strong> A paper is picked from the bibliography and confirmed
+        exactly — he has near-identical titles a decade apart.</li>
+      <li><strong>Download.</strong> arXiv source if it exists, then arXiv PDF, then an
+        open-access copy, then NUMDAM / EuDML / Euclid, then the DOI. Files land in
+        <code>&lt;year&gt;/&lt;slug&gt;/</code>.</li>
+      <li><strong>Expand</strong>, under <a href="#blueprint-a">Blueprint A</a>, into
+        <code>&lt;name&gt;-expanded.tex</code>.</li>
+      <li><strong>Stop and ask.</strong> The expansion stands on its own; the harvest is
+        separate work and needs an explicit yes.</li>
+      <li><strong>Harvest</strong>, under <a href="#blueprint-b">Blueprint B</a>, into
+        <code>ideas-&lt;name&gt;.md</code>, and reconcile against the toolkit.</li>
+    </ol>
+
+    <h2 id="blueprint-a">Blueprint A — the article</h2>
+    <p>
+      The digestion is his paper at full length, not a survey of it and not a better
+      proof. Six rules govern it:
+    </p>
+    <ol>
+      <li>When in doubt, expand. Doubt is the trigger, not a reason to hesitate.</li>
+      <li>Do not deviate from the line of work in the article. Stick to his arguments.</li>
+      <li>Introducing notation in order to explain the article is fine — declared, and
+        attributed to us.</li>
+      <li>The expanded article is strictly larger than the original.</li>
+      <li>No computation in the original is omitted from the new one.</li>
+      <li>Arguments left out of the original are explained in the new one.</li>
+    </ol>
+    <p>
+      Rule 6 is the one that does the work. <em>One checks easily</em>, <em>a standard
+      argument gives</em>, <em>by the same reasoning</em>, <em>it is well known that</em>
+      — each is a hole, and each is logged in a ledger and filled with an actual proof.
+      The digestion is finished when every ledger row is closed.
+    </p>
+    <blockquote>
+      Where a step cannot be closed, it is marked <code>caution</code> in the PDF and
+      <code>OPEN-GAP</code> in the ledger, and it stays visible. A plausible
+      reconstruction is never promoted into a proof.
+    </blockquote>
+
+    <h2 id="blueprint-b">Blueprint B — the ideas</h2>
+    <p>
+      Blueprint B reads the <em>expansion</em>, never the original: the point of the
+      expansion is that the moves he performed silently are now on the page.
+    </p>
+    <ul>
+      <li><strong>Pass 1, total harvest.</strong> Line by line. Every step where
+        something is <em>done</em> gets a keyword and a note on what it buys. Over-collect;
+        80–200 rows is normal.</li>
+      <li><strong>Pass 2, discard the routine.</strong> Triangle inequality,
+        Cauchy–Schwarz, Hölder, Fubini, geometric series — out. Unless something about
+        <em>how</em> the move is used was a choice, in which case the row says what the
+        non-obvious part was.</li>
+      <li><strong>Pass 3, prune again.</strong> Cut rows that describe subject matter
+        rather than technique, and rows that fail the question <em>could I apply this in
+        another paper?</em> Repeat until a sweep changes nothing — usually three sweeps in
+        all.</li>
+      <li><strong>Pass 4, reconcile.</strong> Existing idea, extended gloss, or new
+        entry; the paper's id joins the idea's list.</li>
+    </ul>
+    <p>
+      A score is never written by hand. It is the length of an idea's paper list,
+      recomputed on every build.
+    </p>
+
+    <h2>The bibliography</h2>
+    <p>
+      Merged from three open sources. <strong>zbMATH Open</strong> is the spine: a
+      disambiguated mathematical bibliography that is complete back to 1976 and carries
+      the early French and Belgian seminar papers the citation indices miss.
+      <strong>OpenAlex</strong> supplies citation counts, DOIs and open-access copies.
+      <strong>arXiv</strong> supplies preprints. Records are matched on DOI first, then
+      on a normalised title within a ±3-year window; a handful of OCR-mangled titles and
+      chapter-level duplicates are reconciled by a curated map in
+      <code>tools/build_data.py</code>, which lists each one and why.
+    </p>
+    <p>
+      Citation counts are OpenAlex counts, refreshed by hand about once a week with
+      <code>python3 tools/refresh_citations.py</code>. The date they were last refreshed
+      is in the footer of every page. They are a rough measure and are not comparable
+      across decades: OpenAlex indexes a 2014 paper's citations far better than a 1980
+      one's, and a blank means "not indexed", not "never cited".
+    </p>
+
+    <h2>What is ours and what is not</h2>
+    <ul>
+      <li><strong>Ours:</strong> every summary, every digestion, every toolkit entry and
+        gloss, the collaborator prose.</li>
+      <li><strong>Not ours:</strong> the bibliographic records, the citation counts, and
+        the papers themselves. Links point to the publisher, arXiv, or a repository; no
+        copyrighted full text is redistributed here.</li>
+      <li><strong>Not written yet:</strong> shown as an explicit blank. A field is left
+        empty rather than filled with a guess — including collaborator birth years and
+        affiliations, which come from Wikidata and are simply absent where Wikidata has
+        no confident match.</li>
+    </ul>
+
+    <h2>Running it</h2>
+    <pre><code>python3 tools/fetch_sources.py        # zbMATH + OpenAlex + arXiv -> data/raw/
+python3 tools/build_data.py           # merge -> data/, site/data/, Papers/&lt;year&gt;.md
+python3 tools/enrich_collaborators.py # Wikidata dates and affiliations
+python3 tools/refresh_citations.py    # the weekly update
+sh tools/serve.sh                     # http://localhost:8017/</code></pre>
+    <p>
+      The site is static and dependency-free; <code>site/index.html</code> also opens
+      straight off the filesystem, since the data ships as JS globals rather than fetched
+      JSON.
+    </p>
+  </div>
+</main>
+
+<script src="data/papers.js"></script>
+<script src="assets/app.js"></script>
+<script>BP.layout("about");</script>
+</body>
+</html>

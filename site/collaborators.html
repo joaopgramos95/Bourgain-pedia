@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Collaborators · Bourgain-pedia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,600;0,700;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<main>
+  <h1 class="page-title">Collaborators</h1>
+  <p class="page-lede">
+    Everyone who wrote a paper with Bourgain, by the first letter of their surname. The
+    <em>collaborator score</em> is the number of joint papers. Blanks are honest blanks:
+    where we could not establish a date or an affiliation, the field is left empty rather
+    than guessed. Dates and the affiliation line come from Wikidata — accepted only when
+    the person could actually have written the joint paper — and the affiliation is the
+    most recently started one on record, which is not always the current one. The prose
+    below it is ours.
+  </p>
+
+  <div class="with-rail">
+    <aside class="rail">
+      <p class="rail-heading">Letter</p>
+      <ul class="letter-grid" id="letters"></ul>
+      <p class="rail-heading">Views</p>
+      <ul class="rail-list" id="views">
+        <li><button data-view="all">Everyone<span class="count" id="n-all"></span></button></li>
+        <li><button data-view="top">By score<span class="count" id="n-top"></span></button></li>
+      </ul>
+    </aside>
+
+    <section>
+      <div class="toolbar">
+        <input class="search" id="q" type="search" placeholder="Search collaborators…"
+               autocomplete="off" spellcheck="false">
+      </div>
+      <div id="out"></div>
+      <a class="jump-top" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ back to top</a>
+    </section>
+  </div>
+</main>
+
+<script src="data/papers.js"></script>
+<script src="data/collaborators.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  BP.layout("collaborators");
+
+  var C = (window.BOURGAIN_COLLABORATORS || {}).collaborators || [];
+  var P = (window.BOURGAIN_PAPERS || {}).papers || [];
+  var titleOf = {};
+  P.forEach(function (p) { titleOf[p.id] = p; });
+
+  var ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  var byLetter = {};
+  C.forEach(function (p) { (byLetter[p.letter] = byLetter[p.letter] || []).push(p); });
+
+  C.forEach(function (p) {
+    p._hay = BP.fold([p.name, p.institution, p.bio].join(" "));
+  });
+
+  var state = { letter: null, view: "all", q: "" };
+  var out = document.getElementById("out");
+  var lettersEl = document.getElementById("letters");
+  var viewsEl = document.getElementById("views");
+  var qEl = document.getElementById("q");
+
+  document.getElementById("n-all").textContent = C.length;
+  document.getElementById("n-top").textContent = C.filter(function (p) { return p.score > 1; }).length;
+
+  lettersEl.innerHTML = ALPHABET.map(function (L) {
+    var n = (byLetter[L] || []).length;
+    return "<li><button data-letter='" + L + "'" + (n ? "" : " disabled") +
+           " title='" + n + " collaborator" + (n === 1 ? "" : "s") + "'>" + L + "</button></li>";
+  }).join("") + (byLetter["#"] ? "<li><button data-letter='#'>#</button></li>" : "");
+
+  function personCard(p) {
+    var dates = [p.born || "", p.died || ""].join("–").replace(/^–$/, "");
+    if (dates === "–") dates = "";
+    else if (p.born && !p.died) dates = "b. " + p.born;
+    else if (!p.born && p.died) dates = "d. " + p.died;
+
+    var span = (p.years && p.years[0])
+      ? (p.years[0] === p.years[1] ? p.years[0] : p.years[0] + "–" + p.years[1])
+      : "";
+
+    var links = (p.papers || []).map(function (id) {
+      var pp = titleOf[id];
+      if (!pp) return "";
+      return '<a href="articles.html#' + BP.esc(id) + '">' +
+             BP.esc(BP.tex(pp.title)) + "</a>";
+    }).filter(Boolean);
+    var SHOWN = 4;
+    var papers = links.slice(0, SHOWN).join(" · ");
+    if (links.length > SHOWN) {
+      papers += ' · <a href="articles.html?q=" class="more" data-name="' +
+                BP.esc(p.name) + '">and ' + (links.length - SHOWN) + " more</a>";
+    }
+
+    return '<article class="person" id="' + BP.esc(BP.fold(p.name).replace(/[^a-z0-9]+/g, "-")) + '">' +
+      '<div class="person-head">' +
+        '<h3 class="person-name">' + BP.esc(p.name) +
+          (dates ? ' <span class="person-dates">(' + BP.esc(dates) + ")</span>" : "") +
+        "</h3>" +
+        '<span class="score" title="joint papers with Bourgain">' + p.score +
+          (p.score === 1 ? " paper" : " papers") + "</span>" +
+      "</div>" +
+      (p.institution
+        ? '<p class="person-inst" title="Affiliations recorded in Wikidata, most ' +
+          'recently started first. Not always the current one — where the two ' +
+          'disagree, the biography below is the one we checked.">' +
+          BP.esc(p.institution) + "</p>"
+        : "") +
+      (p.bio
+        ? '<p class="person-bio">' + BP.esc(p.bio) + "</p>"
+        : '<p class="person-bio empty">No biography written yet.</p>') +
+      '<p class="person-papers">' + (span ? "Joint work " + span + ". " : "") + papers + "</p>" +
+    "</article>";
+  }
+
+  function render() {
+    var rows, heading, sub;
+    if (state.q) {
+      var needle = BP.fold(state.q);
+      rows = C.filter(function (p) { return p._hay.indexOf(needle) !== -1; });
+      heading = "Search";
+      sub = rows.length + (rows.length === 1 ? " match" : " matches");
+    } else if (state.view === "top") {
+      rows = C.slice().sort(function (a, b) {
+        return b.score - a.score || a.name.localeCompare(b.name);
+      });
+      heading = "By collaborator score";
+      sub = rows.length + " coauthors, most joint papers first";
+    } else if (state.letter) {
+      rows = (byLetter[state.letter] || []);
+      heading = state.letter;
+      sub = rows.length + (rows.length === 1 ? " collaborator" : " collaborators");
+    } else {
+      rows = C;
+      heading = "Everyone";
+      sub = C.length + " coauthors, " +
+            C.filter(function (p) { return p.bio; }).length + " with a biography so far";
+    }
+
+    lettersEl.querySelectorAll("button").forEach(function (b) {
+      b.setAttribute("aria-current", String(!state.q && state.view === "letter" &&
+                                            b.dataset.letter === state.letter));
+    });
+    viewsEl.querySelectorAll("button").forEach(function (b) {
+      b.setAttribute("aria-current", String(!state.q && b.dataset.view === state.view));
+    });
+
+    out.innerHTML = '<h2 class="year-heading">' + BP.esc(heading) + "</h2>" +
+      '<p class="year-sub">' + BP.esc(sub) + "</p>" +
+      (rows.length ? rows.map(personCard).join("")
+                   : '<div class="empty-state"><p>No one here.</p></div>');
+  }
+
+  lettersEl.addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-letter]");
+    if (!b || b.disabled) return;
+    state.letter = b.dataset.letter; state.view = "letter"; state.q = ""; qEl.value = "";
+    history.replaceState(null, "", "#" + b.dataset.letter);
+    render();
+  });
+  viewsEl.addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-view]");
+    if (!b) return;
+    state.view = b.dataset.view; state.letter = null; state.q = ""; qEl.value = "";
+    history.replaceState(null, "", "#" + b.dataset.view);
+    render();
+  });
+  qEl.addEventListener("input", BP.debounce(function () {
+    state.q = qEl.value.trim(); render();
+  }, 130));
+
+  out.addEventListener("click", function (e) {
+    var a = e.target.closest("a.more");
+    if (!a) return;
+    e.preventDefault();
+    location.href = "articles.html?q=" + encodeURIComponent(a.dataset.name);
+  });
+
+  var hash = decodeURIComponent(location.hash.replace(/^#/, ""));
+  if (/^[A-Z#]$/.test(hash) && byLetter[hash]) { state.letter = hash; state.view = "letter"; }
+  else if (hash === "top") { state.view = "top"; }
+  render();
+})();
+</script>
+</body>
+</html>

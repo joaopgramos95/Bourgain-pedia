@@ -1,0 +1,77 @@
+{
+ "_comment": "Scaffolding only. Ideas arrive here from ideas-<paper>.md files produced by blueprints/idea-blueprint.md, merged by tools/merge_ideas.py. Do not hand-write the toolkit ahead of the reading; the point is that it is the residue of digesting actual papers.",
+ "schema": {
+  "id": "kebab-case stable key, e.g. 'induction-on-scales'",
+  "name": "display name, e.g. 'Induction on scales'",
+  "stratum": "one of the strata keys below",
+  "gloss": "two to four sentences, written by us: what the move is, what it buys, when it applies",
+  "aliases": [
+   "other names the same idea travels under"
+  ],
+  "papers": [
+   "paper ids from data/papers.json — the score is the length of this list"
+  ],
+  "first_seen": "paper id where it first appears in the catalogue",
+  "see_also": [
+   "ids of related toolkit entries"
+  ]
+ },
+ "strata": [
+  {
+   "key": "primitive",
+   "name": "Primitives",
+   "note": "Elementary moves that survived the pruning passes because Bourgain leans on them structurally, not incidentally. The test is whether removing the move breaks the architecture of the proof, not merely a line of it.",
+   "examples": [
+    "orthogonality",
+    "stopping time",
+    "dyadic decomposition",
+    "pigeonholing a scale"
+   ]
+  },
+  {
+   "key": "technique",
+   "name": "Techniques",
+   "note": "Named machinery assembled out of primitives: a recognisable procedure that can be lifted out of one paper and run in another.",
+   "examples": [
+    "TT* and its variants",
+    "induction on scales",
+    "random selection of a subset",
+    "multilinear-to-linear passage"
+   ]
+  },
+  {
+   "key": "strategy",
+   "name": "Strategies",
+   "note": "Organising ideas that decide the shape of an argument before any estimate is made. These are the entries that most often recur across fields.",
+   "examples": [
+    "sparseness",
+    "large deviations",
+    "the probabilistic method",
+    "bootstrapping a weak estimate"
+   ]
+  },
+  {
+   "key": "transfer",
+   "name": "Transfers",
+   "note": "Moves that carry a problem from one subject into another, where the available tools are different. Bourgain's signature: an arithmetic question becomes an analytic one, or a geometric one becomes combinatorial.",
+   "examples": [
+    "arithmetic to harmonic analysis",
+    "PDE to Hamiltonian dynamics",
+    "Banach space geometry to probability"
+   ]
+  },
+  {
+   "key": "obstruction",
+   "name": "Obstructions and examples",
+   "note": "Counterexamples, extremal configurations and sharpness constructions that are reused as objects in later work, not just as endpoints of one paper.",
+   "examples": [
+    "Kakeya-type constructions",
+    "lacunary and Λ(p) sets",
+    "Besicovitch configurations"
+   ]
+  }
+ ],
+ "ideas": [],
+ "generated": "2026-08-24",
+ "count": 0
+}

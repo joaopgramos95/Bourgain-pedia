@@ -1,0 +1,25 @@
+# Raw source dumps: regenerable in about a minute with tools/fetch_sources.py,
+# and they change every week when citation counts are refreshed.
+data/raw/
+
+# LaTeX build products inside digested-paper directories
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+
+.DS_Store
+__pycache__/
+
+# Downloaded paper scans. These are the published articles themselves: not ours
+# to redistribute, and this repository is public. Each paper directory's
+# notes.md records the source URL, so a copy can always be re-fetched.
+# What IS tracked is our own work on them: <name>-original.tex (transcription),
+# <name>-expanded.tex/.pdf (the digestion), ledger.md, notes.md.
+[0-9][0-9][0-9][0-9]/*/*.pdf
+![0-9][0-9][0-9][0-9]/*/*-original.pdf
+![0-9][0-9][0-9][0-9]/*/*-expanded.pdf
+[0-9][0-9][0-9][0-9]/*/*-source.tar.gz

@@ -1,0 +1,57 @@
+---
+name: grill-me
+description: Stress-test a plan, design, or mathematical argument by interviewing the user one question at a time until the relevant decisions, assumptions, proof steps, and risks are resolved. Use when the user asks to be grilled, wants to direct the reasoning, or needs a pointed collaborative review.
+---
+
+Interview the user about the plan or design until there is a shared understanding of the important decisions, dependencies, constraints, and risks.
+
+Ask one question at a time.
+
+For mathematical work, do not solve the argument silently and ask for approval afterward. Treat each nontrivial inference, construction, lemma, case split, imported theorem, or strategic change as a checkpoint: state the immediate subgoal and concise mathematical basis, recommend the next move, ask the user to choose or modify it, execute only the approved move, then pause again. Apply `solve-math-rigorously` when it is available. Do not claim to expose hidden chain-of-thought; expose decision-relevant reasoning summaries, equations, alternatives, assumptions, and consequences.
+
+## Question Style
+
+Sound like a collaborator resolving a real decision, not a generic assistant running an interview. Lead with the decision or uncertainty; omit ritualized setup such as `Great question`, `Thanks for sharing`, `It is worth noting`, or `To ensure we are aligned`.
+
+- Use the plan, repository, and earlier answers as evidence. Name the specific tradeoff or consequence that makes the question necessary.
+- Prefer plain language over elevated filler such as `moreover`, `furthermore`, `crucial`, `robust`, `seamless`, or `landscape`.
+- Ask only for information that cannot be discovered from available artifacts. Do not narrate the questioning process or recap settled decisions before every question.
+- Keep the recommendation proportionate to the evidence. State an assumption or ask a direct question when the answer is uncertain; do not manufacture agreement or confidence to make a choice seem easier.
+- End after the question and its needed context. Do not add generic encouragement, apologies, or a performative closing.
+
+Before sending a question, check whether it identifies a decision specific to this task and whether the explanation makes the user better able to choose. If either answer is no, rewrite or omit it.
+
+For each question:
+- Ask the highest-leverage unresolved question.
+- Prefer structured choice collection when available. If the `request_user_input` tool is available in the current mode, use it for questions that naturally fit 2-3 mutually exclusive options.
+- When using `request_user_input`, provide 2-3 concrete options, put the recommended option first, and keep the option labels short and specific.
+- If `request_user_input` is not available, present the question in plain text with explicit labeled choices such as `A`, `B`, and `C`, plus a recommended option.
+- Provide a recommended answer or the strongest default option.
+- Briefly explain why that answer is the current best choice.
+
+When a question does not fit a clean multiple-choice format, ask it in plain text even if structured input is available.
+
+If a question can be answered by exploring the codebase or available artifacts, inspect them first instead of asking the user.
+
+Keep drilling into unresolved branches of the decision tree, but do not ask repetitive or low-value questions.
+
+When running in Plan mode:
+- Treat the interview as PRD discovery for an implementation-ready plan.
+- When the major assumptions, interfaces, tradeoffs, failure modes, and open decisions are clear, produce exactly one `<proposed_plan>` block.
+- Format the `<proposed_plan>` content as a PRD-style plan that is decision complete for implementation.
+- Structure the PRD-style plan with:
+  - A clear title
+  - Summary or problem statement
+  - Goals and success criteria
+  - Key requirements or expected behavior
+  - Constraints and assumptions
+  - Test and acceptance scenarios
+- After the `<proposed_plan>` block, explicitly ask the user whether they want to save it to a local Markdown file.
+- If the user wants to save it, suggest a default filename in the current working directory such as `prd-<slug>.md`, unless they specify a different path.
+- Do not write the file while still in Plan mode; defer any file creation to a follow-up execution turn.
+
+When not running in Plan mode:
+- Stop when the major assumptions, interfaces, tradeoffs, failure modes, and open decisions are clear, then summarize:
+  - What was decided
+  - What remains open
+  - The main risks or follow-up work
