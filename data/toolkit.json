@@ -75,21 +75,24 @@
    "id": "iterative-correction",
    "name": "Iterative correction",
    "stratum": "strategy",
-   "gloss": "Do not build the object; build a sequence converging to it. At each stage add a correction that improves the target quantity by a factor bounded away from 1, uniformly in the stage, and let the limit inherit what every stage had. The difficulty is always to extract a stage-independent gain from a construction whose ingredients are all chosen afresh each time.",
+   "gloss": "Do not build the extremal object; correct a candidate towards it. Add a correction, drawn from the same family, chosen so that the gain is controlled — and the admissibility of the correction usually comes from a growth comparison, the corrector being dominated by the candidate where the constraint has to survive. One such step already improves the constant; iterating it needs a gain bounded away from 1 uniformly in the stage, and then the limit inherits what every stage had. Extracting a stage-independent gain from ingredients chosen afresh each time is always the difficulty.",
    "aliases": [
     "correction theorem",
     "successive modification",
-    "iteration scheme"
+    "iteration scheme",
+    "single correction step",
+    "dominated corrector"
    ],
    "papers": [
-    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3"
+    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
+    "2010-the-heisenberg-principle-and-positive-functions"
    ],
    "first_seen": "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
    "see_also": [
     "summable-loss-budget",
     "stopping-time-selection"
    ],
-   "score": 1
+   "score": 2
   },
   {
    "id": "summable-loss-budget",
@@ -171,18 +174,21 @@
    "id": "scaling-normalisation",
    "name": "Scaling normalisation",
    "stratum": "primitive",
-   "gloss": "Choose the scaling of a construction so that the competing quantities land at the orders the argument needs — typically so that one of them is O(1) while another is small. Equivalently, state a local statement in a form homogeneous in the local data and reduce to the unit case. When a statement fails to be homogeneous, that is usually a symptom of a missing factor rather than of a subtlety.",
+   "gloss": "Identify the group leaving the quantity you are estimating invariant, and choose the representative that makes the analysis elementary. Dilations are the usual case: fix the scaling so the competing quantities land at the orders the argument needs, or so that two unequal thresholds are balanced against each other. When only a product of quantities is invariant, the individual factors carry no information and every statement must be about the product. Multiplication by a positive weight is the same manoeuvre for anything that only sees signs or zeros. When a statement fails to be homogeneous, that is usually a symptom of a missing factor rather than of a subtlety.",
    "aliases": [
     "reduction to unit scale",
     "homogeneity",
-    "amplitude scaling"
+    "amplitude scaling",
+    "invariance normalisation",
+    "balancing two thresholds"
    ],
    "papers": [
-    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3"
+    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
+    "2010-the-heisenberg-principle-and-positive-functions"
    ],
    "first_seen": "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
    "see_also": [],
-   "score": 1
+   "score": 2
   },
   {
    "id": "large-small-dichotomy",
@@ -258,37 +264,39 @@
    "id": "extremal-datum",
    "name": "Extremal datum reused at every scale",
    "stratum": "obstruction",
-   "gloss": "Build or import a single object achieving a strict inequality that nothing generic achieves, then insert rescaled copies of it at every scale and location a construction needs. The object carries the whole sign of the argument; everything else is bookkeeping. Its existence is usually the hardest part and is often quoted rather than proved.",
+   "gloss": "Build or import a single object achieving a strict inequality that nothing generic achieves, then insert rescaled copies of it at every scale and location a construction needs. The object carries the whole sign of the argument; everything else is bookkeeping. Its existence is usually the hardest part and is often quoted rather than proved. The object need not be analytic: an arithmetic object with one exceptional property serves the same role, and is quoted the same way.",
    "aliases": [
     "extremal example",
     "building block",
     "profile"
    ],
    "papers": [
-    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3"
+    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
+    "2010-the-heisenberg-principle-and-positive-functions"
    ],
    "first_seen": "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
    "see_also": [
     "small-support-perturbation",
     "iterative-correction"
    ],
-   "score": 1
+   "score": 2
   },
   {
    "id": "dimension-threshold",
    "name": "Dimension threshold",
    "stratum": "obstruction",
-   "gloss": "A statement true above some dimension and false below it. The low-dimensional obstruction — in the plane, usually the existence of a harmonic conjugate and hence analyticity — is a genuine audit of any proof of the high-dimensional case: the argument must degenerate exactly at the threshold, and finding where it does is a check on whether it is right.",
+   "gloss": "A statement true above some dimension and false below it. The low-dimensional obstruction — in the plane, usually the existence of a harmonic conjugate and hence analyticity — is a genuine audit of any proof of the high-dimensional case: the argument must degenerate exactly at the threshold, and finding where it does is a check on whether it is right. The threshold dimension is often visible as a coefficient that vanishes exactly there, so the borderline case has to be decided by carrying the expansion to a higher order than either side needs.",
    "aliases": [
     "low-dimensional obstruction",
     "conjugate function obstruction"
    ],
    "papers": [
-    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3"
+    "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
+    "2010-the-heisenberg-principle-and-positive-functions"
    ],
    "first_seen": "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
    "see_also": [],
-   "score": 1
+   "score": 2
   },
   {
    "id": "density-point-endgame",
@@ -305,9 +313,155 @@
    "first_seen": "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
    "see_also": [],
    "score": 1
+  },
+  {
+   "id": "symmetrisation-to-fixed-space",
+   "name": "Symmetrisation into an invariant class",
+   "stratum": "technique",
+   "gloss": "Replace an object by an average or combination of its images under the symmetry acting on the problem, so that the result lies in the fixed subspace — and check that the quantity being estimated does not get worse. A pair related by an operator becomes one object fixed by it; a general function becomes a radial one by averaging over rotations; a search over all functions becomes a search over one eigenspace. The whole gain is that a problem about an orbit becomes a problem about a single invariant object, usually with far fewer parameters. The step that needs care is never the averaging but the non-degeneracy: showing the symmetrised object is not zero.",
+   "aliases": [
+    "symmetrisation",
+    "radialisation",
+    "spherical average",
+    "restriction to an eigenspace",
+    "self-dual reduction"
+   ],
+   "papers": [
+    "2010-the-heisenberg-principle-and-positive-functions"
+   ],
+   "first_seen": "2010-the-heisenberg-principle-and-positive-functions",
+   "see_also": [
+    "scaling-normalisation",
+    "extremal-datum"
+   ],
+   "score": 1
+  },
+  {
+   "id": "mass-volume-bound",
+   "name": "Mass forces volume",
+   "stratum": "primitive",
+   "gloss": "Normalise the total mass to 1 and bound the sup; then any set carrying a fixed fraction of the mass must have volume bounded below, and that volume bound is the estimate. The sup bound is often free from the structure of the problem rather than assumed. In dimension d the volume of a ball converts the same two lines into a bound growing with the dimension, since the ball of a given radius is exponentially small — which is how a soft argument produces sharp dimensional growth. The Gamma-function constant it delivers is then made readable by Stirling.",
+   "aliases": [
+    "L1-Linfinity volume bound",
+    "concentration forces measure",
+    "ball volume argument"
+   ],
+   "papers": [
+    "2010-the-heisenberg-principle-and-positive-functions"
+   ],
+   "first_seen": "2010-the-heisenberg-principle-and-positive-functions",
+   "see_also": [
+    "summable-loss-budget",
+    "dimension-threshold"
+   ],
+   "score": 1
+  },
+  {
+   "id": "leading-coefficient-sign",
+   "name": "Leading coefficient decides",
+   "stratum": "technique",
+   "gloss": "Expand the quantity in a perturbation parameter around a degenerate configuration and read the answer off the first coefficient that does not vanish. Several leading coefficients vanishing identically at the critical value is what makes the configuration critical; the sign of the first survivor then says which way the object actually moves, and so whether the critical value can be beaten or is a barrier. When that coefficient vanishes too, push the expansion further — the order at which it becomes non-zero, and the sign it has when it does, is itself the information being sought.",
+   "aliases": [
+    "perturbative expansion",
+    "order of vanishing",
+    "first non-zero coefficient",
+    "degenerate critical point"
+   ],
+   "papers": [
+    "2010-the-heisenberg-principle-and-positive-functions"
+   ],
+   "first_seen": "2010-the-heisenberg-principle-and-positive-functions",
+   "see_also": [
+    "dimension-threshold",
+    "scaling-normalisation"
+   ],
+   "score": 1
+  },
+  {
+   "id": "positive-type-convolution",
+   "name": "Convolution by a positive-type measure",
+   "stratum": "technique",
+   "gloss": "Convolve with a measure that is simultaneously non-negative and of non-negative Fourier transform. Then one-sided positivity survives on both sides at once — on the space side because the measure is positive, on the transform side because multiplication by a non-negative symbol preserves sign. The price is that the threshold beyond which positivity holds is enlarged by the diameter of the measure's support, and the two sides are enlarged by different amounts, so a dilation is needed afterwards to rebalance them. Atoms placed symmetrically about the origin are the cheapest such measures, and adding a suitable multiple of the atom at the origin fixes the value there.",
+   "aliases": [
+    "positive definite kernel",
+    "Selberg-type majorant",
+    "non-negative symbol"
+   ],
+   "papers": [
+    "2010-the-heisenberg-principle-and-positive-functions"
+   ],
+   "first_seen": "2010-the-heisenberg-principle-and-positive-functions",
+   "see_also": [
+    "scaling-normalisation",
+    "symmetrisation-to-fixed-space"
+   ],
+   "score": 1
+  },
+  {
+   "id": "regularisation-at-epsilon-cost",
+   "name": "Regularise at epsilon cost",
+   "stratum": "technique",
+   "gloss": "An extremal constant taken over a rough class equals — or is comparable to within an explicit factor — the one taken over a smooth class, because mollifying moves each competing quantity by an amount one controls. Mollification itself is a reflex; the content is that the class is usually cut out by a structural constraint which smoothing destroys, and restoring it is the real step. When the constraint couples a function to its transform, one has to act on both sides, since an operation that is convolution on one side is multiplication on the other. Where the constraint cannot be restored, the two constants genuinely differ and one settles for a bounded factor.",
+   "aliases": [
+    "mollification",
+    "density of the smooth class",
+    "approximation argument"
+   ],
+   "papers": [
+    "2010-the-heisenberg-principle-and-positive-functions"
+   ],
+   "first_seen": "2010-the-heisenberg-principle-and-positive-functions",
+   "see_also": [
+    "positive-type-convolution",
+    "scaling-normalisation"
+   ],
+   "score": 1
+  },
+  {
+   "id": "functional-equation-positivity",
+   "name": "Positivity against a functional equation",
+   "stratum": "transfer",
+   "gloss": "A functional equation writes a global object as two integrals plus polar terms. Choose a test function vanishing at the origin, so the poles disappear, and one-sided positive together with its transform, so both integrals are non-negative and one of them is strictly positive; the global object is then strictly positive and cannot vanish. Every hypothesis is doing one job, and the strictness must come from somewhere — an open set on which the test function is positive. This converts a question about zeros into an extremal problem in real analysis: how good a test function exists. The asymmetry between the two sides of the functional equation is what carries the arithmetic into the answer.",
+   "aliases": [
+    "explicit formula",
+    "test function against zeros",
+    "Tate zeta integral",
+    "Weil positivity"
+   ],
+   "papers": [
+    "2010-the-heisenberg-principle-and-positive-functions"
+   ],
+   "first_seen": "2010-the-heisenberg-principle-and-positive-functions",
+   "see_also": [
+    "boundary-to-singular-integral",
+    "extremal-datum",
+    "mass-volume-bound"
+   ],
+   "score": 1
+  },
+  {
+   "id": "tower-propagation",
+   "name": "Propagation along a tower",
+   "stratum": "strategy",
+   "gloss": "To turn one instance into infinitely many, embed it in a tower of extensions along which the property is inherited and the normalised invariant does not degrade. Inheritance usually comes from a divisibility or factorisation at each step; the invariant staying bounded is the harder half, and is what a tower with no fresh ramification buys, since the discriminant then grows at exactly the rate that keeps its normalised form constant. The conclusion holds along the whole sequence with a constant depending only on the bottom field, which is how a single exceptional example yields a growth rate.",
+   "aliases": [
+    "class field tower",
+    "bounded root discriminant",
+    "abelian lift",
+    "bootstrapping one instance"
+   ],
+   "papers": [
+    "2010-the-heisenberg-principle-and-positive-functions"
+   ],
+   "first_seen": "2010-the-heisenberg-principle-and-positive-functions",
+   "see_also": [
+    "extremal-datum",
+    "functional-equation-positivity"
+   ],
+   "score": 1
   }
  ],
  "generated": "2026-08-24",
- "count": 13,
+ "count": 20,
  "_comment": "Ideas arrive here only from ideas-<paper>.md files produced by blueprints/idea-blueprint.md, applied to a paper that has been digested. Scores and the 'papers' lists are recomputed by tools/build_data.py from the 'toolkit' arrays in data/papers.json; never edit a score by hand."
 }

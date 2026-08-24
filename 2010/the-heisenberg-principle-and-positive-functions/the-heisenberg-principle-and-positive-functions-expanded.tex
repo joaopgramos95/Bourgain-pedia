@@ -1,0 +1,1437 @@
+% =====================================================================
+%  Bourgain-pedia digestion of:
+%    J. Bourgain, L. Clozel, J.-P. Kahane,
+%    "Principe d'Heisenberg et fonctions positives",
+%    Ann. Inst. Fourier 60, No. 4, 1215-1232 (2010).
+%    arXiv:0811.4360 -- DOI 10.5802/aif.2552 -- Zbl 1298.11105
+%
+%  Original: 19 pages (the authors' own LaTeX, kept byte-exact in
+%  ...-original.tex).  Ledger: ledger.md.  Notes: notes.md.
+% =====================================================================
+\documentclass[11pt,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=teal}
+
+% ----- the four editorial environments -------------------------------
+\definecolor{expcol}{HTML}{2F5D7C}
+\definecolor{filcol}{HTML}{2E6B4F}
+\definecolor{notcol}{HTML}{6B4E9B}
+\definecolor{caucol}{HTML}{9C3B22}
+
+\newtcolorbox{expansion}{breakable,enhanced,colback=expcol!4,colframe=expcol!55,
+  boxrule=0.35pt,left=6pt,right=6pt,top=4pt,bottom=4pt,
+  fonttitle=\bfseries\scriptsize,title={EXPANSION \textnormal{--- a step they compressed, written out}}}
+\newtcolorbox{filled}{breakable,enhanced,colback=filcol!4,colframe=filcol!55,
+  boxrule=0.35pt,left=6pt,right=6pt,top=4pt,bottom=4pt,
+  fonttitle=\bfseries\scriptsize,title={FILLED \textnormal{--- an argument omitted in the original, supplied here}}}
+\newtcolorbox{ournotation}{breakable,enhanced,colback=notcol!4,colframe=notcol!55,
+  boxrule=0.35pt,left=6pt,right=6pt,top=4pt,bottom=4pt,
+  fonttitle=\bfseries\scriptsize,title={OUR NOTATION \textnormal{--- not in the original}}}
+\newtcolorbox{caution}{breakable,enhanced,colback=caucol!5,colframe=caucol!70,
+  boxrule=0.8pt,left=6pt,right=6pt,top=4pt,bottom=4pt,
+  fonttitle=\bfseries\scriptsize,title={CAUTION \textnormal{--- imported, or not fully justified here}}}
+
+\theoremstyle{plain}
+\newtheorem*{thmA}{Theorem 1}
+\newtheorem*{thmB}{Theorem 2}
+\newtheorem*{thmC}{Theorem 3}
+\newtheorem*{thmD}{Theorem 4}
+\newtheorem*{lemA}{Lemma 1}
+\newtheorem*{lemB}{Lemma 2}
+\newtheorem*{propA}{Proposition 1}
+\newtheorem*{propB}{Proposition 2}
+\newtheorem*{propOurs}{Proposition (ours)}
+\theoremstyle{definition}
+\newtheorem*{bg}{Background}
+\theoremstyle{remark}
+\newtheorem*{rmk}{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Bcal}{\mathcal{B}}
+\newcommand{\fh}{\widehat{f}}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Tr}{Tr}
+\newcommand{\Ledger}[1]{{\scriptsize\textsf{[#1]}}}
+
+\begin{document}
+
+\title[Heisenberg principle and positive functions --- digestion]
+      {Principe d'Heisenberg et fonctions positives\\
+       \normalsize The Heisenberg principle and positive functions\\
+       \normalsize a Bourgain-pedia digestion}
+\author{J. Bourgain, L. Clozel and J.-P. Kahane}
+\address{Original: Ann.\ Inst.\ Fourier \textbf{60} (2010), 1215--1232; arXiv:0811.4360}
+\date{Digestion generated \today}
+\maketitle
+
+% =====================================================================
+\section*{\S0. Editorial preface}
+% =====================================================================
+
+This is the Bourgain-pedia \emph{digestion} of Bourgain, Clozel and Kahane's
+\emph{Principe d'Heisenberg et fonctions positives}: the paper at full length, with
+every step they compressed written out and every argument they omitted supplied.
+
+\medskip
+\noindent\textbf{Source.} Unusually for this project, the source is the authors' own
+LaTeX, retrieved from the arXiv e-print service and kept byte-exact as
+\texttt{...-original.tex}. Nothing here is a transcription, so no formula below can
+have been corrupted by us in the reading; the slips listed are demonstrably theirs.
+The original is \textbf{19 pages}.
+
+\medskip
+\noindent\textbf{Language.} The paper is in French; this digestion is in English,
+because the project is. Quotations are given in French with a translation. This is an
+editorial choice, not a rule of the blueprint --- see \texttt{notes.md}.
+
+\medskip
+\noindent\textbf{How to read the boxes.} Four kinds of material are ours, and each is
+boxed: \emph{expansion} (a step of theirs, written out), \emph{filled} (an argument
+absent from the original), \emph{our notation}, and \emph{caution} (something imported
+that we have not verified). Unboxed prose and displays are theirs.
+
+\medskip
+\noindent\textbf{Everything numerical here has been recomputed independently}, before
+this text was drafted: $\lambda$; both constants of Theorem 1; every coefficient of
+both Taylor expansions; $P_4(3/2)=3/2$; $Q_4(c+1)=-c^2+1$; the $a=\sqrt2$ and $a=2$
+reductions; $p_5=0$ and $p_6=-4/45$; and Theorem 3's inequality chain in nine
+dimensions. All agree with the paper.
+
+\medskip
+\noindent\textbf{Seven slips in the original}, none affecting a theorem:
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+\item \S1: ``on en d\'eduit que $\Bcal_1^-\le B_1$'' where $\Bcal_1^-\le B_1^-$ is
+  needed. \Ledger{B20}
+\item \S1: ``$B_1^-\le(a\sqrt2)^2=2a$'' --- the square is $2a^2$. \Ledger{B27}
+\item \S2: $e^{X(2h-3h^2+3h^3-4h^4)X}$ carries a doubled $X$; and the series is
+  written $P_1h+P_2h^2+P_3h^3+P_4h^5$, where $P_4h^4$ is meant. \Ledger{C11}
+\item \S2: the extremum condition is printed $a(1-a)=2\log(1+a)$, which has no root
+  $>1$; it must be $a(a-1)=2\log(1+a)$, whose root \emph{is} the $2.08137\ldots$
+  printed. \Ledger{C18}
+\item \S3: the label $(3.4)$ is used twice, for two different equations.
+  \Ledger{D5}
+\item \S4: Odlyzko's bound is written $|D|^{1/d}\ge22.2(1+0(d))$; $o(1)$ is meant.
+  \Ledger{E21}
+\item \S4: $(4.9)$ typesets $C=|D|^{-1_/d_0}$; and the sentence after it cites
+  ``(3.10) et (4.8)'' where $(4.9)$ is meant. \Ledger{E25, E26}
+\end{enumerate}
+
+\smallskip
+\noindent Two places where a stated bound is weaker than the paper's own method
+delivers --- both flagged by the authors themselves as approximate, and both recorded
+in \S5 rather than silently improved:
+\begin{itemize}[leftmargin=1.6em]
+\item \S2: ``une combinaison lin\'eaire convenable de $H_0$ et $H_4$ donne
+  $\pi A^2\le 3$''. Carried out (\S2.1, which the paper does not do), the combination
+  gives $\pi A^2=3/2$ --- exactly the bound $(2.5)$ obtained later by a different
+  route. \Ledger{C2}
+\item \S2: the correction argument is stated to give $A\le0.63\ldots$, ``nous n'avons
+  fait qu'un calcul tr\`es approch\'e''. Optimised numerically it gives
+  $A\le0.5973$. \Ledger{C21}
+\end{itemize}
+
+\medskip
+\noindent\textbf{What we do not verify.} All of \S4 rests on Tate's thesis and on four
+further citations (Armitage, Serre, Odlyzko, Roquette/Golod--Shafarevi\v c). We state
+each import precisely and check the paper's use of it, but we have not read those
+sources; the \texttt{caution} boxes in \S4 say so at each point.
+
+% =====================================================================
+\section*{\S0$'$. Notation}
+% =====================================================================
+
+\noindent\textbf{Theirs.}
+\begin{itemize}[leftmargin=1.6em,itemsep=1pt]
+\item $\fh(y)=\int f(x)e^{-2i\pi xy}\,dx$, with inverse $f(x)=\int\fh(y)e^{2i\pi xy}dy$;
+  in $\R^d$, $xy$ becomes $x\cdot y$ and $dx$ Lebesgue measure. This convention makes
+  $\gamma(x)=e^{-\pi x^2}$ (resp.\ $e^{-\pi\|x\|^2}$) self-dual, and every constant
+  below depends on it. \Ledger{A6}
+\item A \emph{Fourier pair} $(f,\fh)$: both in $L^1$, so both continuous and vanishing
+  at infinity.
+\item $a_f,a_{\fh}$: any thresholds beyond which $f$, resp.\ $\fh$, is $\ge0$.
+\item $A(f)=\inf\{x>0: f\ge0 \text{ on } (x,\infty)\}$ --- the least such threshold;
+  in $\R^d$, $\inf\{r>0: f(x)\ge0 \text{ for } \|x\|>r\}$.
+\item $f^\#$: the spherical average of $f$ (\S3).
+\end{itemize}
+
+\begin{ournotation}
+\textbf{The four constants}, which the paper introduces over two pages and never
+tabulates. All are infima over Fourier pairs satisfying (1--3); $\Ss$ is the Schwartz
+class. \Ledger{A2}
+\[
+\begin{array}{lll}
+ B_1 &=\inf A(f)A(\fh) & \text{over } f\in L^1\\
+ \Bcal_1 &=\inf A(f)A(\fh) & \text{over } f\in\Ss\\
+ B_1^- &=\inf A(f)A(\fh) & \text{over } f\in L^1 \text{ with } f(0)<0\\
+ \Bcal_1^- &=\inf A(f)A(\fh) & \text{over } f\in\Ss \text{ with } f(0)<0
+\end{array}
+\]
+and $B_d,\Bcal_d$ likewise in $\R^d$. \S1 proves $B_1\le\Bcal_1\le2B_1$, so the two
+that matter differ by at most a factor 2. Note that in the source \verb|\bb| and
+\verb|\Bb| are both defined as $\mathcal B$, so $\Bcal_d$ appears under two spellings
+that typeset identically. \Ledger{F1}
+\end{ournotation}
+
+\begin{ournotation}
+We write $f^+=\max(f,0)$, $f^-=\max(-f,0)$, so $f=f^+-f^-$ and $|f|=f^++f^-$; the
+paper uses this without introducing it. We reserve $\gamma$ for the Gaussian in
+whatever dimension is current. \Ledger{F5}
+\end{ournotation}
+
+% =====================================================================
+\section*{\S0$''$. Background}
+% =====================================================================
+
+\begin{bg}[Inversion and the elementary bounds]\label{bg:inv}
+If $f,\fh\in L^1(\R^d)$ then both are continuous and tend to $0$ at infinity, and
+$\|f\|_\infty\le\|\fh\|_1$, $\|\fh\|_\infty\le\|f\|_1$. In particular
+$\fh(0)=\int f$ and $f(0)=\int\fh$.
+\end{bg}
+
+\begin{bg}[Dilation]\label{bg:dil}
+For $\lambda>0$, if $g(x)=f(x/\lambda)$ then $\widehat g(y)=\lambda^d\fh(\lambda y)$.
+Hence $A(g)=\lambda A(f)$ and $A(\widehat g)=\lambda^{-1}A(\fh)$, so the product
+$A(f)A(\fh)$ is dilation-invariant.
+\end{bg}
+
+\begin{bg}[Hermite functions \Ledger{C1}]\label{bg:herm}
+There is an orthogonal basis $(H_n)_{n\ge0}$ of $L^2(\R)$ with
+$H_n(x)=e^{-\pi x^2}P_n(x)$, $\deg P_n=n$, and $\widehat{H_n}=i^{-n}H_n$ for the
+convention above. Consequently a self-dual $f=\fh$ has an expansion supported on
+$n\equiv0\pmod4$.
+\end{bg}
+
+\begin{bg}[A function and its transform cannot both have compact support]\label{bg:cpt}
+If $f\in L^1(\R^d)$ and both $f$ and $\fh$ have compact support then $f=0$. (The
+transform of a compactly supported $L^1$ function extends to an entire function on
+$\C^d$; an entire function vanishing on a non-empty open set vanishes identically.)
+\end{bg}
+
+\begin{bg}[Stirling, lower bound]\label{bg:stir}
+For $m>0$, $\Gamma(m+1)>\sqrt{2\pi m}\,(m/e)^m$.
+\end{bg}
+
+% =====================================================================
+\section*{\S1. The problem, and a lower bound for $B_1$}
+% =====================================================================
+
+\begin{ournotation}
+\textbf{The paper's own summary}, in place of an abstract, translated. \Ledger{A1}
+``We describe a natural problem concerning Fourier transforms, which introduces
+constants $B_d$ depending on the dimension $d$. The problem is posed, in dimension 1,
+in the first section, where we describe a simple reduction to the case of self-dual
+functions. The first result is a lower bound for $B_1$. Then we consider a very
+natural class of functions which gives a simple upper bound for $B_1$. This is not
+optimal: we describe simple arguments which allow it to be improved (\S2). In \S3
+these calculations are extended to arbitrary dimensions, giving simple lower and upper
+bounds for the constants. Finally \S4, arithmetic, relates this problem to a well-known
+question concerning zeta functions of number fields. The arithmetic arguments show that
+the linear growth of $B_d$ as a function of the dimension is natural in view of known
+properties of the ramification of these fields.''
+\end{ournotation}
+
+\subsection*{1.1 The conditions}
+
+Consider a Fourier pair $(f,\fh)$ on the real line, and the conditions
+\begin{enumerate}[label=\textbf{\arabic*)},leftmargin=2.4em]
+\item $f$ and $\fh$ are real and even, not identically zero;
+\item $f(0)\le0$ and $\fh(0)\le0$;
+\item $f(x)\ge0$ for $x\ge a_f$, and $\fh(y)\ge0$ for $y\ge a_{\fh}$.
+\end{enumerate}
+
+\noindent\textbf{Problem.} What is the infimum of the product $a_fa_{\fh}$ over
+Fourier pairs satisfying (1--3)? Call it $B_1\ge0$.
+
+\begin{filled}
+\textbf{Why $a_f,a_{\fh}>0$.} \Ledger{A3} The paper asserts that 2) and $f\not\equiv0$
+force $a_f,a_{\fh}>0$, without argument. Suppose $a_f=0$ were admissible, i.e.\
+$f\ge0$ on all of $(0,\infty)$; $f$ is even, so $f\ge0$ everywhere except possibly at
+$0$, and by continuity $f\ge0$ everywhere. Then $\fh(0)=\int f\ge0$, and 2) gives
+$\fh(0)\le0$, so $\int f=0$ with $f\ge0$ continuous, whence $f\equiv0$ --- excluded by
+1). The same argument applies to $\fh$.
+\end{filled}
+
+\begin{filled}
+\textbf{Such pairs exist, and the problem is not vacuous.} \Ledger{A4} The paper says
+only ``de tels couples existent \`a l'\'evidence''. Here is one. Take
+$f(x)=x^2\bigl(x^2-\tfrac{3}{2\pi}\bigr)e^{-\pi x^2}$. \S2.1 below verifies that
+$f=\fh$, that $f(0)=0$, and that $f\ge0$ exactly where $x^2\ge3/(2\pi)$. So $(f,f)$
+satisfies (1--3) with $a_f=a_{\fh}=\sqrt{3/(2\pi)}$, giving at once
+$B_1\le3/(2\pi)=0.477\ldots$
+
+\textbf{And why positivity is not obvious.} \Ledger{A5} The pair may be dilated:
+$f(x/\lambda)$ has transform $\lambda\fh(\lambda y)$, which sends
+$(a_f,a_{\fh})\mapsto(\lambda a_f,\lambda^{-1}a_{\fh})$. So each threshold separately
+can be made as small as one likes, and only the \emph{product} is constrained.
+Nothing elementary prevents the product from being driven to $0$ as well; that it
+cannot be is Theorem 1.
+\end{filled}
+
+\subsection*{1.2 Reduction to self-dual functions with $f(0)=0$}
+
+The product $A(f)A(\fh)$ is invariant under $f(x)\mapsto f(x/\lambda)$,
+$\fh(y)\mapsto\lambda\fh(\lambda y)$ (Background \ref{bg:dil}). Since
+$B_1=\inf A(f)A(\fh)$, one may restrict to pairs with $A(f)=A(\fh)$. Then
+$f+\fh\ne0$, and
+\[A(f+\fh)\le A(f)=A(\fh),\]
+so $B_1=\inf A^2(f+\fh)$, and therefore
+\begin{equation}\label{eq:BA}
+ B_1=A^2,\qquad A=\inf A(f),
+\end{equation}
+the infimum over $f\in L^1(\R)$ real, even, not identically zero, equal to its own
+Fourier transform, with $f(0)\le0$.
+
+\begin{expansion}
+\textbf{The three steps, done.} \Ledger{B1, B2, B4, B5}
+
+\emph{(a) Normalising $A(f)=A(\fh)$.} Given a pair, put
+$\lambda=\bigl(A(\fh)/A(f)\bigr)^{1/2}$ and replace $f(x)$ by $f(x/\lambda)$. By
+Background \ref{bg:dil} the new thresholds are $\lambda A(f)$ and
+$\lambda^{-1}A(\fh)$, and both equal $\sqrt{A(f)A(\fh)}$. The product is unchanged,
+so the infimum is unchanged.
+
+\emph{(b) $f+\fh$ is admissible, and $A(f+\fh)\le A(f)$.} It is real and even;
+$(f+\fh)^{\wedge}=\fh+f$ because $\widehat{\fh}=f$ for even $f$; and
+$(f+\fh)(0)=f(0)+\fh(0)\le0$. For $x>A(f)=A(\fh)$ both summands are $\ge0$, so the
+sum is, giving $A(f+\fh)\le A(f)$.
+
+\emph{(c) $f+\fh\not\equiv0$.} The paper's parenthesis is ``consider its values at
+points near $A(f)$ and above it''. \Ledger{B3} In full: by definition of $A(f)$ as an
+infimum, $f$ takes a strictly negative value at some point arbitrarily close to
+$A(f)$ from below --- otherwise $f\ge0$ on a larger interval and $A(f)$ was not the
+infimum. Take $x_0<A(f)$ with $f(x_0)<0$. If $f+\fh$ vanished identically then
+$\fh=-f$, so $\fh(x_0)=-f(x_0)>0$; but also $\fh=-f$ gives
+$f=\widehat{\fh}=-\fh=f$, no contradiction yet. Instead use positivity: for
+$x>A(f)$, $f(x)\ge0$ and $\fh(x)\ge0$, and $f+\fh\equiv0$ forces both to vanish on
+$(A(f),\infty)$. Then $f$ vanishes on a half-line, and being even, on $|x|>A(f)$:
+$f$ has compact support. The same holds for $\fh$, so $f\equiv0$ by Background
+\ref{bg:cpt} --- contradicting 1).
+
+\emph{(d) Both inequalities for $B_1=\inf A^2(f+\fh)$.} \Ledger{B5} ``$\le$'': each
+$f+\fh$ arising from an admissible pair is itself admissible and self-dual, so
+$A^2(f+\fh)=A(f+\fh)A(\widehat{f+\fh})$ is one of the products over which $B_1$ is an
+infimum. ``$\ge$'': by (b), $A^2(f+\fh)\le A(f)A(\fh)$ for every normalised pair, so
+the infimum over the self-dual ones is at most $B_1$.
+\end{expansion}
+
+Setting $\gamma(x)=e^{-\pi x^2}$, so that $\gamma=\widehat\gamma$: if $f(0)<0$ then
+$f-f(0)\gamma$ is not identically zero, satisfies the same conditions, and
+$A(f-f(0)\gamma)\le A(f)$. Finally
+\begin{equation}\label{eq:11}
+ A=\inf A(f),
+\end{equation}
+\emph{the infimum being over $f\in L^1(\R)$ real, even, not identically zero, with
+$f=\fh$ and $f(0)=0$.}
+
+\begin{expansion}
+\textbf{The Gaussian correction.} \Ledger{B6} Since $f(0)<0$, $-f(0)>0$, so
+$f-f(0)\gamma=f+|f(0)|\gamma$ \emph{adds} a positive multiple of a positive function.
+Hence: it is self-dual (both summands are); its value at $0$ is
+$f(0)-f(0)\gamma(0)=f(0)-f(0)=0$; it is $\ge f$ pointwise, so it is $\ge0$ wherever
+$f$ is, giving $A(f-f(0)\gamma)\le A(f)$; and it is not identically zero, since
+otherwise $f=f(0)\gamma$ would be everywhere $\le0$, contradicting 3) as in the
+argument for $a_f>0$.
+\end{expansion}
+
+\subsection*{1.3 Theorem 1}
+
+\begin{thmA}
+Let $\lambda=-\inf\bigl(\tfrac{\sin x}{x}\bigr)=0{,}2172\cdots$. Then
+\[A\ge\frac{1}{2(1+\lambda)}=0{,}4107\cdots,\qquad\text{hence}\qquad
+  B_1\ge0{,}1687\cdots\]
+\end{thmA}
+
+\begin{expansion}
+\textbf{The constant.} \Ledger{B8, B9} $\lambda$ is attained at the first positive
+critical point of $\sin x/x$, i.e.\ the first positive root of $\tan x=x$.
+Recomputed: $x=4{,}4934094579$, $\lambda=0{,}2172336282$, and then
+$1/(2(1+\lambda))=0{,}4107674882$ and $A^2\ge0{,}1687299294$. Both agree with the
+printed values.
+\end{expansion}
+
+\begin{proof}
+Choose $f=\fh$ with $f(0)=0$ and $\int_\R|f|=1$; write $A=A(f)$. Put $f=f^+-f^-$,
+$|f|=f^++f^-$. Since $\int_\R f=\fh(0)=0$ we have
+$\int f^+=\int f^-=\int_{-A}^{A}f^-=\tfrac12$. Hence
+$\int_{|x|\ge A}|f|=\int_{|x|\ge A}f^+\le\tfrac12$, so
+$\int_{|x|\le A}|f|\ge\tfrac12$. But $|f(x)|\le\int|\fh|=1$. Therefore
+$2A\ge\tfrac12$, a first bound $A\ge\tfrac14$. This argument extends to higher
+dimensions (\S3).
+
+In dimension 1 it can be refined as follows. Since $f$ is self-dual,
+\[
+\begin{aligned}
+ f(x)&=\int f(y)\cos2\pi yx\,dy=\int f(y)(\cos2\pi yx-1)\,dy\\
+     &=\int f^-(y)(1-\cos2\pi yx)\,dy-\int f^+(y)(1-\cos2\pi yx)\,dy .
+\end{aligned}
+\]
+Both integrals being positive, this implies
+\[f^-(x)\le\int f^+(y)(1-\cos2\pi yx)\,dy,\]
+whence
+\[\tfrac14=\int_0^Af^-\le\int_{-\infty}^{+\infty}f^+(y)\Bigl[A-\frac{\sin2\pi yA}{2\pi y}\Bigr]dy\]
+and therefore
+\[\tfrac14\le\frac A2\sup_{u\in\R}\Bigl(1-\frac{\sin u}{u}\Bigr)=\frac A2(1+\lambda),\]
+which is the theorem.
+\end{proof}
+
+\begin{expansion}
+\textbf{Every step of that proof.} \Ledger{B10--B18}
+
+\emph{Normalising $\int|f|=1$} is legitimate: $A(cf)=A(f)$ for $c>0$, and
+$f\mapsto cf$ preserves self-duality and $f(0)=0$. \Ledger{B10}
+
+\emph{$\int f^+=\int f^-=\tfrac12$.} \Ledger{B11} From $\int f=\fh(0)=0$ we get
+$\int f^+=\int f^-$, and $\int f^++\int f^-=\int|f|=1$. That $\int f^-$ is
+concentrated on $[-A,A]$ is because $f\ge0$ outside $[-A,A]$ (evenness plus the
+definition of $A$), so $f^-$ vanishes there.
+
+\emph{$\int_{|x|\le A}|f|\ge\tfrac12$.} \Ledger{B12} On $|x|\ge A$ we have $f\ge0$, so
+$|f|=f^+$ there, and $\int_{|x|\ge A}f^+\le\int f^+=\tfrac12$; subtract from
+$\int|f|=1$.
+
+\emph{$\|f\|_\infty\le1$ and $A\ge\tfrac14$.} \Ledger{B13} By Background \ref{bg:inv},
+$\|f\|_\infty\le\|\fh\|_1=\|f\|_1=1$ using $f=\fh$. Then
+$\tfrac12\le\int_{|x|\le A}|f|\le 2A\cdot1$.
+
+\emph{The cosine identity.} \Ledger{B15} $f$ real and even gives
+$\fh(x)=\int f(y)\cos2\pi yx\,dy$; self-duality replaces $\fh$ by $f$ on the left.
+Subtracting $\int f(y)\,dy=0$ inserts the $-1$.
+
+\emph{The inequality for $f^-$.} \Ledger{B16} Write $I^\pm(x)=\int
+f^\pm(y)(1-\cos2\pi yx)dy$, both $\ge0$ since $1-\cos\ge0$ and $f^\pm\ge0$. The
+identity is $f=I^--I^+$, so $-f=I^+-I^-\le I^+$. Also $0\le I^+$. Hence
+$f^-=\max(-f,0)\le I^+$, which is the display.
+
+\emph{The Fubini step.} \Ledger{B17} $\int_0^Af^-=\tfrac14$ because $f^-$ is even with
+total mass $\tfrac12$, supported in $[-A,A]$. Then
+\[\int_0^A\!\!\int f^+(y)(1-\cos2\pi yx)\,dy\,dx
+ =\int f^+(y)\Bigl[A-\frac{\sin2\pi yA}{2\pi y}\Bigr]dy,\]
+the interchange being justified because the integrand is non-negative and
+$f^+\in L^1$ (Tonelli), and the inner integral is
+$\int_0^A(1-\cos2\pi yx)dx=A-\sin(2\pi yA)/(2\pi y)$.
+
+\emph{The last line.} \Ledger{B18} Substituting $u=2\pi yA$,
+$A-\sin(2\pi yA)/(2\pi y)=A\bigl(1-\frac{\sin u}{u}\bigr)\le A\sup_u(1-\frac{\sin
+u}{u})=A(1+\lambda)$, and $\int f^+=\tfrac12$ gives the factor $A(1+\lambda)/2$.
+\end{expansion}
+
+\subsection*{1.4 The Schwartz class costs at most a factor 2}
+
+Let $\Bcal_1=A^2$ with $A$ defined by \eqref{eq:11} but with $f\in\Ss$. Evidently
+\begin{equation}\label{eq:12}
+ B_1\le\Bcal_1 .
+\end{equation}
+Let $B_1^-=\inf(A^2\mid f(0)<0,\ f=\fh\text{ even}\ne0,\ f\in L^1)$, and $\Bcal_1^-$
+likewise with $f\in\Ss$. Evidently
+\begin{equation}\label{eq:13}
+ B_1^-\le\Bcal_1^-,
+\end{equation}
+\begin{equation}\label{eq:14}
+ \Bcal_1\le\Bcal_1^-,\qquad B_1\le B_1^- .
+\end{equation}
+
+Let us check that $\Bcal_1^-\le B_1^-$. Let $f\in L^1$ satisfy the condition of
+\eqref{eq:11} but with $f(0)<0$, and let $a=A(f)$. Let $\varphi=\psi*\psi$ with $\psi$
+smooth, even, positive, of compact support very close to $0$, and $g=f*\varphi$. Then
+$A(g)\le a+\varepsilon$ and $g(0)<0$. We have $\widehat g=\fh\widehat\psi^{\,2}$;
+performing the same operation on $\widehat g$ we obtain $h\in\Ss$ with $h=\widehat h$,
+$h(0)<0$ and $A(h)\le a+\varepsilon$; whence $\Bcal_1^-\le B_1^-$, that is
+\begin{equation}\label{eq:15}
+ \Bcal_1^-=B_1^- .
+\end{equation}
+
+\begin{expansion}
+\textbf{Two things about that paragraph.} \Ledger{B20, B21}
+
+\emph{The printed conclusion.} The original reads ``on en d\'eduit que
+$\Bcal_1^-\le B_1$ soit $\Bcal_1^-=B_1^-$''. The intermediate inequality must be
+$\Bcal_1^-\le B_1^-$: it is $B_1^-$, not $B_1$, that combines with \eqref{eq:13} to
+give the stated equality. We have written $B_1^-$.
+
+\emph{Why the operation is performed twice.} One convolution does not preserve
+self-duality: $g=f*\varphi$ has $\widehat g=\fh\,\widehat\psi^{\,2}$, a
+\emph{product}, not a convolution, so $g\ne\widehat g$ in general. Repeating on the
+transform side --- multiplying $g$ by a suitable smooth positive even factor, which is
+convolution on the transform side --- restores the symmetry. Concretely, with
+$\psi$ real even one has $\widehat\psi$ real even, so
+$h:=(f*\varphi)\cdot\widehat\varphi$ satisfies $\widehat h=\fh\widehat\varphi\cdot
+\varphi=h$ using $f=\fh$ and $\varphi,\widehat\varphi$ real even. Both operations
+move $A$ by at most $\varepsilon$ if $\supp\psi$ is small enough, and neither changes
+the sign of the value at $0$. That $g(0)<0$ survives is because $\varphi\ge0$ has mass
+$1$ and $f$ is continuous and negative near $0$.
+\end{expansion}
+
+Note that the argument does not apply if $f(0)=0$. We shall show
+\begin{equation}\label{eq:16}
+ B_1^-\le2\,B_1 ;
+\end{equation}
+by \eqref{eq:14} and \eqref{eq:16} we deduce
+\begin{equation}\label{eq:17}
+ B_1\le\Bcal_1\le2\,B_1 .
+\end{equation}
+
+\begin{expansion}
+\textbf{The chain, checked.} \Ledger{B19, B28} The left inequality is \eqref{eq:12}.
+For the right: $\Bcal_1\le\Bcal_1^-$ by \eqref{eq:14}, $\Bcal_1^-=B_1^-$ by
+\eqref{eq:15}, and $B_1^-\le2B_1$ by \eqref{eq:16}; compose. Note that
+\eqref{eq:15} is the only one of the four relations requiring work --- \eqref{eq:12},
+\eqref{eq:13} and \eqref{eq:14} are immediate from the definitions, since each
+enlarges the class over which the infimum is taken or drops a constraint.
+\end{expansion}
+
+Let $f$ satisfy \eqref{eq:11} and $a=A(f)$. Since $\fh(0)=\int f=0$, $f$ takes
+strictly negative values on $[-a,a]$. Let $b>0$ with $f(b)<0$, and consider the
+distribution
+\[T=\delta_b+\delta_{-b}+2\delta_0 .\]
+It is a positive measure, of positive type:
+\[\widehat T=2\cos(2\pi by)+2\ge0 .\]
+We have $(T*f)(0)=f(b)+f(-b)<0$. Since $b<a$, $g=T*f$ satisfies
+\[g(0)<0,\qquad g\ge0\ \text{on}\ [2a,\infty),\]
+and moreover $\widehat g=\widehat T\fh$ is $\ge0$ on $[a,\infty)$, with $\widehat
+g(0)=0$. By dilation one then obtains $h$ with
+\[h\ge0\ \text{on}\ [a\sqrt2,\infty),\quad h(0)<0;\qquad
+  \widehat h\ge0\ \text{on}\ [a\sqrt2,\infty),\quad \widehat h(0)=0 .\]
+The functions $h,\widehat h$ are real and even. Then $h+\widehat h$ satisfies the
+conditions defining $B_1^-$. So $B_1^-\le(a\sqrt2)^2=2a^2$; varying $f$ gives
+\eqref{eq:16}.
+
+\begin{expansion}
+\textbf{The convolution trick, in full.} \Ledger{B22--B27}
+
+\emph{$T$ is of positive type.} $\widehat{\delta_c}(y)=e^{-2\pi icy}$, so
+$\widehat T=e^{-2\pi iby}+e^{2\pi iby}+2=2\cos(2\pi by)+2\ge0$.
+
+\emph{The value at $0$.} $(T*f)(0)=f(-b)+f(b)+2f(0)$. The printed line drops the last
+term because $f(0)=0$ under \eqref{eq:11}; we say so rather than leaving the reader to
+notice. \Ledger{B23}
+
+\emph{$g\ge0$ on $[2a,\infty)$.} \Ledger{B24} $g(x)=f(x-b)+f(x+b)+2f(x)$. For
+$x\ge2a$ and $0<b<a$, each of $x-b,x,x+b$ is $\ge2a-a=a$, so each term is $\ge0$.
+
+\emph{The transform side.} $\widehat g=\widehat T\fh$ with $\widehat T\ge0$ and
+$\fh\ge0$ on $[a,\infty)$, so $\widehat g\ge0$ there; and
+$\widehat g(0)=\widehat T(0)\fh(0)=4\cdot0=0$.
+
+\emph{The dilation.} \Ledger{B26} $g$ is non-negative from $2a$ and $\widehat g$ from
+$a$: the two thresholds differ. Replace $g(x)$ by $g(x/\lambda)$, whose transform is
+$\lambda\widehat g(\lambda y)$; the thresholds become $2a\lambda$ and $a/\lambda$.
+They are equal when $\lambda=1/\sqrt2$, and their common value is then
+$2a/\sqrt2=a\sqrt2$. This is the $h$ of the display. Note $h(0)=g(0)<0$ and
+$\widehat h(0)=\lambda\widehat g(0)=0$.
+
+\emph{Why $h+\widehat h$.} It is self-dual, even, real; $(h+\widehat h)(0)=h(0)<0$, so
+it is a competitor for $B_1^-$; and both summands are $\ge0$ beyond $a\sqrt2$, so
+$A(h+\widehat h)\le a\sqrt2$.
+
+\emph{The printed value.} \Ledger{B27} $B_1^-\le(a\sqrt2)^2$ and $(a\sqrt2)^2=2a^2$;
+the original prints $2a$. It is $2a^2$ that gives \eqref{eq:16}, since
+$B_1=\inf a^2$ over the competitors of \eqref{eq:11}.
+\end{expansion}
+
+% =====================================================================
+\section*{\S2. An upper bound for $B_1$}
+% =====================================================================
+
+\subsection*{2.1 The Hermite route, carried out}
+
+A first idea is to associate to $f$ its Hermite expansion
+$f\sim\sum_0^\infty a_nH_n(x)$, where the $H_n$ are eigenvectors of the Fourier
+operator $\mathcal F$ with eigenvalues $i^n$; thus $f=\fh$ is expressed as
+$f\sim\sum_0^\infty a_{4m}H_{4m}$. The $H_n$ have the form $H_n(x)=e^{-\pi x^2}P_n(x)$
+with $P_n$ a polynomial of degree $n$. \emph{A suitable linear combination of $H_0$
+and $H_4$ (such that $f(0)=0$) gives $\pi A^2\le3$.} Beyond this the calculations seem
+difficult and we have not pursued this route.
+
+\begin{filled}
+\textbf{The combination, and what it actually gives.} \Ledger{C2} The paper states
+$\pi A^2\le3$ and does not compute. Carrying it out is short, and the answer is
+better than advertised.
+
+Seek $f=(\alpha+\beta x^2+\delta x^4)\gamma$, $\gamma(x)=e^{-\pi x^2}$ --- the general
+even element of the span of $H_0,H_2,H_4$. From
+$\widehat{xf}=\frac{i}{2\pi}\,\widehat f{}'$ one gets
+$\widehat{x^2\gamma}=-\frac1{4\pi^2}\gamma''$ and
+$\widehat{x^4\gamma}=\frac1{16\pi^4}\gamma''''$, and differentiating
+$\gamma'=-2\pi x\gamma$ repeatedly,
+\[\gamma''=(4\pi^2x^2-2\pi)\gamma,\qquad
+  \gamma''''=(16\pi^4x^4-48\pi^3x^2+12\pi^2)\gamma .\]
+Hence
+\[\widehat{x^2\gamma}=\Bigl(\tfrac1{2\pi}-x^2\Bigr)\gamma,\qquad
+  \widehat{x^4\gamma}=\Bigl(x^4-\tfrac{3}{\pi}x^2+\tfrac{3}{4\pi^2}\Bigr)\gamma,\]
+so that
+\[\fh=\Bigl[\alpha+\tfrac{\beta}{2\pi}+\tfrac{3\delta}{4\pi^2}
+   -\Bigl(\beta+\tfrac{3\delta}{\pi}\Bigr)x^2+\delta x^4\Bigr]\gamma .\]
+Matching coefficients with $f$: the $x^4$ terms agree automatically; the $x^2$ terms
+give $2\beta=-3\delta/\pi$; and the constant terms give
+$\beta/(2\pi)+3\delta/(4\pi^2)=0$, which is the \emph{same} condition. So
+self-duality is exactly $\beta=-\tfrac{3\delta}{2\pi}$, with $\alpha$ free, and
+$f(0)=\alpha$, so the normalisation $f(0)=0$ forces $\alpha=0$. Taking $\delta=1$,
+\[\boxed{\,f(x)=x^2\Bigl(x^2-\tfrac{3}{2\pi}\Bigr)e^{-\pi x^2}\,}\]
+which is self-dual (verified numerically to 12 digits at five points), vanishes at
+$0$, and is $\ge0$ exactly for $x^2\ge3/(2\pi)$. Hence
+\[A\le\sqrt{\tfrac{3}{2\pi}}=0{,}6909883\ldots,\qquad \pi A^2=\tfrac32 .\]
+
+So the Hermite route gives $\pi A^2\le\tfrac32$, not $\le3$: a factor 2 better than
+printed, and \emph{exactly} the bound $(2.5)$ that \S2.2 will reach by a quite
+different construction. Either the printed $3$ is a slip for $3/2$, or a different
+normalisation of $H_4$ is intended; with the paper's own Fourier convention the
+computation gives $3/2$. We record both and change no theorem: $\pi A^2\le3$ is true.
+This is also the explicit pair promised in \S1.1.
+\end{filled}
+
+\subsection*{2.2 The family $g_a$}
+
+One may also consider the functions
+\begin{equation}\label{eq:21}
+ g_a(x)=a\gamma(ax)+\gamma\Bigl(\frac xa\Bigr)-(1+a)\gamma(x),\qquad a>1,
+\end{equation}
+which satisfy the conditions of \eqref{eq:11}. Then any expression of the form
+\begin{equation}\label{eq:22}
+ \int_1^\infty g_a(x)\,d\tau(a)
+\end{equation}
+where $\tau$ is a measure on $]1,\infty[$ such that the integral converges for every
+$x$ and is $\ge0$ at infinity, is a candidate function. (It seems difficult to
+determine a simple characteristic property of $\tau$ ensuring that \eqref{eq:22}
+converges and is positive at infinity.)
+
+\begin{expansion}
+\textbf{$g_a$ is admissible.} \Ledger{C4} With the paper's convention,
+$\widehat{\gamma(a\,\cdot)}(y)=a^{-1}\gamma(y/a)$. Hence
+\[\widehat{g_a}=a\cdot a^{-1}\gamma(y/a)+a\gamma(ay)-(1+a)\gamma(y)=g_a(y),\]
+so $g_a$ is self-dual; and $g_a(0)=a+1-(1+a)=0$. It is real, even and integrable, so
+it is a competitor in \eqref{eq:11} provided it is not identically zero, which
+$g_a''(0)\ne0$ shows for $a\ne1$.
+\end{expansion}
+
+We first study $A(g_a)$. It is convenient to set $X=\pi x^2$ and $G_a(X)=g_a(x)$, so
+\[G_a(X)=a\,e^{-a^2X}+e^{-a^{-2}X}-(1+a)e^{-X} .\]
+Moreover
+\begin{equation}\label{eq:23}
+ H_a(X)=e^XG_a(X)=a\,e^{(1-a^2)X}+e^{(1-a^{-2})X}-1-a
+\end{equation}
+is a convex function satisfying
+\[H_a(0)=0,\qquad H_a'(0)=-a^{-2}(a^2-1)(a^3-1)<0\]
+and tending to $+\infty$ with $X$. It therefore admits a unique zero $X_a>0$, and
+\[A(g_a)=\sqrt{\frac{X_a}{\pi}} .\]
+
+\begin{expansion}
+\textbf{Convexity, the derivative, and uniqueness.} \Ledger{C6--C10}
+$H_a$ is a sum of two exponentials $e^{cX}$ (with $c=1-a^2<0$ and $c=1-a^{-2}>0$) and
+a constant, hence convex. $H_a(0)=a+1-1-a=0$. Differentiating,
+$H_a'(0)=a(1-a^2)+(1-a^{-2})$; and
+\[-a^{-2}(a^2-1)(a^3-1)=-a^{-2}(a^5-a^3-a^2+1)=-a^3+a+1-a^{-2},\]
+which is the same. For $a>1$ both factors $(a^2-1),(a^3-1)$ are positive, so
+$H_a'(0)<0$. A convex function with $H(0)=0$, $H'(0)<0$ and $H(+\infty)=+\infty$ is
+negative on $(0,X_a)$ and positive on $(X_a,\infty)$ for exactly one $X_a>0$: it
+decreases then increases, so it has exactly two zeros counted with the one at the
+origin. Since $X=\pi x^2$ is increasing in $|x|$ and $e^X>0$, the last sign change of
+$g_a$ is at $|x|=\sqrt{X_a/\pi}$.
+\end{expansion}
+
+It is natural to study the variation of $X_a$, first for $a$ near $1$. Putting
+$a=1+h$, $h>0$, one finds for fixed $X$, modulo $O(h^5)$, an expansion
+$P_1h+P_2h^2+P_3h^3+P_4h^4$, where
+\[P_1=0,\quad P_2=2X(2X-3),\quad P_3=-X(2X-3),\quad
+  P_4=-5X+15X^2-\tfrac{28}{3}X^3+\tfrac43X^4 .\]
+
+\begin{ournotation}
+\Ledger{C11} The original writes the exponent of the second term as
+$e^{X(2h-3h^2+3h^3-4h^4)X}$, with a doubled $X$, and lists the series as
+$P_1h+P_2h^2+P_3h^3+P_4h^5+O(h^5)$, where $P_4h^4$ is meant. Both are typesetting
+slips; the four polynomials as printed are correct, and we have recomputed all of
+them. \Ledger{C12}
+\end{ournotation}
+
+The expression for $P_2$ shows that for $h$ small enough $H_a(X)>0$ if $X>\tfrac32$
+and $H_a(X)<0$ if $X<\tfrac32$. Consequently
+\begin{equation}\label{eq:24}
+ \lim_{a\to1^+}X_a=\tfrac32,
+\end{equation}
+which furnishes an explicit bound
+\begin{equation}\label{eq:25}
+ A\le\sqrt{\frac{3}{2\pi}} .
+\end{equation}
+
+But this simple bound cannot be the true value of $A$. For $X=\tfrac32$, $P_2$ and
+$P_3$ vanish, and $P_4(\tfrac32)=\tfrac32$. So for $h$ small and non-zero,
+$X_a<\tfrac32$.
+
+\begin{expansion}
+\Ledger{C13, C14} Both checked: $\sqrt{3/(2\pi)}=0{,}6909883$, and
+$P_4(3/2)=-7{,}5+33{,}75-31{,}5+6{,}75=1{,}5$. The inference is that at
+$X=\tfrac32$ the expansion begins at order $h^4$ with a \emph{positive} coefficient,
+so $H_a(\tfrac32)>0$ for small $h\ne0$; since $H_a$ is negative exactly on
+$(0,X_a)$, this forces $X_a<\tfrac32$. Note this makes \eqref{eq:25} a limit that is
+approached but not attained, and identifies the direction of improvement.
+\end{expansion}
+
+If $a\to+\infty$ then $X_a\to+\infty$; in fact $X_a=\log a+O(1)$.
+
+\begin{filled}
+\Ledger{C15} The paper says ``un calcul simple montre''. Here it is. In
+\eqref{eq:23} with $a$ large, $ae^{(1-a^2)X}\to0$ for $X$ bounded away from $0$, so
+the equation $H_a(X)=0$ reads $e^{(1-a^{-2})X}=1+a+o(1)$, i.e.
+$X(1-a^{-2})=\log(1+a)+o(1)$, i.e. $X_a=\log a+O(1)$ since $1-a^{-2}\to1$ and
+$\log(1+a)=\log a+O(1)$.
+\end{filled}
+
+We have not determined the minimal value of $X_a$, but it is easy to estimate it
+semi-heuristically. The value $a=\sqrt2$ gives, on setting $q=e^{\frac12X_a}$,
+\[q^3-(1+\sqrt2)q^2+\sqrt2=0;\]
+if $q\ne1$, the quadratic equation $q^2-\sqrt2q-\sqrt2=0$ gives
+$q=\tfrac{\sqrt2}2(1+\sqrt{1+2\sqrt2})$ and
+\[X_a=2\log q=1{,}4749\ldots\qquad(a=\sqrt2).\]
+The value $a=2$ gives, for $q=e^{\frac34X}$,
+\[q^4-2\,\frac{q^4-1}{q-1}=0 .\]
+The solution $q>1$ is $q=2{,}9744\ldots$, whence
+\[X_a=1{,}4534\ldots\qquad(a=2).\]
+
+\begin{expansion}
+\textbf{Both reductions, derived; both values, recomputed.} \Ledger{C16, C17}
+
+\emph{$a=\sqrt2$.} Then $a^2=2$, $a^{-2}=\tfrac12$, and \eqref{eq:23} is
+$H(X)=\sqrt2e^{-X}+e^{X/2}-1-\sqrt2$. With $q=e^{X/2}$, $e^{-X}=q^{-2}$, so
+$H=0$ reads $\sqrt2q^{-2}+q-1-\sqrt2=0$; multiplying by $q^2$,
+\[q^3-(1+\sqrt2)q^2+\sqrt2=0 .\]
+$q=1$ is a root ($1-1-\sqrt2+\sqrt2=0$), and dividing out $(q-1)$ leaves
+$q^2-\sqrt2q-\sqrt2=0$ --- the step the paper omits. Its positive root is
+$q=\tfrac{\sqrt2}{2}\bigl(1+\sqrt{1+2\sqrt2}\bigr)$, and $X=2\log q$.
+\emph{Recomputed: $q=2{,}090657851$, $X_a=1{,}474957555$.}
+
+\emph{$a=2$.} Then $a^2=4$, $a^{-2}=\tfrac14$, and $H(X)=2e^{-3X}+e^{3X/4}-3$. With
+$q=e^{3X/4}$, $e^{-3X}=q^{-4}$, so $H=0$ reads $2q^{-4}+q-3=0$, i.e.
+$q^5-3q^4+2=0$. Factoring out $(q-1)$: $q^4-2q^3-2q^2-2q-2=0$. The printed form
+$q^4-2(q^4-1)/(q-1)=0$ is the same equation, since
+$(q^4-1)/(q-1)=q^3+q^2+q+1$. \emph{Recomputed: $q=2{,}974449245$,
+$X_a=\tfrac43\log q=1{,}453411859$.}
+\end{expansion}
+
+It is likely that this is roughly the optimal value accessible by this method.
+Indeed if one solves $H_a(X)=0$, with $H_a$ given by \eqref{eq:23}, and supposes
+$a\ge2$, the first term is negligible. So $X_a$ is roughly
+\[\frac{\log(1+a)}{1-a^{-2}} .\]
+The extremum of this expression is attained for $a(a-1)=2\log(1+a)$, which gives
+\[a=2{,}08137\ldots\]
+
+\begin{expansion}
+\textbf{The printed condition, and what the number is.} \Ledger{C18, C19}
+The original prints $a(1-a)=2\log(1+a)$. For $a>1$ the left side is negative and the
+right side positive, so that equation has no root there; the intended condition is
+$a(a-1)=2\log(1+a)$, whose root is $a=2{,}081376974$ --- exactly the printed value.
+So the equation is mistyped and the number is right.
+
+\emph{But it is the extremum of the surrogate, not of $X_a$.} Recomputing the true
+minimiser of $X_a$ over $a>1$ on a fine grid gives $a\approx1{,}89$ with
+$X\approx1{,}45200$, against $X_{2}=1{,}45341$ and $X_{2{,}08137}=1{,}45623$. The
+value $2{,}08137$ minimises the large-$a$ approximation
+$\log(1+a)/(1-a^{-2})$, not $X_a$ itself. The paper's hedging (``vraisemblable'',
+``\`a peu pr\`es'') is fair; we draw the distinction because the two numbers are
+easily confused.
+\end{expansion}
+
+\subsection*{2.3 The correction, and Theorem 2}
+
+In all cases the minimal value $A(g_a)$ so obtained is not the value \eqref{eq:11}
+sought. Consider indeed $a_0$ such that $X_0=X_{a_0}$ is minimal, and $H_0=H_{a_0}$,
+positive on $[X_0,\infty)$.
+
+Let $a$ (for instance near 1) be such that $X_a>X_0$. On $[X_a,\infty)$, $H_a$ is
+$\ge0$ and its order of growth as $X\to+\infty$, namely $e^{(1-a^{-2})X}$, is smaller
+than that of $H_{a_0}$ if $a<a_0$. There is therefore $T>0$ such that
+$H_{a_0}-TH_a$ is $\ge0$ on $[X_a,\infty)$. But this function is $>0$ on
+$[X_0,X_a)$, hence on a neighbourhood of $X_0$, hence for $X\ge X'$ with $X'<X_0$.
+
+The same argument applies taking any $a_0$ such that $X_0<\tfrac32$. For $a_0=2$ one
+can determine the optimal correction (corresponding to $a$ very close to 1), giving a
+function $\ge0$ on $[X'',\infty)$, with
+\begin{equation}\label{eq:26}
+ X''=1{,}25\ldots,\qquad A\le0{,}63\ldots
+\end{equation}
+We have made only a very rough calculation. We state the result nonetheless, to be
+compared with Theorem 1.
+
+\begin{thmB}
+$A\le0{,}64$ and $B_1\le0{,}41$.
+\end{thmB}
+
+\begin{expansion}
+\textbf{The correction argument, unpacked.} \Ledger{C20} Three claims are compressed
+into that paragraph.
+
+\emph{(a) $H_{a_0}-TH_a$ is a legitimate competitor.} $g_{a_0}-Tg_a$ is a real even
+$L^1$ function, self-dual and vanishing at $0$, being a linear combination of two such
+(\S2.2). Its last sign change is at $X$ where $H_{a_0}-TH_a$ last changes sign, since
+$G=e^{-X}H$ and $e^{-X}>0$. So any $X'$ with $H_{a_0}-TH_a\ge0$ on $[X',\infty)$
+gives $A\le\sqrt{X'/\pi}$.
+
+\emph{(b) Such a $T$ exists.} On $[X_a,\infty)$ both $H_{a_0}$ and $H_a$ are $\ge0$,
+and $H_a>0$ on $(X_a,\infty)$. As $X\to\infty$, $H_{a_0}\sim e^{(1-a_0^{-2})X}$ and
+$H_a\sim e^{(1-a^{-2})X}$; since $a<a_0$ we have $1-a^{-2}<1-a_0^{-2}$, so
+$H_{a_0}/H_a\to+\infty$. The ratio is therefore bounded below by a positive number on
+$[X_a,\infty)$ --- it is continuous and positive on the interior and tends to
+$+\infty$ at both ends of the relevant range --- and $T:=\inf_{X\ge
+X_a}H_{a_0}(X)/H_a(X)>0$ is the largest admissible value.
+
+\emph{(c) The zero moves left.} On $[X_0,X_a)$ we have $H_{a_0}\ge0$ while $H_a<0$
+(as $X<X_a$), so $H_{a_0}-TH_a>0$ there. By continuity it stays $>0$ slightly to the
+left of $X_0$, so the last sign change $X''$ satisfies $X''<X_0$. That is the gain.
+\end{expansion}
+
+\begin{expansion}
+\textbf{The numbers in \eqref{eq:26}, recomputed.} \Ledger{C21} Taking $a_0=2$ and
+letting $a\to1^+$ --- the ``optimal correction'' the paper describes --- the
+construction converges to
+\[X''=1{,}1512203,\qquad A\le\sqrt{X''/\pi}=0{,}6053468 .\]
+Optimising over $a_0$ as well, $a_0\approx1{,}5$--$1{,}7$ gives $X''\approx1{,}1210$
+and $A\le0{,}5973$.
+
+The printed $X''=1{,}25\ldots$, $A\le0{,}63\ldots$ are therefore \emph{weaker} than
+what the method yields --- which is exactly what the authors' own caveat says
+(``nous n'avons fait qu'un calcul tr\`es approch\'e''). Theorem 2 as stated is true;
+we do not restate it. See \S5(2).
+\end{expansion}
+
+% =====================================================================
+\section*{\S3. Higher dimensions}
+% =====================================================================
+
+We work in Euclidean $\R^d$, with $x\cdot y=\sum_1^dx_iy_i$, $\|x\|=(x\cdot x)^{1/2}$,
+and
+\begin{equation}\label{eq:31}
+ \fh(y)=\int f(x)e^{-2i\pi x\cdot y}dx,\qquad
+ f(x)=\int\fh(y)e^{2i\pi x\cdot y}dy .
+\end{equation}
+More generally, on a Euclidean space $E$ of dimension $d$ with invariant measure
+normalised so that the cube spanned by an orthonormal basis has measure 1, and $x\cdot
+y$ the inner product, \eqref{eq:31} inverts as stated.
+
+\begin{ournotation}
+\Ledger{D1} That normalisation of Haar measure on an \emph{abstract} Euclidean space
+is stated once here and used again in \S4, where $F_\infty$ carries no preferred
+coordinates. We flag it because it is the hinge between \S3 and \S4.
+\end{ournotation}
+
+Consider Fourier pairs satisfying
+\begin{enumerate}[label=\textbf{\arabic*)},leftmargin=2.4em]
+\item $f,\fh$ real and even, not identically zero;
+\item $f(0)\le0$ and $\fh(0)\le0$;
+\item $f(x)\ge0$ for $\|x\|\ge a_f$, $\fh(y)\ge0$ for $\|y\|\ge a_{\fh}$,
+\end{enumerate}
+put $A(f)=\inf\{r>0:f(x)\ge0\text{ if }\|x\|>r\}$ and $B_d=\inf A(f)A(\fh)$.
+
+Let $f^\#(x)$ be the (invariant) average of $f$ over the sphere of radius $\|x\|$:
+then $\widehat{f^\#}=(\fh)^\#$, and $f^\#$ and $\widehat{f^\#}$ are not zero ---
+otherwise $f$ and $\fh$ would have compact support by 3). Since $A(f^\#)\le A(f)$ and
+$A(\widehat{f^\#})\le A(\fh)$, one may restrict to radial pairs. Since
+$(f(x/\lambda))^{\wedge}=\lambda^d\fh(\lambda y)$, the argument of \S1 applies and
+\begin{equation}\label{eq:34a}
+ B_d=A^2,\qquad A=\inf A(f),
+\end{equation}
+\emph{the infimum over $f\in L^1(\R^d)$ radial, not identically zero, with $f=\fh$ and
+$f(0)=0$}, having added if necessary a multiple of the radial self-dual
+$\gamma(x)=e^{-\pi\|x\|^2}$.
+
+\begin{filled}
+\textbf{The radialisation, both halves.} \Ledger{D3} The paper compresses this to one
+sentence.
+
+\emph{Why $f^\#$ is a competitor.} Spherical averaging commutes with the Fourier
+transform on radial-invariant data: $\widehat{f^\#}=(\fh)^\#$, because the transform
+commutes with rotations and averaging is an integral over the rotation group. If $f\ge
+0$ for $\|x\|\ge a_f$ then so is its spherical average, giving $A(f^\#)\le A(f)$; and
+$f^\#(0)=f(0)\le0$.
+
+\emph{Why $f^\#\not\equiv0$.} Suppose $f^\#\equiv0$. By 3), $f\ge0$ on
+$\{\|x\|\ge a_f\}$, and a non-negative function with vanishing spherical averages
+vanishes a.e.\ there. So $f=0$ a.e.\ on $\{\|x\|\ge a_f\}$: $f$ has compact support.
+The same argument applied to $\fh$ gives $\fh$ compactly supported. By Background
+\ref{bg:cpt}, $f\equiv0$ --- contradicting 1). The paper states the first half and
+leaves the contradiction implicit.
+\end{filled}
+
+\begin{expansion}
+\textbf{What changes in \eqref{eq:34a} relative to \S1.2.} \Ledger{D4} Only the
+dilation exponent: $(f(x/\lambda))^{\wedge}=\lambda^d\fh(\lambda y)$, so
+$A(f)\mapsto\lambda A(f)$ and $A(\fh)\mapsto\lambda^{-1}A(\fh)$ exactly as before ---
+the $\lambda^d$ multiplies the \emph{values}, not the argument, and $A$ is unchanged
+by positive scalar multiples. Hence the product is again dilation-invariant, the
+normalisation $A(f)=A(\fh)$ is again available, and the rest of \S1.2 --- the
+admissibility of $f+\fh$, the compact-support contradiction, the Gaussian correction
+--- is verbatim with $|x|$ replaced by $\|x\|$ and $\gamma(x)=e^{-\pi\|x\|^2}$.
+\end{expansion}
+
+\begin{thmC}
+$\displaystyle B_d\ge\frac1\pi\Bigl(\tfrac12\Gamma\Bigl(\tfrac d2+1\Bigr)\Bigr)^{2/d}
+ >\frac{d}{2\pi e}$.
+\end{thmC}
+
+\begin{proof}
+It is modelled on the case $d=1$, replacing the interval $(-A(f),A(f))$ by the ball of
+centre $O$ and radius $A(f)$, whose volume (which is $\ge\tfrac12$) is
+$\frac1{\Gamma(\frac d2+1)}(A(f))^d\pi^{d/2}$.
+\end{proof}
+
+\begin{filled}
+\textbf{The proof, written out, and the second inequality, proved.}
+\Ledger{D7, D8}
+
+\emph{First inequality.} Normalise $\int_{\R^d}|f|=1$. As in Theorem 1:
+$\int f=\fh(0)=0$ gives $\int f^+=\int f^-=\tfrac12$; $f\ge0$ outside the ball
+$B(0,A)$ gives $\int_{\|x\|\ge A}|f|=\int_{\|x\|\ge A}f^+\le\tfrac12$, hence
+$\int_{B(0,A)}|f|\ge\tfrac12$; and $\|f\|_\infty\le\|\fh\|_1=1$. Therefore
+$\operatorname{vol}B(0,A)\ge\tfrac12$. With
+$\operatorname{vol}B(0,A)=\pi^{d/2}A^d/\Gamma(\frac d2+1)$ this reads
+$A^d\ge\Gamma(\frac d2+1)/(2\pi^{d/2})$, i.e.
+\[B_d=A^2\ge\frac1\pi\Bigl(\tfrac12\Gamma\bigl(\tfrac d2+1\bigr)\Bigr)^{2/d}.\]
+
+\emph{Second inequality.} It is equivalent to
+$\bigl(\tfrac12\Gamma(m+1)\bigr)^{1/m}>m/e$ with $m=d/2$, i.e.\ to
+$\Gamma(m+1)>2(m/e)^m$. By Background \ref{bg:stir},
+$\Gamma(m+1)>\sqrt{2\pi m}\,(m/e)^m$, so it suffices that $\sqrt{2\pi m}\ge2$, i.e.
+$m\ge2/\pi=0{,}6366$, i.e. $d\ge4/\pi=1{,}2732$ --- so for every $d\ge2$. For $d=1$
+check directly: $\Gamma(3/2)=\sqrt\pi/2=0{,}8862269$ and
+$2(1/2e)^{1/2}=0{,}8577639$, so the inequality holds there too. The paper asserts the
+inequality without argument. \emph{Verified numerically for
+$d=1,2,3,4,8,12,24,48,100$ as well.}
+\end{filled}
+
+Setting $X=\pi\|x\|^2$, the argument of \S2 leads to the natural functions
+$g_a(x)=G_a(X)$ with
+\[G_a(X)=a^de^{-Xa^2}+e^{-Xa^{-2}}-(1+a^d)e^{-X},\qquad
+  H_a(X)=a^de^{(1-a^2)X}+e^{(1-a^{-2})X}-(1+a^d),\ a>1 .\]
+\begin{expansion}
+\textbf{$g_a$ is still self-dual in dimension $d$.} \Ledger{D9} With
+$\gamma(x)=e^{-\pi\|x\|^2}$ one has $\widehat{\gamma(a\,\cdot)}(y)=a^{-d}\gamma(y/a)$,
+so
+\[\widehat{a^d\gamma(a\,\cdot)}=\gamma(\cdot/a),\qquad
+  \widehat{\gamma(\cdot/a)}=a^d\gamma(a\,\cdot),\]
+and the two outer terms of $g_a$ swap while $(1+a^d)\gamma$ is fixed. Hence
+$\widehat{g_a}=g_a$, and $g_a(0)=a^d+1-(1+a^d)=0$. This is why the coefficient is
+$a^d$ here where it was $a$ in \eqref{eq:21}: it is exactly the Jacobian factor.
+\end{expansion}
+
+It is convenient to set $a^2=1+k$, $d=2c$, whence
+\[H_a(X)=(1+k)^ce^{-kX}+e^{(1-(1+k)^{-1})X}-1-(1+k)^c .\]
+The derivative at the origin in $X$ is
+$\frac{k}{1+k}\bigl(1-(1+k)^{c+1}\bigr)<0$; the convexity argument of \S2 shows that
+$H_a$ has a unique positive zero $X_a$. As before we compute an expansion in $k$ to
+order 4:
+$H_a(X)=P_1k+P_2k^2+P_3k^3+P_4k^4+O(k^5)$ with
+\[P_1=0,\quad P_2=X(X-c-1),\quad P_3=\tfrac12(c-2)X(X-c-1),\]
+\[P_4=\tfrac1{12}X\bigl\{X^3-(2c+6)X^2+(3c(c-1)+18)X-(2c(c-1)(c-2)+12)\bigr\}.\]
+
+\begin{expansion}
+\Ledger{D10, D11} The derivative at the origin: differentiating the displayed form at
+$X=0$ gives $-k(1+k)^c+(1-(1+k)^{-1})=-k(1+k)^c+\frac{k}{1+k}$, which is
+$\frac{k}{1+k}\bigl(1-(1+k)^{c+1}\bigr)$; for $k>0$ and $c>0$ the bracket is negative.
+All four polynomials \emph{recomputed and confirmed} at several $(X,c)$.
+\end{expansion}
+
+As in dimension 1, $P_2$ and $P_3$ vanish for
+\begin{equation}\label{eq:Xd}
+ X=X(d):=\tfrac d2+1 .
+\end{equation}
+Moreover $P_2>0$ for $X>X(d)$ and $<0$ for $X<X(d)$. Letting $k\to0$ we deduce
+$\lim_{a\to1}X_a=\tfrac d2+1$.
+
+\begin{ournotation}
+\Ledger{D5} The original labels this equation $(3.4)$, which it has already used for
+$B_d=A^2$. We have relabelled; the second occurrence is \eqref{eq:Xd} here.
+\end{ournotation}
+
+To understand the position of $X_a$ relative to $X(d)$ as $a\to1$, compute
+$Q_4(X(d))$, where $P_4=\tfrac X{12}Q_4$. The computation gives
+\[Q_4(c+1)=-c^2+1 .\]
+For $d>2$ this term is $<0$, so $H_a(X(d))<0$ for $a$ close to 1, which shows
+\[X_a>\tfrac d2+1\qquad(a>1\text{ close enough to }1).\]
+It is therefore possible that the value \eqref{eq:Xd} is optimal. For $d=1$ it is
+not, as \S2 showed.
+
+\begin{expansion}
+\Ledger{D12, D13} $Q_4(c+1)=-c^2+1$ \emph{recomputed and confirmed} for
+$c=\tfrac12,1,\tfrac32,3,5$. The inference: at $X=X(d)$ the $k$-expansion starts at
+order $k^4$ with coefficient $\tfrac{X}{12}(-c^2+1)$, negative for $c>1$ i.e. $d>2$.
+So $H_a(X(d))<0$ for small $k>0$, and since $H_a<0$ exactly on $(0,X_a)$, this forces
+$X_a>X(d)$. Note this is the \emph{opposite} direction to $d=1$ (where
+$P_4(3/2)>0$ forced $X_a<3/2$): in high dimension the family $g_a$ does no better
+than its limit, which is why the authors suspect $X(d)$ is optimal.
+\end{expansion}
+
+For $d=2$, $Q_4(c+1)=0$, so we must compute the expansion of
+\begin{equation}\label{eq:35}
+ H_a(2)=(1+k)e^{-2k}+e^{2(1-\frac1{1+k})}-2-k
+\end{equation}
+to order at least 5. The Taylor expansion at $0$ of
+$f(z)=e^{2(1-\frac1{1+z})}=e^{2\frac{z}{1+z}}=\sum_0^\infty q_nz^n$ is computed by the
+residue theorem: putting $w=\frac z{1+z}$, $z=\frac w{1-w}$,
+$dz=\frac{dw}{(w-1)^2}$, one has
+\[q_n=\Res_{z=0}\frac{f(z)}{z^{n+1}}
+ =\frac1{2i\pi}\oint e^{\frac{2z}{1+z}}\frac{dz}{z^{n+1}}
+ =\frac1{2i\pi}\oint e^{2w}\frac{(1-w)^{n+1}}{w^{n+1}}\frac{dw}{(1-w)^2}
+ =\Res_{w=0}\frac{(1-w)^{n-1}}{w^{n+1}}e^{2w} .\]
+\begin{expansion}
+\textbf{The substitution in the residue.} \Ledger{D15} With $w=z/(1+z)$ the map is a
+biholomorphism near $0$ fixing $0$, so residues transport; $z=w/(1-w)$ gives
+$z^{-(n+1)}=(1-w)^{n+1}w^{-(n+1)}$ and $dz=(1-w)^{-2}dw$, whence the exponent
+$n+1-2=n-1$ in the last display. The point of the change of variable is that
+$e^{2z/(1+z)}$ becomes $e^{2w}$, whose Taylor coefficients are immediate.
+\end{expansion}
+
+In particular $p_5$ is the sum of
+\begin{equation}\label{eq:36}
+ \frac{2^4}{4!}-\frac{2^5}{5!}
+\end{equation}
+coming from the first term of \eqref{eq:35}, and of the term in $w^5$ of
+$e^{2w}(1-w)^4$, equal to
+\begin{equation}\label{eq:37}
+ \frac{2^5}{5!}-4\cdot\frac{2^4}{4!}+6\cdot\frac{2^3}{3!}-4\cdot\frac{2^2}{2!}+2 .
+\end{equation}
+One finds $p_5=0$. Likewise $p_6$ is the sum of
+\begin{equation}\label{eq:38}
+ -\frac{2^5}{5!}+\frac{2^6}{6!}
+\end{equation}
+and of
+\begin{equation}\label{eq:39}
+ \frac{2^6}{6!}-5\cdot\frac{2^5}{5!}+10\cdot\frac{2^4}{4!}-10\cdot\frac{2^3}{3!}
+ +5\cdot\frac{2^2}{2!}-2,
+\end{equation}
+whence $p_6=-\tfrac4{45}<0$. For $a$ very close to 1 we therefore have $H_a(2)<0$ and
+$X_a>X(2)=2$. Here again it is possible that the bound \eqref{eq:Xd} is optimal.
+
+\begin{ournotation}
+\Ledger{D16} The coefficients of this last expansion are called $p_5,p_6$ while those
+of the earlier one were $P_1,\dots,P_4$. They are different objects --- these are
+Taylor coefficients of $H_a(2)$ in $k$, those were polynomials in $X$ --- and the
+near-identical names are the original's.
+\end{ournotation}
+
+\begin{expansion}
+\Ledger{D17} \emph{Both recomputed exactly.} \eqref{eq:36}$=0{,}4$ and
+\eqref{eq:37}$=-0{,}4$, so $p_5=0$. \eqref{eq:38}$=-0{,}17\overline{7}$ and
+\eqref{eq:39}$=+0{,}0\overline{8}$, so $p_6=-0{,}0\overline{8}=-\tfrac4{45}$. A
+direct Taylor expansion of \eqref{eq:35} confirms $p_0=\dots=p_5=0$ and
+$p_6=-4/45$.
+\end{expansion}
+
+To conclude this section, note that for every $d\ge2$ we have obtained the upper bound
+\begin{equation}\label{eq:310}
+ B_d\le\Bcal_d\le\frac{d+2}{2\pi},
+\end{equation}
+where $\Bcal_d$ is defined, as in \S1, by functions of $\Ss(\R^d)$. Moreover the
+considerations at the end of \S1, on the bounds for $L^1$ and for $\Ss$, apply. In the
+proof of \eqref{eq:16} one must take $T=\delta_b+\delta_{-b}+2\delta_0$ with
+$\|b\|<a=A(f)$ and $f(b)<0$; $\widehat T=2\cos(2\pi b\cdot y)+2$ is a positive plane
+wave. The rest of the argument is identical, replacing $h+\widehat h$ by the spherical
+average of $h+\widehat h$ if one wishes to stay with radial functions. In conclusion,
+to be compared with Theorem 3:
+
+\begin{thmD}
+\[B_d\le\Bcal_d\le\frac{d+2}{2\pi},\qquad B_d\ge\tfrac12\Bcal_d .\]
+\end{thmD}
+
+\begin{expansion}
+\Ledger{D18, D19} \eqref{eq:310} is $A^2\le X(d)/\pi=(\tfrac d2+1)/\pi=(d+2)/2\pi$,
+using $\lim_{a\to1}X_a=X(d)$ and $A\le A(g_a)$ for every $a$.
+
+The $d$-dimensional version of the $T$ argument: $b\in\R^d$ is now a vector with
+$\|b\|<a$, and $\widehat T(y)=2\cos(2\pi b\cdot y)+2\ge0$ is constant on hyperplanes
+orthogonal to $b$ --- a plane wave, hence not radial, which is why the spherical
+average is taken at the end. Every other step of \S1.4 goes through verbatim with
+$|x|$ replaced by $\|x\|$: $g=T*f\ge0$ on $\{\|x\|\ge2a\}$ because each of
+$x-b,x,x+b$ then has norm $\ge a$; $\widehat g=\widehat T\fh\ge0$ on
+$\{\|y\|\ge a\}$; and the dilation $\lambda=1/\sqrt2$ balances $2a$ against $a$ at
+$a\sqrt2$. The conclusion $B_d\ge\tfrac12\Bcal_d$ is \eqref{eq:16} rearranged.
+\end{expansion}
+
+% =====================================================================
+\section*{\S4. An arithmetic argument}
+% =====================================================================
+
+\begin{caution}
+\textbf{This section imports heavily, and we have verified none of the imports.}
+\Ledger{E1, E5, E8, E16, E21, E23} It rests on Tate's thesis for the functional
+equation \eqref{eq:43}, on Armitage for a number field with $\zeta_F(1/2)=0$, on Serre
+for the construction of that field, on Odlyzko for discriminant lower bounds, and on
+Golod--Shafarevi\v c/Brumer (via Roquette) for infinite class field towers. We state
+each precisely and check how the paper uses it, but we have not read those sources.
+Everything in \S4 is therefore conditional on them in this digestion.
+\end{caution}
+
+\subsection*{4.1 Setting}
+
+Let $F$ be a number field of degree $d$ over $\Q$; $v$ its places, $F_v$ the
+completions, $\mathcal O_v$ the ring of integers and $q_v$ the residue cardinality at
+a finite place; $\mathbb A_F=\prod'_vF_v$ the adeles, $I_F=\mathbb A_F^\times$ the
+ideles, $|x|=\prod_v|x|_v$ the idele norm, and
+\[I_F^1=\{x:|x|=1\},\qquad I_F^+=\{x:|x|\ge1\} .\]
+The measure $dx=\prod dx_v$ is Haar; at finite places $dx_v$ is Tate's self-dual
+measure, at a real place Lebesgue, at a complex place $dz=2\,dx\,dy$. At a complex
+place with parameters $z=x+iy$, $w=\xi+i\eta$, Tate defines
+$\fh(w)=\int f(z)e^{-2i\pi\Tr(zw)}dz$ with $\Tr(zw)=2\operatorname{Re}(zw)$.
+
+\begin{ournotation}
+\textbf{Reconciling the two conventions.} \Ledger{E2} The paper says in one sentence
+that for radial functions Tate's complex-place transform ``revient \`a'' the
+transform of \S3 with the inner product $z\cdot w=2(x\xi+y\eta)$. Spelled out:
+$\Tr(zw)=2(x\xi-y\eta)$ carries a minus sign, but for functions even in each variable
+the sign is immaterial, so one may use $z\cdot w=2(x\xi+y\eta)$, which is exactly the
+inner product making $dz=2dxdy$ self-dual in the sense of \S3's normalisation. This
+is the point at which \S3's abstract-Euclidean convention is needed.
+\end{ournotation}
+
+Let $f$ be the Schwartz function on $\mathbb A_F$
+\begin{equation}\label{eq:41}
+ f(x)=\prod_{v\mid\infty}f_v(x_v)\prod_{v\text{ finite}}f_v^0(x_v)
+\end{equation}
+with $f_v^0=\mathbf 1_{\mathcal O_v}$. The associated Tate zeta function is
+$Z(f,s)=\int_{I_F}f(x)|x|^s\,d^\times x$ for $\operatorname{Re}(s)>1$. Rather than the
+decomposable functions of \eqref{eq:41} we consider functions
+\begin{equation}\label{eq:42}
+ f(x)=f_\infty(x_\infty)\prod_{v\text{ finite}}f_v^0(x_v),\qquad
+ f_\infty\in\Ss(\R^d),
+\end{equation}
+where $\R^d=F_\infty$ is Euclidean via
+$\|x_\infty\|^2=\sum_{v\text{ real}}|x_v|^2+\sum_{v\text{ complex}}2\|z_v\|^2$.
+Tate's conditions $(z_1),(z_2),(z_3)$ hold for such functions. By Tate,
+\begin{equation}\label{eq:43}
+ Z(f,s)=\int_{I_F^+}f(x)|x|^sd^\times x+\int_{I_F^+}\fh(x)|x|^{1-s}d^\times x
+       +\kappa\frac{\fh(0)}{s-1}-\kappa\frac{f(0)}{s},
+\end{equation}
+where $\kappa=\dfrac{2^{r_1}(2\pi)^{r_2}hR}{\sqrt{D_F}\,w}$ is the residue of
+$\zeta_F$ at $s=1$, $D_F$ the absolute discriminant, $d=r_1+2r_2$. Both integrals in
+\eqref{eq:43} converge absolutely for all $s\in\C$.
+
+\subsection*{4.2 The two lemmas}
+
+\begin{lemA}
+Let $s$ be a zero of $\zeta_F(s)$ with $\operatorname{Re}(s)>0$. Then $Z(f,s)$
+vanishes at $s$, for every choice of $f_\infty\in\Ss(F_\infty)$.
+\end{lemA}
+
+Indeed one may write, first for $\operatorname{Re}s>1$,
+$Z(f,s)=Z(f_\infty,s)\zeta_F(s)$. Since $Z(f,s)$, $\zeta_F(s)$ and $Z(f_\infty,s)$ are
+holomorphic for $s\ne1$, $\operatorname{Re}(s)>0$, the lemma follows.
+
+\begin{filled}
+\textbf{The factorisation and the continuation.} \Ledger{E7}
+
+\emph{The factorisation.} For $\operatorname{Re}s>1$ the idele integral factors over
+places because $f$ does: $Z(f,s)=\prod_vZ(f_v,s)$. The finite places contribute
+$\prod_{v\text{ finite}}(1-q_v^{-s})^{-1}=\zeta_F(s)$, since
+$f_v^0=\mathbf 1_{\mathcal O_v}$ and the local zeta integral of the characteristic
+function of the integers is the local Euler factor (with $d^\times x_v$ normalised by
+the factor $(1-q_v^{-1})^{-1}$ that the paper records). The archimedean places
+contribute $Z(f_\infty,s)$ by definition. Hence
+$Z(f,s)=Z(f_\infty,s)\zeta_F(s)$ on $\operatorname{Re}s>1$.
+
+\emph{The continuation.} $Z(f,s)$ extends holomorphically to $\{\operatorname{Re}s>0\}
+\setminus\{1\}$ by \eqref{eq:43}, whose two integrals are entire. $Z(f_\infty,s)$ is
+holomorphic there because $f_\infty\in\Ss$ makes
+$\int_{F_\infty}f_\infty\prod|x_v|_v^{\sigma-1}dx$ absolutely convergent for
+$\sigma>0$ --- which is the paper's remark about condition $(z_3)$. Two holomorphic
+functions agreeing on $\operatorname{Re}s>1$ agree on the connected set
+$\{\operatorname{Re}s>0\}\setminus\{1\}$, so the identity persists, and at a zero $s$
+of $\zeta_F$ with $\operatorname{Re}s>0$ we get $Z(f,s)=0$.
+\end{filled}
+
+For every finite place, $\widehat{f_v^0}=|\mathfrak d_v|^{-1/2}\mathbf
+1_{\mathfrak d_v^{-1}}$, where $\mathfrak d_v$ is the different; and
+$\prod_{v\text{ finite}}|\mathfrak d_v|=|D_F|$. Consider the first integral of
+\eqref{eq:43}. If $f(x)\ne0$ at $x=(x_\infty,x_f)$ then the description of $f_f$ gives
+$|x_f|\le1$; since $|x_\infty x_f|\ge1$ on $I_F^+$,
+\begin{equation}\label{eq:45}
+ |x_\infty|=\prod_{v\mid\infty}|x_v|\ge1 .
+\end{equation}
+In the second integral, noting $|x_v|\le|\mathfrak d_v|$ if
+$x_v\in\mathfrak d_v^{-1}$, one has $|x_f|\le\prod_v|\mathfrak d_v|=|D_F|$, whence
+\begin{equation}\label{eq:46}
+ |x_\infty|\ge D_F^{-1} .
+\end{equation}
+
+\begin{expansion}
+\textbf{The two inferences \eqref{eq:45}--\eqref{eq:46}.} \Ledger{E9} On $I_F^+$ the
+idele norm satisfies $|x|=|x_\infty|\,|x_f|\ge1$. In the first integral $f\ne0$ forces
+$x_v\in\mathcal O_v$ at every finite place, so $|x_v|_v\le1$ and $|x_f|\le1$;
+combined with $|x_\infty||x_f|\ge1$ this gives $|x_\infty|\ge1$. In the second, $\fh\ne0$
+forces $x_v\in\mathfrak d_v^{-1}$, where $|x_v|_v\le|\mathfrak d_v|$, so
+$|x_f|\le\prod_v|\mathfrak d_v|=|D_F|$ and therefore $|x_\infty|\ge|D_F|^{-1}$. The
+asymmetry between the two --- $1$ against $D_F^{-1}$ --- is the entire arithmetic
+input of \S4: it is what puts the discriminant into Proposition 1.
+\end{expansion}
+
+\begin{lemB}
+Suppose there is a Fourier pair $(f,\fh)$ on $F_\infty=\R^d$ such that
+$f(x_\infty)\ge0$ if $|x_\infty|\ge1$, $f$ takes strictly positive values in a
+neighbourhood of $1$ inside $\{|x_\infty|\ge1\}$, $\fh(y_\infty)\ge0$ if
+$|y_\infty|\ge D_F^{-1}$, and $f(0)=\fh(0)=0$. Then $\zeta_F(s)\ne0$ for every $s$ in
+the interval $]0,1[$.
+\end{lemB}
+
+Indeed \eqref{eq:43} is then reduced to its integral terms; $|x|^s$ is strictly
+positive on the domain of integration, and the integral \eqref{eq:45} is strictly
+positive by the property imposed on $f$. So $Z(f,s)>0$ and $\zeta_F(s)\ne0$ by
+Lemma 1.
+
+\begin{expansion}
+\textbf{Which hypothesis does what.} \Ledger{E11}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+\item $f(0)=\fh(0)=0$ kills the two polar terms $\kappa\fh(0)/(s-1)$ and
+  $-\kappa f(0)/s$ of \eqref{eq:43}. Without this, $Z(f,s)$ would have a pole at
+  $s=1$ and no sign could be read off.
+\item $f\ge0$ on $\{|x_\infty|\ge1\}$ makes the first integral $\ge0$: by
+  \eqref{eq:45} the integrand is supported where $|x_\infty|\ge1$.
+\item $\fh\ge0$ on $\{|y_\infty|\ge D_F^{-1}\}$ makes the second integral $\ge0$, by
+  \eqref{eq:46}.
+\item ``$f$ takes strictly positive values near $|x_\infty|=1$'' upgrades the first
+  integral from $\ge0$ to $>0$. This is the only hypothesis that gives strictness,
+  and strictness is the whole point: $Z(f,s)>0$ contradicts $Z(f,s)=0$.
+\item $s\in\,]0,1[$ real makes $|x|^s>0$; for complex $s$ no sign argument is
+  available, which is why the conclusion concerns only real zeros.
+\end{itemize}
+\end{expansion}
+
+Let $x=(x_v)\in F_\infty$. The Euclidean norm compatible with Tate's Fourier
+transform is $\|x\|^2=\sum_{v\text{ real}}|x_v|^2+2\sum_{v\text{ complex}}\|x_v\|^2$.
+Since $|x|^2=\prod_{v\text{ real}}|x_v|^2\prod_{v\text{ complex}}\|x_v\|^4$, the
+arithmetic--geometric inequality gives
+\[|x|^{2/d}\le\tfrac1d\|x\|^2 .\]
+Putting $r=\|x\|$, $\rho=\|y\|$, one sees that
+\[|x|\ge1\ \Longrightarrow\ r\ge\sqrt d,\qquad
+  |y|\ge|D_F|^{-1}\ \Longrightarrow\ \rho\ge|D_F|^{-1/d}\sqrt d .\]
+
+\begin{expansion}
+\textbf{The AM--GM step, with the places counted.} \Ledger{E12, E13} There are $r_1$
+real and $r_2$ complex places, $d=r_1+2r_2$. Write the $d$ non-negative quantities
+\[\underbrace{|x_v|^2}_{v\text{ real},\ r_1\text{ terms}},\qquad
+  \underbrace{\|x_v\|^2,\ \|x_v\|^2}_{v\text{ complex},\ 2r_2\text{ terms}}\]
+--- each complex place contributing its $\|x_v\|^2$ \emph{twice}. Their sum is
+exactly $\|x\|^2$ and their product is exactly $|x|^2$. AM--GM on $d$ terms gives
+$(|x|^2)^{1/d}\le\frac1d\|x\|^2$, which is the display. The factor 2 in
+$\|x\|^2$ and the fourth power in $|x|^2$ are the same phenomenon counted once each,
+which is easy to mis-count.
+
+Then $|x|\ge1$ gives $\|x\|^2\ge d|x|^{2/d}\ge d$, i.e. $r\ge\sqrt d$; and
+$|y|\ge|D_F|^{-1}$ gives $\rho^2\ge d|D_F|^{-2/d}$, i.e.
+$\rho\ge|D_F|^{-1/d}\sqrt d$.
+\end{expansion}
+
+\begin{propA}
+Suppose there is a number field $F$ of degree $d$ and discriminant $D$ such that
+$\zeta_F(s)$ has a zero in $]0,1[$. Then $\Bcal_d\ge d\,|D|^{-1/d}$.
+\end{propA}
+
+Conversely, of course, $\zeta_F$ has no real zero if $d\,|D|^{-1/d}>\Bcal_d$.
+
+\begin{filled}
+\textbf{The proof, which the paper calls evident.} \Ledger{E14, E15} Suppose
+$d|D|^{-1/d}>\Bcal_d$. By definition of $\Bcal_d$ as an infimum over Schwartz
+competitors, and by the radial reduction of \S3, there is a radial Schwartz Fourier
+pair $(f,\fh)$ with $f=\fh$ up to the dilation of \S1.2, $f(0)=\fh(0)=0$, and
+\[A(f)A(\fh)<d\,|D|^{-1/d} .\]
+Dilating (which preserves the product) we may arrange
+$A(f)\le\sqrt d$ and $A(\fh)\le|D|^{-1/d}\sqrt d$, i.e. $f\ge0$ for $r\ge\sqrt d$ and
+$\fh\ge0$ for $\rho\ge|D|^{-1/d}\sqrt d$. By the two implications just displayed,
+these are exactly the hypotheses of Lemma 2 in terms of the idele norm. One may
+further assume $f>0$ on $\{\sqrt d\le\|x\|\le\sqrt d+\varepsilon\}$ --- otherwise $f$
+vanishes on an open set beyond its last sign change, and one shrinks $A(f)$ ---
+which supplies the strictness hypothesis, since $\|\mathbf 1\|=\sqrt d$ for the idele
+$\mathbf 1$. Lemma 2 then gives $\zeta_F\ne0$ on $]0,1[$. The proposition is the
+contrapositive.
+\end{filled}
+
+\subsection*{4.3 Fields with a real zero, and linear growth}
+
+It is difficult to find fields $F$ satisfying the hypothesis of the proposition.
+However, the decomposition, for $F$ Galois over $E$, of $\zeta_F$ into Artin
+$L$-functions for $E$ allowed Armitage to exhibit such a zero (at $s=\tfrac12$ of
+course, in accordance with the Riemann hypothesis). More precisely, Armitage considers
+an explicit extension $F$ of $E=\Q(\sqrt{3(1+i)})$, of degree 12 over $E$ and hence of
+degree 48 over $\Q$, constructed by Serre, and shows that $\zeta_F(\tfrac12)=0$.
+Consequently number theory implied a priori the following weak version of Theorem 3:
+
+\begin{propB}
+If $d$ is a multiple of 48, then $\Bcal_d$ is strictly positive.
+\end{propB}
+
+For $d=48$ this follows from the existence of $F$. Suppose $d=48c$. There is a
+cyclotomic extension $L$ of $\Q$ of degree $c$ linearly disjoint from $F$. Then $LF$
+has degree $d$ over $\Q$, and $\zeta_F$ divides $\zeta_{LF}$ since $LF/F$ is abelian
+and $\zeta_{LF}$ therefore factors into Dirichlet $L$-functions relative to $F$.
+
+\begin{expansion}
+\textbf{Two silent uses.} \Ledger{E18}
+\emph{(a) A cyclotomic field of each degree, disjoint from $F$.} The cyclotomic fields
+$\Q(\zeta_n)$ have degrees $\varphi(n)$, which do not take every value; but one may
+take a subfield of $\Q(\zeta_p)$ for a large prime $p\equiv1\pmod c$, whose Galois
+group is cyclic of order $p-1$, and hence has a subfield of degree exactly $c$.
+Choosing $p$ unramified in $F$ makes $L$ linearly disjoint from $F$.
+\emph{(b) $\zeta_F\mid\zeta_{LF}$.} For $LF/F$ abelian with group $G$,
+$\zeta_{LF}=\prod_{\chi\in\widehat G}L(s,\chi)$ over $F$, and the trivial character
+contributes $\zeta_F$. So the quotient is a product of $L$-functions, entire, and
+every zero of $\zeta_F$ is a zero of $\zeta_{LF}$. Proposition 1 applied to $LF$ then
+gives $\Bcal_d>0$.
+\end{expansion}
+
+One may ask whether Proposition 1 implies a restriction on the discriminants of fields
+whose $\zeta_F$ has a real zero. In that case
+\begin{equation}\label{eq:47}
+ |D|^{1/d}\ge\frac{d}{\Bcal_d} .
+\end{equation}
+But unconditionally, by Theorem 3, $\dfrac{d}{\Bcal_d}<2\pi e=17{,}079\cdots$,
+whereas Odlyzko's lower bounds give in general $|D|^{1/d}\ge22{,}2\,(1+o(1))$ as
+$d\to\infty$. Consequently \eqref{eq:47} is automatically satisfied, at least for $d$
+large enough.
+
+\begin{expansion}
+\Ledger{E20, E21, E22} The chain is $\Bcal_d\ge B_d\ge d/(2\pi e)$ from
+\eqref{eq:14} and Theorem 3, so $d/\Bcal_d\le2\pi e=17{,}0795$. Since Odlyzko's
+constant $22{,}2$ exceeds it, \eqref{eq:47} carries no information. The original
+prints Odlyzko's bound as $22{,}2(1+0(d))$; $o(1)$ is meant.
+
+This is a \emph{negative} result, and the authors include it deliberately:
+Proposition 2 does not improve on Theorem 3. What follows is the part that does say
+something.
+\end{expansion}
+
+Proposition 2 therefore does not lead to an interesting lower bound for $\Bcal_d$. It
+is striking to note nonetheless that, for certain degrees at least, number theory
+implied the linear growth in $d$ given by Theorem 3.
+
+Let $p$ be a prime. By the theorems of Golod--Shafarevi\v c and Brumer there is a
+sequence of fields $E_p^1\subset E_p^2\subset\cdots$ where $E_p^1$, of degree $p(p-1)$
+over $\Q$, is an extension of degree $p$ of $\Q(\zeta_p)$, and $E_p^{n+1}/E_p^n$ is
+abelian, unramified, of degree $p$. Consider the extensions $F_i=F\,E_p^i$ of $F$;
+extracting a strictly increasing subsequence gives
+$F_0\subset F_1\subset\cdots\subset F_m\subset\cdots$, each extension abelian of
+degree $p$. In the absence of relative ramification, a classical formula gives
+\begin{equation}\label{eq:48}
+ D(F_m)=D(F_0)^{p^m}:=D^{p^m} .
+\end{equation}
+The successive extensions from $F$ being abelian, $\zeta_F$ divides $\zeta_{F_m}$ for
+all $m$. Proposition 1 then gives, for $d=d_0p^m$ with $d_0=[F_0:\Q]$,
+\begin{equation}\label{eq:49}
+ \Bcal_d\ge C\,d,\qquad C=|D|^{-1/d_0} .
+\end{equation}
+For such sequences of degrees, \eqref{eq:310} and \eqref{eq:49} therefore show that
+the growth of $\Bcal_d$ --- and hence of $B_d\ge\tfrac12\Bcal_d$ --- is linear in $d$.
+
+\begin{expansion}
+\textbf{Why \eqref{eq:49} follows, and two printed slips.} \Ledger{E24, E25, E26}
+By Proposition 1 applied to $F_m$, $\Bcal_d\ge d\,|D(F_m)|^{-1/d}$ with $d=d_0p^m$.
+By \eqref{eq:48}, $|D(F_m)|=|D|^{p^m}$, so
+$|D(F_m)|^{-1/d}=|D|^{-p^m/(d_0p^m)}=|D|^{-1/d_0}$, a constant independent of $m$.
+Hence $\Bcal_d\ge C d$ with $C=|D|^{-1/d_0}$ --- the point being that the
+discriminant grows exactly fast enough for the bound to stay linear rather than
+decay.
+
+The original typesets the exponent as $|D|^{-1_/d_0}$; and the sentence after
+\eqref{eq:49} cites ``(3.10) et (4.8)'', where the pair actually being combined is the
+upper bound \eqref{eq:310} and the lower bound \eqref{eq:49}.
+\end{expansion}
+
+If $p$ does not divide $D_F$, then $F$ and $\Q(\zeta_p)$ are linearly disjoint and one
+may choose $E_p^1$ linearly disjoint from $F$. Then $F_0=F\,E_p^1$ and the inequality
+is valid for $d=48(p-1)p^n$, $n\ge1$. Of course the factor $(p-1)$ is not necessary if
+one is willing to use Artin's conjecture or Dedekind's divisibility conjecture.
+
+\begin{expansion}
+\textbf{The point of \S4, which is easy to lose.} \Ledger{E27} Theorem 3 gives
+$B_d>d/(2\pi e)$ by a two-line argument about the volume of a ball. \S4 shows that,
+along an infinite sequence of degrees, the \emph{same} linear growth is a consequence
+of number theory: a field whose zeta function has a real zero forces
+$\Bcal_d\ge d|D|^{-1/d}$, and class field towers produce fields of unboundedly large
+degree whose root discriminants stay bounded. So the linear growth in Theorem 3 is not
+an artefact of the crude volume bound --- it is the truth, and it was implicit in
+known facts about ramification before anyone asked the Fourier question.
+\end{expansion}
+
+% =====================================================================
+\section*{\S5. Editorial remarks --- everything later than the paper}
+% =====================================================================
+
+Quarantined here; nothing above depends on any of it.
+
+\begin{enumerate}[leftmargin=1.6em,itemsep=5pt]
+\item \textbf{The Hermite bound is $3/2$, not $3$.} \Ledger{C2} \S2.1 carries out the
+  computation the paper describes but does not perform. With the paper's own Fourier
+  convention the unique (up to scale) self-dual combination of $H_0,H_2,H_4$ with
+  $f(0)=0$ is $f(x)=x^2\bigl(x^2-\tfrac3{2\pi}\bigr)e^{-\pi x^2}$, whose last sign
+  change is at $\sqrt{3/(2\pi)}$, giving $\pi A^2=3/2$. The printed $\pi A^2\le3$ is
+  true but weaker by a factor 2, and $3/2$ is exactly the bound $(2.5)$ obtained later
+  from the $g_a$ family. So the two routes of \S2 --- Hermite, and the Gaussian
+  family --- give the \emph{same} bound, which the paper does not remark on. We have
+  not resolved whether the printed $3$ is a slip or reflects a different
+  normalisation of $H_4$.
+
+\item \textbf{Theorem 2 is weaker than its own method.} \Ledger{C21} The correction
+  argument of \S2.3, optimised numerically, gives $X''=1{,}1512$ and $A\le0{,}6053$
+  with $a_0=2$, and $X''\approx1{,}1210$, $A\le0{,}5973$ optimising $a_0$ as well;
+  the paper states $X''=1{,}25\ldots$, $A\le0{,}63\ldots$ and Theorem 2 rounds to
+  $A\le0{,}64$. The authors flag their computation as ``tr\`es approch\'e'', so this
+  is a sharpening of an acknowledged estimate, not a correction. We state Theorem 2
+  as they do.
+
+\item \textbf{Where the true minimiser sits.} \Ledger{C19} $a=2{,}08137$ minimises the
+  large-$a$ surrogate $\log(1+a)/(1-a^{-2})$; the true minimiser of $X_a$ is
+  $a\approx1{,}89$, with $X\approx1{,}45200$ against $1{,}45341$ at $a=2$ and
+  $1{,}45623$ at $a=2{,}08137$. All three are worse than the corrected value of
+  item 2, which is the point of \S2.3.
+
+\item \textbf{What the paper leaves open.} Two things, both explicit:
+  \begin{itemize}[leftmargin=1.4em]
+  \item The exact value of $B_1$. The paper brackets it as
+    $0{,}1687\le B_1\le0{,}41$ and determines nothing further. The gap is a factor
+    of about $2{,}4$.
+  \item Whether $X(d)=\tfrac d2+1$ is optimal for $d\ge2$, i.e.\ whether
+    $\Bcal_d=(d+2)/2\pi$. The paper says twice that this ``is possible'', having shown
+    that the family $g_a$ cannot beat it for $d>2$ (via $Q_4(c+1)<0$) and for $d=2$
+    (via $p_6<0$) --- in contrast with $d=1$, where it can.
+  \end{itemize}
+  Both are recorded on the project's Open problems page with what we could verify of
+  their status.
+
+\item \textbf{The linear growth constant is now known, and both of their bounds were
+  within a factor of two.} Theorem 3 and Theorem 4 bracket $B_d$ between $d/2\pi e$ and
+  $(d+2)/2\pi$, a factor $e$ apart. In August 2026 --- sixteen years later --- Chapter 1
+  of OpenAI's \emph{Ten Advances in Mathematics and Theoretical Computer Science}
+  states, as its Theorem 1.2, that
+  \[\lim_{d\to\infty}\frac{A_+(d)}{\sqrt d}=\frac1\pi,\qquad\text{whence}\qquad
+    \frac{B_d}{d}\longrightarrow\frac1{\pi^2}=0{,}101321\ldots\]
+  where $A_+(d)$ is exactly the $A$ of \eqref{eq:34a}. The value sits inside their
+  bracket, a factor $\pi/2=1{,}5708$ below their upper constant $1/2\pi=0{,}159155$ and
+  a factor $2e/\pi=1{,}7305$ above their lower constant $1/2\pi e=0{,}058550$. So the
+  crude volume bound of Theorem 3 and the Gaussian family of Theorem 4 were each wrong
+  by less than a factor of two, and the truth lies between them, nearer the upper end.
+
+  Two things must be said about that reference. Its results are stated to have been
+  produced by an internal OpenAI model, and the manuscript is self-published rather
+  than refereed. And we have read its statements, not its proof --- so this remark is
+  reported, not verified, exactly like the imports of \S4. The same source's Theorem 1.2
+  also settles the question of item 4 in the negative for large $d$: since
+  $1/\pi^2<1/2\pi$, the value $X(d)=\tfrac d2+1$ is \emph{not} asymptotically optimal.
+  Cohn--Gon\c calves had already shown it is not optimal at $d=12$, where the sharp
+  value is $B_{12}=2$ against their $(12+2)/2\pi=2{,}2282$.
+
+  For $d=1$ none of this helps: the exact value of $B_1$ is open, and
+  Cohn--Gon\c calves record that no sharp value is known or even conjectured in any
+  dimension but 12.
+
+\item \textbf{The source.} The authors' arXiv LaTeX does not build on a 2026
+  distribution: \verb|[francais]| must become \verb|[french]|, and two stray
+  \texttt{0xCA} bytes (Mac Roman non-breaking spaces, at lines 58 and 400) must be
+  replaced. With those two changes it compiles clean to exactly 19 pages, matching the
+  arXiv PDF. The file is ISO-8859, not UTF-8. \Ledger{F2, F3}
+\end{enumerate}
+
+\end{document}
