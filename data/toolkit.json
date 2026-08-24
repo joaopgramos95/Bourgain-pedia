@@ -212,7 +212,7 @@
    "id": "sub-unit-exponent",
    "name": "Working below exponent one",
    "stratum": "technique",
-   "gloss": "For 0 < p < 1 there is no norm and no triangle inequality, but |.|^p is subadditive and small powers flatten large values almost completely — so an integral of |1+t|^p can sit below the measure of the domain, which is impossible for p >= 1. That deficit is often the only source of a strict sign in the whole argument. Comparisons must be re-derived: subadditivity where the quantity can vanish, the mean value theorem where it is bounded away from zero.",
+   "gloss": "For $0<p<1$ there is no norm and no triangle inequality, but $|\\cdot|^p$ is subadditive and small powers flatten large values almost completely — so an integral of $|1+t|^p$ can sit below the measure of the domain, which is impossible for $p\\ge 1$. That deficit is often the only source of a strict sign in the whole argument. Comparisons must be re-derived: subadditivity where the quantity can vanish, the mean value theorem where it is bounded away from zero.",
    "aliases": [
     "p<1",
     "quasi-norm",
@@ -302,7 +302,7 @@
    "id": "density-point-endgame",
    "name": "Density point endgame",
    "stratum": "primitive",
-   "gloss": "Convert a statement about a function vanishing on a set into a statement about its derivatives there: a C^1 function vanishing on a measurable set has vanishing gradient at almost every point of it. Often halves the work, since only the transverse derivative then needs separate control.",
+   "gloss": "Convert a statement about a function vanishing on a set into a statement about its derivatives there: a $C^1$ function vanishing on a measurable set has vanishing gradient at almost every point of it. Often halves the work, since only the transverse derivative then needs separate control.",
    "aliases": [
     "Lebesgue density",
     "a.e. differentiability"

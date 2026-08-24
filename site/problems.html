@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,600;0,700;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vendor/katex/katex.min.css">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -42,6 +43,8 @@
 
 <script src="data/papers.js"></script>
 <script src="data/problems.js"></script>
+<script src="vendor/katex/katex.min.js"></script>
+<script src="vendor/katex/auto-render.min.js"></script>
 <script src="assets/app.js"></script>
 <script>
 (function () {
@@ -100,11 +103,17 @@
 
 
   var KIND = {
-    resolves:    ["resolves it",   "kind-resolves"],
-    negative:    ["negative",      "kind-resolves"],
-    positive:    ["positive side", "kind-positive"],
-    partial:     ["partial",       "kind-partial"],
-    predecessor: ["predecessor",   "kind-partial"]
+    resolves:                  ["resolves it",     "kind-resolves"],
+    "resolves-asymptotically": ["resolves · large d", "kind-resolves"],
+    "resolves-one-case":       ["resolves · one case", "kind-resolves"],
+    negative:                  ["negative",        "kind-resolves"],
+    improves:                  ["improves it",     "kind-positive"],
+    positive:                  ["positive side",   "kind-positive"],
+    generalises:               ["generalises",     "kind-positive"],
+    asymptotic:                ["asymptotic",      "kind-partial"],
+    structural:                ["structural",      "kind-partial"],
+    partial:                   ["partial",         "kind-partial"],
+    predecessor:               ["predecessor",     "kind-partial"]
   };
 
   function statusSection(i) {
@@ -121,7 +130,7 @@
         return '<li class="prog">' +
           '<span class="kind ' + k[1] + '">' + BP.esc(k[0]) + "</span>" +
           '<div><p class="prog-ref">' + link + "</p>" +
-          (r.what ? '<p class="prog-what">' + BP.esc(BP.tex(r.what)) + "</p>" : "") +
+          (r.what ? '<p class="prog-what">' + BP.rich(r.what) + "</p>" : "") +
           '<p class="prog-prov">' +
             (r.read ? "read by this project"
                     : "<strong>not read by this project</strong>") +
@@ -145,19 +154,19 @@
 
     return '<article class="idea" id="' + BP.esc(i.id) + '">' +
       '<div class="idea-head">' +
-        '<h3 class="idea-name">' + BP.esc(BP.tex(i.title)) + "</h3>" + statusChip(i) +
+        '<h3 class="idea-name">' + BP.rich(i.title) + "</h3>" + statusChip(i) +
       "</div>" +
       (field ? '<p class="prob-field">' + BP.esc(field.name) + "</p>" : "") +
-      '<p class="idea-gloss">' + BP.esc(BP.tex(i.statement)) + "</p>" +
-      (i.quote ? '<blockquote class="prob-quote">' + BP.esc(BP.tex(i.quote)) +
+      '<p class="idea-gloss">' + BP.rich(i.statement) + "</p>" +
+      (i.quote ? '<blockquote class="prob-quote">' + BP.rich(i.quote) +
                  "</blockquote>" : "") +
       ((i.partial || []).length
         ? '<p class="slot-label" style="margin-top:12px">What is known</p><ul class="prob-partial">' +
-          i.partial.map(function (t) { return "<li>" + BP.esc(BP.tex(t)) + "</li>"; }).join("") +
+          i.partial.map(function (t) { return "<li>" + BP.rich(t) + "</li>"; }).join("") +
           "</ul>"
         : "") +
       statusSection(i) +
-      (i.status_note ? '<p class="prob-status">' + BP.esc(i.status_note) + "</p>" : "") +
+      (i.status_note ? '<p class="prob-status">' + BP.rich(i.status_note) + "</p>" : "") +
       '<p class="person-papers">' + srcHtml + "</p>" +
     "</article>";
   }
@@ -207,6 +216,7 @@
       (rows.length ? rows.map(card).join("")
                    : (PROBS.length ? '<div class="empty-state"><p>No problem matches.</p></div>'
                                    : emptyState()));
+    BP.math(out);
   }
 
   fieldsEl.addEventListener("click", function (e) {

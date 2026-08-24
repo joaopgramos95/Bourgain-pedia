@@ -7,4 +7,4 @@
 PORT="${1:-8017}"
 cd "$(dirname "$0")/.." || exit 1
 echo "Bourgain-pedia at http://localhost:$PORT/site/"
-exec python3 -m http.server "$PORT"
+exec python3 "$(dirname "$0")/serve.py" "$PORT"

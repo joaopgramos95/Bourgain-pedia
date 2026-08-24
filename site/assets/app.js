@@ -1,7 +1,9 @@
 /* ------------------------------------------------------------------
    Bourgain-pedia — shared front-end.
-   No build step, no dependencies; the data files are plain JS globals
-   so the site also works when opened straight off the filesystem.
+   No build step; the data files are plain JS globals so the site also
+   works when opened straight off the filesystem. The one dependency is
+   KaTeX, vendored under site/vendor/katex/ for exactly that reason —
+   nothing is fetched from a network at any point.
 ------------------------------------------------------------------ */
 (function (global) {
   "use strict";
@@ -31,10 +33,16 @@
 
   /* ------------------------------------------------------ TeX → text
 
-     zbMATH titles carry raw TeX ("\(L^ p\)", "\mathcal L^\infty").
-     There is no MathJax here on purpose — the site must work offline —
-     so titles are transliterated into Unicode, which reads well for the
-     short formulas that appear in titles.                              */
+     zbMATH titles carry raw TeX ("\(L^ p\)", "\mathcal L^\infty"), and
+     it arrives *undelimited* — there is no way to tell which fragment of a
+     title is mathematics without parsing it. So titles keep going through
+     this Unicode transliteration, which reads well for the short formulas
+     that appear in them and never fails.
+
+     Prose we write ourselves is different: it carries explicit $...$ and
+     \[...\] delimiters, and BP.math() below hands those to KaTeX. The two
+     paths do not overlap, and the transliterator is also what the reader
+     falls back to if KaTeX fails to load.                                */
 
   var SYMBOLS = {
     alpha: "α", beta: "β", gamma: "γ", delta: "δ", epsilon: "ε",
@@ -135,6 +143,70 @@
     return s;
   };
 
+  /* ------------------------------------------------------------ rich
+
+     For prose we write ourselves, which carries explicit $...$ delimiters.
+     Escape, then turn the two text-level TeX commands we use into real tags.
+
+     Note what this does *not* do: it never calls BP.tex. That transliterator
+     would rewrite \\pi as a Unicode pi and swallow the braces and delimiters,
+     leaving KaTeX nothing to render. The two paths are mutually exclusive —
+     BP.tex for undelimited zbMATH titles, BP.rich for our own delimited prose.
+     Escaping runs first, so any angle bracket in the source is neutral before
+     markup is inserted, and the only tags in the output are ours.
+
+     Deliberately just these two. Anything more expressive belongs in $...$,
+     where KaTeX handles it properly.                                       */
+
+  BP.rich = function (raw) {
+    return esc(raw)
+      .replace(/\\emph\{([^{}]*)\}/g, "<em>$1</em>")
+      .replace(/\\textbf\{([^{}]*)\}/g, "<strong>$1</strong>");
+  };
+
+  /* ------------------------------------------------------------ math
+
+     Render the TeX in a freshly-written subtree. Safe to call on anything:
+     if KaTeX is not present the text is simply left as written, delimiters
+     and all, which is still readable.
+
+     Called after every innerHTML write that can contain our own prose.    */
+
+  var mathWarned = false;
+
+  BP.math = function (root) {
+    if (!root) return;
+    var render = global.renderMathInElement;
+    if (typeof render !== "function") {
+      if (!mathWarned) {
+        mathWarned = true;
+        if (global.console && console.warn) {
+          console.warn("Bourgain-pedia: KaTeX not loaded; formulas left as TeX source.");
+        }
+      }
+      return;
+    }
+    try {
+      render(root, {
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "\\[", right: "\\]", display: true },
+          { left: "$",  right: "$",  display: false },
+          { left: "\\(", right: "\\)", display: false }
+        ],
+        /* Never let one bad formula blank a page: KaTeX paints the offending
+           source in red and carries on. */
+        throwOnError: false,
+        errorColor: "#a4402a",
+        /* Titles and glosses are prose; a stray $ in them is a dollar sign. */
+        ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+        ignoredClasses: ["no-math"]
+      });
+    } catch (e) {
+      if (global.console && console.warn) console.warn("Bourgain-pedia: KaTeX failed", e);
+    }
+  };
+
   /* ---------------------------------------------------------- layout */
 
   var NAV = [
@@ -212,7 +284,7 @@
     if (!links) links = '<span class="chip tag">no online copy located</span>';
 
     var summary = p.summary
-      ? '<p class="slot-body">' + esc(p.summary) + "</p>"
+      ? '<p class="slot-body">' + BP.rich(p.summary) + "</p>"
       : '<p class="slot-body empty">Not yet written — this is the project’s own ' +
         "précis of the paper, not its abstract.</p>";
 

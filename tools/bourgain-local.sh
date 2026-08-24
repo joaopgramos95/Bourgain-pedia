@@ -118,7 +118,7 @@ if [ "${exec_open:-0}" != "1" ]; then
     # Detach every descriptor, including stdin: otherwise the server inherits
     # the caller's stdout and a pipeline such as `Bourgain.local | tee log`
     # never sees end-of-file.
-    ( cd "$ROOT" && nohup python3 -m http.server "$n" </dev/null >/dev/null 2>&1 &
+    ( cd "$ROOT" && nohup python3 "$ROOT/tools/serve.py" "$n" </dev/null >/dev/null 2>&1 &
       echo "$! $n" > "$STATE" ) </dev/null >/dev/null 2>&1
     i=0
     while [ $i -lt 30 ]; do

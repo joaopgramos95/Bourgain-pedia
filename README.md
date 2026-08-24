@@ -46,7 +46,7 @@ distribution.
 ```
 Papers/            one Markdown file per year: numbered, referenced, with download links
 data/              the canonical dataset (papers, collaborators, toolkit, problems)
-site/              the website — static, no build step, no dependencies
+site/              the website — static, no build step; KaTeX vendored locally
 blueprints/        the two procedures the project runs on
 skills/            the $bourgainize skill, shared by Codex and Claude Code
 .claude/skills/    the companion skills it calls, vendored so a clone is self-contained

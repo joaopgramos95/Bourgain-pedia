@@ -103,7 +103,10 @@ outside this repository; nothing here depends on it.)
 
 ## Running it locally
 
-`sh tools/install.sh` once, then `Bourgain.local` from anywhere. The launcher resolves
+`sh tools/install.sh` once, then `Bourgain.local` from anywhere. Both it and
+`tools/serve.sh` go through `tools/serve.py`, which sends `Cache-Control: no-store`:
+the data files are rewritten in place at a URL that never changes, so without it a
+rebuild stays invisible behind the browser cache. That has cost us an hour once. The launcher resolves
 the repository from its own symlink, picks the first free port at or after 8017, reuses
 a server it already started, and never adopts or kills an unrelated one. Detaching the
 server's descriptors matters: without `</dev/null >/dev/null 2>&1` a pipeline such as
@@ -111,13 +114,34 @@ server's descriptors matters: without `</dev/null >/dev/null 2>&1` a pipeline su
 
 ## The site
 
-Static, no build step, no dependencies. `sh tools/serve.sh` (repo root is the
+Static, no build step. `sh tools/serve.sh` (repo root is the
 document root, so the site is at `/site/` and a paper's digestion under
 `<year>/<slug>/` resolves) or open `site/index.html`
 directly — data ships as JS globals precisely so `file://` works. Titles carry raw TeX
-from zbMATH; `BP.tex()` in `site/assets/app.js` transliterates it to Unicode rather than
-loading a math renderer, so the site stays offline-capable. If a TeX command shows up raw
-on the page, add it to the `SYMBOLS` map there.
+from zbMATH; `BP.tex()` in `site/assets/app.js` transliterates it to Unicode. If a TeX
+command shows up raw on the page, add it to the `SYMBOLS` map there.
+
+**Two rendering paths, and they must not be crossed.**
+
+| source | delimiters | renderer | why |
+|---|---|---|---|
+| zbMATH titles and references | none | `BP.tex()` → Unicode | the TeX arrives undelimited, so there is no way to tell which fragment is mathematics without parsing it |
+| our own prose — summaries, glosses, problems | `$…$`, `\[…\]` | `BP.rich()` + KaTeX | we write it, so we delimit it |
+
+`BP.rich()` escapes, converts `\emph{}`/`\textbf{}` to tags, and leaves the TeX alone
+for KaTeX. It must **never** call `BP.tex()`: the transliterator would rewrite `\pi` and
+swallow the braces, leaving KaTeX nothing to render. Call `BP.math(el)` after any
+`innerHTML` write that can contain our prose.
+
+KaTeX is vendored under `site/vendor/katex/` — woff2 fonts only, with the ttf/woff
+sources stripped from the CSS so nothing 404s. It is the site's one dependency and it is
+local on purpose: nothing is ever fetched from a network, so the site works offline and
+in a sealed environment. All paths are relative, so `file://` loads the script and the
+CSS; note only that some browsers refuse webfonts from a `file://` opaque origin, in
+which case the formulas still typeset but in fallback faces. Serving through
+`tools/serve.sh` avoids that, and is the intended way to read the site anyway. If KaTeX
+does not load at all, the formulas degrade to readable TeX source plus a console
+warning — never to a blank page.
 
 ## Weekly upkeep
 
