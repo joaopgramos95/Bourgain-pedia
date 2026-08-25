@@ -16,9 +16,9 @@ is in English (see `notes.md`).
 
 | status | count |
 |---|---:|
-| closed | 87 |
+| closed | 91 |
 | closed (reproduced) | 17 |
-| **caution** (visible in the PDF) | 6 |
+| **caution** (visible in the PDF) | 2 |
 | open | 0 |
 | **OPEN-GAP** | 0 |
 | **total rows** | **110** |
@@ -33,10 +33,27 @@ distinction is the point:
   displayed condition, one of the authors' own remarks) or a convention settled in
   §0. It is closed by appearing verbatim in the digestion; there was nothing to add,
   and adding a marker would have claimed otherwise.
-- **caution** — the six citation rows of §4. We state each import precisely and
-  check how the paper uses it, but we have **not read the sources**: Tate, Armitage,
-  Serre, Odlyzko, Golod–Šafarevič/Brumer. This is visible to the reader as a
-  `caution` box at the head of §4, not buried here. §4 is conditional on them.
+- **caution** — what is left of §4's imports after the reading pass of 2026-08-24.
+  It was six rows; it is now **two**.
+
+  *Closed by reading.* **E1** (Tate's functional equation: simple poles only at s = 0
+  and s = 1, residues −Vol(C¹)·f(0) and +Vol(C¹)·f̂(0)) and **E5**
+  (κ = 2^r₁(2π)^r₂hR/(w√|D|)) against Leahy's McGill thesis on Tate, Theorem 4.9.2 and
+  §4.11. **E8** (f̂_v⁰ = (N𝔡_v)^{−1/2}·1_{𝔡_v^{−1}} and ∏_v N𝔡_v = |D|) against
+  Poonen's MIT notes, which do that computation explicitly, cross-checked in Leahy.
+  **E21** against Odlyzko's own 1990 Bordeaux survey, whose (2.5) gives the constants
+  60.8395 and 22.3816 — the paper's 22.2 is the latter rounded down, and the argument
+  needs only 22.2 > 2πe = 17.079. All four are now stated in full in §0″ as Background,
+  and the discriminant tower formula is proved there rather than cited. Note: we read
+  two expositions of Tate, not Tate's own text in Cassels–Fröhlich.
+
+  *Still caution.* **E16**, Armitage's ζ_F(1/2) = 0 — the paper is paywalled; the
+  degree arithmetic we verified ourselves ([E:ℚ] = 4 by a norm argument, so [F:ℚ] = 48)
+  and the statement plus its mechanism are confirmed by a refereed secondary source,
+  but not by Armitage. **E23**, Roquette's Corollary 7, the existence of the tower —
+  Cassels–Fröhlich was not available; the degree bookkeeping checks and the
+  discriminant half of the argument is proved, but the existence is taken on trust.
+  Both remain visible as a `caution` box at the head of §4.
 
 No row is an `OPEN-GAP`: there is no step of the paper's own argument that we could
 not reconstruct.
@@ -150,14 +167,14 @@ and `a=2` reductions, `p₅=0` and `p₆=−4/45`, and Theorem 3's inequality ch
 
 | # | location | kind | statement | status |
 |---|---|---|---|---|
-| E1 | §4 | citation | Tate's thesis is used wholesale. State what is imported: adeles, ideles, the idele norm, self-dual local measures, the local transforms, and the functional equation (4.3). Reference [tate]. | **caution** |
+| E1 | §4 | citation | Tate's thesis is used wholesale. State what is imported: adeles, ideles, the idele norm, self-dual local measures, the local transforms, and the functional equation (4.3). Reference [tate]. | closed |
 | E2 | §4 | notation | Local conventions: `dz=2dxdy` at a complex place, `Tr(zw)=2Re(zw)`, `|z|=‖z‖²`. These differ from §3's Euclidean convention and the paper reconciles them in one sentence; make the reconciliation explicit. | closed |
 | E3 | §4, (4.1) | notation | The decomposable test function; `f_v⁰ = char(𝒪_v)` at finite places. | closed (reproduced) |
 | E4 | §4, (4.3) | citation | Tate's formula `Z(f,s)=∫_{I_F^+}f|x|^s + ∫_{I_F^+}f̂|x|^{1-s} + κf̂(0)/(s-1) - κf(0)/s`, with `κ` the residue of `ζ_F` at `s=1`. State hypotheses `(z₁),(z₂),(z₃)` and check they hold for the functions used. | closed (reproduced) |
-| E5 | §4 | computation | `κ = 2^{r₁}(2π)^{r₂}hR/(√{D_F}w)` — the class number formula. Cite; do not re-derive. | **caution** |
+| E5 | §4 | computation | `κ = 2^{r₁}(2π)^{r₂}hR/(√{D_F}w)` — the class number formula. Cite; do not re-derive. | closed |
 | E6 | Lemma 1 | claim | If `ζ_F(s)=0` and `Re s>0` then `Z(f,s)=0` for every `f_∞ ∈ 𝒮(F_∞)`. | closed (reproduced) |
 | E7 | Lemma 1 pf | gap | The proof is "`Z(f,s)=Z(f_∞,s)ζ_F(s)` for `Re s>1`, then analytic continuation". The factorisation itself is not derived, and the continuation argument needs `Z(f_∞,s)` holomorphic. Supply both. | closed |
-| E8 | §4 | citation | `f̂_v⁰ = |𝔡_v|^{-1/2}char(𝔡_v^{-1})`, `∏_v|𝔡_v| = |D_F|` — standard, cite Tate. | **caution** |
+| E8 | §4 | citation | `f̂_v⁰ = |𝔡_v|^{-1/2}char(𝔡_v^{-1})`, `∏_v|𝔡_v| = |D_F|` — standard, cite Tate. | closed |
 | E9 | §4, (4.5)–(4.6) | computation | `f(x)≠0 ⟹ |x_f| ≤ 1 ⟹ |x_∞| ≥ 1`; and for `f̂`, `|x_f| ≤ |D_F| ⟹ |x_∞| ≥ D_F^{-1}`. Both use `|x|≥1` on `I_F^+`. | closed |
 | E10 | Lemma 2 | claim | If a Fourier pair on `F_∞=ℝ^d` exists with `f ≥ 0` where `|x_∞|≥1`, `f>0` somewhere near the locus `|x_∞|=1`, `f̂ ≥ 0` where `|y_∞| ≥ D_F^{-1}`, and `f(0)=f̂(0)=0`, then `ζ_F` has no zero in `]0,1[`. | closed (reproduced) |
 | E11 | Lemma 2 pf | gap | "(4.3) est alors réduit à ses termes intégraux" — because `f(0)=f̂(0)=0` kills the two polar terms. Then strict positivity of the first integral needs the "prend des valeurs strictement positives" hypothesis, and that is where it is used. Make the role of each hypothesis explicit. | closed |
@@ -170,7 +187,7 @@ and `a=2` reductions, `p₅=0` and `p₆=−4/45`, and Theorem 3's inequality ch
 | E18 | Prop 2 pf | gap | The lifting `d=48c`: a cyclotomic `L/ℚ` of degree `c` linearly disjoint from `F`, then `ζ_F | ζ_{LF}` since `LF/F` is abelian. Two facts are used silently: existence of a disjoint cyclotomic field of each degree, and the factorisation of `ζ_{LF}` into Dirichlet `L`-functions over `F`. | closed |
 | E19 | §4, (4.7) | computation | If `ζ_F` has a real zero then `|D|^{1/d} ≥ d/𝓑_d`. | closed (reproduced) |
 | E20 | §4 | computation | `d/𝓑_d < 2πe = 17.079…` from Theorem 3 (via `𝓑_d ≥ B_d ≥ d/(2πe)`). Check the direction of each inequality. | closed |
-| E21 | §4 | citation | **Printed slip.** Odlyzko's bound is written `|D|^{1/d} ≥ 22.2(1+0(d))`; `o(1)` is meant. Cite [odly] and state the bound correctly. | **caution** |
+| E21 | §4 | citation | **Printed slip.** Odlyzko's bound is written `|D|^{1/d} ≥ 22.2(1+0(d))`; `o(1)` is meant. Cite [odly] and state the bound correctly. | closed |
 | E22 | §4 | claim | Since `22.2 > 17.079`, (4.7) is automatic, so Proposition 2 yields no new bound on `𝓑_d`. The authors say so; record that this is a negative result, deliberately included. | closed |
 | E23 | §4 | citation | Golod–Shafarevich and Brumer: an infinite class field tower `E_p^1 ⊂ E_p^2 ⊂ ⋯` with `E_p^1/ℚ` of degree `p(p-1)` and each `E_p^{n+1}/E_p^n` abelian unramified of degree `p`. Cite [roqu] Cor. 7. | **caution** |
 | E24 | §4, (4.8) | computation | `D(F_m)=D(F_0)^{p^m}` for an unramified tower — the conductor–discriminant / tower formula. State the version used. | closed |

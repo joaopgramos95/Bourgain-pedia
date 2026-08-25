@@ -222,6 +222,45 @@ $\C^d$; an entire function vanishing on a non-empty open set vanishes identicall
 For $m>0$, $\Gamma(m+1)>\sqrt{2\pi m}\,(m/e)^m$.
 \end{bg}
 
+\begin{bg}[Tate: the global functional equation]\label{bg:tate}
+Let $K$ be a number field, $f\in\Ss(\mathbb A_K)$, and $\chi=\tilde\chi|\cdot|^s$ an
+idele-class character. The global zeta integral
+$Z(f,\chi)=\int_{I_K}f(x)\chi(x)\,d^\times x$ converges for $\Re s>1$, extends
+meromorphically to $\C$, and satisfies $Z(f,\chi)=Z(\fh,\check\chi)$. The continuation
+is entire except on the class of unramified characters, where for
+$\chi=|\cdot|^{s}$ it has \emph{simple poles only at $s=0$ and $s=1$}, with residues
+\[\Res_{s=0}Z=-\operatorname{Vol}(C_K^1)\,f(0),\qquad
+  \Res_{s=1}Z=\operatorname{Vol}(C_K^1)\,\fh(0).\]
+Splitting $I_K$ at $|x|=1$ and applying the functional equation to the piece $|x|<1$
+turns this into the form used in \eqref{eq:43}: two integrals over $I_K^+$ plus exactly
+those two polar terms.
+\end{bg}
+
+\begin{bg}[Tate: the local transform at a finite place]\label{bg:tateloc}
+At a finite place $v$, let $dx_v$ be the self-dual measure, for which
+$\operatorname{Vol}(\mathcal O_v)=(N\mathfrak d_v)^{-1/2}$, $\mathfrak d_v$ the
+different. Then for $f_v^0=\mathbf 1_{\mathcal O_v}$,
+\[\widehat{f_v^0}=(N\mathfrak d_v)^{-1/2}\,\mathbf 1_{\mathfrak d_v^{-1}},\]
+because $\int_{\mathcal O_v}\psi(xy)\,dx$ equals $\operatorname{Vol}(\mathcal O_v)$
+when $\psi$ is trivial on $\mathcal O_vy$ --- that is, when
+$y\in\mathfrak d_v^{-1}$ --- and vanishes otherwise. Moreover
+$\prod_v N\mathfrak d_v=|D_K|$.
+\end{bg}
+
+\begin{bg}[The class number formula]\label{bg:cnf}
+$\displaystyle\operatorname{Vol}(C_K^1)
+ =\frac{2^{r_1}(2\pi)^{r_2}h_KR_K}{w_K\sqrt{|D_K|}}
+ =\Res_{s=1}\zeta_K(s)$, with $h_K$ the class number, $R_K$ the regulator, $w_K$ the
+number of roots of unity. This is the $\kappa$ of \eqref{eq:43}.
+\end{bg}
+
+\begin{bg}[Discriminant in an unramified tower]\label{bg:disc}
+For $L/K$ of degree $n$, $D_L=N_{K/\Q}(\mathfrak d_{L/K})\cdot D_K^{\,n}$. If $L/K$ is
+unramified the relative different is trivial, so $D_L=D_K^{\,n}$ --- and therefore the
+\emph{root} discriminant $|D_L|^{1/[L:\Q]}=|D_K|^{1/[K:\Q]}$ is unchanged. Iterating
+along a tower of unramified degree-$p$ steps gives \eqref{eq:48}.
+\end{bg}
+
 % =====================================================================
 \section*{\S1. The problem, and a lower bound for $B_1$}
 % =====================================================================
@@ -1059,13 +1098,34 @@ $a\sqrt2$. The conclusion $B_d\ge\tfrac12\Bcal_d$ is \eqref{eq:16} rearranged.
 % =====================================================================
 
 \begin{caution}
-\textbf{This section imports heavily, and we have verified none of the imports.}
-\Ledger{E1, E5, E8, E16, E21, E23} It rests on Tate's thesis for the functional
-equation \eqref{eq:43}, on Armitage for a number field with $\zeta_F(1/2)=0$, on Serre
-for the construction of that field, on Odlyzko for discriminant lower bounds, and on
-Golod--Shafarevi\v c/Brumer (via Roquette) for infinite class field towers. We state
-each precisely and check how the paper uses it, but we have not read those sources.
-Everything in \S4 is therefore conditional on them in this digestion.
+\textbf{What of \S4 rests on imports, and which of them we have checked.}
+\Ledger{E1, E5, E8, E16, E21, E23} The section rests on five external results. Four are
+now stated in full in \S0$''$ and were verified against sources we read; two claims
+remain unread, and are the only conditional points left in this digestion.
+
+\emph{Verified.} The functional equation \eqref{eq:43} is Background \ref{bg:tate};
+the constant $\kappa$ is Background \ref{bg:cnf}; the local transform
+$\widehat{f_v^0}=(N\mathfrak d_v)^{-1/2}\mathbf 1_{\mathfrak d_v^{-1}}$ and
+$\prod_vN\mathfrak d_v=|D_F|$ are Background \ref{bg:tateloc}; the unramified tower
+formula \eqref{eq:48} is Background \ref{bg:disc}, which we prove. Odlyzko's bound is
+stated correctly in \S5(6): the modern constant is $22{,}3816\ldots$, and the paper's
+$22{,}2$ is a rounded-down version of it that leaves the argument untouched. We did
+not read Tate's own text in Cassels--Fr\"ohlich; we read two expositions of it.
+
+\emph{Still unread, and therefore still conditional.}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+\item \textbf{Armitage's example}, that $\zeta_F(\tfrac12)=0$ for Serre's field of
+  degree 48. The paper is behind a paywall. We verified the arithmetic ourselves ---
+  $E=\Q(\sqrt{3(1+i)})$ really has degree 4 over $\Q$, so $[F:\Q]=12\cdot4=48$
+  (\S5(7)) --- and confirmed the statement and its mechanism from a refereed secondary
+  source, but not from Armitage.
+\item \textbf{Roquette's Corollary 7}, the existence of the tower $E_p^1\subset
+  E_p^2\subset\cdots$ with $[E_p^1:\Q]=p(p-1)$ and each step abelian unramified of
+  degree $p$. Cassels--Fr\"ohlich was not available to us. The degree bookkeeping
+  checks ($[\Q(\zeta_p):\Q]=p-1$, times $p$), and the discriminant half of the argument
+  is Background \ref{bg:disc}, which we prove; it is the \emph{existence} of the tower
+  that we take on trust.
+\end{itemize}
 \end{caution}
 
 \subsection*{4.1 Setting}
@@ -1426,6 +1486,45 @@ Quarantined here; nothing above depends on any of it.
   For $d=1$ none of this helps: the exact value of $B_1$ is open, and
   Cohn--Gon\c calves record that no sharp value is known or even conjectured in any
   dimension but 12.
+
+\item \textbf{Odlyzko's constant is $22{,}3816$, and his method is a cousin of this
+  paper's problem.} \Ledger{E21} The bound the paper quotes as
+  $|D|^{1/d}\ge22{,}2\,(1+o(1))$ appears in Odlyzko's own survey as
+  \[\begin{aligned}
+    \mathrm{rd}=|D|^{1/n}&>(4\pi e^{1+C})^{r_1/n}(4\pi e^{C})^{2r_2/n}-O(n^{-2/3})\\
+    &=(60{,}8395\ldots)^{r_1/n}(22{,}3816\ldots)^{2r_2/n}-O(n^{-2/3}),
+  \end{aligned}\]
+  $C$ Euler's constant. The minimum over signatures is the totally imaginary case,
+  $22{,}3816\ldots$, so the paper's $22{,}2$ is that value rounded down; since all that
+  is needed is $22{,}2>2\pi e=17{,}079$, nothing in \S4 changes.
+
+  What is worth noticing is \emph{how} Odlyzko's bound is proved. His explicit-formula
+  method requires a function $F$ with $F>0$ and $\widehat F\ge0$, and the quality of
+  the discriminant bound is governed by how good such an $F$ can be --- his survey
+  poses ``what functions $f(x)$ satisfying $f(x)>0$ and having non-negative Fourier
+  transforms give the best unconditional lower bounds for discriminants?'' as an open
+  problem. That is an extremal problem with sign conditions on a function \emph{and} its
+  transform: a first cousin of the problem of \S1. \S4 relates the two constants; it does
+  not remark that the two \emph{methods} are of the same kind.
+
+\item \textbf{The degree in Armitage's example, checked.} \Ledger{E16} The paper says
+  $E=\Q(\sqrt{3(1+i)})$ and $[F:E]=12$, hence $[F:\Q]=48$. That $[E:\Q]=4$ is not quite
+  immediate: $E\supset\Q(i)$ because $i=y^2/3-1$ for $y=\sqrt{3+3i}$, so it is enough
+  that $3+3i$ is not a square in $\Q(i)$; if $3+3i=(a+bi)^2$ then taking norms
+  $(a^2+b^2)^2=N(3+3i)=18$, so $a^2+b^2=3\sqrt2\notin\Q$. Hence $[E:\Q(i)]=2$,
+  $[E:\Q]=4$ and $[F:\Q]=48$. (Eisenstein at 3 does \emph{not} settle it: the minimal
+  polynomial $y^4-6y^2+18$ has $9\mid18$.)
+
+\item \textbf{Proposition 2 holds for every multiple of 8, not just of 48.}
+  \Ledger{E16} The proof of Proposition 2 uses the degree-48 field only as a seed: any
+  number field whose zeta function has a real zero, of any degree $d_0$, gives
+  $\Bcal_d>0$ for every multiple of $d_0$ by the identical cyclotomic-lifting argument.
+  Fr\"ohlich constructed infinitely many quaternion fields of degree \emph{8} with
+  $\zeta_K(\tfrac12)=0$, in the same volume of \emph{Inventiones} as Armitage's paper.
+  Taking one of those as the seed gives $\Bcal_d>0$ whenever $8\mid d$, which contains
+  the stated result since $48=8\cdot6$. We have not read Fr\"ohlich either --- this
+  rests on the same refereed secondary source as the previous item --- so we do not
+  restate Proposition 2; we record that its hypothesis is not sharp.
 
 \item \textbf{The source.} The authors' arXiv LaTeX does not build on a 2026
   distribution: \verb|[francais]| must become \verb|[french]|, and two stray

@@ -107,12 +107,13 @@ Stages 1 (choose), 2 (download) and 3 (Blueprint A) **complete**.
 
 - `...-expanded.tex` — 0 errors, 0 overfull boxes, no undefined references,
   `latex-source-audit` passes.
-- **19 pages → 21 pages**; body 32,773 → 66,185 characters, a factor of **2.02**.
+- **19 pages → 23 pages**; body 32,773 → 66,185 characters at hand-off, more after
+  the reading pass below — a factor of **2.02** or better.
   (The page ratio understates the expansion badly: the original is 12pt with generous
   `\vskip`s, the digestion 11pt `amsart` at 1.05in margins.)
-- `ledger.md`: **110 rows**, none open — 87 closed with an explicit `\Ledger{}`
-  marker, 17 closed by verbatim reproduction of a statement of the paper, 6 standing
-  as `caution` (the §4 imports we did not read). No `OPEN-GAP`: there is no step of
+- `ledger.md`: **110 rows**, none open — 91 closed with an explicit `\Ledger{}`
+  marker, 17 closed by verbatim reproduction of a statement of the paper, 2 standing
+  as `caution` (six at hand-off; see the reading pass below). No `OPEN-GAP`: no step of
   the authors' own argument we could not reconstruct.
 - 28 `expansion` blocks, 8 `filled`, 8 `ournotation`, 1 `caution`.
 
@@ -162,11 +163,67 @@ only, nothing read, and the entries say so.
   2021 one proves minimising sequences exist in the Schwartz class for `d = 1`, which
   bears directly on the factor 2 this paper left in `B₁ ≤ 𝓑₁ ≤ 2B₁`.
 
+## The §4 imports: reading pass, 2026-08-24
+
+The digestion shipped with one `caution` block covering six citation rows. Four are now
+closed against sources actually read; two remain.
+
+**Closed.**
+
+| row | claim | read against |
+|---|---|---|
+| E1 | Tate's functional equation: simple poles only at `s=0,1`, residues `∓Vol(C¹)f(0)`, `+Vol(C¹)f̂(0)` | Leahy, *An introduction to Tate's Thesis*, McGill M.A. 2010, **Thm 4.9.2** |
+| E5 | `κ = 2^{r₁}(2π)^{r₂}hR/(w√|D|)` | Leahy **§4.11**, `Vol(C_K¹)` computation |
+| E8 | `f̂_v⁰ = (N𝔡_v)^{−1/2}·1_{𝔡_v^{−1}}`, `∏N𝔡_v = |D|` | Poonen, *Tate's thesis*, MIT 18.786 notes — the computation is explicit; cross-checked in Leahy |
+| E21 | Odlyzko's discriminant bound | Odlyzko, *Bounds for discriminants…*, Sém. Théor. Nombres Bordeaux **2** (1990) 119–141, **(2.5)** |
+
+Two things came out of that reading.
+
+- **Odlyzko's constant is 22.3816, not 22.2.** (2.5) reads
+  `rd > (4πe^{1+C})^{r₁/n}(4πe^C)^{2r₂/n} − O(n^{−2/3}) = (60.8395…)^{r₁/n}(22.3816…)^{2r₂/n} − O(n^{−2/3})`.
+  The minimum over signatures is the totally imaginary case, 22.3816. The paper's 22.2
+  is that rounded down; since all the argument needs is `22.2 > 2πe = 17.079`, §4 is
+  untouched.
+- **Odlyzko's method is a cousin of this paper's problem.** His explicit-formula bound
+  needs a function `F` with `F > 0` and `F̂ ≥ 0`, and his survey poses as an open
+  problem: which such functions give the best discriminant bounds? That is an extremal
+  problem with sign conditions on a function *and* its transform. §4 relates the two
+  constants; it does not notice that the two *methods* are of the same kind. Recorded
+  in §5(6) of the expansion.
+
+**Still open, and now the only conditional points in the digestion.**
+
+- **E16 — Armitage.** Invent. Math. **15** (1972) 199–205, paywalled at $39.95; not
+  read, and I did not use institutional credentials. What was done instead: the degree
+  arithmetic is verified here — `E = ℚ(√(3(1+i)))` contains `ℚ(i)` since `i = y²/3 − 1`,
+  and `3+3i` is not a square in `ℚ(i)` because `(a²+b²)² = N(3+3i) = 18` forces
+  `a²+b² = 3√2 ∉ ℚ`; so `[E:ℚ] = 4` and `[F:ℚ] = 12·4 = 48`. (Eisenstein at 3 does *not*
+  do it: `y⁴−6y²+18` has `9 | 18`.) The statement `ζ_F(1/2)=0` and its mechanism —
+  `ζ_F` factors into Artin L-functions, one of which has root number `−1` and so
+  vanishes at `1/2` — are confirmed by a refereed secondary source (Inventiones 2025,
+  arXiv:2107.10900, introduction), which also pins the construction to **Serre §9**.
+- **E23 — Roquette Cor. 7.** Cassels–Fröhlich was not obtainable. The degree bookkeeping
+  checks (`[ℚ(ζ_p):ℚ] = p−1`, times `p`), and the discriminant half of the argument is
+  now *proved* rather than cited: for `L/K` unramified of degree `n` the relative
+  different is trivial, so `D_L = D_K^n` and the root discriminant is constant along the
+  tower (Background). What is taken on trust is the *existence* of the tower.
+
+**A finding worth more than either.** Proposition 2 uses the degree-48 field only as a
+seed: any field whose zeta has a real zero, of any degree `d₀`, gives `𝓑_d > 0` for
+every multiple of `d₀` by the identical argument. Fröhlich (*Artin root numbers and
+normal integral bases for quaternion fields*, Invent. Math. **17** (1972) 143–166)
+constructed infinitely many quaternion fields of degree **8** with `ζ_K(1/2)=0`. So
+Proposition 2 holds for every multiple of 8, which contains `48 = 8·6`. Fröhlich is
+unread too, so the expansion records this in §5(8) without restating the proposition.
+
+Ledger after this pass: **110 rows — 91 closed, 17 closed by reproduction, 2 caution.**
+Expansion now 23 pages.
+
 ## Still worth doing
 
-- §4's six imports are unread and the digestion is explicit that the section is
-  conditional on them. Reading Tate, Armitage and Roquette would close the only
-  `caution` block.
+- Two imports remain unread: Armitage (paywalled) and Roquette's Cor. 7
+  (Cassels–Fröhlich unobtainable here). Anyone with a library can close both in an
+  afternoon; everything around them is now proved or cited to a source we read.
 - The superposition `∫₁^∞ g_a dτ(a)` of (2.2): the paper raises it and abandons it,
   saying no simple characterisation of `τ` is apparent. Nothing in the harvest, but a
   live direction.
