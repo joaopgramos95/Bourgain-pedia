@@ -144,6 +144,14 @@ source of the factor 2 in `B₁ ≤ 𝓑₁ ≤ 2B₁`.
 **What it buys.** Comparability of the constant over `f(0) = 0` with the constant over
 `f(0) < 0`, at the cost of a factor 2.
 
+**Evidence that it recurs.** The move outlived the paper. Gonçalves, Oliveira e Silva
+and Ramos (J. Geom. Anal. 2021) settle the question this factor 2 left open — whether
+the `L¹` and Schwartz constants agree — in dimension 1, and their proof *starts from
+this device*: the same `δ_{x₀} + δ_{−x₀} + 2δ₀`, sharpened by showing a minimiser is
+strictly negative on a punctured neighbourhood of the origin, so `x₀` may be taken
+arbitrarily close to `0` instead of merely somewhere below `A(f)`. The entry earns its
+place: one paper's throwaway trick is another's main lemma.
+
 ---
 
 ### Regularise at epsilon cost — toolkit: `regularisation-at-epsilon-cost` (**new**)

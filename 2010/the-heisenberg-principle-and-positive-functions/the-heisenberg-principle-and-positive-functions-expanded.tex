@@ -467,6 +467,20 @@ u}{u})=A(1+\lambda)$, and $\int f^+=\tfrac12$ gives the factor $A(1+\lambda)/2$.
 
 \subsection*{1.4 The Schwartz class costs at most a factor 2}
 
+Later we shall need to consider rather regular functions as well. A natural class is
+the Schwartz space $\Ss$. \emph{It is not at all evident that the bound $A$ defined by
+\eqref{eq:11}, when one further imposes on $f$ that it belong to $\Ss$, coincides with
+the one defined for $f$ ranging over $L^1$.}
+
+\begin{ournotation}
+\textbf{That sentence is a question, and it is one of the paper's open problems.}
+\Ledger{B29} In the original: ``Il n'est point \'evident que la borne $A$ d\'efinie par
+(1.1), quand on impose de surcro\^it \`a $f$ d'appartenir \`a $\Ss$, co\"incide avec
+celle d\'efinie pour $f$ parcourant $L^1$.'' The rest of \S1.4 proves only
+$B_1\le\Bcal_1\le2B_1$; whether the first inequality is an equality is left open, and
+\S5(9) records what has since become of it.
+\end{ournotation}
+
 Let $\Bcal_1=A^2$ with $A$ defined by \eqref{eq:11} but with $f\in\Ss$. Evidently
 \begin{equation}\label{eq:12}
  B_1\le\Bcal_1 .
@@ -1457,6 +1471,9 @@ Quarantined here; nothing above depends on any of it.
     $\Bcal_d=(d+2)/2\pi$. The paper says twice that this ``is possible'', having shown
     that the family $g_a$ cannot beat it for $d>2$ (via $Q_4(c+1)<0$) and for $d=2$
     (via $p_6<0$) --- in contrast with $d=1$, where it can.
+  \item Whether $B_d=\Bcal_d$: whether the constant over $L^1$ and the constant over
+    $\Ss$ are the same. \S1.4 poses it in as many words and proves only
+    $B_1\le\Bcal_1\le2B_1$. See item 9.
   \end{itemize}
   Both are recorded on the project's Open problems page with what we could verify of
   their status.
@@ -1525,6 +1542,30 @@ Quarantined here; nothing above depends on any of it.
   the stated result since $48=8\cdot6$. We have not read Fr\"ohlich either --- this
   rests on the same refereed secondary source as the previous item --- so we do not
   restate Proposition 2; we record that its hypothesis is not sharp.
+
+\item \textbf{$L^1$ versus $\Ss$: settled in dimension 1.} \Ledger{B29} The question
+  of \S1.4 --- whether restricting to Schwartz functions changes the constant --- was
+  answered for $d=1$ by Gon\c calves, Oliveira e Silva and Ramos. Writing $A_+(d)$ for
+  the constant of \eqref{eq:34a} and $A_+^{\Ss}(d)$, $A_+^{B}(d)$ for the same infimum
+  over Schwartz and over bandlimited competitors, their Theorem 1 is
+  \[A_+(1)=A_+^{B}(1)=A_+^{\Ss}(1),\]
+  so in dimension 1 the factor 2 of \eqref{eq:17} collapses entirely and all three
+  problems have the same answer. Their Conjecture 1 is that this holds for every $d$
+  and for the complementary $-1$ eigenfunction problem too; it is open.
+
+  Two things are worth recording. First, the proof \emph{starts from the device of
+  \S1.4}: they convolve with $\delta_{x_0}+\delta_{-x_0}+2\delta_0$, exactly the $T$ of
+  this section, and the one-dimensional gain comes from showing that a minimiser is
+  strictly negative on a punctured neighbourhood of the origin, so that $x_0$ may be
+  taken arbitrarily close to $0$ rather than merely somewhere below $A(f)$. The
+  paper's own trick is the seed of its own answer. Second, in dimension $d>1$ the same
+  method gives only $A_+^{\Ss}(d)\le(2-\delta_d)A_+(d)$ with $\delta_d\in(0,1)$
+  satisfying $d(2\pi e)^{d/2}\delta_d\to1$ --- an improvement on the factor 2 that is
+  exponentially small in $d$. So $d\ge2$ is open in substance, not only formally.
+
+  Equality is also known in the handful of dimensions where an explicit Schwartz
+  minimiser exists: $d=12$ for the $+1$ problem, and $d=1,8,24$ for the $-1$ problem.
+  We have read the statements of these results; we have not checked their proofs.
 
 \item \textbf{The source.} The authors' arXiv LaTeX does not build on a 2026
   distribution: \verb|[francais]| must become \verb|[french]|, and two stray

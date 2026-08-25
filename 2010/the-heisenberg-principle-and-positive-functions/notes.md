@@ -96,7 +96,20 @@ believe is open; each is one the authors state.
    conditional refinement rather than a problem of the subject, recorded for
    completeness.
 
-Items 1–3 are candidates for `data/problems.json`. They are **not** written there
+4. **Whether `B_d = 𝓑_d`** — whether the constant over `L¹` and the constant over the
+   Schwartz class are the same. §1.4 poses it in as many words: *"Il n'est point évident
+   que la borne `A` définie par (1.1), quand on impose de surcroît à `f` d'appartenir à
+   `𝒮`, coïncide avec celle définie pour `f` parcourant `L¹`."* The section proves only
+   `B₁ ≤ 𝓑₁ ≤ 2B₁`, and notes that the mollification argument fails exactly at `f(0)=0`
+   — which is the normalisation the problem was reduced to, so the factor 2 is not
+   obviously removable.
+
+   **This was missed on the first pass.** The digestion dropped the sentence entirely,
+   which is a rule-6 miss: the paper states an open question and the expansion did not
+   reproduce it. Caught by the maintainer, who is an author of the paper that settles
+   it. Ledger row **B29** now records the miss rather than quietly papering over it.
+
+Items 1–4 are candidates for `data/problems.json`. They are **not** written there
 yet: each entry needs a `status` list of two or three post-2010 articles, every one
 verified against a bibliographic source and honestly marked `read: false` where we
 have only the abstract. That is Stage 5 work and waits on approval.
@@ -111,7 +124,7 @@ Stages 1 (choose), 2 (download) and 3 (Blueprint A) **complete**.
   the reading pass below — a factor of **2.02** or better.
   (The page ratio understates the expansion badly: the original is 12pt with generous
   `\vskip`s, the digestion 11pt `amsart` at 1.05in margins.)
-- `ledger.md`: **110 rows**, none open — 91 closed with an explicit `\Ledger{}`
+- `ledger.md`: **111 rows**, none open — 92 closed with an explicit `\Ledger{}`
   marker, 17 closed by verbatim reproduction of a statement of the paper, 2 standing
   as `caution` (six at hand-off; see the reading pass below). No `OPEN-GAP`: no step of
   the authors' own argument we could not reconstruct.
@@ -160,8 +173,18 @@ only, nothing read, and the entries say so.
   Theorem 4. Both sides are verified bibliographically; neither proof has been read.
 - Two of the follow-up papers are by **João P. G. Ramos**, this project's maintainer,
   with Gonçalves and Oliveira e Silva (J. Geom. Anal. 2021; Discrete Anal. 2023). The
-  2021 one proves minimising sequences exist in the Schwartz class for `d = 1`, which
-  bears directly on the factor 2 this paper left in `B₁ ≤ 𝓑₁ ≤ 2B₁`.
+  2021 one **settles open problem 4 in dimension 1**: its Theorem 1 is
+  `A₊(1) = A₊^B(1) = A₊^𝒮(1)`, so the `L¹`, bandlimited and Schwartz constants all
+  coincide and the factor 2 of (1.7) disappears. Its Conjecture 1 is that this holds in
+  every dimension and for the `−1` eigenfunction problem too; that is open, and in
+  `d > 1` their method improves the factor only to `2 − δ_d` with
+  `d(2πe)^{d/2} δ_d → 1` — exponentially small.
+
+  The pleasing part: **the proof starts from this paper's own device.** They convolve
+  with `δ_{x₀} + δ_{−x₀} + 2δ₀`, exactly the `T` of §1.4, and the `d = 1` gain comes
+  from showing a minimiser is strictly negative on a punctured neighbourhood of the
+  origin, so `x₀` can be taken arbitrarily close to `0` rather than merely below
+  `A(f)`. Recorded as evidence under `positive-type-convolution` in the ideas file.
 
 ## The §4 imports: reading pass, 2026-08-24
 
@@ -216,7 +239,7 @@ constructed infinitely many quaternion fields of degree **8** with `ζ_K(1/2)=0`
 Proposition 2 holds for every multiple of 8, which contains `48 = 8·6`. Fröhlich is
 unread too, so the expansion records this in §5(8) without restating the proposition.
 
-Ledger after this pass: **110 rows — 91 closed, 17 closed by reproduction, 2 caution.**
+Ledger after this pass: **111 rows — 92 closed, 17 closed by reproduction, 2 caution.**
 Expansion now 23 pages.
 
 ## Still worth doing

@@ -153,11 +153,12 @@
     "The paper proves $A\\ge \\frac{1}{2(1+\\lambda)}=0.4107\\ldots$, where $\\lambda=-\\inf_x\\frac{\\sin x}{x}=0.2172\\ldots$",
     "The paper proves $A\\le 0.64$ by correcting a Gaussian dilation family. Our digestion, running the same argument numerically, gets $A\\le 0.5973$ (see \\S5(2) of the expansion).",
     "Two independent routes in the paper — the Hermite eigenspace and the Gaussian family $g_a$ — both give $\\pi A^2\\le \\tfrac32$, i.e. $A\\le 0.6910$. The paper prints $3$ for the Hermite route and does not remark on the coincidence.",
-    "The paper shows the $L^1$ and Schwartz constants satisfy $B_1\\le \\mathcal B_1\\le 2B_1$ and leaves the factor $2$ open."
+    "The paper shows the $L^1$ and Schwartz constants satisfy $B_1\\le \\mathcal B_1\\le 2B_1$ and leaves the factor $2$ open; that is a separate problem, and it has since been settled for $d=1$."
    ],
    "see_also": [
     "optimality-of-the-linear-upper-bound",
-    "linear-growth-constant-sign-uncertainty"
+    "linear-growth-constant-sign-uncertainty",
+    "schwartz-versus-l1-sign-uncertainty"
    ],
    "status": [
     {
@@ -176,9 +177,9 @@
      "url": "https://doi.org/10.1007/s12220-020-00519-7",
      "zbl": "1469.42015",
      "kind": "structural",
-     "what": "Per its abstract, establishes equivalent formulations of the sign uncertainty principle and proves that minimising sequences exist within the Schwartz class when $d=1$ — the class in which the digested paper could only show the two constants agree up to a factor $2$ (its $(1.7)$). Also shows near-minimisers of a complementary principle concentrate a universal proportion of their positive mass near the origin, in every dimension. Abstract verified; not read.",
-     "read": false,
-     "verified_from": "zbMATH Zbl 1469.42015 and arXiv:2003.10765 abstract, fetched 2026-08-24"
+     "what": "Establishes equivalent formulations of the sign uncertainty principle. Its Theorem 1, $A_+(1)=A_+^{B}(1)=A_+^{\\mathcal{S}}(1)$, settles the separate question of whether the Schwartz constant equals the $L^1$ one in dimension 1 — see that problem. It also shows near-minimisers of the complementary principle concentrate a universal proportion of their positive mass near the origin, in every dimension. What it does \\textbf{not} do is pin down the value of $B_1$, which is why this problem stays open. Statements read; proofs not checked.",
+     "read": true,
+     "verified_from": "arXiv:2003.10765, introduction and statements read in full 2026-08-24; zbMATH Zbl 1469.42015"
     },
     {
      "ref": "Felipe Gonçalves, Diogo Oliveira e Silva, João P. G. Ramos, \"New sign uncertainty principles\", Discrete Anal. 2023, Paper No. 9, 46 p. (2023).",
@@ -211,7 +212,8 @@
    ],
    "see_also": [
     "exact-value-sign-uncertainty-dimension-one",
-    "linear-growth-constant-sign-uncertainty"
+    "linear-growth-constant-sign-uncertainty",
+    "schwartz-versus-l1-sign-uncertainty"
    ],
    "status": [
     {
@@ -266,7 +268,8 @@
    ],
    "see_also": [
     "optimality-of-the-linear-upper-bound",
-    "exact-value-sign-uncertainty-dimension-one"
+    "exact-value-sign-uncertainty-dimension-one",
+    "schwartz-versus-l1-sign-uncertainty"
    ],
    "status": [
     {
@@ -300,8 +303,53 @@
      "verified_from": "zbMATH Zbl 1542.42003 and arXiv:2210.01684 abstract, fetched 2026-08-24"
     }
    ]
+  },
+  {
+   "id": "schwartz-versus-l1-sign-uncertainty",
+   "title": "Does restricting to Schwartz functions change the constant? ($B_d$ versus $\\mathcal B_d$)",
+   "field": "harmonic-analysis",
+   "statement": "The constant $B_d$ is an infimum over $L^1$; $\\mathcal B_d$ is the same infimum with the competitor required to lie in the Schwartz class $\\mathcal S$. The paper proves $B_1\\le\\mathcal B_1\\le 2B_1$ and asks whether the first inequality is an equality. Its smoothing argument breaks down exactly at $f(0)=0$, which is the normalisation the problem was reduced to, so the factor 2 is not obviously removable. Are the two constants equal, in dimension 1 and in general?",
+   "quote": "Il n'est point évident que la borne A définie par (1.1), quand on impose de surcroît à f d'appartenir à 𝒮, coïncide avec celle définie pour f parcourant L¹.",
+   "posed_in": "2010-the-heisenberg-principle-and-positive-functions",
+   "posed_year": 2010,
+   "status_in_source": "open",
+   "status_now": "partially solved",
+   "status_note": "\\textbf{Settled in dimension 1}, open in every other. Gonçalves, Oliveira e Silva and Ramos (2021) prove $A_+(1)=A_+^{B}(1)=A_+^{\\mathcal{S}}(1)$, so for $d=1$ the $L^1$, bandlimited and Schwartz problems have the same answer and the paper's factor 2 disappears. Their Conjecture 1 extends this to all $d$ and to the complementary $-1$ eigenfunction problem, and is open; in $d>1$ their method improves the factor only to $2-\\delta_d$ with $d(2\\pi e)^{d/2}\\delta_d\\to1$, which is exponentially small, so higher dimensions are open in substance and not merely on paper. Equality is also known wherever an explicit Schwartz minimiser has been constructed: $d=12$ for the $+1$ problem, and $d=1,8,24$ for the $-1$ problem.",
+   "partial": [
+    "The paper proves $B_1\\le\\mathcal B_1\\le 2B_1$, via $\\mathcal B_1^-=B_1^-$ (mollify twice, once on each side, to restore self-duality) together with $B_1^-\\le 2B_1$ (convolve by the positive-type measure $T=\\delta_b+\\delta_{-b}+2\\delta_0$, then rebalance by dilation).",
+    "The paper notes explicitly that the mollification argument does not apply when $f(0)=0$ — which is why the separate constant $B_1^-$ is needed and where the factor 2 comes from.",
+    "The same two-sided bound holds in dimension $d$: Theorem 4 gives $B_d\\ge\\tfrac12\\mathcal B_d$.",
+    "Gonçalves–Oliveira e Silva–Ramos observe that the argument adapts to the complementary $-1$ eigenfunction problem as well."
+   ],
+   "see_also": [
+    "exact-value-sign-uncertainty-dimension-one",
+    "optimality-of-the-linear-upper-bound",
+    "linear-growth-constant-sign-uncertainty"
+   ],
+   "status": [
+    {
+     "ref": "Felipe Gonçalves, Diogo Oliveira e Silva, João P. G. Ramos, \"On regularity and mass concentration phenomena for the sign uncertainty principle\", J. Geom. Anal. 31, No. 6, 6080-6101 (2021).",
+     "year": 2021,
+     "url": "https://doi.org/10.1007/s12220-020-00519-7",
+     "zbl": "1469.42015",
+     "kind": "resolves-one-case",
+     "what": "\\textbf{Theorem 1}: $A_+(1)=A_+^{B}(1)=A_+^{\\mathcal{S}}(1)$ — in dimension 1 the $L^1$, bandlimited and Schwartz constants all coincide, so the digested paper's factor 2 collapses completely. The paper quotes the sentence posing the question from p. 1218 of the source verbatim. Its \\textbf{Conjecture 1} is that $A_s(d)=A_s^{B}(d)=A_s^{\\mathcal{S}}(d)$ for every sign $s$ and every $d\\ge1$, and is open. Notably the proof starts from the digested paper's own device: convolution with $\\delta_{x_0}+\\delta_{-x_0}+2\\delta_0$, sharpened in $d=1$ by showing a minimiser is strictly negative on a punctured neighbourhood of the origin, so $x_0$ can be taken arbitrarily close to $0$. In $d>1$ the same method gives only $A_+^{\\mathcal{S}}(d)\\le(2-\\delta_d)A_+(d)$ with $d(2\\pi e)^{d/2}\\delta_d\\to1$, an improvement exponentially small in $d$. Statements read from the article; proofs not checked.",
+     "read": true,
+     "verified_from": "arXiv:2003.10765, introduction and statements read in full 2026-08-24; zbMATH Zbl 1469.42015"
+    },
+    {
+     "ref": "Henry Cohn, Felipe Gonçalves, \"An optimal uncertainty principle in twelve dimensions via modular forms\", Invent. Math. 217, No. 3, 799-831 (2019).",
+     "year": 2019,
+     "url": "https://doi.org/10.1007/s00222-019-00875-4",
+     "zbl": "1422.42010",
+     "kind": "resolves-one-case",
+     "what": "Proves the sharp constant in dimension 12: under exactly the conditions of the digested paper, $r_1r_2\\ge 2$, and the bound is attained. Per its abstract the extremal function is built by Viazovska's modular form method and optimality comes from the Eisenstein series $E_6$; the abstract states that no sharp bound is known, or even conjectured, in any other dimension. Abstract and bibliographic record verified; not read.",
+     "read": false,
+     "verified_from": "zbMATH Zbl 1422.42010 and arXiv:1712.04438 abstract, fetched 2026-08-24"
+    }
+   ]
   }
  ],
  "generated": "2026-08-25",
- "count": 4
+ "count": 5
 }

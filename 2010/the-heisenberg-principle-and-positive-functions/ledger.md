@@ -16,12 +16,12 @@ is in English (see `notes.md`).
 
 | status | count |
 |---|---:|
-| closed | 91 |
+| closed | 92 |
 | closed (reproduced) | 17 |
 | **caution** (visible in the PDF) | 2 |
 | open | 0 |
 | **OPEN-GAP** | 0 |
-| **total rows** | **110** |
+| **total rows** | **111** |
 
 Every row is accounted for. The three statuses mean different things and the
 distinction is the point:
@@ -110,6 +110,7 @@ and `a=2` reductions, `p₅=0` and `p₆=−4/45`, and Theorem 3's inequality ch
 | B26 | §1, (1.6) | gap | "Par dilatation, on obtient alors une fonction `h`" — the dilation balances the two thresholds `2a` and `a` at their geometric mean `a√2`. The scaling factor is not given. Supply it. | closed |
 | B27 | §1, (1.6) | computation | **Printed slip.** "`B₁⁻ ≤ (a√2)² = 2a`" — the square is `2a²`, and `2a²` is what the argument needs to give `B₁⁻ ≤ 2B₁`. | closed |
 | B28 | §1, (1.7) | computation | Assembling `B₁ ≤ 𝓑₁ ≤ 2B₁` from (1.2)–(1.6). Check the chain. | closed |
+| B29 | §1.4, opening | claim | **Missed on the first pass, added 2026-08-24.** "Il n'est point évident que la borne `A` ... coïncide avec celle définie pour `f` parcourant `L¹`." This is the paper posing an open problem in as many words, and the first draft of the digestion dropped the sentence entirely — a rule-6 miss. Reproduce it, and record in §5(9) that Gonçalves–Oliveira e Silva–Ramos settled `d=1`. | closed |
 
 ## C. §2 — upper bounds
 
