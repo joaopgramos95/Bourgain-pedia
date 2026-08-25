@@ -6,7 +6,8 @@
 # digestion under <year>/<slug>/ resolves -- and opens the browser.
 #
 #   Bourgain.local            start if needed, then open
-#   Bourgain.local stop       stop the server this repo started
+#   Bourgain.local stop       stop every server this repo has running
+#   Bourgain.local restart    stop, then start fresh and open
 #   Bourgain.local status     report
 #   Bourgain.local -p 9000    force a particular port
 #
@@ -20,9 +21,9 @@ CMD=open
 
 while [ $# -gt 0 ]; do
   case "$1" in
-    stop|status|open) CMD="$1"; shift ;;
+    stop|status|open|restart) CMD="$1"; shift ;;
     -p|--port) PORT="${2:-}"; shift 2 ;;
-    -h|--help) sed -n '2,17p' "$0" | sed 's/^#\{0,1\} \{0,1\}//'; exit 0 ;;
+    -h|--help) sed -n '2,18p' "$0" | sed 's/^#\{0,1\} \{0,1\}//'; exit 0 ;;
     *) echo "Bourgain.local: unknown argument '$1' (try --help)" >&2; exit 2 ;;
   esac
 done
@@ -65,19 +66,29 @@ PYEOF
 }
 
 case "$CMD" in
-  stop)
+  stop|restart)
+    stopped=0
     if [ -f "$STATE" ]; then
       read -r pid oldport < "$STATE" 2>/dev/null || true
-      if [ -n "${pid:-}" ] && kill "$pid" 2>/dev/null; then
-        echo "Bourgain-pedia: stopped (port ${oldport:-?})."
-      else
-        echo "Bourgain-pedia: nothing of ours was running."
-      fi
+      [ -n "${pid:-}" ] && kill "$pid" 2>/dev/null && stopped=1
       rm -f "$STATE"
-    else
-      echo "Bourgain-pedia: nothing of ours was running."
     fi
-    exit 0 ;;
+    # Sweep any server still answering for THIS repository on the usual ports,
+    # including ones an older version of this script orphaned. The serving_us
+    # check is what keeps us from killing somebody else's server on 8017.
+    probe=${PORT:-$DEFAULT_PORT}
+    i=0
+    while [ $i -lt 40 ]; do
+      port=$((probe + i)); i=$((i + 1))
+      serving_us "$port" || continue
+      for victim in $(lsof -nP -iTCP:"$port" -sTCP:LISTEN -t 2>/dev/null); do
+        kill "$victim" 2>/dev/null && stopped=1 && \
+          echo "Bourgain-pedia: stopped pid $victim on port $port."
+      done
+    done
+    [ "$stopped" = "1" ] || echo "Bourgain-pedia: nothing of ours was running."
+    [ "$CMD" = "stop" ] && exit 0
+    CMD=open ;;
   status)
     if [ -f "$STATE" ]; then
       read -r pid oldport < "$STATE" 2>/dev/null || true
@@ -118,8 +129,13 @@ if [ "${exec_open:-0}" != "1" ]; then
     # Detach every descriptor, including stdin: otherwise the server inherits
     # the caller's stdout and a pipeline such as `Bourgain.local | tee log`
     # never sees end-of-file.
-    ( cd "$ROOT" && nohup python3 "$ROOT/tools/serve.py" "$n" </dev/null >/dev/null 2>&1 &
-      echo "$! $n" > "$STATE" ) </dev/null >/dev/null 2>&1
+    # `exec` matters: without it the subshell stays alive as the parent of
+    # python, `$!` records the subshell, and `stop` later kills that wrapper
+    # while the server keeps running -- which is exactly how a stale server
+    # survives an upgrade and goes on serving without the cache headers.
+    ( cd "$ROOT" && exec nohup python3 "$ROOT/tools/serve.py" "$n" ) \
+      </dev/null >/dev/null 2>&1 &
+    echo "$! $n" > "$STATE"
     i=0
     while [ $i -lt 30 ]; do
       serving_us "$n" && break

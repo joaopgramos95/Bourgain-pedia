@@ -461,7 +461,7 @@
    "score": 1
   }
  ],
- "generated": "2026-08-24",
+ "generated": "2026-08-25",
  "count": 20,
  "_comment": "Ideas arrive here only from ideas-<paper>.md files produced by blueprints/idea-blueprint.md, applied to a paper that has been digested. Scores and the 'papers' lists are recomputed by tools/build_data.py from the 'toolkit' arrays in data/papers.json; never edit a score by hand."
 }

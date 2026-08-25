@@ -83,7 +83,7 @@
    "title": "Harmonic functions of higher smoothness with gradient vanishing on positive measure",
    "field": "potential-theory",
    "statement": "Is there a harmonic function $f$ on the half space $\\mathbb R^d_+$ ($d\\ge 3$) which is $C^2$, or $C^\\infty$, up to the boundary, and whose gradient vanishes on a boundary set of positive measure? The $C^1$ case is settled affirmatively by the paper that poses this; the question is whether the construction survives one more derivative.",
-   "quote": "The main question remains open, that is, whether it is possible to have harmonic functions C² or C^∞ smooth up to the boundary whose gradients vanish on sets of positive measure.",
+   "quote": "The main question remains open, that is, whether it is possible to have harmonic functions $C^2$ or $C^\\infty$ smooth up to the boundary whose gradients vanish on sets of positive measure.",
    "posed_in": "1990-a-remark-on-gradients-of-harmonic-functions-in-dimension-3",
    "posed_year": 1989,
    "status_in_source": "open",
@@ -302,6 +302,6 @@
    ]
   }
  ],
- "generated": "2026-08-24",
+ "generated": "2026-08-25",
  "count": 4
 }

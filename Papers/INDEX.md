@@ -1,6 +1,6 @@
 # Papers by year
 
-548 items, 1976-2026. Generated 2026-08-24.
+548 items, 1976-2026. Generated 2026-08-25.
 
 | Year | Items | Cited by (total) |
 | ---: | ----: | ---------------: |

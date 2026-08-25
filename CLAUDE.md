@@ -103,8 +103,17 @@ outside this repository; nothing here depends on it.)
 
 ## Running it locally
 
-`sh tools/install.sh` once, then `Bourgain.local` from anywhere. Both it and
-`tools/serve.sh` go through `tools/serve.py`, which sends `Cache-Control: no-store`:
+`sh tools/install.sh` once, then `Bourgain.local` from anywhere.
+`Bourgain.local stop` stops every server this repository has running --- it sweeps the
+port range and kills whatever is actually answering for *this* repo, so a server
+orphaned by an older version of the script is caught too; `restart` does that and then
+starts fresh. The launcher must background the server with `exec`, or `$!` records the
+wrapper subshell instead of python, `stop` kills the wrapper, and the real server
+survives every upgrade --- serving stale headers for ever. That bug is how a stale
+version outlived the cache fix below.
+
+Both it and `tools/serve.sh` go through `tools/serve.py`, which sends
+`Cache-Control: no-store`:
 the data files are rewritten in place at a URL that never changes, so without it a
 rebuild stays invisible behind the browser cache. That has cost us an hour once. The launcher resolves
 the repository from its own symlink, picks the first free port at or after 8017, reuses
